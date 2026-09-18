@@ -4,6 +4,9 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
 }
 
 body {

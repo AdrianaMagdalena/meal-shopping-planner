@@ -1,0 +1,37 @@
+@use "../utils/fonts" as *;
+@use "../utils/mixins" as *;
+
+nav {
+  background-color: beige;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    list-style: none;
+    padding: 16px 32px;
+    margin: 0;
+
+    @include breakpoint-up(lg) {
+      align-items: center;
+      flex-direction: row;
+    }
+  }
+
+  .nav-item {
+    font-weight: 500;
+    font-size: 18px;
+
+    @include breakpoint-up(xl) {
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    &__logo {
+      font-family: $font-accent;
+      font-size: 36px;
+      margin: 0 auto 0 0;
+    }
+  }
+}
