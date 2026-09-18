@@ -1,0 +1,16 @@
+{
+  "name": "meal-shopping-planner",
+  "version": "0/.0.0",
+  "description": "Weekly Meal & Shopping Planner",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "serve": "npx serve",
+    "dev": "npm run serve & npm run watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
