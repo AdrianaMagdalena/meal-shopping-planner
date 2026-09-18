@@ -6,9 +6,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc",
-    "watch": "tsc --watch",
-    "serve": "npx serve",
-    "dev": "npm run serve & npm run watch"
+    "dev": "tsc --watch"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
