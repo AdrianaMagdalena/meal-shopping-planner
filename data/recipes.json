@@ -1,0 +1,212 @@
+[
+  {
+    "id": "recipe_001",
+    "title": "Lentil Bolognese",
+    "cookTime": 55,
+    "image": "recipe_001.png",
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 6,
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "oil_02", "quantity": 35 },
+          { "id": "onion_01", "quantity": 300 },
+          { "id": "carrot_01", "quantity": 200 },
+          { "id": "celery_01", "quantity": 150 },
+          { "id": "garlic_01", "quantity": 6 },
+          { "id": "salt_01", "quantity": 1.5 },
+          { "id": "pepper_01", "quantity": 0.5 },
+          { "id": "oregano_01", "quantity": 2 },
+          { "id": "tomato_paste_01", "quantity": 80 },
+          {
+            "id": "red_wine_01",
+            "quantity": 70,
+            "optional": true
+          },
+          { "id": "lentils_03", "quantity": 320 },
+          { "id": "tomatoes_01", "quantity": 220 },
+          { "id": "broth_01", "quantity": 830 },
+          { "id": "walnuts_01", "quantity": 80 },
+          { "id": "pasta_01", "quantity": 300 }
+        ],
+        "steps": [
+          "Prepare all ingredients: dice the onion, carrots, garlic and tomatoes. Dice and toast the walnuts.",
+          "Heat the olive oil in a pot on medium heat. Add the onion and saute for 2-3 minutes, stirring until fragrant. Add carrots, celery, garlic, salt, pepper and oregano. Saute for another 7-8 minutes stirring.",
+          "Add the tomato paste, brown it a little. Add the wine. Stir scraping up any bits that stuck to the bottom of the pot. When most of the wine cooked off, add tomatoes and cook them for a few minutes.",
+          "Add the lentils, veggie stock and walnuts. Bring to boil, cover and lower the heat to low. Let it simmer for 20-25 minutes. Uncover when lentils get tender.",
+          "Continue cooking uncovered until most of the liquid has cooked off. Adjust seasoning to your liking.",
+          "Serve with pasta of your liking. I recommend rigatoni pasta."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_002",
+    "title": "Black bean baked tacos",
+    "cookTime": 45,
+    "image": "recipe_002.png",
+    "dietTags": ["vegetarian"],
+    "mealTypeTags": ["lunch"],
+    "servings": 8,
+    "parts": [
+      {
+        "title": "Pico de Gallo",
+        "ingredients": [
+          { "id": "tomatoes_01", "quantity": 450 },
+          { "id": "onion_02", "quantity": 80 },
+          { "id": "lime_01", "quantity": 1 },
+          { "id": "cilantro_01", "quantity": 25, "optional": true },
+          { "id": "salt_01", "quantity": 0.2 },
+          { "id": "pepper_01", "quantity": 0.2 },
+          { "id": "oregano_01", "quantity": 0.2 },
+          { "id": "cumin_01", "quantity": 0.2 }
+        ],
+        "steps": [
+          "Finely dice the tomatoes and onions or chop roughly and use food processor to dice. Do not puree.",
+          "Squeeze juice of 1 lime. Mix with the diced vegetables.",
+          "Add spices, salt and pepper to taste.",
+          "Let it sit for and hour at room temperature."
+        ]
+      },
+      {
+        "title": "Tacos",
+        "ingredients": [
+          { "id": "beans_01", "quantity": 2 },
+          { "id": "taco_seasoning_02", "quantity": 4 },
+          { "id": "salt_01", "quantity": 0.2 },
+          { "id": "tortilla_01", "quantity": 8 },
+          { "id": "cheese_01", "quantity": 100 },
+          { "id": "cream_01", "quantity": 175 }
+        ],
+        "steps": [
+          "Rinse the black beans, combine with 60g of Pico de Gallo, taco seasoning and salt. Smash or blend together until you get a thick paste.",
+          "Wrap 8 tortillas in damp paper towels, microwave on high until warm and pliable, about 30 seconds.",
+          "Arrange the tortillas on baking sheets. Spread bean mixture over 1 half of each tortilla. Top evenly with cheese. Fold the tortillas in half and gently press to ensure they stay folded.",
+          "Bake in 230 C until the tortillas are golden brown and crisp, about 15 minutes, flipping the tacos.",
+          "Serve each taco with sour cream and Pico de Gallo on top."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_003",
+    "title": "Polish krupnik soup",
+    "preparationTime": 30,
+    "cookTime": 100,
+    "image": "recipe_003.png",
+    "dietTags": ["vegan", "lactose-free", "gluten-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 10,
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "beans_02", "quantity": 1 },
+          { "id": "groats_01", "quantity": 80 },
+          { "id": "potatoes_01", "quantity": 500 },
+          { "id": "carrot_01", "quantity": 160 },
+          { "id": "parsley_02", "quantity": 100 },
+          { "id": "celery_02", "quantity": 150 },
+          { "id": "onion_01", "quantity": 80 },
+          { "id": "parsey_03", "quantity": 4, "optional": true },
+          { "id": "dill_01", "quantity": 4, "optional": true },
+          { "id": "salt_01", "quantity": 1 },
+          { "id": "pepper_01", "quantity": 0.3 },
+          { "id": "bay_leaf_01", "quantity": 1 },
+          { "id": "allspice_01", "quantity": 2 },
+          { "id": "turmeric_01", "quantity": 0.2 },
+          { "id": "groats_01", "quantity": 80 }
+        ],
+        "steps": [
+          "Heat up bullion with bay leaf and two allspice berries.",
+          "Cut potatoes into small cubes.",
+          "Onion, carrot, parsley and celery root - cut them with food processor to very small pieces or grate then on big shread.",
+          "When the bullion is warm, put all the vegetables in. Add barley, salt and pepper for taste and cook for 30 minutes.",
+          "Add beans, vegetarian cream and turmeric, let it boil again. Then turn off the heat.",
+          "If the taste is not deep enough add soy sauce.",
+          "Serve with dill and parsley."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_004",
+    "title": "Banana bread",
+    "preparationTime": 10,
+    "cookTime": 60,
+    "image": "recipe_004.png",
+    "dietTags": ["vegetarian"],
+    "mealTypeTags": ["breakfast", "dessert", "snack"],
+    "servings": 10,
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "banana_01", "quantity": 4 },
+          { "id": "butter_01", "quantity": 120 },
+          { "id": "sugar_01", "quantity": 150 },
+          { "id": "egg_01", "quantity": 2 },
+          { "id": "flour_01", "quantity": 190 },
+          { "id": "baking_soda_01", "quantity": 1 },
+          { "id": "salt_01", "quantity": 0.5 },
+          { "id": "vanilla_01", "quantity": 0.5 },
+          { "id": "walnuts_01", "quantity": 120 }
+        ],
+        "steps": [
+          "Prepare the butter earlier - it ust be in room temperature",
+          "Preheat the oven to 180°C. Grease and flour a bread loaf pan.",
+          "Pick a couple walnuts for decoration. Coarsely chop the rest.",
+          "In a mixing bowl, cream together the softened butter and the sugar.",
+          "Mash 3 bananas with a fork until the consistency of chunky applesauce and add them to the batter along with 2 eggs, mixing until blended.",
+          "In a separate bowl, whisk together the flour, baking soda and salt and add the mixture to the batter.",
+          "Add vanilla extract and mix in chopped walnuts.",
+          "Pour into the prepared loaf pan. Cut the last banan in half and put on top. Put the walnuts on top for decoration.",
+          "Bake at 180°C for 55-60 min or until a toothpick inserted into the center comes out clean. Let banana bread rest for 10 min before transferring to a wire rack to cool."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_005",
+    "title": "Cottage cheese pancakes",
+    "preparationTime": 10,
+    "cookTime": 15,
+    "image": "recipe_005.png",
+    "dietTags": ["vegetarian"],
+    "mealTypeTags": ["breakfast", "snack"],
+    "servings": 12,
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "cheese_02", "quantity": 200 },
+          { "id": "flour_01", "quantity": 80 },
+          { "id": "egg_01", "quantity": 2 },
+          { "id": "sugar_02", "quantity": 2 },
+          { "id": "baking_powder_01", "quantity": 160 },
+          { "id": "oil_01", "quantity": 30 }
+        ],
+        "steps": [
+          "Sift the flour with the baking powder. Add sugar.",
+          "Crack the eggs into a bowl and add a tablespoon of sugar. Beat the eggs and sugar lightly.",
+          "Add the flour and baking powder mixture and the cottage cheese to the bowl. Mix all the ingredients thoroughly with a spoon.",
+          "Fry the pancakes. Serve with jam, fruit, or peanut butter."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_XXX",
+    "title": "title",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "image": "xxx.png",
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 1,
+    "parts": [
+      {
+        "ingredients": [{ "id": "oil_01", "quantity": 3 }],
+        "steps": ["Prepare", "Heat"]
+      }
+    ]
+  }
+]

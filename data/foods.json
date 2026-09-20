@@ -1,0 +1,304 @@
+[
+  {
+    "id": "oil_01",
+    "name": "Any cooking oil",
+    "category": "oil",
+    "unit": "ml"
+  },
+  {
+    "id": "oil_02",
+    "name": "Olive oil",
+    "category": "oil",
+    "unit": "ml"
+  },
+  {
+    "id": "onion_01",
+    "name": "Yellow onion",
+    "category": "vegetables",
+    "unit": "gram"
+  },
+  {
+    "id": "onion_02",
+    "name": "Red onion",
+    "category": "vegetables",
+    "unit": "gram"
+  },
+  {
+    "id": "carrot_01",
+    "name": "Carrot",
+    "category": "vegetables",
+    "unit": "gram"
+  },
+  {
+    "id": "celery_01",
+    "name": "Celery stalk",
+    "category": "vegetables",
+    "unit": "gram"
+  },
+  {
+    "id": "celery_02",
+    "name": "Celery root",
+    "category": "vegetables",
+    "unit": "gram"
+  },
+  {
+    "id": "garlic_01",
+    "name": "Garlic",
+    "category": "vegetables",
+    "unit": "clove"
+  },
+  {
+    "id": "salt_01",
+    "name": "Salt",
+    "category": "spices",
+    "unit": "tsp"
+  },
+  {
+    "id": "pepper_01",
+    "name": "Black pepper (ground)",
+    "category": "spices",
+    "unit": "tsp"
+  },
+  {
+    "id": "pepper_02",
+    "name": "Black pepper (whole)",
+    "category": "spices",
+    "unit": "piece"
+  },
+  {
+    "id": "oregano_01",
+    "name": "Dried oregano",
+    "category": "spices",
+    "unit": "tsp"
+  },
+  {
+    "id": "tomato_paste_01",
+    "name": "Tomato paste",
+    "category": "spices",
+    "unit": "gram"
+  },
+  {
+    "id": "red_wine_01",
+    "name": "Red dry wine",
+    "category": "alcohol",
+    "unit": "ml"
+  },
+  {
+    "id": "lentils_01",
+    "name": "Green lentils",
+    "category": "legumes",
+    "unit": "gram"
+  },
+  {
+    "id": "lentils_02",
+    "name": "Red lentils",
+    "category": "legumes",
+    "unit": "gram"
+  },
+  {
+    "id": "lentils_03",
+    "name": "Black caviar lentils",
+    "category": "legumes",
+    "unit": "gram"
+  },
+  {
+    "id": "tomatoes_01",
+    "name": "Tomatoes",
+    "category": "vegetables",
+    "unit": "gram"
+  },
+  {
+    "id": "broth_01",
+    "name": "Veggie broth",
+    "category": "others",
+    "unit": "ml"
+  },
+  {
+    "id": "walnuts_01",
+    "name": "Walnuts",
+    "category": "legumes",
+    "unit": "gram"
+  },
+  {
+    "id": "pasta_01",
+    "name": "Any pasta (dry)",
+    "category": "pasta",
+    "unit": "gram"
+  },
+  {
+    "id": "beans_01",
+    "name": "Canned black beans",
+    "category": "legumes",
+    "unit": "can",
+    "unitInfo": "regular can - 425 gram"
+  },
+  {
+    "id": "beans_02",
+    "name": "Canned cannellini beans",
+    "category": "legumes",
+    "unit": "can",
+    "unitInfo": "big can - 800 gram"
+  },
+  {
+    "id": "taco_seasoning_01",
+    "name": "Taco seasoning mix",
+    "category": "seasoning",
+    "unit": "gram"
+  },
+  {
+    "id": "tortilla_01",
+    "name": "Corn tortilla",
+    "category": "bread",
+    "unit": "piece"
+  },
+  {
+    "id": "cheese_01",
+    "name": "Any cheese",
+    "category": "dairy",
+    "unit": "gram"
+  },
+  {
+    "id": "cheese_02",
+    "name": "Cottage cheese",
+    "category": "dairy",
+    "unit": "gram"
+  },
+  {
+    "id": "cream_01",
+    "name": "Sour cream",
+    "category": "dairy",
+    "unit": "gram"
+  },
+  {
+    "id": "cream_02",
+    "name": "Oat cream",
+    "category": "plant-based",
+    "unit": "gram"
+  },
+  {
+    "id": "lime_01",
+    "name": "Lime",
+    "category": "fruit",
+    "unit": "piece"
+  },
+  {
+    "id": "cilantro_01",
+    "name": "Cilantro",
+    "category": "herbs",
+    "unit": "gram"
+  },
+  {
+    "id": "cumin_01",
+    "name": "Cumin",
+    "category": "spices",
+    "unit": "tsp"
+  },
+  {
+    "id": "potatoes_01",
+    "name": "Potatoes",
+    "category": "vegetables",
+    "unit": "gram"
+  },
+  {
+    "id": "groats_01",
+    "name": "Barley groats",
+    "category": "groats",
+    "unit": "gram"
+  },
+  {
+    "id": "parsley_01",
+    "name": "Parsley leaves",
+    "category": "herbs",
+    "unit": "gram"
+  },
+  {
+    "id": "parsley_02",
+    "name": "Parsley root",
+    "category": "vegetables",
+    "unit": "gram"
+  },
+  {
+    "id": "parsley_03",
+    "name": "Parsley leaves (dry)",
+    "category": "spices",
+    "unit": "tsp"
+  },
+  {
+    "id": "dill_01",
+    "name": "Dill (dried)",
+    "category": "spices",
+    "unit": "tsp"
+  },
+  {
+    "id": "bay_leaf_01",
+    "name": "Bay leaf",
+    "category": "spices",
+    "unit": "piece"
+  },
+  {
+    "id": "allspice_01",
+    "name": "Allspice",
+    "category": "spices",
+    "unit": "piece"
+  },
+  {
+    "id": "turmeric_01",
+    "name": "Turmeric",
+    "category": "spices",
+    "unit": "tsp"
+  },
+  {
+    "id": "banana_01",
+    "name": "Banana",
+    "category": "fruit",
+    "unit": "piece"
+  },
+  {
+    "id": "butter_01",
+    "name": "Butter",
+    "category": "dairy",
+    "unit": "gram"
+  },
+  {
+    "id": "sugar_01",
+    "name": "Sugar",
+    "category": "baking",
+    "unit": "gram"
+  },
+  {
+    "id": "sugar_02",
+    "name": "Vanilla sugar",
+    "category": "baking",
+    "unit": "tsp"
+  },
+  {
+    "id": "egg_01",
+    "name": "Egg",
+    "category": "animal produce",
+    "unit": "piece"
+  },
+  {
+    "id": "flour_01",
+    "name": "Wheat flour",
+    "category": "baking",
+    "unit": "gram"
+  },
+  {
+    "id": "baking_soda_01",
+    "name": "Baking soda",
+    "category": "baking",
+    "unit": "tsp"
+  },
+  {
+    "id": "baking_power_01",
+    "name": "Baking powder",
+    "category": "baking",
+    "unit": "tsp"
+  },
+  {
+    "id": "vanilla_01",
+    "name": "Vanilla extract",
+    "category": "baking",
+    "unit": "tsp"
+  }
+]
