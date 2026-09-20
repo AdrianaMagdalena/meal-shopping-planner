@@ -1,7 +1,8 @@
 footer {
-  background-color: lightblue;
+  background-color: var(--clr-terracota);
+  color: var(--clr-beige-04);
   margin: auto 0 0 0;
-  padding: 32px;
+  padding: 12px 32px;
   display: flex;
   justify-content: center;
 }

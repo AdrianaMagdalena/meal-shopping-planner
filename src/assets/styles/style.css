@@ -1,0 +1,116 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+:root {
+  --clr-white: white;
+  --clr-coffee: #432818;
+  --clr-terracota: #6f1d1b;
+  --clr-caramel: #99582a;
+  --clr-camel: #bb9457;
+  --clr-cream: #ffe6a7;
+  --clr-sage: #b8d5c8;
+  --clr-sage-dark: #a4c2b4;
+  --clr-beige-bg: #fafaf6;
+  --clr-beige-01: #edede9;
+  --clr-beige-02: #d6ccc2;
+  --clr-beige-03: #f5ebe0;
+  --clr-beige-04: #e3d5ca;
+  --clr-beige-05: #ceb4a5;
+  --clr-blue-01: #eef9ff;
+  --clr-blue-02: #778da9;
+  --clr-blue-03: #415a77;
+  --clr-blue-04: #0d1b2a;
+  --shaodw-grey: #55555585;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: flex-start;
+  background-color: var(--clr-beige-bg);
+  color: var(--clr-blue-04);
+}
+
+main {
+  padding: 0 16px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  gap: 2rem;
+}
+@media (width >= 560px) {
+  main {
+    width: 80vw;
+  }
+}
+
+nav ul {
+  background-color: var(--clr-sage);
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+}
+@media (width >= 756px) {
+  nav ul {
+    padding: 8px 16px;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+nav .nav-item {
+  padding: 16px;
+  font-size: 18px;
+  text-align: end;
+  height: 100%;
+  border-radius: 8px;
+  transition: background-color linear 0.1s;
+  cursor: pointer;
+}
+nav .nav-item:hover {
+  background-color: var(--clr-sage-dark);
+}
+@media (width >= 992px) {
+  nav .nav-item {
+    font-size: 20px;
+  }
+}
+nav .nav-item__logo {
+  margin: 0 auto 0 0;
+  padding: 6px 16px;
+}
+nav .nav-item__logo a {
+  font-family: "Coiny", system-ui;
+  font-size: 36px;
+  display: flex;
+  gap: 8px;
+  align-items: end;
+}
+
+footer {
+  background-color: var(--clr-terracota);
+  color: var(--clr-beige-04);
+  margin: auto 0 0 0;
+  padding: 12px 32px;
+  display: flex;
+  justify-content: center;
+}/*# sourceMappingURL=style.css.map */
