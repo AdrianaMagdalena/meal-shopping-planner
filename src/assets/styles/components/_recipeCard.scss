@@ -41,34 +41,8 @@
     cursor: pointer;
 
     &:hover {
-      box-shadow: 0 0 3px 0px var(--clr-white);
+      box-shadow: 0 0 4px 1px var(--clr-white);
     }
-  }
-
-  &__content {
-    flex: 1;
-    background-color: var(--clr-rose-light);
-    border-radius: 6px;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    font-size: 16px;
-
-    &-half {
-      display: grid;
-      gap: 12px;
-
-      &--btm {
-        margin: auto 0 0 0;
-      }
-    }
-  }
-
-  &__divider {
-    height: 1px;
-    width: 100%;
-    background-color: var(--clr-lavender);
   }
 
   &__fav-btn {
@@ -111,6 +85,32 @@
       background-color: var(--clr-brown);
       mask-image: url(../illustrations/icons/star-empty.svg);
     }
+  }
+
+  &__content {
+    flex: 1;
+    background-color: var(--clr-rose-light);
+    border-radius: 6px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 16px;
+
+    &-half {
+      display: grid;
+      gap: 12px;
+
+      &--btm {
+        margin: auto 0 0 0;
+      }
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    width: 100%;
+    background-color: var(--clr-lavender);
   }
 
   h3 {
