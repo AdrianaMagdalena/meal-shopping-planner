@@ -50,31 +50,31 @@
   {
     "id": "salt_01",
     "name": "Salt",
-    "category": "spices",
+    "category": "seasoning",
     "unit": "tsp"
   },
   {
     "id": "pepper_01",
     "name": "Black pepper (ground)",
-    "category": "spices",
+    "category": "seasoning",
     "unit": "tsp"
   },
   {
     "id": "pepper_02",
     "name": "Black pepper (whole)",
-    "category": "spices",
+    "category": "seasoning",
     "unit": "piece"
   },
   {
     "id": "oregano_01",
     "name": "Dried oregano",
-    "category": "spices",
+    "category": "seasoning",
     "unit": "tsp"
   },
   {
     "id": "tomato_paste_01",
     "name": "Tomato paste",
-    "category": "spices",
+    "category": "seasoning",
     "unit": "gram"
   },
   {
@@ -190,7 +190,7 @@
   {
     "id": "cumin_01",
     "name": "Cumin",
-    "category": "spices",
+    "category": "seasoning",
     "unit": "tsp"
   },
   {
@@ -220,31 +220,31 @@
   {
     "id": "parsley_03",
     "name": "Parsley leaves (dry)",
-    "category": "spices",
+    "category": "seasoning",
     "unit": "tsp"
   },
   {
     "id": "dill_01",
     "name": "Dill (dried)",
-    "category": "spices",
+    "category": "seasoning",
     "unit": "tsp"
   },
   {
     "id": "bay_leaf_01",
     "name": "Bay leaf",
-    "category": "spices",
+    "category": "seasoning",
     "unit": "piece"
   },
   {
     "id": "allspice_01",
     "name": "Allspice",
-    "category": "spices",
+    "category": "seasoning",
     "unit": "piece"
   },
   {
     "id": "turmeric_01",
     "name": "Turmeric",
-    "category": "spices",
+    "category": "seasoning",
     "unit": "tsp"
   },
   {
@@ -300,5 +300,95 @@
     "name": "Vanilla extract",
     "category": "baking",
     "unit": "tsp"
+  },
+  {
+    "id": "leek_01",
+    "name": "Leek",
+    "category": "vegetables",
+    "unit": "piece"
+  },
+  {
+    "id": "mushroom_01",
+    "name": "Dried mushroom",
+    "category": "mushroom",
+    "unit": "piece"
+  },
+  {
+    "id": "broth_02",
+    "name": "Broth cubes",
+    "category": "seasoning",
+    "unit": "piece"
+  },
+  {
+    "id": "soy_01",
+    "name": "Soy sauce",
+    "category": "seasoning",
+    "unit": "tbsp"
+  },
+  {
+    "id": "cucumber_01",
+    "name": "Cucumber",
+    "category": "vegetables",
+    "unit": "g"
+  },
+  {
+    "id": "red_pepper_03",
+    "name": "Red pepper",
+    "category": "vegetables",
+    "unit": "gram"
+  },
+  {
+    "id": "soy_01",
+    "name": "Soy sauce",
+    "category": "seasoning",
+    "unit": "tbsp"
+  },
+  {
+    "id": "corn_01",
+    "name": "Frozen corn",
+    "category": "vegetables",
+    "unit": "gram"
+  },
+  {
+    "id": "feta_01",
+    "name": "Feta cheese",
+    "category": "dairy",
+    "unit": "gram"
+  },
+  {
+    "id": "mayo_01",
+    "name": "Mayonnaise",
+    "category": "sauce",
+    "unit": "tbsp"
+  },
+  {
+    "id": "avocado_01",
+    "name": "Avocado",
+    "category": "vegetables",
+    "unit": "piece"
+  },
+  {
+    "id": "garlic_powder_01",
+    "name": "Garlic powder",
+    "category": "seasoning",
+    "unit": "tsp"
+  },
+  {
+    "id": "onion_powder_01",
+    "name": "Onion powder",
+    "category": "seasoning",
+    "unit": "tsp"
+  },
+  {
+    "id": "chili_powder_01",
+    "name": "Chili powder",
+    "category": "seasoning",
+    "unit": "tsp"
+  },
+  {
+    "id": "tortilla_chips_01",
+    "name": "Tortilla chips",
+    "category": "snacks",
+    "unit": "pack"
   }
 ]

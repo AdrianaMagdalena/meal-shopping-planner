@@ -3,7 +3,6 @@
     "id": "recipe_001",
     "title": "Lentil Bolognese",
     "cookTime": 55,
-    "image": "recipe_001.png",
     "dietTags": ["vegan", "lactose-free"],
     "mealTypeTags": ["lunch"],
     "servings": 6,
@@ -45,7 +44,6 @@
     "id": "recipe_002",
     "title": "Black bean baked tacos",
     "cookTime": 45,
-    "image": "recipe_002.png",
     "dietTags": ["vegetarian"],
     "mealTypeTags": ["lunch"],
     "servings": 8,
@@ -94,7 +92,6 @@
     "title": "Polish krupnik soup",
     "preparationTime": 30,
     "cookTime": 100,
-    "image": "recipe_003.png",
     "dietTags": ["vegan", "lactose-free", "gluten-free"],
     "mealTypeTags": ["lunch"],
     "servings": 10,
@@ -108,7 +105,7 @@
           { "id": "parsley_02", "quantity": 100 },
           { "id": "celery_02", "quantity": 150 },
           { "id": "onion_01", "quantity": 80 },
-          { "id": "parsey_03", "quantity": 4, "optional": true },
+          { "id": "parsley_03", "quantity": 4, "optional": true },
           { "id": "dill_01", "quantity": 4, "optional": true },
           { "id": "salt_01", "quantity": 1 },
           { "id": "pepper_01", "quantity": 0.3 },
@@ -134,7 +131,6 @@
     "title": "Banana bread",
     "preparationTime": 10,
     "cookTime": 60,
-    "image": "recipe_004.png",
     "dietTags": ["vegetarian"],
     "mealTypeTags": ["breakfast", "dessert", "snack"],
     "servings": 10,
@@ -170,7 +166,6 @@
     "title": "Cottage cheese pancakes",
     "preparationTime": 10,
     "cookTime": 15,
-    "image": "recipe_005.png",
     "dietTags": ["vegetarian"],
     "mealTypeTags": ["breakfast", "snack"],
     "servings": 12,
@@ -194,11 +189,86 @@
     ]
   },
   {
+    "id": "recipe_006",
+    "title": "Polish rosół soup",
+    "preparationTime": 15,
+    "cookTime": 180,
+    "dietTags": ["vegan", "lactose-free", "gluten-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 6,
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "carrot_01", "quantity": 1000 },
+          { "id": "parsley_02", "quantity": 500 },
+          { "id": "celery_02", "quantity": 300 },
+          { "id": "leek_01", "quantity": 1 },
+          { "id": "onion_01", "quantity": 500 },
+          { "id": "mushroom_01", "quantity": 4 },
+          { "id": "garlic_01", "quantity": 4 },
+          { "id": "broth_02", "quantity": 4 },
+          { "id": "parsley_03", "quantity": 4, "optional": true },
+          { "id": "salt_01", "quantity": 1 },
+          { "id": "pepper_02", "quantity": 8 },
+          { "id": "bay_leaf_01", "quantity": 4 },
+          { "id": "allspice_01", "quantity": 4 },
+          { "id": "turmeric_01", "quantity": 0.2, "optional": true },
+          { "id": "soy_01", "quantity": 2, "optional": true },
+          { "id": "pasta_01", "quantity": 500, "optional": true }
+        ],
+        "steps": [
+          "Cut onions into thick slices straight through. I usually get 3-4 slices per onion.",
+          "Burn both sides of the onion slices on a dry pan. They're good if they're a little charred on each side.",
+          "Cut the leak's leafs off, wash thoroughly and cut in half.",
+          "Peel the carrots, parsley root and celery root. Cut the carrot and parsley in half. Cut the celery into bigger pieces.",
+          "Put water, stock cubes, carrots, celery root, leak, garlic, burnt onions, 4 bay leaves and 4 allspice berries in a big pot. Let it boil, then put it on low heat, cover and leave to simmer for 1 hour.",
+          "Add parsley root, mushrooms, 8 pepper berries whole and cook on low heat for another 1-2 hours.",
+          "Eat with cut up cooked vegetables, pasta and parsley as for your liking or use it for a base of other soups."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_007",
+    "title": "Scoopable salad",
+    "preparationTime": 25,
+    "dietTags": ["vegetarian"],
+    "mealTypeTags": ["lunch", "snack"],
+    "servings": 8,
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "cucumber_01", "quantity": 300 },
+          { "id": "red_pepper_03", "quantity": 150 },
+          { "id": "onion_02", "quantity": 150 },
+          { "id": "corn_03", "quantity": 150 },
+          { "id": "beans_01", "quantity": 2 },
+          { "id": "feta_01", "quantity": 300 },
+          { "id": "mayo_01", "quantity": 4 },
+          { "id": "lime_01", "quantity": 1 },
+          { "id": "salt_01", "quantity": 1 },
+          { "id": "pepper_01", "quantity": 0.5 },
+          { "id": "garlic_powder_01", "quantity": 2 },
+          { "id": "onion_powder_04", "quantity": 2 },
+          { "id": "chili_powder_01", "quantity": 0.25, "optional": true },
+          { "id": "avocado_01", "quantity": 2 },
+          { "id": "tortilla_chips_01", "quantity": 1 }
+        ],
+        "steps": [
+          "Roast the frozen corn on pan.",
+          "Dice the cucumber, red pepper, onions and feta cheese into small pieces.",
+          "In a large bowl mix toghether the roasted corn, cucumber, red pepper, onion and strained black beans.",
+          "Squeeze lime juice of 1 lime and add to the bowl. Add mayo and seasoning. Mix toghether thoroughly. Taste and add more spices if needed. In te end add feta cheese, mix.",
+          "Serve with freshly diced avocado and tortilla chips."
+        ]
+      }
+    ]
+  },
+  {
     "id": "recipe_XXX",
     "title": "title",
     "preparationTime": 10,
     "cookTime": 10,
-    "image": "xxx.png",
     "dietTags": ["vegan", "lactose-free"],
     "mealTypeTags": ["lunch"],
     "servings": 1,

@@ -4,8 +4,7 @@ export class Recipe implements IRecipe {
   private _id: string;
   private _title: string;
   private _preparaTionTime?: number;
-  private _cookTime: number;
-  private _image: string;
+  private _cookTime?: number;
   private _dietTags: string[];
   private _mealTypeTags: string[];
   private _servings: number;
@@ -16,7 +15,6 @@ export class Recipe implements IRecipe {
     this._title = data.title;
     this._preparaTionTime = data.preparationTime;
     this._cookTime = data.cookTime;
-    this._image = data.image;
     this._dietTags = data.dietTags;
     this._mealTypeTags = data.mealTypeTags;
     this._servings = data.servings;
@@ -34,9 +32,6 @@ export class Recipe implements IRecipe {
   }
   get cookTime() {
     return this._cookTime;
-  }
-  get image() {
-    return this._image;
   }
   get dietTags() {
     return this._dietTags;

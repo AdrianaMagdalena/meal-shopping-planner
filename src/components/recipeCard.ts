@@ -76,7 +76,7 @@ export class RecipeCard {
       throw new Error("imgElement not found in template");
     }
     this._imgElement = imgElement;
-    this._imgElement.src = `../src/assets/illustrations/recipes/${obj.image}`;
+    this._imgElement.src = `../src/assets/illustrations/recipes/${obj.id}.png`;
 
     const titleElement = this._cardElement.querySelector("h3");
     if (!titleElement) {
@@ -97,9 +97,11 @@ export class RecipeCard {
       prepTime.textContent = `Prep: ${obj.preparationTime} min`;
       this._cookTimeWrap.appendChild(prepTime);
     }
-    const cookTime: HTMLParagraphElement = document.createElement("p");
-    cookTime.textContent = `Cooking: ${obj.cookTime} min`;
-    this._cookTimeWrap.appendChild(cookTime);
+    if (obj.cookTime) {
+      const cookTime: HTMLParagraphElement = document.createElement("p");
+      cookTime.textContent = `Cooking: ${obj.cookTime} min`;
+      this._cookTimeWrap.appendChild(cookTime);
+    }
 
     const dietTagWrap = this._cardElement.querySelector<HTMLDivElement>(
       ".recipe-card__diet-tags",

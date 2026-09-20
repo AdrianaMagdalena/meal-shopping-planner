@@ -4,7 +4,6 @@ export class Recipe {
         this._title = data.title;
         this._preparaTionTime = data.preparationTime;
         this._cookTime = data.cookTime;
-        this._image = data.image;
         this._dietTags = data.dietTags;
         this._mealTypeTags = data.mealTypeTags;
         this._servings = data.servings;
@@ -21,9 +20,6 @@ export class Recipe {
     }
     get cookTime() {
         return this._cookTime;
-    }
-    get image() {
-        return this._image;
     }
     get dietTags() {
         return this._dietTags;

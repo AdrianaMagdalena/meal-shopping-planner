@@ -14,8 +14,7 @@ export interface IRecipe {
   id: string;
   title: string;
   preparationTime?: number;
-  cookTime: number;
-  image: string;
+  cookTime?: number;
   dietTags: string[];
   mealTypeTags: string[];
   servings: number;
