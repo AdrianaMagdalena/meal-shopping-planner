@@ -8,7 +8,7 @@ export class RecipeStorage {
     if (this.recipes !== null) return;
 
     try {
-      const response = await fetch("../../../data/recipes.json");
+      const response = await fetch("../data/recipes.json");
 
       if (!response.ok) {
         throw new Error("Error fetching data");
