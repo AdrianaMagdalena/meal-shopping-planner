@@ -1,4 +1,4 @@
-import { RecipeIngredient } from "./recipeIngredient";
+import { RecipeIngredient } from "./recipeIngredient.js";
 
 export class RecipePart {
   constructor(

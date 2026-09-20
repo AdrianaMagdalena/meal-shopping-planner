@@ -6,7 +6,7 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="./src/assets/illustrations/favicon/favicon.png"
+      href="../src/assets/illustrations/favicon/favicon.png"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,33 +14,31 @@
       href="https://fonts.googleapis.com/css2?family=Coiny&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./src/assets/styles/style.css" />
-    <title>Meal & Shopping List Planner</title>
+    <link rel="stylesheet" href="../src/assets/styles/style.css" />
+    <title>Recipe Search</title>
   </head>
   <body>
     <nav>
       <ul>
         <li class="nav-item nav-item__logo">
-          <a
+          <a href="../index.html"
             ><img
-              src="./src/assets/illustrations/logo/logo.png"
+              src="../src/assets/illustrations/logo/logo.png"
               class="logo-icon"
             />Homepage</a
           >
         </li>
-        <li class="nav-item"><a href="/pages/search.html">Recipes</a></li>
+        <li class="nav-item"><a>Recipes</a></li>
         <li class="nav-item"><a>Weekly menu</a></li>
         <li class="nav-item"><a>Favorites</a></li>
       </ul>
     </nav>
     <main>
-      <h1>Meal & Shopping List Planner</h1>
-      <div id="content" class="content">Future content container</div>
-      <div class="recipe-cards"></div>
+      <div class="recipe-list"></div>
     </main>
     <footer>
       <p>Copyright © Adriana Szetlak 2026</p>
     </footer>
-    <script src="dist/index.js" type="module"></script>
+    <script src="../dist/pageManager/searchPage.js" type="module"></script>
   </body>
 </html>

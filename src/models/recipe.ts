@@ -1,4 +1,4 @@
-import { IRecipe, IRecipePart } from "../interfaces/iRecipe";
+import { IRecipe, IRecipePart } from "../interfaces/iRecipe.js";
 
 export class Recipe implements IRecipe {
   private _id: string;

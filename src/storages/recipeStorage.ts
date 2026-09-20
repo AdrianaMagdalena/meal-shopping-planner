@@ -1,5 +1,5 @@
-import { Recipe } from "../models/recipe";
-import { isRecipe } from "../utils/typeGuards";
+import { Recipe } from "../models/recipe.js";
+import { isRecipe } from "../utils/typeGuards.js";
 
 export class RecipeStorage {
   private recipes: Recipe[] | null = null;
@@ -8,7 +8,7 @@ export class RecipeStorage {
     if (this.recipes !== null) return;
 
     try {
-      const response = await fetch("../../data/recipes.json");
+      const response = await fetch("../../../data/recipes.json");
 
       if (!response.ok) {
         throw new Error("Error fetching data");

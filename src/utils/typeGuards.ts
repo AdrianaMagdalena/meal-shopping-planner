@@ -1,4 +1,4 @@
-import { IRecipe } from "../interfaces/iRecipe";
+import { IRecipe } from "../interfaces/iRecipe.js";
 
 export function isRecipe(obj: any): obj is IRecipe {
   return (
