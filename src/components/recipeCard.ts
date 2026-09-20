@@ -76,7 +76,7 @@ export class RecipeCard {
       throw new Error("imgElement not found in template");
     }
     this._imgElement = imgElement;
-    this._imgElement.src = `../../src/assets/illustrations/recipes/${obj.image}`;
+    this._imgElement.src = `../src/assets/illustrations/recipes/${obj.image}`;
 
     const titleElement = this._cardElement.querySelector("h3");
     if (!titleElement) {
