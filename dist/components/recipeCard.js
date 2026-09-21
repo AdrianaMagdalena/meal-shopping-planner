@@ -56,18 +56,28 @@ export class RecipeCard {
             throw new Error("imgElement not found in template");
         }
         this._imgElement = imgElement;
-        this._imgElement.src = `../src/assets/illustrations/recipes/${obj.id}.png`;
         const titleElement = this._cardElement.querySelector("h3");
         if (!titleElement) {
             throw new Error("titleElement not found in template");
         }
         this._titleElement = titleElement;
-        this._titleElement.textContent = obj.title;
         const cookTimeWrap = this._cardElement.querySelector(".recipe-card__cooking-wrap");
         if (!cookTimeWrap) {
             throw new Error("cookTimeWrap not found in template");
         }
         this._cookTimeWrap = cookTimeWrap;
+        const dietTagWrap = this._cardElement.querySelector(".recipe-card__diet-tags");
+        if (!dietTagWrap) {
+            throw new Error("dietTagWrap not found in template");
+        }
+        this._dietTagWrap = dietTagWrap;
+        const mealTagWrap = this._cardElement.querySelector(".recipe-card__meal-tags");
+        if (!mealTagWrap) {
+            throw new Error("mealTagWrap not found in template");
+        }
+        this._mealTagWrap = mealTagWrap;
+        this._imgElement.src = `../src/assets/illustrations/recipes/${obj.id}.png`;
+        this._titleElement.textContent = obj.title;
         if (obj.preparationTime) {
             const prepTime = document.createElement("p");
             prepTime.textContent = `Prep: ${obj.preparationTime} min`;
@@ -80,22 +90,12 @@ export class RecipeCard {
             cookTime.classList.add("recipe-card__cook-time");
             this._cookTimeWrap.appendChild(cookTime);
         }
-        const dietTagWrap = this._cardElement.querySelector(".recipe-card__diet-tags");
-        if (!dietTagWrap) {
-            throw new Error("dietTagWrap not found in template");
-        }
-        this._dietTagWrap = dietTagWrap;
         obj.dietTags.forEach((tag) => {
             const cardTag = document.createElement("p");
             cardTag.classList.add("recipe-card__tag");
             cardTag.textContent = tag;
             this._dietTagWrap.appendChild(cardTag);
         });
-        const mealTagWrap = this._cardElement.querySelector(".recipe-card__meal-tags");
-        if (!mealTagWrap) {
-            throw new Error("mealTagWrap not found in template");
-        }
-        this._mealTagWrap = mealTagWrap;
         obj.mealTypeTags.forEach((tag) => {
             const cardTag = document.createElement("p");
             cardTag.classList.add("recipe-card__tag");

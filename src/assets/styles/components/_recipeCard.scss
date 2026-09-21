@@ -35,10 +35,10 @@
   &__add-btn {
     background-color: var(--clr-white);
     font-size: 16px;
-    border-radius: 4px;
+    border-radius: 30px;
     padding: 6px 12px;
     font-weight: 600;
-    border: 1px solid var(--clr-terracota);
+    border: 1px solid var(--clr-brown);
     outline: none;
     transition: all linear 0.1s;
     cursor: pointer;
@@ -125,8 +125,8 @@
 
   &__cooking-wrap {
     display: flex;
-    align-items: center;
-    gap: 4px;
+    justify-content: space-between;
+    gap: 8px;
 
     img {
       flex-shrink: 0;
@@ -136,7 +136,6 @@
 
   &__cook-time,
   &__prep-time {
-    flex: 1;
     display: flex;
     gap: 4px;
     line-height: 20px;
