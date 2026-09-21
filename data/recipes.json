@@ -93,7 +93,7 @@
     "preparationTime": 30,
     "cookTime": 100,
     "dietTags": ["vegan", "lactose-free", "gluten-free"],
-    "mealTypeTags": ["lunch"],
+    "mealTypeTags": ["lunch", "soup"],
     "servings": 10,
     "parts": [
       {
@@ -194,7 +194,7 @@
     "preparationTime": 15,
     "cookTime": 180,
     "dietTags": ["vegan", "lactose-free", "gluten-free"],
-    "mealTypeTags": ["lunch"],
+    "mealTypeTags": ["lunch", "soup"],
     "servings": 6,
     "parts": [
       {
@@ -260,6 +260,114 @@
           "In a large bowl mix toghether the roasted corn, cucumber, red pepper, onion and strained black beans.",
           "Squeeze lime juice of 1 lime and add to the bowl. Add mayo and seasoning. Mix toghether thoroughly. Taste and add more spices if needed. In te end add feta cheese, mix.",
           "Serve with freshly diced avocado and tortilla chips."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_008",
+    "title": "Polish barszcz soup",
+    "preparationTime": 30,
+    "cookTime": 120,
+    "dietTags": ["vegan", "lactose-free", "gluten-free"],
+    "mealTypeTags": ["lunch", "soup"],
+    "servings": 6,
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "beetroot_01", "quantity": 1000 },
+          { "id": "garlic_01", "quantity": 2 },
+          { "id": "mushroom_01", "quantity": 2 },
+          { "id": "broth_01", "quantity": 2000 },
+          { "id": "salt_01", "quantity": 2 },
+          { "id": "pepper_01", "quantity": 1 },
+          { "id": "sugar", "quantity": 5 },
+          { "id": "vinegar_01", "quantity": 1 },
+          { "id": "marjoram_01", "quantity": 1 },
+          { "id": "bay_leaf_01", "quantity": 1 }
+        ],
+        "steps": [
+          "Peels and slice the beets.",
+          "Add the beets, 2 cloves of garlic, dried mushrooms, and a bay leaf to 2 liters of broth.",
+          "Cover the pot, bring the soup to a boil, then reduce the heat so it is just simmering and cook for one hour (the beets should be tender).",
+          "Add marjoram 10 minutes before the end of cooking.",
+          "Once cooked, strain the borscht, add a tablespoon of sugar and a tablespoon of vinegar, and season with salt and pepper to taste."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_009",
+    "title": "Crepes",
+    "preparationTime": 5,
+    "cookTime": 25,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch", "breakfast", "dessert", "snack"],
+    "servings": 16,
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "flour_01", "quantity": 230 },
+          { "id": "egg_01", "quantity": 3 },
+          { "id": "milk_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 40 },
+          { "id": "salt_01", "quantity": 0.2 }
+        ],
+        "steps": [
+          "Mix flour, eggs, milk, 250ml water, oil and pinch of salt with mixer",
+          "Heat up a pan. It must be hot.",
+          "Fry the pancakes: pour a thin laer of the batter into a pan, wait until the edges lift, then fry the pancake on the other side."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_010",
+    "title": "Polish krokiety",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "dietTags": ["vegetarian"],
+    "mealTypeTags": ["lunch"],
+    "servings": 16,
+    "parts": [
+      {
+        "title": "Pancakes",
+        "ingredients": [
+          { "id": "flour_01", "quantity": 230 },
+          { "id": "egg_01", "quantity": 3 },
+          { "id": "milk_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 40 },
+          { "id": "salt_01", "quantity": 0.2 }
+        ],
+        "steps": [
+          "Mix flour, eggs, milk, 250ml water, oil and pinch of salt with mixer",
+          "Heat up a pan. It must be hot.",
+          "Fry the pancakes: pour a thin laer of the batter into a pan, wait until the edges lift, then fry the pancake on the other side."
+        ]
+      },
+      {
+        "title": "Filling",
+        "ingredients": [
+          { "id": "mushroom_02", "quantity": 500 },
+          { "id": "cheese_01", "quantity": 100 },
+          { "id": "onion_01", "quantity": 160 },
+          { "id": "sauerkraut_01", "quantity": 300 },
+          { "id": "sugar_01", "quantity": 5 },
+          { "id": "oil_01", "quantity": 60 },
+          { "id": "paprika_01", "quantity": 0.5 },
+          { "id": "salt_01", "quantity": 0.5 },
+          { "id": "pepper_01", "quantity": 0.25 }
+        ],
+        "steps": [
+          "Drain 300g of sauerkraut thoroughly. Cook it with a glass of water and a teaspoon of sugar. Bring it to boil covered, then ucover and let it simmer on low heat for 25 minutes. Drain the water and let the cabbage cool.",
+          "When cooled, squeeye out the remaining water and shred it.",
+          "Grate the mushrooms using a coarse grater or dice into very small pieces in food processor.",
+          "Dice the onion and sauté it in oil until translucent. Add the mushrooms and sauté over low heat for about 20 minutes until the liquid has evaporated.",
+          "Add the cabbage, stir, and sauté for another 10 minutes. Leave it to cool.",
+          "Grate cheese and mix it in the filling with salt, paprika and pepper.",
+          "Assemble the krokiety: Put 2-3 spoons of the filling in the centre of the pancake in a cylindric shape (similarly to a burrito). Fold the sides and roll.",
+          "Coat each roll in flour, egg and breadcrumbs, then fry on all sides.",
+          "Traditionally they are served with a cup of barszcz soup, but can be eaten separately too."
         ]
       }
     ]
