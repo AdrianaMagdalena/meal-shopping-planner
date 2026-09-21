@@ -14,7 +14,7 @@ export class RecipeStorage {
             }
             const data = await response.json();
             if (!Array.isArray(data)) {
-                throw new Error("Invalid data format: expected an array");
+                throw new TypeError("Invalid data format: expected an array");
             }
             const validRecipes = data.filter(isRecipe);
             this.recipes = validRecipes.map((r) => new Recipe(r));
@@ -31,5 +31,10 @@ export class RecipeStorage {
     async getById(id) {
         await this.getRecipes();
         return this.recipes.find((r) => r.id === id);
+    }
+    async getByKeyword(keyword) {
+        await this.getRecipes();
+        const lowerKeyword = keyword.toLowerCase();
+        return this.recipes.filter((r) => r.title.toLowerCase().includes(lowerKeyword));
     }
 }

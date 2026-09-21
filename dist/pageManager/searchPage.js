@@ -1,6 +1,7 @@
-import { RecipeCard } from "../components/recipeCard.js";
-import { RecipeStorage } from "../storages/recipeStorage.js";
 import { Navigation } from "../components/common/navigation.js";
+import { RecipeStorage } from "../storages/recipeStorage.js";
+import { RecipeCard } from "../components/recipeCard.js";
+import { SearchField } from "../components/searchField.js";
 const navigation = new Navigation("../index.html", "javascript:void(0)", "javascript:void(0)", "javascript:void(0)");
 navigation.render(document.body);
 (async function () {
@@ -10,8 +11,14 @@ navigation.render(document.body);
     }
     const recipeStorage = new RecipeStorage();
     const recipes = await recipeStorage.getAll();
-    recipes.forEach((recipe) => {
-        const card = new RecipeCard(recipe);
-        card.render(".recipe-list");
-    });
+    const renderResults = (recipesToRender) => {
+        container.innerHTML = "";
+        recipesToRender.forEach((recipe) => {
+            const card = new RecipeCard(recipe);
+            card.render(".recipe-list");
+        });
+    };
+    renderResults(recipes);
+    const searchField = new SearchField("Recipe search", "Search by keywords", "Search", "Clear search field", recipeStorage, renderResults);
+    searchField.render(".recipe-search");
 })();

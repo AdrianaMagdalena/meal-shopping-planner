@@ -1,0 +1,68 @@
+@use "../utils/mixins" as *;
+
+.search {
+  display: grid;
+  gap: 4px;
+
+  &__wrap {
+    position: relative;
+    min-height: 48px;
+    background-color: var(--clr-white);
+    border: 1px solid var(--clr-brown);
+    border-radius: 36px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    appearance: none;
+    max-width: 100%;
+    flex: 1;
+    padding: 8px 52px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--clr-brown);
+    font-size: 16px;
+
+    &::placeholder {
+      color: var(--clr-sage-dark);
+    }
+  }
+
+  &__action {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: var(--clr-sage-light);
+    border: none;
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all linear 0.1s;
+    outline: 2px solid transparent;
+    cursor: pointer;
+
+    &--search {
+      left: 4px;
+      background-image: url("../illustrations/icons/magnifying-glass.svg");
+    }
+
+    &--clear {
+      right: 4px;
+      background-image: url("../illustrations/icons/clear.svg");
+    }
+
+    &:hover {
+      background-color: var(--clr-sage-med);
+    }
+
+    &:focus-visible {
+      outline-color: var(--clr-sage-dark);
+    }
+  }
+}
