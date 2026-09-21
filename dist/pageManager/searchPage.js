@@ -1,5 +1,8 @@
 import { RecipeCard } from "../components/recipeCard.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
+import { Navigation } from "../components/common/navigation.js";
+const navigation = new Navigation("../index.html", "javascript:void(0)", "javascript:void(0)", "javascript:void(0)");
+navigation.render(document.body);
 (async function () {
     const container = document.querySelector(".recipe-list");
     if (!container) {

@@ -7,3 +7,6 @@ export function isRecipe(obj) {
         typeof obj.servings === "number" &&
         Array.isArray(obj.parts));
 }
+export function isSelectorString(selector) {
+    return typeof selector === "string";
+}

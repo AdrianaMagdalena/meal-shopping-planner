@@ -11,3 +11,9 @@ export function isRecipe(obj: any): obj is IRecipe {
     Array.isArray(obj.parts)
   );
 }
+
+export function isSelectorString(
+  selector: string | HTMLElement,
+): selector is string {
+  return typeof selector === "string";
+}

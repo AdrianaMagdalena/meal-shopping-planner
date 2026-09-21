@@ -2,25 +2,28 @@
 @use "../utils/mixins" as *;
 
 nav {
-  ul {
-    background-color: var(--clr-sage);
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    margin: 0;
+  position: relative;
+  background-color: var(--clr-sage);
+  border-bottom: 1px solid var(--clr-sage-dark);
+  box-shadow: 1px 1px 3px 2px var(--shadow-grey);
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
 
-    @include breakpoint-up(lg) {
-      padding: 8px 16px;
-      align-items: center;
-      flex-direction: row;
-    }
+  @include breakpoint-up(lg) {
+    padding: 8px 16px;
   }
 
-  .nav-item {
-    padding: 16px;
-    text-align: end;
-    height: 100%;
-    border-radius: 8px;
+  .nav-btn {
+    height: 40px;
+    width: 40px;
+    margin: 8px;
+    background-color: transparent;
+    background-image: url("../illustrations/icons/menu.svg");
+    border-radius: 4px;
+    border: none;
+    outline: none;
     transition: background-color linear 0.1s;
     cursor: pointer;
 
@@ -28,26 +31,100 @@ nav {
       background-color: var(--clr-sage-dark);
     }
 
-    @include breakpoint-up(xl) {
+    @include breakpoint-up(lg) {
+      display: none;
+    }
+  }
+
+  .nav-logo {
+    padding: 6px 16px;
+    font-family: $font-accent;
+    font-size: 36px;
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 8px;
+    transition: background-color linear 0.1s;
+    cursor: pointer;
+
+    @include breakpoint-up(lg) {
+      border-radius: 8px;
+    }
+
+    &:hover {
+      background-color: var(--clr-sage-dark);
+    }
+
+    &::before {
+      content: "";
+      background-image: url("../illustrations/logo/logo.png");
+      height: 42px;
+      width: 48px;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    span {
+      display: none;
+
+      @include breakpoint-up(md) {
+        display: inline;
+      }
+    }
+  }
+
+  .nav-menu {
+    position: absolute;
+    z-index: 1;
+    top: calc(var(--nav-height-counted) - 1px);
+    right: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    background-color: var(--clr-sage);
+    transition: max-height linear 0.3s;
+    list-style: none;
+
+    @include breakpoint-up(lg) {
+      max-height: none;
+      width: auto;
+      position: static;
+      display: flex;
+      align-items: center;
+      border: none !important;
+    }
+
+    &.opened {
+      max-height: 500px;
+      border-bottom: 1px solid var(--clr-sage-dark);
+    }
+
+    li {
+      padding: 16px;
+      text-align: end;
+    }
+  }
+
+  .nav-item {
+    padding: 16px;
+    height: 100%;
+    transition: background-color linear 0.1s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--clr-sage-dark);
+    }
+
+    @include breakpoint-up(lg) {
+      border-radius: 8px;
       font-size: 20px;
     }
 
     a {
       color: inherit;
       text-decoration: none;
-    }
-
-    &__logo {
-      margin: 0 auto 0 0;
-      padding: 6px 16px;
-      font-size: 36px;
-
-      a {
-        font-family: $font-accent;
-        display: flex;
-        gap: 8px;
-        align-items: end;
-      }
     }
   }
 }

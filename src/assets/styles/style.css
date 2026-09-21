@@ -22,8 +22,9 @@ img {
   --clr-white: white;
   --clr-brown: #1c0808;
   --clr-terracota: #6f1d1b;
+  --clr-terracota-dark: #520d0c;
   --clr-lavender: #b8c0d5;
-  --clr-lavender-light: #e79292;
+  --clr-lavender-dark: #a8b6d7;
   --clr-rose: #e79292;
   --clr-rose-light: #fcf4f4;
   --clr-cream: #ffd468;
@@ -90,50 +91,126 @@ main {
   }
 }
 
-nav ul {
+nav {
+  position: relative;
   background-color: var(--clr-sage);
+  border-bottom: 1px solid var(--clr-sage-dark);
+  box-shadow: 1px 1px 3px 2px var(--shadow-grey);
   display: flex;
-  flex-direction: column;
-  list-style: none;
-  margin: 0;
+  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
 }
 @media (width >= 756px) {
-  nav ul {
+  nav {
     padding: 8px 16px;
-    align-items: center;
-    flex-direction: row;
   }
+}
+nav .nav-btn {
+  height: 40px;
+  width: 40px;
+  margin: 8px;
+  background-color: transparent;
+  background-image: url("../illustrations/icons/menu.svg");
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  transition: background-color linear 0.1s;
+  cursor: pointer;
+}
+nav .nav-btn:hover {
+  background-color: var(--clr-sage-dark);
+}
+@media (width >= 756px) {
+  nav .nav-btn {
+    display: none;
+  }
+}
+nav .nav-logo {
+  padding: 6px 16px;
+  font-family: "Coiny", system-ui;
+  font-size: 36px;
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  transition: background-color linear 0.1s;
+  cursor: pointer;
+}
+@media (width >= 756px) {
+  nav .nav-logo {
+    border-radius: 8px;
+  }
+}
+nav .nav-logo:hover {
+  background-color: var(--clr-sage-dark);
+}
+nav .nav-logo::before {
+  content: "";
+  background-image: url("../illustrations/logo/logo.png");
+  height: 42px;
+  width: 48px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+nav .nav-logo span {
+  display: none;
+}
+@media (width >= 560px) {
+  nav .nav-logo span {
+    display: inline;
+  }
+}
+nav .nav-menu {
+  position: absolute;
+  z-index: 1;
+  top: calc(var(--nav-height-counted) - 1px);
+  right: 0;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  background-color: var(--clr-sage);
+  transition: max-height linear 0.3s;
+  list-style: none;
+}
+@media (width >= 756px) {
+  nav .nav-menu {
+    max-height: none;
+    width: auto;
+    position: static;
+    display: flex;
+    align-items: center;
+    border: none !important;
+  }
+}
+nav .nav-menu.opened {
+  max-height: 500px;
+  border-bottom: 1px solid var(--clr-sage-dark);
+}
+nav .nav-menu li {
+  padding: 16px;
+  text-align: end;
 }
 nav .nav-item {
   padding: 16px;
-  text-align: end;
   height: 100%;
-  border-radius: 8px;
   transition: background-color linear 0.1s;
   cursor: pointer;
 }
 nav .nav-item:hover {
   background-color: var(--clr-sage-dark);
 }
-@media (width >= 992px) {
+@media (width >= 756px) {
   nav .nav-item {
+    border-radius: 8px;
     font-size: 20px;
   }
 }
 nav .nav-item a {
   color: inherit;
   text-decoration: none;
-}
-nav .nav-item__logo {
-  margin: 0 auto 0 0;
-  padding: 6px 16px;
-  font-size: 36px;
-}
-nav .nav-item__logo a {
-  font-family: "Coiny", system-ui;
-  display: flex;
-  gap: 8px;
-  align-items: end;
 }
 
 footer {
@@ -154,11 +231,13 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  border: 1px solid var(--clr-lavender-dark);
 }
 .recipe-card.favorite {
   --full-star-color: var(--clr-cream);
 }
 .recipe-card__img-wrap {
+  border: 1px solid var(--clr-lavender-dark);
   flex-shrink: 0;
   border-radius: 6px;
   overflow: hidden;
@@ -229,8 +308,9 @@ footer {
           mask-image: url(../illustrations/icons/star-empty.svg);
 }
 .recipe-card__content {
+  border: 1px solid var(--clr-lavender-dark);
   flex: 1;
-  background-color: var(--clr-rose-light);
+  background-color: var(--clr-white);
   border-radius: 6px;
   padding: 8px;
   display: flex;
@@ -248,7 +328,7 @@ footer {
 .recipe-card__divider {
   height: 1px;
   width: 100%;
-  background-color: var(--clr-lavender);
+  background-color: var(--clr-lavender-dark);
 }
 .recipe-card h3 {
   font-size: 24px;
