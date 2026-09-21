@@ -1,4 +1,5 @@
 import { Recipe } from "../models/recipe.js";
+import { isSelectorString } from "../utils/typeGuards.js";
 
 const template = document.createElement("template");
 const templateHtml = `
@@ -19,10 +20,7 @@ const templateHtml = `
     <div class="recipe-card__content">
     <div class="recipe-card__content-half">
         <h3></h3>
-        <div class="recipe-card__cooking-wrap">
-            <img src="../src/assets/illustrations/icons/clock.svg" alt="" />
-            <div class="recipe-card__cooking-text"></div>
-        </div>
+        <div class="recipe-card__cooking-wrap"></div>
     </div>
     <div class="recipe-card__divider"></div>
     <div class="recipe-card__content-half recipe-card__content-half--btm">
@@ -40,7 +38,7 @@ const templateHtml = `
 template.innerHTML = templateHtml.trim();
 
 export class RecipeCard {
-  private _cardElement: DocumentFragment;
+  private _cardElement: HTMLDivElement;
   private _addToPlanBtn: HTMLButtonElement;
   private _addToFavoritesBtn: HTMLButtonElement;
   private _imgElement: HTMLImageElement;
@@ -50,7 +48,13 @@ export class RecipeCard {
   private _mealTagWrap: HTMLDivElement;
 
   constructor(obj: Recipe) {
-    this._cardElement = template.content.cloneNode(true) as DocumentFragment;
+    const fragment = template.content.cloneNode(true) as DocumentFragment;
+
+    const recipeCard = fragment.querySelector<HTMLDivElement>(".recipe-card");
+    if (!recipeCard) {
+      throw new Error("recipeCard not found in template");
+    }
+    this._cardElement = recipeCard;
 
     const addToPlanBtn = this._cardElement.querySelector<HTMLButtonElement>(
       "button.recipe-card__add-btn",
@@ -86,7 +90,7 @@ export class RecipeCard {
     this._titleElement.textContent = obj.title;
 
     const cookTimeWrap = this._cardElement.querySelector<HTMLDivElement>(
-      ".recipe-card__cooking-text",
+      ".recipe-card__cooking-wrap",
     );
     if (!cookTimeWrap) {
       throw new Error("cookTimeWrap not found in template");
@@ -95,11 +99,13 @@ export class RecipeCard {
     if (obj.preparationTime) {
       const prepTime: HTMLParagraphElement = document.createElement("p");
       prepTime.textContent = `Prep: ${obj.preparationTime} min`;
+      prepTime.classList.add("recipe-card__prep-time");
       this._cookTimeWrap.appendChild(prepTime);
     }
     if (obj.cookTime) {
       const cookTime: HTMLParagraphElement = document.createElement("p");
       cookTime.textContent = `Cooking: ${obj.cookTime} min`;
+      cookTime.classList.add("recipe-card__cook-time");
       this._cookTimeWrap.appendChild(cookTime);
     }
 
@@ -132,11 +138,13 @@ export class RecipeCard {
     });
   }
 
-  render(selector: string) {
-    const parent = document.querySelector(selector);
-    if (!parent) {
-      throw new Error("parent not found in template");
+  render(parentSelector: string): void {
+    const parentElement = isSelectorString(parentSelector)
+      ? document.querySelector(parentSelector)
+      : parentSelector;
+    if (!parentElement) {
+      throw new Error("parentElement not found in template");
     }
-    parent.appendChild(this._cardElement);
+    parentElement.appendChild(this._cardElement);
   }
 }

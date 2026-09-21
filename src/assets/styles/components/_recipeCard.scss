@@ -134,16 +134,29 @@
     }
   }
 
-  &__cooking-text {
+  &__cook-time,
+  &__prep-time {
     flex: 1;
     display: flex;
-    gap: 8px;
-    align-items: center;
-    justify-content: space-between;
+    gap: 4px;
+    line-height: 20px;
+    text-wrap: balance;
 
-    p {
-      text-wrap: balance;
+    &::before {
+      content: "";
+      flex-shrink: 0;
+      height: 20px;
+      width: 20px;
+      background-size: cover;
+      background-image: var(--recipe-time-icon);
     }
+  }
+
+  &__cook-time {
+    --recipe-time-icon: url("../illustrations/icons/cooking.svg");
+  }
+  &__prep-time {
+    --recipe-time-icon: url("../illustrations/icons/clock.svg");
   }
 
   &__diet-tags,
