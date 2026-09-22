@@ -20,17 +20,13 @@ template.innerHTML = templateHTML.trim();
 export class SearchField {
   private readonly _searchField: HTMLDivElement;
   private readonly _searchLabel: HTMLLabelElement;
-  private readonly _searchInput: HTMLInputElement;
-  private readonly _searchBtn: HTMLButtonElement;
-  private readonly _recipeStorage: RecipeStorage;
-  private readonly _onResults: (recipes: Recipe[]) => void;
+  private _searchInput: HTMLInputElement;
+  private _searchBtn: HTMLButtonElement;
 
   constructor(
     inputLabel: string,
     placeholderText: string,
     searchBtnAriaLabel: string,
-    recipeStorage: RecipeStorage,
-    onResults: (recipes: Recipe[]) => void,
   ) {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
 
@@ -67,22 +63,17 @@ export class SearchField {
     this._searchInput.id = inputId;
     this._searchInput.placeholder = placeholderText;
     this._searchBtn.setAttribute("aria-label", searchBtnAriaLabel);
-
-    this._recipeStorage = recipeStorage;
-    this._onResults = onResults;
-
-    this._searchBtn.addEventListener("click", (): void => {
-      this.searchRecipes();
-    });
-
-    this._searchInput.addEventListener("keydown", (e: KeyboardEvent): void => {
-      if (e.key === "Enter") {
-        this._searchBtn.click();
-      }
-    });
   }
 
-  render(parentSelector: string, position: string): void {
+  get searchBtn() {
+    return this._searchBtn;
+  }
+
+  get searchInput() {
+    return this._searchInput;
+  }
+
+  render(parentSelector: string | HTMLElement, position: string): void {
     const parentElement = isSelectorString(parentSelector)
       ? document.querySelector<HTMLElement>(parentSelector)
       : parentSelector;
@@ -91,20 +82,5 @@ export class SearchField {
     }
 
     insertElem(position, this._searchField, parentElement);
-  }
-
-  async searchRecipes(): Promise<void> {
-    const keyword = this._searchInput.value;
-    if (!keyword) return;
-
-    const results = await this._recipeStorage.getByKeyword(keyword);
-    this._onResults(results);
-  }
-
-  async clearSearch(): Promise<void> {
-    this._searchInput.value = "";
-
-    const results = await this._recipeStorage.getAll();
-    this._onResults(results);
   }
 }

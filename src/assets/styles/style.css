@@ -81,7 +81,7 @@ main {
 .button {
   background-color: var(--button-background-color);
   color: var(--button-text-color);
-  border: none;
+  border: 1px solid var(--clr-brown);
   outline: 2px solid transparent;
   min-height: 48px;
   border-radius: 36px;
@@ -130,10 +130,10 @@ main {
 .button--clear {
   --button-icon-url: url("../icons/clear.svg");
 }
-.button--chevron-down {
+.button--show-filters {
   --button-icon-url: url("../icons/chevron-down.svg");
 }
-.button--chevron-down.open:after {
+.button--show-filters.open:after {
   transform: scaleY(-1);
 }
 
@@ -488,6 +488,7 @@ footer p {
   padding: 16px;
   border-radius: 8px;
   border: 1px solid var(--clr-beige-02);
+  box-shadow: 1px 1px 3px 2px var(--shadow-grey);
   overflow: hidden;
 }
 .recipe-search__inputs {
@@ -514,6 +515,9 @@ footer p {
 }
 .recipe-search__categories-container {
   min-height: 0;
+}
+.recipe-search__categories-container .button {
+  margin: 24px 0 0 auto;
 }
 .recipe-search__category {
   margin: 24px 0 0 0;

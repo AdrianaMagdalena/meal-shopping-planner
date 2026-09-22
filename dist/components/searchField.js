@@ -13,7 +13,7 @@ const templateHTML = `
 `;
 template.innerHTML = templateHTML.trim();
 export class SearchField {
-    constructor(inputLabel, placeholderText, searchBtnAriaLabel, recipeStorage, onResults) {
+    constructor(inputLabel, placeholderText, searchBtnAriaLabel) {
         const fragment = template.content.cloneNode(true);
         const searchField = fragment.querySelector(".search");
         if (!searchField) {
@@ -41,16 +41,12 @@ export class SearchField {
         this._searchInput.id = inputId;
         this._searchInput.placeholder = placeholderText;
         this._searchBtn.setAttribute("aria-label", searchBtnAriaLabel);
-        this._recipeStorage = recipeStorage;
-        this._onResults = onResults;
-        this._searchBtn.addEventListener("click", () => {
-            this.searchRecipes();
-        });
-        this._searchInput.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                this._searchBtn.click();
-            }
-        });
+    }
+    get searchBtn() {
+        return this._searchBtn;
+    }
+    get searchInput() {
+        return this._searchInput;
     }
     render(parentSelector, position) {
         const parentElement = isSelectorString(parentSelector)
@@ -60,17 +56,5 @@ export class SearchField {
             throw new Error("parentElement not found in template");
         }
         insertElem(position, this._searchField, parentElement);
-    }
-    async searchRecipes() {
-        const keyword = this._searchInput.value;
-        if (!keyword)
-            return;
-        const results = await this._recipeStorage.getByKeyword(keyword);
-        this._onResults(results);
-    }
-    async clearSearch() {
-        this._searchInput.value = "";
-        const results = await this._recipeStorage.getAll();
-        this._onResults(results);
     }
 }

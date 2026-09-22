@@ -7,7 +7,7 @@
 .button {
   background-color: var(--button-background-color);
   color: var(--button-text-color);
-  border: none;
+  border: 1px solid var(--clr-brown);
   outline: 2px solid transparent;
   min-height: 48px;
   border-radius: 36px;
@@ -67,7 +67,7 @@
     --button-icon-url: url("../icons/clear.svg");
   }
 
-  &--chevron-down {
+  &--show-filters {
     --button-icon-url: url("../icons/chevron-down.svg");
 
     &.open {
