@@ -483,6 +483,25 @@ footer p {
   outline-color: var(--clr-sage-dark);
 }
 
+.error-screen {
+  width: min(100%, 500px);
+  display: grid;
+  gap: 24px;
+  text-align: center;
+  margin: 0 auto;
+}
+.error-screen__img {
+  max-width: 70%;
+  margin: 0 auto;
+}
+.error-screen__title {
+  font-size: 24px;
+  font-weight: 700;
+}
+.error-screen__desc {
+  font-size: 18px;
+}
+
 .recipe-search {
   background-color: var(--clr-beige-01);
   padding: 16px;
@@ -607,5 +626,13 @@ footer p {
 @media (width >= 1400px) {
   .recipe-list {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.recipe-list .error-screen {
+  grid-column: 1/-1;
+}
+@media (width >= 756px) {
+  .recipe-list .error-screen {
+    margin-block: 32px;
   }
 }/*# sourceMappingURL=style.css.map */

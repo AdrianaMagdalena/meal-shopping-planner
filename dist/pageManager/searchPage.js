@@ -2,6 +2,7 @@ import { Navigation } from "../components/common/navigation.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
 import { RecipeCard } from "../components/recipeCard.js";
 import { SearchManager } from "../services/searchManager.js";
+import { ErrorScreen } from "../components/errorScreen.js";
 const navigation = new Navigation("../index.html", "javascript:void(0)", "javascript:void(0)", "javascript:void(0)");
 navigation.render(document.body);
 (async function () {
@@ -13,6 +14,11 @@ navigation.render(document.body);
     const recipes = await recipeStorage.getAll();
     const renderResults = (recipesToRender) => {
         container.innerHTML = "";
+        if (recipesToRender.length === 0) {
+            const errorScreen = new ErrorScreen("../src/assets/illustrations/no-results.png", "No recipes found", "Try a different keyword or adjust your filters.");
+            errorScreen.render(".recipe-list");
+            return;
+        }
         recipesToRender.forEach((recipe) => {
             const card = new RecipeCard(recipe);
             card.render(".recipe-list");

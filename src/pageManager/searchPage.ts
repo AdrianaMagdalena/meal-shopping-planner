@@ -3,6 +3,7 @@ import { RecipeStorage } from "../storages/recipeStorage.js";
 import { RecipeCard } from "../components/recipeCard.js";
 import { Recipe } from "../models/recipe.js";
 import { SearchManager } from "../services/searchManager.js";
+import { ErrorScreen } from "../components/errorScreen.js";
 
 const navigation = new Navigation(
   "../index.html",
@@ -24,6 +25,16 @@ navigation.render(document.body);
 
   const renderResults = (recipesToRender: Recipe[]): void => {
     container!.innerHTML = "";
+
+    if (recipesToRender.length === 0) {
+      const errorScreen = new ErrorScreen(
+        "../src/assets/illustrations/no-results.png",
+        "No recipes found",
+        "Try a different keyword or adjust your filters.",
+      );
+      errorScreen.render(".recipe-list");
+      return;
+    }
 
     recipesToRender.forEach((recipe) => {
       const card = new RecipeCard(recipe);

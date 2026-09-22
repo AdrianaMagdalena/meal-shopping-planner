@@ -1,9 +1,9 @@
 import { generateId } from "../utils/generateId.js";
 const tagTemplate = document.createElement("template");
 const tagTemplateHTML = `
-<label class="recipe-search__tag" for="">
+<label class="recipe-search__tag">
     <div class="recipe-search__tag-marker"></div>
-    <input class="recipe-search__tag-input" type="checkbox" id="" />
+    <input class="recipe-search__tag-input" type="checkbox" />
     <span></span>
 </label>
 `;

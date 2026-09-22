@@ -1,0 +1,21 @@
+.error-screen {
+  width: min(100%, 500px);
+  display: grid;
+  gap: 24px;
+  text-align: center;
+  margin: 0 auto;
+
+  &__img {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__desc {
+    font-size: 18px;
+  }
+}
