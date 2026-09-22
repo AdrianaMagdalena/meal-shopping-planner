@@ -78,7 +78,7 @@
     }
 
     &::before {
-      mask-image: url(../illustrations/icons/star-full.svg);
+      mask-image: url("../icons/star-full.svg");
       transition: opacity linear 0.2s;
       background-color: var(--full-star-color);
       mask-size: 46px;
@@ -86,7 +86,7 @@
 
     &::after {
       background-color: var(--clr-brown);
-      mask-image: url(../illustrations/icons/star-empty.svg);
+      mask-image: url("../icons/star-empty.svg");
     }
   }
 
@@ -152,10 +152,10 @@
   }
 
   &__cook-time {
-    --recipe-time-icon: url("../illustrations/icons/cooking.svg");
+    --recipe-time-icon: url("../icons/cooking.svg");
   }
   &__prep-time {
-    --recipe-time-icon: url("../illustrations/icons/clock.svg");
+    --recipe-time-icon: url("../icons/clock.svg");
   }
 
   &__diet-tags,
