@@ -1,19 +1,19 @@
 import { generateId } from "../utils/generateId.js";
 import { isSelectorString } from "../utils/typeGuards.js";
+import { insertElem } from "../utils/insertElem.js";
 const template = document.createElement("template");
 const templateHTML = `
 <div class="search">
   <label class="search__label"></label>
   <div class="search__wrap">
-    <button class="search__action search__action--search"></button>
-    <input class="search__input" />
-    <button class="search__action search__action--clear"></button>
+  <input class="search__input" />
+  <button class="search__action search__action"></button>
   </div>
 </div>
 `;
 template.innerHTML = templateHTML.trim();
 export class SearchField {
-    constructor(inputLabel, placeholderText, searchBtnAriaLabel, clearBtnAriaLabel, recipeStorage, onResults) {
+    constructor(inputLabel, placeholderText, searchBtnAriaLabel, recipeStorage, onResults) {
         const fragment = template.content.cloneNode(true);
         const searchField = fragment.querySelector(".search");
         if (!searchField) {
@@ -30,23 +30,17 @@ export class SearchField {
             throw new Error("searchInput not found in template");
         }
         this._searchInput = searchInput;
-        const searchBtn = this._searchField.querySelector(".search__action--search");
+        const searchBtn = this._searchField.querySelector(".search__action");
         if (!searchBtn) {
             throw new Error("searchBtn not found in template");
         }
         this._searchBtn = searchBtn;
-        const clearBtn = this._searchField.querySelector(".search__action--clear");
-        if (!clearBtn) {
-            throw new Error("clearBtn not found in template");
-        }
-        this._clearBtn = clearBtn;
         const inputId = generateId("search", 5);
         this._searchLabel.textContent = inputLabel;
         this._searchLabel.setAttribute("for", inputId);
         this._searchInput.id = inputId;
         this._searchInput.placeholder = placeholderText;
         this._searchBtn.setAttribute("aria-label", searchBtnAriaLabel);
-        this._clearBtn.setAttribute("aria-label", clearBtnAriaLabel);
         this._recipeStorage = recipeStorage;
         this._onResults = onResults;
         this._searchBtn.addEventListener("click", () => {
@@ -56,22 +50,16 @@ export class SearchField {
             if (e.key === "Enter") {
                 this._searchBtn.click();
             }
-            else if (e.key === "Escape") {
-                this._clearBtn.click();
-            }
-        });
-        this._clearBtn.addEventListener("click", () => {
-            this.clearSearch();
         });
     }
-    render(parentSelector) {
+    render(parentSelector, position) {
         const parentElement = isSelectorString(parentSelector)
             ? document.querySelector(parentSelector)
             : parentSelector;
         if (!parentElement) {
             throw new Error("parentElement not found in template");
         }
-        parentElement.appendChild(this._searchField);
+        insertElem(position, this._searchField, parentElement);
     }
     async searchRecipes() {
         const keyword = this._searchInput.value;

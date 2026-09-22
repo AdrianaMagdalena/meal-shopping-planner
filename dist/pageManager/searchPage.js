@@ -19,6 +19,27 @@ navigation.render(document.body);
         });
     };
     renderResults(recipes);
-    const searchField = new SearchField("Recipe search", "Search by keywords", "Search", "Clear search field", recipeStorage, renderResults);
-    searchField.render(".recipe-search");
+    const searchField = new SearchField("Recipe search", "Search by keywords", "Search", recipeStorage, renderResults);
+    searchField.render(".recipe-search__inputs", "prepend");
+    // TODO: update clear handler with categories later:
+    const clearBtn = document.querySelector(".button--clear");
+    if (!clearBtn) {
+        throw new Error("categoriesBtn not found in template");
+    }
+    clearBtn.addEventListener("click", () => {
+        searchField.clearSearch();
+    });
+    // TODO end
 })();
+const categoriesBtn = document.querySelector(".button--chevron-down");
+const categoriesContainer = document.querySelector(".recipe-search__categories");
+if (!categoriesBtn) {
+    throw new Error("categoriesBtn not found in template");
+}
+if (!categoriesContainer) {
+    throw new Error("categoriesContainer not found in template");
+}
+categoriesBtn.addEventListener("click", () => {
+    categoriesBtn.classList.toggle("open");
+    categoriesContainer.classList.toggle("open");
+});

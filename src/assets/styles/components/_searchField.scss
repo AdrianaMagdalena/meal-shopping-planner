@@ -19,11 +19,10 @@
     appearance: none;
     max-width: 100%;
     flex: 1;
-    padding: 8px 52px;
+    padding: 8px 52px 8px 16px;
     background-color: transparent;
     border: none;
     outline: none;
-    color: var(--clr-brown);
     font-size: 16px;
 
     &::placeholder {
@@ -33,29 +32,21 @@
 
   &__action {
     position: absolute;
+    right: 4px;
     top: 50%;
     transform: translateY(-50%);
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background-color: var(--clr-sage-light);
     border: none;
+    background-color: var(--clr-sage-light);
+    background-image: url("../icons/magnifying-glass.svg");
     background-size: 60%;
     background-position: center;
     background-repeat: no-repeat;
     transition: all linear 0.1s;
     outline: 2px solid transparent;
     cursor: pointer;
-
-    &--search {
-      left: 4px;
-      background-image: url("../illustrations/icons/magnifying-glass.svg");
-    }
-
-    &--clear {
-      right: 4px;
-      background-image: url("../illustrations/icons/clear.svg");
-    }
 
     &:hover {
       background-color: var(--clr-sage-med);

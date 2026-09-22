@@ -1,0 +1,79 @@
+:root {
+  --button-background-color: transparent;
+  --button-text-color: transparent;
+  --button-icon-content: none;
+}
+
+.button {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  outline: 2px solid transparent;
+  min-height: 48px;
+  border-radius: 36px;
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  text-align: center;
+  gap: 8px;
+  font-size: 16px;
+  transition: all linear 0.15s;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: var(--button-icon-content);
+    height: 24px;
+    width: 24px;
+    background-color: var(--button-text-color);
+    mask-image: var(--button-icon-url);
+    mask-size: 24px;
+    transition: all linear 0.2s;
+  }
+
+  &--prim {
+    --button-background-color: var(--clr-beige-05);
+    --button-text-color: var(--clr-brown);
+
+    &:hover {
+      --button-background-color: var(--clr-beige-05-med);
+    }
+  }
+
+  &--sec {
+    --button-background-color: var(--clr-terracota);
+    --button-text-color: var(--clr-beige-01);
+
+    &:hover {
+      --button-background-color: var(--clr-terracota-dark);
+    }
+  }
+
+  &--icon-before {
+    &::before {
+      --button-icon-content: "";
+    }
+  }
+
+  &--icon-after {
+    &::after {
+      --button-icon-content: "";
+    }
+  }
+
+  &--clear {
+    --button-icon-url: url("../icons/clear.svg");
+  }
+
+  &--chevron-down {
+    --button-icon-url: url("../icons/chevron-down.svg");
+
+    &.open {
+      &:after {
+        transform: scaleY(-1);
+      }
+    }
+  }
+}
