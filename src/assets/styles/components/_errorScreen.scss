@@ -6,7 +6,7 @@
   margin: 0 auto;
 
   &__img {
-    max-width: 70%;
+    max-width: min(80%, 300px);
     margin: 0 auto;
   }
 
