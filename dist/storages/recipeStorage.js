@@ -45,12 +45,15 @@ export class RecipeStorage {
         }
         if (filters.dietTags && filters.dietTags.length > 0) {
             const lowerCategories = filters.dietTags.map((t) => t.toLowerCase());
-            results = results.filter((r) => r.dietTags.every((t) => lowerCategories.includes(t.toLowerCase())));
+            results = results.filter((r) => r.dietTags.some((t) => lowerCategories.includes(t.toLowerCase())));
         }
         if (filters.mealTypeTags && filters.mealTypeTags.length > 0) {
             const lowerCategories = filters.mealTypeTags.map((t) => t.toLowerCase());
-            results = results.filter((r) => r.mealTypeTags.every((t) => lowerCategories.includes(t.toLowerCase())));
+            results = results.filter((r) => r.mealTypeTags.some((t) => lowerCategories.includes(t.toLowerCase())));
         }
         return results;
+    }
+    get recipes() {
+        return this._recipes;
     }
 }

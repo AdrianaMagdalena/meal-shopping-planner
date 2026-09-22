@@ -15,7 +15,19 @@
     gap: 16px;
 
     @include breakpoint-up(md) {
+      grid-template-columns: auto auto;
+
+      .search {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @include breakpoint-up(lg) {
       grid-template-columns: 1fr auto auto;
+
+      .search {
+        grid-column: unset;
+      }
     }
   }
 
@@ -33,9 +45,20 @@
 
     &-container {
       min-height: 0;
+      display: grid;
+      align-items: start;
+      gap: 24px;
+
+      @include breakpoint-up(lg) {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
       .button {
-        margin: 24px 0 0 auto;
+        grid-column: 2/-1;
+
+        @include breakpoint-up(md) {
+          justify-self: end;
+        }
       }
     }
   }
@@ -48,6 +71,7 @@
 
   &__category-list {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
   }
 

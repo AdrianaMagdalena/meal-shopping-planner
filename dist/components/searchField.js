@@ -7,7 +7,7 @@ const templateHTML = `
   <label class="search__label"></label>
   <div class="search__wrap">
   <input class="search__input" />
-  <button class="search__action search__action"></button>
+  <button class="search__action"></button>
   </div>
 </div>
 `;
