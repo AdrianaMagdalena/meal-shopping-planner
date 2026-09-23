@@ -37,8 +37,10 @@
     --button-background-color: var(--clr-beige-05);
     --button-text-color: var(--clr-brown);
 
-    &:hover {
-      --button-background-color: var(--clr-beige-05-med);
+    @media (hover: hover) {
+      &:hover {
+        --button-background-color: var(--clr-beige-05-med);
+      }
     }
   }
 
@@ -46,8 +48,10 @@
     --button-background-color: var(--clr-terracota);
     --button-text-color: var(--clr-beige-01);
 
-    &:hover {
-      --button-background-color: var(--clr-terracota-dark);
+    @media (hover: hover) {
+      &:hover {
+        --button-background-color: var(--clr-terracota-dark);
+      }
     }
   }
 
@@ -75,5 +79,9 @@
         transform: scaleY(-1);
       }
     }
+  }
+
+  &--plan {
+    --button-icon-url: url("../icons/plan.svg");
   }
 }

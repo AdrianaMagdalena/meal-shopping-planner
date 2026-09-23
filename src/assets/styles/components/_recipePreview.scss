@@ -1,0 +1,237 @@
+@use "../utils/fonts" as *;
+@use "../utils/mixins" as *;
+
+.recipe-preview {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  padding: 6px;
+  border-radius: 8px;
+  background-color: var(--clr-lavender);
+  border: 1px solid var(--clr-lavender-dark);
+  box-shadow: 1px 1px 3px 2px var(--shadow-grey);
+  display: grid;
+  gap: 6px;
+
+  .image-wrap {
+    position: relative;
+    border: 1px solid var(--clr-lavender-dark);
+    border-radius: 6px;
+    overflow: hidden;
+
+    @include breakpoint-up(md) {
+      border-radius: 8px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    button {
+      // TODO: only start on small screen, full btn on big
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      padding: 12px 16px;
+      font-size: 16px;
+    }
+  }
+
+  .info-block {
+    border-top: 1px solid var(--clr-lavender-dark);
+    padding-top: 8px;
+
+    @include breakpoint-up(md) {
+      padding-top: 12px;
+    }
+
+    &:first-child {
+      border: none;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ol {
+      padding: 0 0 0 16px;
+
+      li {
+        margin: 8px 0 0 0;
+
+        &:first-child {
+          margin: 0;
+        }
+      }
+    }
+
+    li {
+      line-height: 1.5;
+    }
+  }
+
+  .content {
+    padding: 8px;
+    border: 1px solid var(--clr-lavender-dark);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--clr-white);
+    display: grid;
+    gap: 12px;
+
+    @include breakpoint-up(md) {
+      padding: 12px;
+    }
+
+    &__main-info {
+      display: grid;
+      gap: 12px;
+
+      h1 {
+        font-family: $font-accent;
+        font-size: 36px;
+        font-weight: 400;
+      }
+    }
+
+    .info {
+      &__times {
+        flex: 2;
+        flex-shrink: 0;
+        display: flex;
+        gap: 24px;
+      }
+
+      &__cook-time,
+      &__prep-time {
+        display: flex;
+        gap: 4px;
+        line-height: 20px;
+        text-wrap: balance;
+
+        &::before {
+          content: "";
+          flex-shrink: 0;
+          height: 20px;
+          width: 20px;
+          background-size: cover;
+          background-image: var(--recipe-time-icon);
+        }
+      }
+
+      &__cook-time {
+        --recipe-time-icon: url("../icons/cooking.svg");
+      }
+      &__prep-time {
+        --recipe-time-icon: url("../icons/clock.svg");
+      }
+
+      &__tags-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px 24px;
+
+        @include breakpoint-up(md) {
+          flex-direction: row;
+        }
+      }
+
+      &__diet-tags,
+      &__meal-tags {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px;
+      }
+
+      &__tag {
+        padding: 4px 8px;
+        border-radius: 20px;
+        background-color: var(--clr-sage-light);
+        border: 1px solid var(--clr-sage-dark);
+      }
+
+      &__servings-wrap {
+        display: grid;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        background-color: var(--clr-beige-01);
+        border: 1px solid var(--clr-beige-02);
+        border-radius: 6px;
+        box-shadow: 1px 1px 3px 2px var(--shadow-grey);
+      }
+
+      &__servings-text {
+        font-weight: 500;
+      }
+
+      &__servings-info {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-weight: 300;
+
+        img {
+          flex-shrink: 0;
+          height: 16px;
+        }
+      }
+
+      &__servings-amount {
+        flex-shrink: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+
+        .input__wrap {
+          width: 150px;
+        }
+      }
+
+      .servings-input {
+        padding: auto;
+      }
+    }
+
+    .ingredients {
+      &__wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 12px 32px;
+
+        @include breakpoint-up(md) {
+          flex-direction: row;
+        }
+      }
+
+      &__part {
+        flex: 1;
+      }
+    }
+
+    .steps {
+      &__wrap {
+        display: grid;
+        gap: 16px;
+      }
+    }
+  }
+
+  --input-lead-img-url: url("../icons/minus.svg");
+  --input-trail-img-url: url("../icons/plus.svg");
+}

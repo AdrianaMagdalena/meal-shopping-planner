@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../src/assets/illustrations/favicon/favicon.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Coiny&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../src/assets/styles/style.css" />
+    <title>Recipe Search</title>
+  </head>
+  <body>
+    <main>
+      <div class="recipe-preview">
+        <div class="image-wrap">
+          <img
+            alt=""
+            src="../src/assets/illustrations/recipes/recipe_006.png"
+          />
+          <button class="fav-btn">Add to favorites</button>
+        </div>
+        <div class="content">
+          <div class="info-block content__main-info">
+            <h1>Title</h1>
+            <div class="info__times">
+              <p class="info__prep-time">Prep: 30 min</p>
+              <p class="info__cook-time">Cooking: 30 min</p>
+            </div>
+            <div class="info__tags-wrap">
+              <div class="info__diet-tags">
+                <p>Diet:</p>
+                <p class="info__tag">vegetarian</p>
+              </div>
+              <div class="info__meal-tags">
+                <p>Meal:</p>
+                <p class="info__tag">soup</p>
+              </div>
+            </div>
+            <div class="info__servings-wrap">
+              <p class="info__servings-text">Choose servings amount:</p>
+              <p class="info__servings-info">
+                <img alt="" src="../src/assets/icons/info.svg" />
+                Servings info: Around 300g in 1 serving
+              </p>
+              <div class="info__servings-amount">
+                <div class="input__wrap">
+                  <button
+                    class="input__action input__action--lead"
+                    aria-label="Search"
+                  ></button>
+                  <input
+                    class="input__input"
+                    id="input-ILK15"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                  />
+                  <button
+                    class="input__action input__action--trail"
+                    aria-label="Search"
+                  ></button>
+                </div>
+                <button
+                  class="button button--prim button--icon-before button--plan"
+                >
+                  Add to plan
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="info-block ingredients">
+            <h2>Ingredients</h2>
+            <div class="ingredients__wrap">
+              <div class="ingredients__part">
+                <h3>Tacos</h3>
+                <ul>
+                  <li>Flour 300 g</li>
+                  <li>Paprika 2 g</li>
+                  <li>Water 2000 ml</li>
+                  <li>Oil 15 ml</li>
+                  <li>Corn 200 g</li>
+                </ul>
+              </div>
+              <div class="ingredients__part">
+                <h3>Guacamole</h3>
+                <ul>
+                  <li>Flour 300 g</li>
+                  <li>Paprika 2 g</li>
+                  <li>Water 2000 ml</li>
+                  <li>Oil 15 ml</li>
+                  <li>Corn 200 g</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="info-block steps">
+            <h2>Steps</h2>
+            <div class="steps__wrap">
+              <div class="steps-part">
+                <h3>Tacos</h3>
+                <ol>
+                  <li>
+                    Lorem ipsum is a dummy or placeholder text commonly used in
+                    graphic design, publishing, and web development. It is
+                    typically a corrupted version of
+                  </li>
+                  <li>
+                    e finibus bonorum et malorum, a 1st-century BC text by the
+                    Roman statesman and philosopher Cicero, with words altered,
+                    added,
+                  </li>
+                  <li>
+                    l and improper Latin. The first two words are the truncation
+                    of dolorem ipsum. Lorem ipsum's purpose is to permit a page
+                    layout to be designed, independently of the copy that will
+                    subsequently populate it, or to demonstrate
+                  </li>
+                </ol>
+              </div>
+              <div class="steps-part">
+                <h3>Guacamole</h3>
+                <ol>
+                  <li>
+                    Ll and improper Latin. The first two words are the
+                    truncation of dolorem ipsum. Lorem ipsum's purpose is to
+                    permit a page layout to be designed, independently of the
+                    copy that will subsequently populate it, or to demonstrate
+                    various fonts of a typeface without meaningful text that c
+                  </li>
+                  <li>
+                    y a corrupted version of De finibus bonorum et malorum, a
+                    1st-century BC text by the Roman statesman and philosopher
+                    Cicero, with words altered, added, and removed to make it
+                    nonsensical and improper Latin. The
+                  </li>
+                  <li>
+                    l and improper Latin. The first two words are the truncation
+                    of dolorem ipsum. Lorem ipsum's purpose is to permit a page
+                    layout to be designed, independently of the copy that will
+                    subsequently populate it, or to demonstrate
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Copyright © Adriana Szetlak 2026</p>
+    </footer>
+    <script src="../dist/pageManager/recipeDetails.js" type="module"></script>
+  </body>
+</html>
