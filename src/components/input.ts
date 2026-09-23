@@ -5,7 +5,6 @@ import { insertElem } from "../utils/insertElem.js";
 const template = document.createElement("template");
 const templateHTML = `
 <div class="input">
-  <label class="input__label"></label>
   <div class="input__wrap">
     <input class="input__input" />
   </div>
@@ -16,16 +15,17 @@ template.innerHTML = templateHTML.trim();
 
 export class Input {
   private readonly _inputField: HTMLDivElement;
-  private readonly _inputLabel: HTMLLabelElement;
+  private readonly _inputLabel?: HTMLLabelElement;
   private readonly _inputWrap: HTMLDivElement;
   private readonly _inputInput: HTMLInputElement;
-  private readonly _leadBtn?: HTMLButtonElement;
-  private readonly _trailBtn?: HTMLButtonElement;
+  private _leadBtn?: HTMLButtonElement;
+  private _trailBtn?: HTMLButtonElement;
 
   constructor(
     inputCustomClass: string,
-    inputLabelText: string,
-    placeholderText: string,
+    inputLabelText?: string,
+    inputAriaText?: string,
+    placeholderText?: string,
     leadBtnAriaLabel?: string,
     trailBtnAriaLabel?: string,
   ) {
@@ -36,13 +36,6 @@ export class Input {
       throw new Error("inputField not found in template");
     }
     this._inputField = inputField;
-
-    const inputLabel =
-      this._inputField.querySelector<HTMLLabelElement>(".input__label");
-    if (!inputLabel) {
-      throw new Error("inputLabel not found in template");
-    }
-    this._inputLabel = inputLabel;
 
     const inputWrap =
       this._inputField.querySelector<HTMLInputElement>(".input__wrap");
@@ -60,16 +53,31 @@ export class Input {
 
     const inputId = generateId("input", 5);
     this._inputField.classList.add(inputCustomClass);
-    this._inputLabel.textContent = inputLabelText;
-    this._inputLabel.setAttribute("for", inputId);
     this._inputInput.id = inputId;
-    this._inputInput.placeholder = placeholderText;
+
+    if (inputLabelText && inputLabelText.length > 0) {
+      const inputLabel = document.createElement("label");
+      inputLabel.classList.add(".input__label");
+      inputLabel.textContent = inputLabelText;
+      inputLabel.setAttribute("for", inputId);
+      this._inputField.prepend(inputLabel);
+      this._inputLabel = inputLabel;
+    }
+
+    if (inputAriaText && inputAriaText.length > 0) {
+      this._inputField.setAttribute("aria-label", inputAriaText);
+    }
+
+    if (placeholderText) {
+      this._inputInput.placeholder = placeholderText;
+    }
 
     if (leadBtnAriaLabel && leadBtnAriaLabel.length > 0) {
       const inputLeadBtn = document.createElement("button");
       inputLeadBtn.classList.add("input__action", "input__action--lead");
       inputLeadBtn.setAttribute("aria-label", leadBtnAriaLabel);
       inputWrap.prepend(inputLeadBtn);
+      this._leadBtn = inputLeadBtn;
     }
 
     if (trailBtnAriaLabel && trailBtnAriaLabel.length > 0) {
@@ -77,6 +85,7 @@ export class Input {
       inputTrailBtn.classList.add("input__action", "input__action--trail");
       inputTrailBtn.setAttribute("aria-label", trailBtnAriaLabel);
       inputWrap.append(inputTrailBtn);
+      this._trailBtn = inputTrailBtn;
     }
   }
 

@@ -20,7 +20,7 @@ export class SearchManager {
         this._recipeStorage = recipeStorage;
         this._onResults = onResults;
         this._searchPanel = new SearchPanel(recipeStorage);
-        this._searchInput = new Input("recipe-search__search-input", "Recipe search", "Search by keyword", "", "Search");
+        this._searchInput = new Input("recipe-search__search-input", "Recipe search", "", "Search by keyword", "", "Search");
         this._searchInput.render(this._inputsWrap, "prepend");
         if (!this._searchInput.trailBtn) {
             throw new Error("trailBtn not found on searchInput");

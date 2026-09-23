@@ -45,6 +45,7 @@ export class SearchManager {
     this._searchInput = new Input(
       "recipe-search__search-input",
       "Recipe search",
+      "",
       "Search by keyword",
       "",
       "Search",
