@@ -1,4 +1,4 @@
-import { SearchField } from "../components/searchField.js";
+import { Input } from "../components/input.js";
 import { SearchPanel } from "../components/searchPanel.js";
 export class SearchManager {
     constructor(recipeStorage, onResults) {
@@ -20,14 +20,17 @@ export class SearchManager {
         this._recipeStorage = recipeStorage;
         this._onResults = onResults;
         this._searchPanel = new SearchPanel(recipeStorage);
-        this._searchField = new SearchField("Recipe search", "Search by keyword", "Search");
-        this._searchField.render(this._inputsWrap, "prepend");
-        this._searchField.searchBtn.addEventListener("click", () => {
+        this._searchInput = new Input("recipe-search__search-input", "Recipe search", "Search by keyword", "", "Search");
+        this._searchInput.render(this._inputsWrap, "prepend");
+        if (!this._searchInput.trailBtn) {
+            throw new Error("trailBtn not found on searchInput");
+        }
+        this._searchInput.trailBtn.addEventListener("click", () => {
             this.searchRecipesByKeyword();
         });
-        this._searchField.searchInput.addEventListener("keydown", (e) => {
+        this._searchInput.inputInput.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
-                this._searchField.searchBtn.click();
+                this._searchInput.trailBtn?.click();
             }
         });
         this._applyFiltersButton.addEventListener("click", () => {
@@ -38,14 +41,14 @@ export class SearchManager {
         });
     }
     async searchRecipesByKeyword() {
-        const keyword = this._searchField.searchInput.value;
+        const keyword = this._searchInput.inputInput.value;
         if (!keyword)
             return;
         const results = await this._recipeStorage.getByKeyword(keyword);
         this._onResults(results);
     }
     async clearSearch() {
-        this._searchField.searchInput.value = "";
+        this._searchInput.inputInput.value = "";
         const allCheckedTags = document.querySelectorAll(".recipe-search__categories-container input");
         allCheckedTags.forEach((t) => (t.checked = false));
         const results = await this._recipeStorage.getAll();
@@ -69,7 +72,7 @@ export class SearchManager {
         console.log(checkedDietCategory);
         console.log(checkedMealCategory);
         const results = await this._recipeStorage.search({
-            keyword: this._searchField.searchInput.value,
+            keyword: this._searchInput.inputInput.value,
             dietTags: checkedDietCategory,
             mealTypeTags: checkedMealCategory,
         });

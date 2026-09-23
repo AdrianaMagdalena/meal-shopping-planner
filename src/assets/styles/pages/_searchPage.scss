@@ -1,6 +1,8 @@
 @use "../utils/mixins" as *;
 
 .recipe-search {
+  --input-trail-img-url: url("../icons/magnifying-glass.svg");
+
   background-color: var(--clr-beige-01);
   padding: 16px;
   border-radius: 8px;

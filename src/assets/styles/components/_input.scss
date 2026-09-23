@@ -1,10 +1,13 @@
 @use "../utils/mixins" as *;
 
-.search {
+.input {
   display: grid;
   gap: 4px;
 
   &__wrap {
+    --input-padding-right: 16px;
+    --input-padding-left: 16px;
+
     position: relative;
     min-height: 48px;
     background-color: var(--clr-white);
@@ -13,13 +16,21 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+
+    &:has(.input__action--lead) {
+      --input-padding-left: 56px;
+    }
+    &:has(.input__action--trail) {
+      --input-padding-right: 56px;
+    }
   }
 
   &__input {
+    text-align: center;
     appearance: none;
     max-width: 100%;
     flex: 1;
-    padding: 8px 52px 8px 16px;
+    padding: 8px var(--input-padding-left) 8px var(--input-padding-left);
     background-color: transparent;
     border: none;
     outline: none;
@@ -32,7 +43,6 @@
 
   &__action {
     position: absolute;
-    right: 4px;
     top: 50%;
     transform: translateY(-50%);
     height: 40px;
@@ -40,7 +50,6 @@
     border-radius: 50%;
     border: none;
     background-color: var(--clr-sage-light);
-    background-image: url("../icons/magnifying-glass.svg");
     background-size: 60%;
     background-position: center;
     background-repeat: no-repeat;
@@ -48,12 +57,24 @@
     outline: 2px solid transparent;
     cursor: pointer;
 
-    &:hover {
-      background-color: var(--clr-sage-med);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--clr-sage-med);
+      }
     }
 
     &:focus-visible {
       outline-color: var(--clr-sage-dark);
+    }
+
+    &--lead {
+      left: 4px;
+      background-image: var(--input-lead-img-url);
+    }
+
+    &--trail {
+      right: 4px;
+      background-image: var(--input-trail-img-url);
     }
   }
 }
