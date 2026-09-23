@@ -494,7 +494,6 @@ footer p {
   --input-padding-right: 56px;
 }
 .input__input {
-  text-align: center;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -719,6 +718,9 @@ footer p {
 }
 .recipe-preview .content .info__servings-input {
   width: 150px;
+}
+.recipe-preview .content .info__servings-input input {
+  text-align: center;
 }
 .recipe-preview .content .ingredients__wrap {
   display: flex;
