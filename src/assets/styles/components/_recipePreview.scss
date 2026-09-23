@@ -197,14 +197,10 @@
         flex-wrap: wrap;
         gap: 16px;
         align-items: center;
-
-        .input__wrap {
-          width: 150px;
-        }
       }
 
-      .servings-input {
-        padding: auto;
+      &__servings-input {
+        width: 150px;
       }
     }
 

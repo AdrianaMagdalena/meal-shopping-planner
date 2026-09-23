@@ -1,10 +1,15 @@
 import { Input } from "./input.js";
 export class AmountInput extends Input {
-    constructor(inputCustomClass, inputLabelText, inputAriaText, placeholderText, leadBtnAriaLabel, trailBtnAriaLabel) {
+    constructor(inputCustomClass, inputmodeAttribute, patternAttribute, startValue, inputLabelText, inputAriaText, placeholderText, leadBtnAriaLabel, trailBtnAriaLabel) {
         super(inputCustomClass, inputLabelText, inputAriaText, placeholderText, leadBtnAriaLabel, trailBtnAriaLabel);
         const amountInput = this.inputInput;
         const amountMinusButton = this.leadBtn;
         const amountPlusButton = this.trailBtn;
+        amountInput.setAttribute("inputmode", inputmodeAttribute);
+        amountInput.setAttribute("pattern", patternAttribute);
+        if (startValue) {
+            amountInput.value = startValue;
+        }
         if (!amountMinusButton || !amountPlusButton) {
             throw new Error("leadBtn and trailBtn are both required but not found");
         }

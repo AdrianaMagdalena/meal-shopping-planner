@@ -1,6 +1,8 @@
 import { Navigation } from "../components/common/navigation.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
 import { ErrorScreen } from "../components/errorScreen.js";
+import { RecipePreview } from "../components/recipePreview.js";
+import { Recipe } from "../models/recipe.js";
 
 const navigation = new Navigation(
   "../index.html",
@@ -21,13 +23,19 @@ navigation.render(document.body);
   const recipeStorage = new RecipeStorage();
   const recipe = await recipeStorage.getById(recipeId);
 
-  if (!recipe) {
-    const errorScreen = new ErrorScreen(
-      "../src/assets/illustrations/no-results.png",
-      "The recipe was not found",
-    );
-    errorScreen.render(".recipe-preview");
-  }
+  const renderPreview = (recipe: Recipe | undefined) => {
+    if (!recipe) {
+      const errorScreen = new ErrorScreen(
+        "../src/assets/illustrations/no-results.png",
+        "The recipe was not found",
+      );
+      errorScreen.render(".main");
+      return;
+    }
 
-  // render the recipe here
+    const preview = new RecipePreview(recipe);
+    preview.render("main", "append");
+  };
+
+  renderPreview(recipe);
 })();
