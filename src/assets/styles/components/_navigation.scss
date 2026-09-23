@@ -27,8 +27,10 @@ nav {
     transition: background-color linear 0.1s;
     cursor: pointer;
 
-    &:hover {
-      background-color: var(--clr-sage-dark);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--clr-sage-dark);
+      }
     }
 
     @include breakpoint-up(lg) {
@@ -53,8 +55,10 @@ nav {
       border-radius: 8px;
     }
 
-    &:hover {
-      background-color: var(--clr-sage-dark);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--clr-sage-dark);
+      }
     }
 
     &::before {
@@ -113,8 +117,10 @@ nav {
     transition: background-color linear 0.1s;
     cursor: pointer;
 
-    &:hover {
-      background-color: var(--clr-sage-dark);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--clr-sage-dark);
+      }
     }
 
     @include breakpoint-up(lg) {
