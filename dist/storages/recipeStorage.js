@@ -10,7 +10,7 @@ export class RecipeStorage {
         try {
             const response = await fetch("../data/recipes.json");
             if (!response.ok) {
-                throw new Error("Error fetching data");
+                throw new Error("Error fetching recipes data");
             }
             const data = await response.json();
             if (!Array.isArray(data)) {

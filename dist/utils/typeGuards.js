@@ -1,3 +1,10 @@
+export function isFood(obj) {
+    return (obj &&
+        typeof obj.id === "string" &&
+        typeof obj.name === "string" &&
+        typeof obj.category === "string" &&
+        typeof obj.unit === "string");
+}
 export function isRecipe(obj) {
     return (obj &&
         typeof obj.id === "string" &&

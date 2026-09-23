@@ -71,7 +71,7 @@
         "title": "Tacos",
         "ingredients": [
           { "id": "beans_01", "quantity": 2 },
-          { "id": "taco_seasoning_02", "quantity": 4 },
+          { "id": "taco_seasoning_01", "quantity": 4 },
           { "id": "salt_01", "quantity": 0.2 },
           { "id": "tortilla_01", "quantity": 8 },
           { "id": "cheese_01", "quantity": 100 },
