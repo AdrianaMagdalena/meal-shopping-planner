@@ -4,11 +4,21 @@
   padding: 6px;
   background-color: var(--clr-lavender);
   border-radius: 8px;
+  border: 1px solid var(--clr-lavender-dark);
   box-shadow: 1px 1px 3px 2px var(--shadow-grey);
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  border: 1px solid var(--clr-lavender-dark);
+  transition: all linear 0.1s;
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 1px 1px 6px 4px var(--shadow-grey);
+      transform: scale(1.015);
+    }
+  }
 
   &.favorite {
     --full-star-color: var(--clr-cream);
@@ -43,8 +53,10 @@
     transition: all linear 0.1s;
     cursor: pointer;
 
-    &:hover {
-      box-shadow: 0 0 4px 1px var(--clr-white);
+    @media (hover: hover) {
+      &:hover {
+        box-shadow: 0 0 4px 1px var(--clr-white);
+      }
     }
   }
 
@@ -59,8 +71,10 @@
     position: relative;
     cursor: pointer;
 
-    &:hover {
-      transform: scale(1.15);
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.08);
+      }
     }
 
     &::before,

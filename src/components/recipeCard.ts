@@ -3,42 +3,39 @@ import { isSelectorString } from "../utils/typeGuards.js";
 
 const template = document.createElement("template");
 const templateHtml = `
-<div class="recipe-card">
-    <div class="recipe-card__img-wrap">
+<a class="recipe-card">
+  <div class="recipe-card__img-wrap">
     <div class="recipe-card__btn-wrap">
-    <button class="recipe-card__add-btn">Add to plan</button>
-    <button 
-    class="recipe-card__fav-btn" aria-label="Add to favorites"
-    ></button>
+      <button class="recipe-card__add-btn">Add to plan</button>
+      <button 
+        class="recipe-card__fav-btn" 
+        aria-label="Add to favorites">
+      </button>
     </div>
-    <img
-        class="recipe-card__img"
-        src=""
-        alt=""
-    />
-    </div>
-    <div class="recipe-card__content">
+    <img class="recipe-card__img" src="" alt="" />
+  </div>
+  <div class="recipe-card__content">
     <div class="recipe-card__content-half">
-        <h3></h3>
-        <div class="recipe-card__cooking-wrap"></div>
+      <h3></h3>
+      <div class="recipe-card__cooking-wrap"></div>
     </div>
     <div class="recipe-card__divider"></div>
     <div class="recipe-card__content-half recipe-card__content-half--btm">
-        <div class="recipe-card__diet-tags">
-            <p>Diet:</p>
-        </div>
-        <div class="recipe-card__meal-tags">
-            <p>Meal:</p>
-        </div>
+      <div class="recipe-card__diet-tags">
+        <p>Diet:</p>
+      </div>
+      <div class="recipe-card__meal-tags">
+        <p>Meal:</p>
+      </div>
     </div>
-    </div>
-</div>
+  </div>
+</a>
 `;
 
 template.innerHTML = templateHtml.trim();
 
 export class RecipeCard {
-  private readonly _cardElement: HTMLDivElement;
+  private readonly _cardElement: HTMLAnchorElement;
   private readonly _addToPlanBtn: HTMLButtonElement;
   private readonly _addToFavoritesBtn: HTMLButtonElement;
   private readonly _imgElement: HTMLImageElement;
@@ -50,7 +47,8 @@ export class RecipeCard {
   constructor(obj: Recipe) {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
 
-    const recipeCard = fragment.querySelector<HTMLDivElement>(".recipe-card");
+    const recipeCard =
+      fragment.querySelector<HTMLAnchorElement>(".recipe-card");
     if (!recipeCard) {
       throw new Error("recipeCard not found in template");
     }
@@ -111,6 +109,8 @@ export class RecipeCard {
     }
     this._mealTagWrap = mealTagWrap;
 
+    this._cardElement.dataset.recipeId = obj.id;
+    this._cardElement.href = `./recipe-details.html?id=${obj.id}`;
     this._imgElement.src = `../src/assets/illustrations/recipes/${obj.id}.png`;
     this._titleElement.textContent = obj.title;
 
