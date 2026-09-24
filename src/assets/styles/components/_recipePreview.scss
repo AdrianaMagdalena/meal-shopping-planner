@@ -207,14 +207,6 @@
         gap: 16px;
         align-items: center;
       }
-
-      &__servings-input {
-        width: 150px;
-
-        input {
-          text-align: center;
-        }
-      }
     }
 
     .ingredients {
@@ -244,7 +236,4 @@
       }
     }
   }
-
-  --input-lead-img-url: url("../icons/minus.svg");
-  --input-trail-img-url: url("../icons/plus.svg");
 }

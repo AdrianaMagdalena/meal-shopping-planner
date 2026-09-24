@@ -2,6 +2,10 @@
 @use "../utils/fonts" as *;
 
 .weekly-menu {
+  --input-min-height: 36px;
+  --input-action-btn-size: 28px;
+  --input-action-icon-size: 80%;
+
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
@@ -16,6 +20,14 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .plan__servings-input {
+    --input-width: 100px;
+
+    input {
+      --input-padding: 4px 36px;
+    }
+  }
+
   .day-menu {
     display: grid;
     gap: 4px;
@@ -27,27 +39,6 @@
     box-shadow: 1px 1px 3px 2px var(--shadow-grey);
     --input-lead-img-url: url("../icons/minus.svg");
     --input-trail-img-url: url("../icons/plus.svg");
-
-    .plan__servings-input {
-      max-width: 100px;
-
-      .input {
-        &__input {
-          text-align: center;
-          padding: 4px 36px 4px 36px;
-        }
-
-        &__wrap {
-          min-height: 36px;
-        }
-
-        &__action {
-          height: 28px;
-          width: 28px;
-          background-size: 80%;
-        }
-      }
-    }
 
     &--empty {
       place-content: center;
@@ -61,8 +52,12 @@
     &__title {
       font-family: $font-accent;
       font-size: 24px;
-      line-height: 1.5;
+      margin: 0 0 4px 0;
       opacity: 0.8;
+
+      @include breakpoint-up(md) {
+        margin: 0;
+      }
     }
 
     &__entry,

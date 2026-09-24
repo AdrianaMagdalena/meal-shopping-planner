@@ -21,6 +21,7 @@ export class AmountInput extends Input {
       trailBtnAriaLabel,
     );
 
+    const amountInputField = this.inputField;
     const amountInput = this.inputInput;
     const amountMinusButton = this.leadBtn;
     const amountPlusButton = this.trailBtn;
@@ -28,6 +29,7 @@ export class AmountInput extends Input {
     const MIN_VALUE = 1;
     const MAX_VALUE = 50;
 
+    amountInputField.classList.add("input--amount");
     amountInput.setAttribute("inputmode", inputmodeAttribute);
     amountInput.setAttribute("pattern", patternAttribute);
     if (startValue) {

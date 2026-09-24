@@ -60,6 +60,9 @@ export class Input {
             this._trailBtn = inputTrailBtn;
         }
     }
+    get inputField() {
+        return this._inputField;
+    }
     get leadBtn() {
         return this._leadBtn;
     }

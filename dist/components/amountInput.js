@@ -2,11 +2,13 @@ import { Input } from "./input.js";
 export class AmountInput extends Input {
     constructor(inputCustomClass, inputmodeAttribute, patternAttribute, startValue, inputLabelText, inputAriaText, placeholderText, leadBtnAriaLabel, trailBtnAriaLabel) {
         super(inputCustomClass, inputLabelText, inputAriaText, placeholderText, leadBtnAriaLabel, trailBtnAriaLabel);
+        const amountInputField = this.inputField;
         const amountInput = this.inputInput;
         const amountMinusButton = this.leadBtn;
         const amountPlusButton = this.trailBtn;
         const MIN_VALUE = 1;
         const MAX_VALUE = 50;
+        amountInputField.classList.add("input--amount");
         amountInput.setAttribute("inputmode", inputmodeAttribute);
         amountInput.setAttribute("pattern", patternAttribute);
         if (startValue) {
