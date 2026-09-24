@@ -55,13 +55,13 @@
   },
   {
     "id": "pepper_01",
-    "name": "Black pepper (ground)",
+    "name": "Ground black pepper",
     "category": "seasoning",
     "unit": "tsp"
   },
   {
     "id": "pepper_02",
-    "name": "Black pepper (whole)",
+    "name": "Black pepper berry",
     "category": "seasoning",
     "unit": "pcs"
   },
@@ -80,6 +80,12 @@
   {
     "id": "red_wine_01",
     "name": "Red dry wine",
+    "category": "alcohol",
+    "unit": "ml"
+  },
+  {
+    "id": "white_wine_01",
+    "name": "white dry wine",
     "category": "alcohol",
     "unit": "ml"
   },
@@ -110,7 +116,7 @@
   {
     "id": "broth_01",
     "name": "Veggie broth",
-    "category": "others",
+    "category": "other",
     "unit": "ml"
   },
   {
@@ -121,7 +127,7 @@
   },
   {
     "id": "pasta_01",
-    "name": "Any pasta (dry)",
+    "name": "Any dry pasta",
     "category": "pasta",
     "unit": "g"
   },
@@ -158,7 +164,7 @@
     "unit": "g"
   },
   {
-    "id": "cheese_02",
+    "id": "cottage_cheese_01",
     "name": "Cottage cheese",
     "category": "dairy",
     "unit": "g"
@@ -213,19 +219,19 @@
   },
   {
     "id": "parsley_02",
-    "name": "Parsley root",
+    "name": "Parsnip",
     "category": "vegetables",
     "unit": "g"
   },
   {
     "id": "parsley_03",
-    "name": "Parsley leaves (dry)",
+    "name": "Dried parsley leaves",
     "category": "seasoning",
     "unit": "tsp"
   },
   {
     "id": "dill_01",
-    "name": "Dill (dried)",
+    "name": "Dried dill",
     "category": "seasoning",
     "unit": "tsp"
   },
@@ -290,7 +296,7 @@
     "unit": "tsp"
   },
   {
-    "id": "baking_power_01",
+    "id": "baking_powder_01",
     "name": "Baking powder",
     "category": "baking",
     "unit": "tsp"
@@ -417,13 +423,31 @@
   },
   {
     "id": "milk_01",
-    "name": "Any milk (plant-based too)",
+    "name": "Cow or plant-based milk",
     "category": "dairy",
     "unit": "ml"
   },
   {
     "id": "paprika_01",
     "name": "Sweet paprika",
+    "category": "seasoning",
+    "unit": "tsp"
+  },
+  {
+    "id": "sauerkraut_01",
+    "name": "Sauerkraut",
+    "category": "other",
+    "unit": "g"
+  },
+  {
+    "id": "baguette_01",
+    "name": "Baguette",
+    "category": "baked goods",
+    "unit": "pcs"
+  },
+  {
+    "id": "thyme_01",
+    "name": "Dry thyme",
     "category": "seasoning",
     "unit": "tsp"
   }

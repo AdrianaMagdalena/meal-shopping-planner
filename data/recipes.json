@@ -173,11 +173,11 @@
     "parts": [
       {
         "ingredients": [
-          { "id": "cheese_02", "quantity": 200 },
+          { "id": "cottage_cheese_01", "quantity": 200 },
           { "id": "flour_01", "quantity": 80 },
           { "id": "egg_01", "quantity": 2 },
           { "id": "sugar_02", "quantity": 2 },
-          { "id": "baking_powder_01", "quantity": 160 },
+          { "id": "baking_powder_01", "quantity": 2 },
           { "id": "oil_01", "quantity": 30 }
         ],
         "steps": [
@@ -221,9 +221,9 @@
           "Cut onions into thick slices straight through. I usually get 3-4 slices per onion.",
           "Burn both sides of the onion slices on a dry pan. They're good if they're a little charred on each side.",
           "Cut the leak's leafs off, wash thoroughly and cut in half.",
-          "Peel the carrots, parsley root and celery root. Cut the carrot and parsley in half. Cut the celery into bigger pieces.",
+          "Peel the carrots, parsnip and celery root. Cut the carrot and parsley in half. Cut the celery into bigger pieces.",
           "Put water, stock cubes, carrots, celery root, leak, garlic, burnt onions, 4 bay leaves and 4 allspice berries in a big pot. Let it boil, then put it on low heat, cover and leave to simmer for 1 hour.",
-          "Add parsley root, mushrooms, 8 pepper berries whole and cook on low heat for another 1-2 hours.",
+          "Add parsnip, mushrooms, 8 pepper berries whole and cook on low heat for another 1-2 hours.",
           "Eat with cut up cooked vegetables, pasta and parsley as for your liking or use it for a base of other soups."
         ]
       }
@@ -242,7 +242,7 @@
           { "id": "cucumber_01", "quantity": 300 },
           { "id": "red_pepper_03", "quantity": 150 },
           { "id": "onion_02", "quantity": 150 },
-          { "id": "corn_03", "quantity": 150 },
+          { "id": "corn_01", "quantity": 150 },
           { "id": "beans_01", "quantity": 2 },
           { "id": "feta_01", "quantity": 300 },
           { "id": "mayo_01", "quantity": 4 },
@@ -250,7 +250,7 @@
           { "id": "salt_01", "quantity": 1 },
           { "id": "pepper_01", "quantity": 0.5 },
           { "id": "garlic_powder_01", "quantity": 2 },
-          { "id": "onion_powder_04", "quantity": 2 },
+          { "id": "onion_powder_01", "quantity": 2 },
           { "id": "chili_powder_01", "quantity": 0.25, "optional": true },
           { "id": "avocado_01", "quantity": 2 },
           { "id": "tortilla_chips_01", "quantity": 1 }
@@ -282,7 +282,7 @@
           { "id": "broth_01", "quantity": 2000 },
           { "id": "salt_01", "quantity": 2 },
           { "id": "pepper_01", "quantity": 1 },
-          { "id": "sugar", "quantity": 5 },
+          { "id": "sugar_01", "quantity": 5 },
           { "id": "vinegar_01", "quantity": 1 },
           { "id": "marjoram_01", "quantity": 1 },
           { "id": "bay_leaf_01", "quantity": 1 }
@@ -374,6 +374,52 @@
     ]
   },
   {
+    "id": "recipe_011",
+    "title": "Onion soup",
+    "preparationTime": 20,
+    "cookTime": 85,
+    "dietTags": ["vegetarian"],
+    "mealTypeTags": ["lunch", "soup"],
+    "servings": 4,
+    "servingInfo": "350g of soup in 1 serving",
+    "parts": [
+      {
+        "title": "Soup",
+        "ingredients": [
+          { "id": "onion_01", "quantity": 1000 },
+          { "id": "butter_01", "quantity": 80 },
+          { "id": "white_wine_01", "quantity": 180 },
+          { "id": "broth_01", "quantity": 1000 },
+          { "id": "garlic_01", "quantity": 5 },
+          { "id": "salt_01", "quantity": 0.5 },
+          { "id": "pepper_01", "quantity": 0.5 },
+          { "id": "sugar_01", "quantity": 1 },
+          { "id": "thyme_01", "quantity": 1 },
+          { "id": "bay_leaf_01", "quantity": 2 }
+        ],
+        "steps": [
+          "Prepare the onions: peel them, cut in half and then in thin slices.",
+          "Place the butter in a pot. Once it has melted and heated up, add the onions. Sauté uncovered for about 20 minutes.",
+          "When the onions are translucent, add the sugar, salt, and bay leaves. Sauté for another 20 minutes.",
+          "Add the pepper, pressed garlic, and thyme. Continue cooking.",
+          "After about 10 minutes the onions should be caramelized. Add the wine and cook for a few minutes until most of it has evaporated.",
+          "Finally, pour in 1000 ml of broth (or water + 4 bouillon cubes). Cover the soup and simmer on low heat for 30 minutes."
+        ]
+      },
+      {
+        "title": "Croutons",
+        "ingredients": [
+          { "id": "baguette_01", "quantity": 80 },
+          { "id": "cheese_01", "quantity": 50 }
+        ],
+        "steps": [
+          "The croutons taste the best fresh, so I advise to prepare a portion right before eating.",
+          "Cut the baguette in round slices, sprinkle them with greated cheese and toast them in airfryer or oven."
+        ]
+      }
+    ]
+  },
+  {
     "id": "recipe_XXX",
     "title": "title",
     "preparationTime": 10,
@@ -381,6 +427,7 @@
     "dietTags": ["vegan", "lactose-free"],
     "mealTypeTags": ["lunch"],
     "servings": 1,
+    "servingInfo": "10 g in 1 serving",
     "parts": [
       {
         "ingredients": [{ "id": "oil_01", "quantity": 3 }],
