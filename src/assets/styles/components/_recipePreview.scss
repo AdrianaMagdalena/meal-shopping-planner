@@ -73,6 +73,10 @@
         &:first-child {
           margin: 0;
         }
+
+        &::marker {
+          font-weight: 600;
+        }
       }
     }
 
@@ -185,9 +189,13 @@
         gap: 4px;
         font-weight: 300;
 
-        img {
-          flex-shrink: 0;
+        &::before {
+          content: "";
           height: 16px;
+          width: 16px;
+          flex-shrink: 0;
+          background-image: url("../icons/info.svg");
+          background-size: cover;
         }
       }
 
@@ -221,6 +229,10 @@
 
       &__part {
         flex: 1;
+      }
+
+      &__ingr-amount {
+        font-weight: 600;
       }
     }
 

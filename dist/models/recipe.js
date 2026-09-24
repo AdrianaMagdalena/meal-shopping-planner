@@ -6,6 +6,7 @@ export class Recipe {
         this._cookTime = data.cookTime;
         this._dietTags = data.dietTags;
         this._mealTypeTags = data.mealTypeTags;
+        this._servingInfo = data.servingInfo;
         this._servings = data.servings;
         this._parts = data.parts;
     }
@@ -26,6 +27,9 @@ export class Recipe {
     }
     get mealTypeTags() {
         return this._mealTypeTags;
+    }
+    get servingInfo() {
+        return this._servingInfo;
     }
     get servings() {
         return this._servings;

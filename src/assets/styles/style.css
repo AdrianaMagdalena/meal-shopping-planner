@@ -610,6 +610,9 @@ footer p {
 .recipe-preview .info-block ol li:first-child {
   margin: 0;
 }
+.recipe-preview .info-block ol li::marker {
+  font-weight: 600;
+}
 .recipe-preview .info-block li {
   line-height: 1.5;
 }
@@ -705,9 +708,13 @@ footer p {
   gap: 4px;
   font-weight: 300;
 }
-.recipe-preview .content .info__servings-info img {
-  flex-shrink: 0;
+.recipe-preview .content .info__servings-info::before {
+  content: "";
   height: 16px;
+  width: 16px;
+  flex-shrink: 0;
+  background-image: url("../icons/info.svg");
+  background-size: cover;
 }
 .recipe-preview .content .info__servings-amount {
   flex-shrink: 0;
@@ -734,6 +741,9 @@ footer p {
 }
 .recipe-preview .content .ingredients__part {
   flex: 1;
+}
+.recipe-preview .content .ingredients__ingr-amount {
+  font-weight: 600;
 }
 .recipe-preview .content .steps__wrap {
   display: grid;

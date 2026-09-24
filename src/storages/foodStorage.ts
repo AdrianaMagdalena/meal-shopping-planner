@@ -1,7 +1,7 @@
 import { Food } from "../models/food.js";
 import { isFood } from "../utils/typeGuards.js";
 
-export class FoodsStorage {
+export class FoodStorage {
   private _foods: Food[] | null = null;
 
   async getFoods(): Promise<void> {

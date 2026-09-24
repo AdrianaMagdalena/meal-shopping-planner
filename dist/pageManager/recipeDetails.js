@@ -1,8 +1,8 @@
-import { FoodsStorage } from "../storages/foodsStorage.js";
+import { FoodStorage } from "../storages/foodStorage.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
 import { Navigation } from "../components/common/navigation.js";
 import { ErrorScreen } from "../components/errorScreen.js";
-import { RecipePreview, renderRecipePreview, } from "../components/recipePreview.js";
+import { renderRecipePreview } from "../components/recipePreview.js";
 const navigation = new Navigation("../index.html", "./search.html", "javascript:void(0)", "javascript:void(0)");
 navigation.render(document.body);
 (async () => {
@@ -11,7 +11,7 @@ navigation.render(document.body);
     if (!recipeId) {
         throw new Error("No recipe ID in URL");
     }
-    const foodsStorage = new FoodsStorage();
+    const foodStorage = new FoodStorage();
     const recipeStorage = new RecipeStorage();
     const recipe = await recipeStorage.getById(recipeId);
     if (!recipe) {
@@ -19,7 +19,7 @@ navigation.render(document.body);
         errorScreen.render(".main");
     }
     else {
-        await renderRecipePreview(recipe, foodsStorage);
-        const preview = new RecipePreview(recipe, foodsStorage);
+        await renderRecipePreview(recipe, foodStorage);
+        // TODO: insert amount manager here
     }
 })();

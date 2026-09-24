@@ -1,6 +1,6 @@
 import { Food } from "../models/food.js";
 import { isFood } from "../utils/typeGuards.js";
-export class FoodsStorage {
+export class FoodStorage {
     constructor() {
         this._foods = null;
     }

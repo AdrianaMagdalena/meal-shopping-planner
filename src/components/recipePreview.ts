@@ -1,64 +1,27 @@
 import { Recipe } from "../models/recipe.js";
 import { AmountInput } from "./amountInput.js";
-import { FoodsStorage } from "../storages/foodsStorage.js";
+import { FoodStorage } from "../storages/foodStorage.js";
 
-export const renderRecipePreview = async (
-  recipe: Recipe,
-  foodsStorage: FoodsStorage,
-): Promise<void> => {
-  const preview = document.querySelector<HTMLDivElement>(".recipe-preview");
-  if (!preview) {
-    throw new Error("preview not found on page");
-  }
-
+const renderBasicInfo = (preview: HTMLElement, recipe: Recipe): void => {
   const recipeImage = preview.querySelector<HTMLImageElement>(
     ".recipe-preview__image",
   );
-  if (!recipeImage) {
-    throw new Error("recipeImage not found on page");
-  }
-
-  const addToFavBtn =
-    preview.querySelector<HTMLButtonElement>(".button--favorites");
-  if (!addToFavBtn) {
-    throw new Error("addToFavBtn not found on page");
-  }
+  if (!recipeImage) throw new Error("recipeImage not found on page");
 
   const recipeTitle = preview.querySelector<HTMLDivElement>("h1");
-  if (!recipeTitle) {
-    throw new Error("recipeTitle not found on page");
-  }
-
-  const timeInfoWrap = preview.querySelector<HTMLDivElement>(".info__times");
-  if (!timeInfoWrap) {
-    throw new Error("timeInfoWrap not found on page");
-  }
-
-  const dietTagsWrap =
-    preview.querySelector<HTMLDivElement>(".info__diet-tags");
-  if (!dietTagsWrap) {
-    throw new Error("dietTagsWrap not found on page");
-  }
-
-  const mealTagsWrap =
-    preview.querySelector<HTMLDivElement>(".info__meal-tags");
-  if (!mealTagsWrap) {
-    throw new Error("mealTagsWrap not found on page");
-  }
-
-  const ingredientsWrap =
-    preview.querySelector<HTMLDivElement>(".ingredients__wrap");
-  if (!ingredientsWrap) {
-    throw new Error("ingredientsWrap not found on page");
-  }
-
-  const stepsWrap = preview.querySelector<HTMLDivElement>(".steps__wrap");
-  if (!stepsWrap) {
-    throw new Error("stepsWrap not found on page");
-  }
+  if (!recipeTitle) throw new Error("recipeTitle not found on page");
 
   recipeImage.src = `../src/assets/illustrations/recipes/${recipe.id}.png`;
   recipeTitle.textContent = recipe.title;
+
+  const addToFavBtn =
+    preview.querySelector<HTMLButtonElement>(".button--favorites");
+  if (!addToFavBtn) throw new Error("addToFavBtn not found on page");
+};
+
+const renderTimeInfo = (preview: HTMLElement, recipe: Recipe): void => {
+  const timeInfoWrap = preview.querySelector<HTMLDivElement>(".info__times");
+  if (!timeInfoWrap) throw new Error("timeInfoWrap not found on page");
 
   if (recipe.preparationTime) {
     const prepTime = document.createElement("p");
@@ -73,6 +36,16 @@ export const renderRecipePreview = async (
     cookTime.textContent = `Cooking: ${recipe.cookTime} min`;
     timeInfoWrap.appendChild(cookTime);
   }
+};
+
+const renderTags = (preview: HTMLElement, recipe: Recipe) => {
+  const dietTagsWrap =
+    preview.querySelector<HTMLDivElement>(".info__diet-tags");
+  if (!dietTagsWrap) throw new Error("dietTagsWrap not found on page");
+
+  const mealTagsWrap =
+    preview.querySelector<HTMLDivElement>(".info__meal-tags");
+  if (!mealTagsWrap) throw new Error("mealTagsWrap not found on page");
 
   recipe.dietTags.forEach((t) => {
     const tag = document.createElement("p");
@@ -87,43 +60,101 @@ export const renderRecipePreview = async (
     tag.textContent = t;
     mealTagsWrap.appendChild(tag);
   });
+};
 
-  /*if (recipe.servingsInfo) {
-      const info = document.createElement("p");
-      info.classList.add("info__servings-info");
-      info.textContent = `Servings info: ${recipe.servingsInfo}`;
-      servingsInputWrap..before(info);
-    }*/
+const renderServingsAdjuster = (preview: HTMLElement, recipe: Recipe) => {
+  const servingsInputWrap = preview.querySelector<HTMLDivElement>(
+    ".info__servings-amount",
+  );
+  if (!servingsInputWrap)
+    throw new Error("servingsInputWrap not found on page");
+
+  if (recipe.servingInfo) {
+    const info = document.createElement("p");
+    info.classList.add("info__servings-info");
+    info.textContent = `Servings info: ${recipe.servingInfo}`;
+    servingsInputWrap.before(info);
+  }
+
+  const inputStartValue = String(recipe.servings);
+  const amountInput = new AmountInput(
+    "info__servings-input",
+    "numeric",
+    "[0-9]*",
+    inputStartValue,
+    "",
+    "Servings amount",
+    "",
+    "Remove amout of servings",
+    "Add amount of servings",
+  );
+  amountInput.render(servingsInputWrap, "prepend");
+
+  const servingsInput = preview.querySelector<HTMLInputElement>(
+    ".info__servings-input",
+  );
+  if (!servingsInput) throw new Error("servingsInput not found on page");
+};
+
+const renderIngredientList = async (
+  preview: HTMLElement,
+  recipe: Recipe,
+  foodStorage: FoodStorage,
+) => {
+  const ingredientsWrap =
+    preview.querySelector<HTMLDivElement>(".ingredients__wrap");
+  if (!ingredientsWrap) throw new Error("ingredientsWrap not found on page");
 
   for (const p of recipe.parts) {
     const ingrPart = document.createElement("div");
     ingrPart.classList.add("ingredients__part");
-    const stepsPart = document.createElement("div");
 
     if (p.title) {
       const ingrTitle = document.createElement("h3");
-      const stepTitle = document.createElement("h3");
       ingrTitle.textContent = p.title;
-      stepTitle.textContent = p.title;
       ingrPart.appendChild(ingrTitle);
-      stepsPart.appendChild(stepTitle);
     }
 
     const ingrPartList = document.createElement("ul");
 
     for (const i of p.ingredients) {
-      const food = await foodsStorage.getById(i.id);
-
-      const ingredient = document.createElement("li");
+      const food = await foodStorage.getById(i.id);
       const foodName = food ? food.name : "Unknown ingredient";
       const foodUnit = food ? food.unit : "";
-      ingredient.textContent = `${i.quantity} ${foodUnit} ${foodName}`;
+
+      const ingredient = document.createElement("li");
+      const ingrAmount = document.createElement("span");
+      const ingrName = document.createElement("span");
+
+      ingrAmount.classList.add("ingredients__ingr-amount");
+      ingrAmount.textContent = `${i.quantity} ${foodUnit}`;
+      ingrName.textContent = ` ${foodName.toLowerCase()}`;
 
       if (i.optional) {
-        ingredient.textContent += ` (optional)`;
+        ingrName.textContent += ` (optional)`;
       }
 
+      ingredient.appendChild(ingrAmount);
+      ingredient.appendChild(ingrName);
       ingrPartList.appendChild(ingredient);
+    }
+
+    ingrPart.appendChild(ingrPartList);
+    ingredientsWrap.appendChild(ingrPart);
+  }
+};
+
+const renderSteps = async (preview: HTMLElement, recipe: Recipe) => {
+  const stepsWrap = preview.querySelector<HTMLDivElement>(".steps__wrap");
+  if (!stepsWrap) throw new Error("stepsWrap not found on page");
+
+  for (const p of recipe.parts) {
+    const stepsPart = document.createElement("div");
+
+    if (p.title) {
+      const stepTitle = document.createElement("h3");
+      stepTitle.textContent = p.title;
+      stepsPart.appendChild(stepTitle);
     }
 
     const stepsPartList = document.createElement("ol");
@@ -135,45 +166,22 @@ export const renderRecipePreview = async (
       stepsPartList.appendChild(step);
     });
 
-    ingrPart.appendChild(ingrPartList);
     stepsPart.appendChild(stepsPartList);
-
-    ingredientsWrap.appendChild(ingrPart);
     stepsWrap.appendChild(stepsPart);
   }
 };
 
-export class RecipePreview {
-  private readonly _recipe: Recipe;
-  private readonly _foodStorage: FoodsStorage;
-  private readonly _servingsInputWrap: HTMLDivElement;
-  private readonly _amountInput: AmountInput;
+export const renderRecipePreview = async (
+  recipe: Recipe,
+  foodStorage: FoodStorage,
+): Promise<void> => {
+  const preview = document.querySelector<HTMLDivElement>(".recipe-preview");
+  if (!preview) throw new Error("preview not found on page");
 
-  constructor(obj: Recipe, foodStorage: FoodsStorage) {
-    this._recipe = obj;
-    this._foodStorage = foodStorage;
-
-    const servingsInputWrap = document.querySelector<HTMLDivElement>(
-      ".info__servings-amount",
-    );
-    if (!servingsInputWrap) {
-      throw new Error("servingsInputWrap not found on page");
-    }
-    this._servingsInputWrap = servingsInputWrap;
-
-    const inputStartValue = String(obj.servings);
-    const amountInput = new AmountInput(
-      "info__servings-input",
-      "numeric",
-      "[0-9]*",
-      inputStartValue,
-      "",
-      "Servings amount",
-      "",
-      "Remove amout of servings",
-      "Add amount of servings",
-    );
-    this._amountInput = amountInput;
-    amountInput.render(this._servingsInputWrap, "prepend");
-  }
-}
+  renderBasicInfo(preview, recipe);
+  renderTimeInfo(preview, recipe);
+  renderTags(preview, recipe);
+  renderServingsAdjuster(preview, recipe);
+  renderIngredientList(preview, recipe, foodStorage);
+  renderSteps(preview, recipe);
+};

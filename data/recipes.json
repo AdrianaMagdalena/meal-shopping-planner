@@ -46,7 +46,8 @@
     "cookTime": 45,
     "dietTags": ["vegetarian"],
     "mealTypeTags": ["lunch"],
-    "servings": 8,
+    "servings": 4,
+    "servingInfo": "One serving contains 2 tacos",
     "parts": [
       {
         "title": "Pico de Gallo",

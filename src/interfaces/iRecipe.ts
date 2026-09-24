@@ -17,6 +17,7 @@ export interface IRecipe {
   cookTime?: number;
   dietTags: string[];
   mealTypeTags: string[];
+  servingInfo?: string;
   servings: number;
   parts: IRecipePart[];
 }
