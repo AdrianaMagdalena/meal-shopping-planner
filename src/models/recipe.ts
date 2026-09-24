@@ -1,15 +1,15 @@
 import { IRecipe, IRecipePart } from "../interfaces/iRecipe.js";
 
 export class Recipe implements IRecipe {
-  private _id: string;
-  private _title: string;
-  private _preparaTionTime?: number;
-  private _cookTime?: number;
-  private _dietTags: string[];
-  private _mealTypeTags: string[];
-  private _servingInfo?: string;
-  private _servings: number;
-  private _parts: IRecipePart[];
+  private readonly _id: string;
+  private readonly _title: string;
+  private readonly _preparaTionTime?: number;
+  private readonly _cookTime?: number;
+  private readonly _dietTags: string[];
+  private readonly _mealTypeTags: string[];
+  private readonly _servingInfo?: string;
+  private readonly _servings: number;
+  private readonly _parts: IRecipePart[];
 
   constructor(data: IRecipe) {
     this._id = data.id;

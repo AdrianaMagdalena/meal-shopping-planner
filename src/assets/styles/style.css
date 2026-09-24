@@ -587,6 +587,7 @@ footer p {
 }
 .recipe-preview .info-block:first-child {
   border: none;
+  padding: 2px 0 0 0;
 }
 .recipe-preview .info-block h2 {
   font-size: 24px;
