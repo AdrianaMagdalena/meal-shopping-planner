@@ -49,6 +49,12 @@
       padding: 2px 0 0 0;
     }
 
+    h1 {
+      font-family: $font-accent;
+      font-size: 36px;
+      font-weight: 400;
+    }
+
     h2 {
       font-size: 24px;
       font-weight: 600;
@@ -102,12 +108,6 @@
     &__main-info {
       display: grid;
       gap: 12px;
-
-      h1 {
-        font-family: $font-accent;
-        font-size: 36px;
-        font-weight: 400;
-      }
     }
 
     .info {

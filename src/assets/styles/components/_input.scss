@@ -66,6 +66,16 @@
       outline-color: var(--clr-sage-dark);
     }
 
+    &:disabled {
+      &,
+      &:hover,
+      &:focus-visible {
+        opacity: 0.3;
+        cursor: default;
+        background-color: var(--clr-white);
+      }
+    }
+
     &--lead {
       left: 4px;
       background-image: var(--input-lead-img-url);

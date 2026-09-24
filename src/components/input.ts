@@ -76,7 +76,7 @@ export class Input {
       const inputLeadBtn = document.createElement("button");
       inputLeadBtn.classList.add("input__action", "input__action--lead");
       inputLeadBtn.setAttribute("aria-label", leadBtnAriaLabel);
-      inputWrap.prepend(inputLeadBtn);
+      this._inputWrap.prepend(inputLeadBtn);
       this._leadBtn = inputLeadBtn;
     }
 
@@ -84,7 +84,7 @@ export class Input {
       const inputTrailBtn = document.createElement("button");
       inputTrailBtn.classList.add("input__action", "input__action--trail");
       inputTrailBtn.setAttribute("aria-label", trailBtnAriaLabel);
-      inputWrap.append(inputTrailBtn);
+      this._inputWrap.append(inputTrailBtn);
       this._trailBtn = inputTrailBtn;
     }
   }

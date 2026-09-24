@@ -5,6 +5,8 @@ export class AmountInput extends Input {
         const amountInput = this.inputInput;
         const amountMinusButton = this.leadBtn;
         const amountPlusButton = this.trailBtn;
+        const MIN_VALUE = 1;
+        const MAX_VALUE = 50;
         amountInput.setAttribute("inputmode", inputmodeAttribute);
         amountInput.setAttribute("pattern", patternAttribute);
         if (startValue) {
@@ -15,24 +17,41 @@ export class AmountInput extends Input {
         }
         amountInput.addEventListener("input", () => {
             amountInput.value = amountInput.value.replace(/\D/g, "");
-            if (Number(amountInput.value) > 50)
-                amountInput.value = "50";
-        });
-        amountMinusButton.addEventListener("click", () => {
-            amountPlusButton.removeAttribute("disabled");
-            if (Number(amountInput.value) <= 1 || amountInput.value === "") {
+            if (Number(amountInput.value) >= MAX_VALUE) {
+                amountInput.value = String(MAX_VALUE);
+                amountPlusButton.setAttribute("disabled", "true");
+            }
+            else if (Number(amountInput.value) <= MIN_VALUE) {
+                amountInput.value = String(MIN_VALUE);
                 amountMinusButton.setAttribute("disabled", "true");
             }
             else {
+                amountPlusButton.removeAttribute("disabled");
                 amountMinusButton.removeAttribute("disabled");
+            }
+        });
+        amountMinusButton.addEventListener("click", () => {
+            amountPlusButton.removeAttribute("disabled");
+            if (Number(amountInput.value) <= MIN_VALUE || amountInput.value === "") {
+                amountMinusButton.setAttribute("disabled", "true");
+            }
+            else if (Number(amountInput.value) === MIN_VALUE + 1) {
+                amountInput.value = String(Number(amountInput.value) - 1);
+                amountMinusButton.setAttribute("disabled", "true");
+            }
+            else {
                 amountInput.value = String(Number(amountInput.value) - 1);
             }
         });
         amountPlusButton.addEventListener("click", () => {
             amountMinusButton.removeAttribute("disabled");
-            if (Number(amountInput.value) >= 50) {
+            if (Number(amountInput.value) >= MAX_VALUE) {
                 amountPlusButton.setAttribute("disabled", "true");
-                amountInput.value = "50";
+                amountInput.value = String(MAX_VALUE);
+            }
+            else if (Number(amountInput.value) === MAX_VALUE - 1) {
+                amountInput.value = String(Number(amountInput.value) + 1);
+                amountPlusButton.setAttribute("disabled", "true");
             }
             else {
                 amountPlusButton.removeAttribute("disabled");
