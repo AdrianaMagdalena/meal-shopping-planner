@@ -20,14 +20,6 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .plan__servings-input {
-    --input-width: 100px;
-
-    input {
-      --input-padding: 4px 36px;
-    }
-  }
-
   .day-menu {
     display: grid;
     gap: 4px;
@@ -40,7 +32,7 @@
     --input-lead-img-url: url("../icons/minus.svg");
     --input-trail-img-url: url("../icons/plus.svg");
 
-    &--empty {
+    &:has(.day-menu__title:only-child) {
       place-content: center;
       padding: 36px;
       color: var(--clr-beige-02);
@@ -52,7 +44,7 @@
     &__title {
       font-family: $font-accent;
       font-size: 24px;
-      margin: 0 0 4px 0;
+      margin: -4px 0 4px 0;
       opacity: 0.8;
 
       @include breakpoint-up(md) {
@@ -61,7 +53,7 @@
     }
 
     &__entry,
-    &__heading {
+    &__header {
       align-items: center;
       padding: 6px;
       border-radius: 4px;
@@ -72,7 +64,8 @@
       border: 1px solid var(--clr-beige-02);
     }
 
-    &__heading {
+    &__header {
+      padding: 6px 6px 6px 46px;
       background-color: rgba(255, 255, 255, 0.5);
     }
 
@@ -81,10 +74,13 @@
     }
 
     &__servings {
-      align-self: flex-end;
+      --input-width: 100px;
 
-      @include breakpoint-up(md) {
-        align-self: unset;
+      flex-shrink: 0;
+      margin: 0 0 0 auto;
+
+      input {
+        --input-padding: 4px 36px;
       }
 
       span {
