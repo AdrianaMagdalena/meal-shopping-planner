@@ -51,7 +51,7 @@
 
     &--empty {
       place-content: center;
-      padding: 24px;
+      padding: 36px;
       color: var(--clr-beige-02);
       font-size: 20px;
       border: 1px var(--clr-beige-02) dashed;
@@ -61,6 +61,7 @@
     &__title {
       font-family: $font-accent;
       font-size: 24px;
+      line-height: 1.5;
       opacity: 0.8;
     }
 
