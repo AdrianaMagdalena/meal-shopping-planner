@@ -3,7 +3,7 @@ import { RecipeStorage } from "../storages/recipeStorage.js";
 import { Navigation } from "../components/common/navigation.js";
 import { ErrorScreen } from "../components/errorScreen.js";
 import { renderRecipePreview } from "../components/recipePreview.js";
-const navigation = new Navigation("../index.html", "./search.html", "javascript:void(0)", "javascript:void(0)");
+const navigation = new Navigation("../index.html", "./search.html", "./weekly-menu.html", "javascript:void(0)");
 navigation.render(document.body);
 (async () => {
     const params = new URLSearchParams(window.location.search);

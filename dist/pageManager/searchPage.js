@@ -3,7 +3,7 @@ import { RecipeStorage } from "../storages/recipeStorage.js";
 import { RecipeCard } from "../components/recipeCard.js";
 import { SearchManager } from "../services/searchManager.js";
 import { ErrorScreen } from "../components/errorScreen.js";
-const navigation = new Navigation("../index.html", "javascript:void(0)", "javascript:void(0)", "javascript:void(0)");
+const navigation = new Navigation("../index.html", "javascript:void(0)", "./weekly-menu.html", "javascript:void(0)");
 navigation.render(document.body);
 (async function () {
     const container = document.querySelector(".recipe-list");

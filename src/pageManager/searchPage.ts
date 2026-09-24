@@ -8,7 +8,7 @@ import { ErrorScreen } from "../components/errorScreen.js";
 const navigation = new Navigation(
   "../index.html",
   "javascript:void(0)",
-  "javascript:void(0)",
+  "./weekly-menu.html",
   "javascript:void(0)",
 );
 

@@ -7,7 +7,7 @@ import { renderRecipePreview } from "../components/recipePreview.js";
 const navigation = new Navigation(
   "../index.html",
   "./search.html",
-  "javascript:void(0)",
+  "./weekly-menu.html",
   "javascript:void(0)",
 );
 navigation.render(document.body);
