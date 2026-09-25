@@ -4,11 +4,13 @@ import { Recipe } from "./recipe.js";
 export class WeeklyMenuEntry {
   private readonly _id: string;
   private readonly _recipeId: string;
+  private readonly _recipeTitle: string;
   private _servingsAmount: number;
 
   constructor(recipe: Recipe, servingsAmount: number) {
     this._id = generateId("menuentry", 8);
     this._recipeId = recipe.id;
+    this._recipeTitle = recipe.title;
 
     this.servingsAmount = servingsAmount;
     this._servingsAmount = this.servingsAmount;
@@ -20,6 +22,10 @@ export class WeeklyMenuEntry {
 
   get recipeId() {
     return this._recipeId;
+  }
+
+  get recipeTitle() {
+    return this._recipeTitle;
   }
 
   get servingsAmount() {

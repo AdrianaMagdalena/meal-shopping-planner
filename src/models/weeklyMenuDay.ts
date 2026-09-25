@@ -21,11 +21,21 @@ export class WeeklyMenuDay {
     this._dayEntries.push(entry);
   }
 
-  removeEntry(entryId: string): void {
+  removeEntry(entryId: string): boolean {
+    const initialLength = this._dayEntries.length;
     this._dayEntries = this._dayEntries.filter((e) => e.id !== entryId);
+    return this._dayEntries.length < initialLength;
   }
 
   getAllRecipeIds(): string[] {
     return this._dayEntries.map((e) => e.recipeId);
+  }
+
+  getEntryById(id: string): WeeklyMenuEntry | undefined {
+    return this._dayEntries.find((e) => e.id === id);
+  }
+
+  getAllEntryIds(): string[] {
+    return this._dayEntries.map((e) => e.id);
   }
 }

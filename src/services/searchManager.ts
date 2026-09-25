@@ -10,7 +10,7 @@ export class SearchManager {
   private _searchInput: Input;
   private _searchPanel: SearchPanel;
   private _recipeStorage: RecipeStorage;
-  private _onResults: (recpes: Recipe[]) => void;
+  private _onResults: (recipes: Recipe[]) => void;
 
   constructor(
     recipeStorage: RecipeStorage,
