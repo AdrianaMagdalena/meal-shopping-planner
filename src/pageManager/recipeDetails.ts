@@ -26,35 +26,37 @@ navigation.render(document.body);
   const recipe = await recipeStorage.getById(recipeId);
 
   if (!recipe) {
+    const preview = document.querySelector<HTMLDivElement>(".recipe-preview");
+    preview!.remove();
     const errorScreen = new ErrorScreen(
       "../src/assets/illustrations/no-results.png",
       "The recipe was not found",
     );
-    errorScreen.render(".main");
-  } else {
-    await renderRecipePreview(recipe, foodStorage);
-
-    const modal = new AddToPlanModal(
-      "Confirm choice",
-      "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
-      (dayIndex: number, servings: number) => {
-        // handling recipe local storage
-      },
-    );
-    modal.render(document.body, "append");
-
-    const addToPlanBtn =
-      document.querySelector<HTMLButtonElement>(".button--plan");
-    if (!addToPlanBtn) throw new Error("addToPlanBtn not found on page");
-    const servingsInput = document.querySelector<HTMLInputElement>(
-      ".info__servings-input .input__input",
-    );
-    if (!servingsInput) throw new Error("servingsInput not found on page");
-
-    addToPlanBtn?.addEventListener("click", () => {
-      const currentServings = servingsInput?.value;
-      modal.openModal(recipe, Number(currentServings));
-    });
-    // TODO: insert amount manager here
+    errorScreen.render("main");
+    return;
   }
+  await renderRecipePreview(recipe, foodStorage);
+
+  const modal = new AddToPlanModal(
+    "Confirm choice",
+    "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
+    (dayIndex: number, servings: number) => {
+      // handling recipe local storage
+    },
+  );
+  modal.render(document.body, "append");
+
+  const addToPlanBtn =
+    document.querySelector<HTMLButtonElement>(".button--plan");
+  if (!addToPlanBtn) throw new Error("addToPlanBtn not found on page");
+  const servingsInput = document.querySelector<HTMLInputElement>(
+    ".info__servings-input .input__input",
+  );
+  if (!servingsInput) throw new Error("servingsInput not found on page");
+
+  addToPlanBtn?.addEventListener("click", () => {
+    const currentServings = servingsInput?.value;
+    modal.openModal(recipe, Number(currentServings));
+  });
+  // TODO: insert amount manager here
 })();

@@ -9,7 +9,7 @@
     "parts": [
       {
         "ingredients": [
-          { "id": "oil_02", "quantity": 35 },
+          { "id": "olive_oil_01", "quantity": 35 },
           { "id": "onion_01", "quantity": 300 },
           { "id": "carrot_01", "quantity": 200 },
           { "id": "celery_01", "quantity": 150 },
@@ -53,7 +53,7 @@
         "title": "Pico de Gallo",
         "ingredients": [
           { "id": "tomatoes_01", "quantity": 450 },
-          { "id": "onion_02", "quantity": 80 },
+          { "id": "red_onion_01", "quantity": 80 },
           { "id": "lime_01", "quantity": 1 },
           { "id": "cilantro_01", "quantity": 25, "optional": true },
           { "id": "salt_01", "quantity": 0.2 },
@@ -71,12 +71,12 @@
       {
         "title": "Tacos",
         "ingredients": [
-          { "id": "beans_01", "quantity": 2 },
+          { "id": "black_beans_01", "quantity": 2 },
           { "id": "taco_seasoning_01", "quantity": 4 },
           { "id": "salt_01", "quantity": 0.2 },
           { "id": "tortilla_01", "quantity": 8 },
           { "id": "cheese_01", "quantity": 100 },
-          { "id": "cream_01", "quantity": 175 }
+          { "id": "sour_cream_01", "quantity": 175 }
         ],
         "steps": [
           "Rinse the black beans, combine with 60g of Pico de Gallo, taco seasoning and salt. Smash or blend together until you get a thick paste.",
@@ -99,12 +99,12 @@
     "parts": [
       {
         "ingredients": [
-          { "id": "beans_02", "quantity": 1 },
+          { "id": "cannelini_beans_01", "quantity": 1 },
           { "id": "groats_01", "quantity": 80 },
           { "id": "potatoes_01", "quantity": 500 },
           { "id": "carrot_01", "quantity": 160 },
-          { "id": "parsley_02", "quantity": 100 },
-          { "id": "celery_02", "quantity": 150 },
+          { "id": "parsnip_01", "quantity": 100 },
+          { "id": "celery_root_01", "quantity": 150 },
           { "id": "onion_01", "quantity": 80 },
           { "id": "parsley_03", "quantity": 4, "optional": true },
           { "id": "dill_01", "quantity": 4, "optional": true },
@@ -176,7 +176,7 @@
           { "id": "cottage_cheese_01", "quantity": 200 },
           { "id": "flour_01", "quantity": 80 },
           { "id": "egg_01", "quantity": 2 },
-          { "id": "sugar_02", "quantity": 2 },
+          { "id": "vanilin_sugar_01", "quantity": 2 },
           { "id": "baking_powder_01", "quantity": 2 },
           { "id": "oil_01", "quantity": 30 }
         ],
@@ -201,11 +201,11 @@
       {
         "ingredients": [
           { "id": "carrot_01", "quantity": 1000 },
-          { "id": "parsley_02", "quantity": 500 },
-          { "id": "celery_02", "quantity": 300 },
+          { "id": "parsnip_01", "quantity": 500 },
+          { "id": "celery_root_01", "quantity": 300 },
           { "id": "leek_01", "quantity": 1 },
           { "id": "onion_01", "quantity": 500 },
-          { "id": "mushroom_01", "quantity": 4 },
+          { "id": "dry_mushroom_01", "quantity": 4 },
           { "id": "garlic_01", "quantity": 4 },
           { "id": "broth_02", "quantity": 4 },
           { "id": "parsley_03", "quantity": 4, "optional": true },
@@ -219,7 +219,7 @@
         ],
         "steps": [
           "Cut onions into thick slices straight through. I usually get 3-4 slices per onion.",
-          "Burn both sides of the onion slices on a dry pan. They're good if they're a little charred on each side.",
+          "Roast both sides of the onion slices on a dry pan. They're good if they're a little charred on each side.",
           "Cut the leak's leafs off, wash thoroughly and cut in half.",
           "Peel the carrots, parsnip and celery root. Cut the carrot and parsley in half. Cut the celery into bigger pieces.",
           "Put water, stock cubes, carrots, celery root, leak, garlic, burnt onions, 4 bay leaves and 4 allspice berries in a big pot. Let it boil, then put it on low heat, cover and leave to simmer for 1 hour.",
@@ -240,10 +240,10 @@
       {
         "ingredients": [
           { "id": "cucumber_01", "quantity": 300 },
-          { "id": "red_pepper_03", "quantity": 150 },
-          { "id": "onion_02", "quantity": 150 },
+          { "id": "red_pepper_01", "quantity": 150 },
+          { "id": "red_onion_01", "quantity": 150 },
           { "id": "corn_01", "quantity": 150 },
-          { "id": "beans_01", "quantity": 2 },
+          { "id": "black_beans_01", "quantity": 2 },
           { "id": "feta_01", "quantity": 300 },
           { "id": "mayo_01", "quantity": 4 },
           { "id": "lime_01", "quantity": 1 },
@@ -278,7 +278,7 @@
         "ingredients": [
           { "id": "beetroot_01", "quantity": 1000 },
           { "id": "garlic_01", "quantity": 2 },
-          { "id": "mushroom_01", "quantity": 2 },
+          { "id": "dry_mushroom_01", "quantity": 2 },
           { "id": "broth_01", "quantity": 2000 },
           { "id": "salt_01", "quantity": 2 },
           { "id": "pepper_01", "quantity": 1 },
@@ -349,7 +349,7 @@
       {
         "title": "Filling",
         "ingredients": [
-          { "id": "mushroom_02", "quantity": 500 },
+          { "id": "mushroom_01", "quantity": 500 },
           { "id": "cheese_01", "quantity": 100 },
           { "id": "onion_01", "quantity": 160 },
           { "id": "sauerkraut_01", "quantity": 300 },
@@ -420,6 +420,202 @@
     ]
   },
   {
+    "id": "recipe_012",
+    "title": "Apple pancakes",
+    "preparationTime": 70,
+    "cookTime": 20,
+    "dietTags": ["vegetarian"],
+    "mealTypeTags": ["breakfast", "dessert", "snack"],
+    "servings": 6,
+    "servingInfo": "3 pancakes in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "flour_01", "quantity": 400 },
+          { "id": "egg_01", "quantity": 3 },
+          { "id": "yeast_02", "quantity": 7 },
+          { "id": "milk_01", "quantity": 250 },
+          { "id": "sugar_01", "quantity": 35 },
+          { "id": "apple_01", "quantity": 2 }
+        ],
+        "steps": [
+          "Place all the ingredients except the apples in a bowl.",
+          "Knead the dough for a few minutes. Cover with a cloth and let it rest in a warm place for an hour.",
+          "Peel and grate the apples, then add them to the dough.",
+          "Fry in oil over low heat."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_013",
+    "title": "Pickle soup",
+    "preparationTime": 30,
+    "cookTime": 120,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch", "soup"],
+    "servings": 6,
+    "servingInfo": "around 350 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "cannelini_beans_01", "quantity": 1 },
+          { "id": "celery_root_01", "quantity": 250 },
+          { "id": "parsnip_01", "quantity": 80 },
+          { "id": "carrot_01", "quantity": 60 },
+          { "id": "onion_01", "quantity": 120 },
+          { "id": "pickles_01", "quantity": 450 },
+          { "id": "potatoes_01", "quantity": 300 },
+          { "id": "cream_01", "quantity": 250 },
+          { "id": "broth_01", "quantity": 1500 },
+          { "id": "bay_leaf_01", "quantity": 1 },
+          { "id": "allspice_01", "quantity": 3 },
+          { "id": "pepper_02", "quantity": 10 },
+          { "id": "salt_01", "quantity": 1 }
+        ],
+        "steps": [
+          "Cut onions into thick slices straight through. I usually get 3-4 slices per onion.",
+          "Roast both sides of the onion slices on a dry pan. They're good if they're a little charred on each side.",
+          "Prepare the broth or add 3 bouillon cubes to water, along with carrots and parsley cut lengthwise, celery root, and roasted onion.",
+          "Add a bay leaf, allspice, whole peppercorns, and salt. Once it comes to a boil, reduce the heat and simmer, covered, for 1.5 hours.",
+          "Remove the ingredients from the broth and cut the vegetables into small pieces. Dice the potatoes into small cubes",
+          "Grate the pickled cucumbers using a coarse grater. Sauté them with a tablespoon of butter.",
+          "Add the potatoes to broth and cook for 10 minutes. Then add the cucumbers and cook for another 10 minutes.",
+          "Add the rest of the vegetables and the beans. Bring to a boil, then pour in the cream."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_014",
+    "title": "Calzone",
+    "preparationTime": 90,
+    "cookTime": 25,
+    "dietTags": ["vegetarian"],
+    "mealTypeTags": ["lunch"],
+    "servings": 8,
+    "servingInfo": "Half a calzone in 1 serving",
+    "parts": [
+      {
+        "title": "Filling",
+        "ingredients": [
+          { "id": "cheese_01", "quantity": 250 },
+          { "id": "mozzarella_01", "quantity": 250 },
+          { "id": "onion_01", "quantity": 170 },
+          { "id": "mushroom_01", "quantity": 300 },
+          { "id": "red_pepper_01", "quantity": 210 },
+          { "id": "garlic_01", "quantity": 4 },
+          { "id": "olive_oil_01", "quantity": 30 },
+          { "id": "paprika_01", "quantity": 1 },
+          { "id": "oregano_01", "quantity": 1 },
+          { "id": "salt_01", "quantity": 0.25 },
+          { "id": "pepper_01", "quantity": 0.25 }
+        ],
+        "steps": [
+          "Finely chop the bell pepper, mushrooms, and onion. Add the spices. Sauté everything in olive oil over low heat for 25-30 minutes.",
+          "Grate the cheese. Slice the mozzarella."
+        ]
+      },
+      {
+        "title": "Dough",
+        "ingredients": [
+          { "id": "pizza_flour_01", "quantity": 450 },
+          { "id": "olive_oil_01", "quantity": 30 },
+          { "id": "yeast_02", "quantity": 7 },
+          { "id": "sugar_01", "quantity": 0.5 },
+          { "id": "salt_01", "quantity": 1 },
+          { "id": "egg_01", "quantity": 1 },
+          { "id": "sesame_01", "quantity": 2, "optional": true }
+        ],
+        "steps": [
+          "Pour seven grams of dry yeast into the bottom of a glass or metal bowl. Add half a teaspoon of sugar to the yeast, then pour in a glass of lukewarm water and two tablespoons of olive oil.",
+          "Add the flour and salt. Knead the dough. Cover with a cloth and set aside in a warm place to rise for an hour.",
+          "Transfer the risen dough to a floured work surface and knead briefly. Divide the dough into 4 pieces. Shape each piece into a ball, then roll it out.",
+          "Place the mozzarella and filling on one half of the dough, then sprinkle with cheese. Cover the filling with the other half of the dough and seal the edges with a fork.",
+          "Brush the top of the calzone with beaten egg. Optionally, sprinkle with sesame seeds.",
+          "Bake at 200 degrees in the top-and-bottom heat setting for 22-25 minutes. "
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_015",
+    "title": "Dill soup",
+    "preparationTime": 20,
+    "cookTime": 30,
+    "dietTags": ["vegetarian", "gluten-free"],
+    "mealTypeTags": ["lunch", "soup"],
+    "servings": 4,
+    "servingInfo": "350 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "broth_01", "quantity": 1000 },
+          { "id": "dill_01", "quantity": 8 },
+          { "id": "potatoes_01", "quantity": 280 },
+          { "id": "carrot_01", "quantity": 150 },
+          { "id": "green_onion_01", "quantity": 1 },
+          { "id": "butter_01", "quantity": 30 },
+          { "id": "cream_01", "quantity": 250 },
+          { "id": "salt_01", "quantity": 1 },
+          { "id": "turmeric_01", "quantity": 0.25 },
+          { "id": "oregano_01", "quantity": 0.25 },
+          { "id": "nutmeg_01", "quantity": 0.25 }
+        ],
+        "steps": [
+          "Wash, peel and chop all the vegetables.",
+          "Melt the butter in a pot & sauté the vegetables on it for about 10 minutes.",
+          "Pour in the broth and add the spices. Cook for 15 minutes or until the vegetables are tender.",
+          "Add the dill and cook uncovered for 5 minutes. Add the cream."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_016",
+    "title": "Caramelised french toast with raspberries",
+    "preparationTime": 15,
+    "cookTime": 30,
+    "dietTags": ["vegetarian"],
+    "mealTypeTags": ["breakfast", "dessert", "snack"],
+    "servings": 6,
+    "servingInfo": "2 toasts in 1 serving",
+    "parts": [
+      {
+        "title": "Toasts",
+        "ingredients": [
+          { "id": "challah_01", "quantity": 1 },
+          { "id": "egg_01", "quantity": 4 },
+          { "id": "milk_01", "quantity": 200 },
+          { "id": "butter_01", "quantity": 80 },
+          { "id": "cane_sugar_01", "quantity": 60 }
+        ],
+        "steps": [
+          "Cut the challah into 2-cm-thick slices.",
+          "Crack 2 eggs into a bowl. Pour in the milk. Mix well.",
+          "Melt butter in a preheated skillet. Dip the slices in the egg mixture and fry them in the skillet until lightly golden.",
+          "After flipping the toast to the other side, sprinkle each slice with a little cane sugar (e.g., a level teaspoon per slice), then immediately flip the toast back over to the other side. Once the sugar side is golden brown, flip it again and brown the other side."
+        ]
+      },
+      {
+        "title": "Raspberry jelly",
+        "ingredients": [
+          { "id": "strawberries_01", "quantity": 700 },
+          { "id": "cane_sugar_01", "quantity": 40 },
+          { "id": "potato_starch_01", "quantity": 20 },
+          { "id": "lemon_01", "quantity": 1 }
+        ],
+        "steps": [
+          "Place 500 grams of strawberries in a small saucepan. Heat them over low heat without adding any water.",
+          "Once they start to soften and release some liquid, add two tablespoons of lemon juice.",
+          "Add 15 g of potato starch and 20 g of cane sugar. Stir until the mixture thickens, then cook for a moment.",
+          "Add ther rest of the strawberries, stir, and remove from the heat.",
+          "Serve the toast with fruit on top."
+        ]
+      }
+    ]
+  },
+  {
     "id": "recipe_XXX",
     "title": "title",
     "preparationTime": 10,
@@ -430,7 +626,219 @@
     "servingInfo": "10 g in 1 serving",
     "parts": [
       {
-        "ingredients": [{ "id": "oil_01", "quantity": 3 }],
+        "ingredients": [
+          { "id": "oil_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 3 }
+        ],
+        "steps": ["Prepare", "Heat"]
+      }
+    ]
+  },
+  {
+    "id": "recipe_XXX",
+    "title": "title",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 1,
+    "servingInfo": "10 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "oil_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 3 }
+        ],
+        "steps": ["Prepare", "Heat"]
+      }
+    ]
+  },
+  {
+    "id": "recipe_XXX",
+    "title": "title",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 1,
+    "servingInfo": "10 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "oil_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 3 }
+        ],
+        "steps": ["Prepare", "Heat"]
+      }
+    ]
+  },
+  {
+    "id": "recipe_XXX",
+    "title": "title",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 1,
+    "servingInfo": "10 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "oil_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 3 }
+        ],
+        "steps": ["Prepare", "Heat"]
+      }
+    ]
+  },
+  {
+    "id": "recipe_XXX",
+    "title": "title",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 1,
+    "servingInfo": "10 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "oil_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 3 }
+        ],
+        "steps": ["Prepare", "Heat"]
+      }
+    ]
+  },
+  {
+    "id": "recipe_XXX",
+    "title": "title",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 1,
+    "servingInfo": "10 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "oil_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 3 }
+        ],
+        "steps": ["Prepare", "Heat"]
+      }
+    ]
+  },
+  {
+    "id": "recipe_XXX",
+    "title": "title",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 1,
+    "servingInfo": "10 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "oil_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 3 }
+        ],
+        "steps": ["Prepare", "Heat"]
+      }
+    ]
+  },
+  {
+    "id": "recipe_XXX",
+    "title": "title",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 1,
+    "servingInfo": "10 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "oil_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 3 }
+        ],
+        "steps": ["Prepare", "Heat"]
+      }
+    ]
+  },
+  {
+    "id": "recipe_XXX",
+    "title": "title",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 1,
+    "servingInfo": "10 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "oil_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 3 }
+        ],
+        "steps": ["Prepare", "Heat"]
+      }
+    ]
+  },
+  {
+    "id": "recipe_XXX",
+    "title": "title",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 1,
+    "servingInfo": "10 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "oil_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 3 }
+        ],
+        "steps": ["Prepare", "Heat"]
+      }
+    ]
+  },
+  {
+    "id": "recipe_XXX",
+    "title": "title",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 1,
+    "servingInfo": "10 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "oil_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 3 }
+        ],
+        "steps": ["Prepare", "Heat"]
+      }
+    ]
+  },
+  {
+    "id": "recipe_XXX",
+    "title": "title",
+    "preparationTime": 10,
+    "cookTime": 10,
+    "dietTags": ["vegan", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 1,
+    "servingInfo": "10 g in 1 serving",
+    "parts": [
+      {
+        "ingredients": [
+          { "id": "oil_01", "quantity": 3 },
+          { "id": "oil_01", "quantity": 3 }
+        ],
         "steps": ["Prepare", "Heat"]
       }
     ]

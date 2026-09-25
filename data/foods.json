@@ -6,7 +6,7 @@
     "unit": "ml"
   },
   {
-    "id": "oil_02",
+    "id": "olive_oil_01",
     "name": "Olive oil",
     "category": "oil",
     "unit": "ml"
@@ -18,7 +18,7 @@
     "unit": "g"
   },
   {
-    "id": "onion_02",
+    "id": "red_onion_01",
     "name": "Red onion",
     "category": "vegetables",
     "unit": "g"
@@ -36,7 +36,7 @@
     "unit": "g"
   },
   {
-    "id": "celery_02",
+    "id": "celery_root_01",
     "name": "Celery root",
     "category": "vegetables",
     "unit": "g"
@@ -132,14 +132,14 @@
     "unit": "g"
   },
   {
-    "id": "beans_01",
+    "id": "black_beans_01",
     "name": "Canned black beans",
     "category": "legumes",
     "unit": "can",
     "unitInfo": "regular can - 425 g"
   },
   {
-    "id": "beans_02",
+    "id": "cannelini_beans_01",
     "name": "Canned cannellini beans",
     "category": "legumes",
     "unit": "can",
@@ -170,16 +170,16 @@
     "unit": "g"
   },
   {
-    "id": "cream_01",
+    "id": "sour_cream_01",
     "name": "Sour cream",
     "category": "dairy",
     "unit": "g"
   },
   {
-    "id": "cream_02",
+    "id": "cream_01",
     "name": "Oat cream",
     "category": "plant-based",
-    "unit": "g"
+    "unit": "ml"
   },
   {
     "id": "lime_01",
@@ -218,7 +218,7 @@
     "unit": "g"
   },
   {
-    "id": "parsley_02",
+    "id": "parsnip_01",
     "name": "Parsnip",
     "category": "vegetables",
     "unit": "g"
@@ -272,7 +272,7 @@
     "unit": "g"
   },
   {
-    "id": "sugar_02",
+    "id": "vanilin_sugar_01",
     "name": "Vanilla sugar",
     "category": "baking",
     "unit": "tsp"
@@ -286,6 +286,12 @@
   {
     "id": "flour_01",
     "name": "Wheat flour",
+    "category": "baking",
+    "unit": "g"
+  },
+  {
+    "id": "pizza_flour_01",
+    "name": "Pizza flour - type 00",
     "category": "baking",
     "unit": "g"
   },
@@ -314,13 +320,13 @@
     "unit": "pcs"
   },
   {
-    "id": "mushroom_01",
+    "id": "dry_mushroom_01",
     "name": "Dried mushroom",
     "category": "mushroom",
     "unit": "pcs"
   },
   {
-    "id": "mushroom_02",
+    "id": "mushroom_01",
     "name": "Mushroom",
     "category": "mushroom",
     "unit": "g"
@@ -344,7 +350,7 @@
     "unit": "g"
   },
   {
-    "id": "red_pepper_03",
+    "id": "red_pepper_01",
     "name": "Red pepper",
     "category": "vegetables",
     "unit": "g"
@@ -450,5 +456,83 @@
     "name": "Dry thyme",
     "category": "seasoning",
     "unit": "tsp"
+  },
+  {
+    "id": "apple_01",
+    "name": "Apples",
+    "category": "fruit",
+    "unit": "pcs"
+  },
+  {
+    "id": "yeast_01",
+    "name": "Yeast",
+    "category": "baking",
+    "unit": "g"
+  },
+  {
+    "id": "yeast_02",
+    "name": "Dry yeast",
+    "category": "baking",
+    "unit": "g"
+  },
+  {
+    "id": "pickles_01",
+    "name": "Pickles",
+    "category": "other",
+    "unit": "g"
+  },
+  {
+    "id": "mozzarella_01",
+    "name": "Mozzarella cheese",
+    "category": "diary",
+    "unit": "g"
+  },
+  {
+    "id": "sesame_01",
+    "name": "Sesame seeds",
+    "category": "seasoning",
+    "unit": "tbsp"
+  },
+  {
+    "id": "green_onion_01",
+    "name": "Green onion",
+    "category": "vegetable",
+    "unit": "pcs"
+  },
+  {
+    "id": "nutmeg_01",
+    "name": "Nutmeg",
+    "category": "seasoning",
+    "unit": "tsp"
+  },
+  {
+    "id": "challah_01",
+    "name": "Challah",
+    "category": "baked goods",
+    "unit": "pcs"
+  },
+  {
+    "id": "cane_sugar_01",
+    "name": "Cane sugar",
+    "category": "baking",
+    "unit": "g"
+  },
+  {
+    "id": "strawberries_01",
+    "name": "Strawberries",
+    "category": "fruit",
+    "unit": "g"
+  },
+  {
+    "id": "potato_starch_01",
+    "name": "Potato starch",
+    "category": "baking",
+    "unit": "g"
+  },
+  {
+    "id": "lemon_01",
+    "name": "Lemon",
+    "category": "fruit",
+    "unit": "pcs"
   }
 ]
