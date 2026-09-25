@@ -143,7 +143,19 @@ export class AddToPlanModal {
 
     this._modalPrimBtn.addEventListener("click", () => {
       const selectedDaysIndex: number[] = this.getSelectedDaysIndex();
-      if (selectedDaysIndex.length === 0) throw new Error("No day selected");
+      if (selectedDaysIndex.length === 0) {
+        if (
+          !this._modalDayPicker.querySelector<HTMLParagraphElement>(
+            ".error-msg",
+          )
+        ) {
+          const error = document.createElement("p");
+          error.classList.add("error-msg");
+          error.textContent = "Select at least one day before proceeding!";
+          this._modalDayPicker.appendChild(error);
+        }
+        return;
+      }
 
       const servings = Number(this._servingsInput.inputInput.value);
       selectedDaysIndex.forEach((i) => {
@@ -170,7 +182,7 @@ export class AddToPlanModal {
 
   openModal(recipe: Recipe, servings: number) {
     setTimeout(() => {
-      this._modalElem.classList.add("visible");
+      this._modalElem.classList.add("visible", "in-front");
     }, 10);
 
     this._modalRecipeTitle.textContent = recipe.title;
@@ -179,6 +191,13 @@ export class AddToPlanModal {
 
   closeModal(): void {
     this._modalElem.classList.remove("visible");
+    setTimeout(() => {
+      this._modalElem.classList.remove("in-front");
+    }, 200);
+    const dayTags = Array.from(
+      this._modalDayPicker.querySelectorAll<HTMLInputElement>(".tag__input"),
+    );
+    dayTags.forEach((t) => (t.checked = false));
   }
 
   private getSelectedDaysIndex(): number[] {

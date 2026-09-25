@@ -54,7 +54,7 @@ body {
   background-color: var(--clr-beige-bg);
   color: var(--clr-brown);
 }
-body:has(.modal) {
+body:has(.modal.visible) {
   overflow: hidden;
 }
 
@@ -443,6 +443,23 @@ footer p {
   background-image: var(--input-trail-img-url);
 }
 
+p.error-msg {
+  color: var(--clr-terracota) !important;
+  font-size: 16px !important;
+  width: 100%;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+p.error-msg:before {
+  content: "";
+  height: 16px;
+  width: 16px;
+  background-image: url("../icons/error.svg");
+  background-size: cover;
+}
+
 .modal {
   opacity: 0;
   height: 100vh;
@@ -454,6 +471,7 @@ footer p {
   top: 0;
   left: 0;
   display: grid;
+  overflow: hidden;
   transition: opacity 0.2s ease-in-out;
 }
 @media (width >= 756px) {
@@ -463,10 +481,12 @@ footer p {
 }
 .modal.visible {
   opacity: 1;
-  z-index: 100;
 }
 .modal.visible .modal-body {
   transform: translateY(0);
+}
+.modal.in-front {
+  z-index: 100;
 }
 .modal-backdrop {
   height: 100%;

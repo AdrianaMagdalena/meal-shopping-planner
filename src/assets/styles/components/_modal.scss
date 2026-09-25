@@ -12,6 +12,7 @@
   top: 0;
   left: 0;
   display: grid;
+  overflow: hidden;
   transition: opacity 0.2s ease-in-out;
 
   @include breakpoint-up(lg) {
@@ -20,11 +21,14 @@
 
   &.visible {
     opacity: 1;
-    z-index: 100;
 
     .modal-body {
       transform: translateY(0);
     }
+  }
+
+  &.in-front {
+    z-index: 100;
   }
 
   &-backdrop {

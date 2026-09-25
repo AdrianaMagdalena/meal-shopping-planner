@@ -1,7 +1,7 @@
 import { isSelectorString } from "../utils/typeGuards.js";
 const template = document.createElement("template");
 const templateHtml = `
-<a class="recipe-card">
+<div class="recipe-card">
   <div class="recipe-card__img-wrap">
     <div class="recipe-card__btn-wrap">
       <button class="recipe-card__add-btn">Add to plan</button>
@@ -27,7 +27,7 @@ const templateHtml = `
       </div>
     </div>
   </div>
-</a>
+</div>
 `;
 template.innerHTML = templateHtml.trim();
 export class RecipeCard {
@@ -73,8 +73,6 @@ export class RecipeCard {
             throw new Error("mealTagWrap not found in template");
         }
         this._mealTagWrap = mealTagWrap;
-        this._cardElement.dataset.recipeId = obj.id;
-        this._cardElement.href = `./recipe-details.html?id=${obj.id}`;
         this._imgElement.src = `../src/assets/illustrations/recipes/${obj.id}.png`;
         this._titleElement.textContent = obj.title;
         if (obj.preparationTime) {
@@ -101,6 +99,12 @@ export class RecipeCard {
             cardTag.textContent = tag;
             this._mealTagWrap.appendChild(cardTag);
         });
+        this._cardElement.addEventListener("click", () => {
+            window.location.href = `./recipe-details.html?id=${obj.id}`;
+        });
+    }
+    get cardElement() {
+        return this._cardElement;
     }
     render(parentSelector) {
         const parentElement = isSelectorString(parentSelector)

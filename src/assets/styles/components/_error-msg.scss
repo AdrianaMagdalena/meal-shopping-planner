@@ -1,0 +1,17 @@
+p.error-msg {
+  color: var(--clr-terracota) !important;
+  font-size: 16px !important;
+  width: 100%;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+
+  &:before {
+    content: "";
+    height: 16px;
+    width: 16px;
+    background-image: url("../icons/error.svg");
+    background-size: cover;
+  }
+}

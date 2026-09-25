@@ -21,7 +21,7 @@ navigation.render(document.body);
     }
     else {
         await renderRecipePreview(recipe, foodStorage);
-        const modal = new AddToPlanModal("Confirm choice", "Please, choose the days to which you'd like to add the recipe and confirm the amount of servings. You can later modify them in the planner.", (dayIndex, servings) => {
+        const modal = new AddToPlanModal("Confirm choice", "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.", (dayIndex, servings) => {
             // handling recipe local storage
         });
         modal.render(document.body, "append");

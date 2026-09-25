@@ -36,7 +36,7 @@ navigation.render(document.body);
 
     const modal = new AddToPlanModal(
       "Confirm choice",
-      "Please, choose the days to which you'd like to add the recipe and confirm the amount of servings. You can later modify them in the planner.",
+      "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
       (dayIndex: number, servings: number) => {
         // handling recipe local storage
       },
