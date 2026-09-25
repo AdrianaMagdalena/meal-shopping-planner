@@ -274,6 +274,7 @@ nav .nav-menu li {
 nav .nav-item {
   padding: 16px;
   height: 100%;
+  font-size: 20px;
   transition: background-color linear 0.1s;
   cursor: pointer;
 }
@@ -285,7 +286,6 @@ nav .nav-item {
 @media (width >= 756px) {
   nav .nav-item {
     border-radius: 8px;
-    font-size: 20px;
   }
 }
 nav .nav-item a {
@@ -716,15 +716,18 @@ p.error-msg:before {
   background-color: var(--clr-lavender-dark);
 }
 .recipe-card h3 {
-  font-family: "Coiny", system-ui;
-  font-size: 24px;
-  font-weight: 400;
   margin: -4px 0 4px 0;
+  font-family: "Coiny", system-ui;
+  font-weight: 400;
+  opacity: 0.85;
 }
 @media (width >= 560px) {
   .recipe-card h3 {
     margin: 0;
   }
+}
+.recipe-card h3 {
+  font-size: 24px;
 }
 .recipe-card__cooking-wrap {
   display: flex;
@@ -808,9 +811,18 @@ p.error-msg:before {
   padding: 2px 0 0 0;
 }
 .recipe-preview .info-block h1 {
+  margin: -4px 0 4px 0;
   font-family: "Coiny", system-ui;
-  font-size: 36px;
   font-weight: 400;
+  opacity: 0.85;
+}
+@media (width >= 560px) {
+  .recipe-preview .info-block h1 {
+    margin: 0;
+  }
+}
+.recipe-preview .info-block h1 {
+  font-size: 36px;
 }
 .recipe-preview .info-block h2 {
   font-size: 24px;
@@ -1077,6 +1089,22 @@ p.error-msg:before {
     gap: 32px;
     grid-template-columns: repeat(2, 1fr);
   }
+}
+.weekly-menu h1 {
+  margin: -4px 0 4px 0;
+  font-family: "Coiny", system-ui;
+  font-weight: 400;
+  opacity: 0.85;
+}
+@media (width >= 560px) {
+  .weekly-menu h1 {
+    margin: 0;
+  }
+}
+.weekly-menu h1 {
+  grid-column: 1/-1;
+  font-size: 36px;
+  text-align: center;
 }
 .weekly-menu .day-menu {
   display: grid;

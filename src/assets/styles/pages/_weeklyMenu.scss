@@ -20,6 +20,13 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  h1 {
+    @include accent-title;
+    grid-column: 1 / -1;
+    font-size: 36px;
+    text-align: center;
+  }
+
   .day-menu {
     display: grid;
     gap: 4px;

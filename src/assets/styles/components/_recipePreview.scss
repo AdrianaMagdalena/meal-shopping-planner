@@ -50,9 +50,8 @@
     }
 
     h1 {
-      font-family: $font-accent;
+      @include accent-title;
       font-size: 36px;
-      font-weight: 400;
     }
 
     h2 {

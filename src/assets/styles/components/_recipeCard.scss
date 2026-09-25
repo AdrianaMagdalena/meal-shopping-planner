@@ -136,14 +136,8 @@
   }
 
   h3 {
-    font-family: $font-accent;
+    @include accent-title;
     font-size: 24px;
-    font-weight: 400;
-    margin: -4px 0 4px 0;
-
-    @include breakpoint-up(md) {
-      margin: 0;
-    }
   }
 
   &__cooking-wrap {

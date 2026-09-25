@@ -114,6 +114,7 @@ nav {
   .nav-item {
     padding: 16px;
     height: 100%;
+    font-size: 20px;
     transition: background-color linear 0.1s;
     cursor: pointer;
 
@@ -125,7 +126,6 @@ nav {
 
     @include breakpoint-up(lg) {
       border-radius: 8px;
-      font-size: 20px;
     }
 
     a {
