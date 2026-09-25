@@ -9,6 +9,10 @@ body {
   justify-content: flex-start;
   background-color: var(--clr-beige-bg);
   color: var(--clr-brown);
+
+  &:has(.modal) {
+    overflow: hidden;
+  }
 }
 
 main {

@@ -1,4 +1,5 @@
 import { AmountInput } from "./amountInput.js";
+import { AddToPlanModal } from "./addToPlanModal.js";
 const renderBasicInfo = (preview, recipe) => {
     const recipeImage = preview.querySelector(".recipe-preview__image");
     if (!recipeImage)
@@ -38,13 +39,13 @@ const renderTags = (preview, recipe) => {
         throw new Error("mealTagsWrap not found on page");
     recipe.dietTags.forEach((t) => {
         const tag = document.createElement("p");
-        tag.classList.add("info__tag");
+        tag.classList.add("tag");
         tag.textContent = t;
         dietTagsWrap.appendChild(tag);
     });
     recipe.mealTypeTags.forEach((t) => {
         const tag = document.createElement("p");
-        tag.classList.add("info__tag");
+        tag.classList.add("tag");
         tag.textContent = t;
         mealTagsWrap.appendChild(tag);
     });
@@ -62,9 +63,17 @@ const renderServingsAdjuster = (preview, recipe) => {
     const inputStartValue = String(recipe.servings);
     const amountInput = new AmountInput("info__servings-input", "numeric", "[0-9]*", inputStartValue, "", "Servings amount", "", "Remove amout of servings", "Add amount of servings");
     amountInput.render(servingsInputWrap, "prepend");
-    const servingsInput = preview.querySelector(".info__servings-input");
+    const servingsInput = amountInput.inputInput;
     if (!servingsInput)
         throw new Error("servingsInput not found on page");
+    const addToPlanBtn = document.querySelector(".button--plan");
+    if (!addToPlanBtn)
+        throw new Error("addToPlanBtn not found on page");
+    addToPlanBtn.addEventListener("click", () => {
+        const servingsAmount = Number(servingsInput.value);
+        const modal = new AddToPlanModal("Confirm choice", "Please, choose the days to which you'd like to add the recipe and confirm the amount of servings. You can later modify them in the planner.");
+        modal.openModal(recipe, servingsAmount);
+    });
 };
 const renderIngredientList = async (preview, recipe, foodStorage) => {
     const ingredientsWrap = preview.querySelector(".ingredients__wrap");

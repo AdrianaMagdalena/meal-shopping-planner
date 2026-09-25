@@ -1,9 +1,9 @@
 import { generateId } from "../utils/generateId.js";
 const tagTemplate = document.createElement("template");
 const tagTemplateHTML = `
-<label class="recipe-search__tag">
-    <div class="recipe-search__tag-marker"></div>
-    <input class="recipe-search__tag-input" type="checkbox" />
+<label class="tag tag--picker">
+    <div class="tag__marker"></div>
+    <input class="tag__input" type="checkbox" />
     <span></span>
 </label>
 `;
@@ -52,11 +52,11 @@ export class SearchPanel {
         }
         this._dietTags.forEach((t) => {
             const fragment = tagTemplate.content.cloneNode(true);
-            const searchTag = fragment.querySelector(".recipe-search__tag");
+            const searchTag = fragment.querySelector(".tag--picker");
             if (!searchTag) {
                 throw new Error("searchTag not found in template");
             }
-            const tagInput = searchTag.querySelector(".recipe-search__tag-input");
+            const tagInput = searchTag.querySelector(".tag__input");
             if (!tagInput) {
                 throw new Error("tagInput not found in template");
             }
@@ -72,11 +72,11 @@ export class SearchPanel {
         });
         this._mealTags.forEach((t) => {
             const fragment = tagTemplate.content.cloneNode(true);
-            const searchTag = fragment.querySelector(".recipe-search__tag");
+            const searchTag = fragment.querySelector(".tag--picker");
             if (!searchTag) {
                 throw new Error("searchTag not found in template");
             }
-            const tagInput = searchTag.querySelector(".recipe-search__tag-input");
+            const tagInput = searchTag.querySelector(".tag__input");
             if (!tagInput) {
                 throw new Error("tagInput not found in template");
             }

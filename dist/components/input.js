@@ -36,8 +36,8 @@ export class Input {
             inputLabel.classList.add(".input__label");
             inputLabel.textContent = inputLabelText;
             inputLabel.setAttribute("for", inputId);
-            this._inputField.prepend(inputLabel);
             this._inputLabel = inputLabel;
+            this._inputField.prepend(this._inputLabel);
         }
         if (inputAriaText && inputAriaText.length > 0) {
             this._inputField.setAttribute("aria-label", inputAriaText);

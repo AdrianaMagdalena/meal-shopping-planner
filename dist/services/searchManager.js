@@ -57,8 +57,8 @@ export class SearchManager {
     async filterRecipesByCategories() {
         let checkedDietCategory = [];
         let checkedMealCategory = [];
-        const allDietCategories = document.querySelectorAll(".recipe-search__category--diet .recipe-search__tag input");
-        const allMealCategories = document.querySelectorAll(".recipe-search__category--meal .recipe-search__tag input");
+        const allDietCategories = document.querySelectorAll(".recipe-search__category--diet .tag__input");
+        const allMealCategories = document.querySelectorAll(".recipe-search__category--meal .tag__input");
         allDietCategories.forEach((c) => {
             if (c.checked && c.nextElementSibling?.textContent) {
                 checkedDietCategory.push(c.nextElementSibling.textContent);
