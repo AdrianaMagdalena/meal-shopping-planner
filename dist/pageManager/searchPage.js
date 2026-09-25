@@ -23,7 +23,7 @@ navigation.render(document.body);
         recipesToRender.forEach((recipe) => {
             const card = new RecipeCard(recipe);
             card.render(".recipe-list");
-            const addToPlanBtn = card.cardElement.querySelector(".recipe-card__add-btn");
+            const addToPlanBtn = card.cardElement.querySelector(".button--plan");
             if (!addToPlanBtn)
                 throw new Error("addToPlanBtn not found on page");
             addToPlanBtn.addEventListener("click", (e) => {

@@ -41,9 +41,8 @@ navigation.render(document.body);
       const card = new RecipeCard(recipe);
       card.render(".recipe-list");
 
-      const addToPlanBtn = card.cardElement.querySelector<HTMLButtonElement>(
-        ".recipe-card__add-btn",
-      );
+      const addToPlanBtn =
+        card.cardElement.querySelector<HTMLButtonElement>(".button--plan");
       if (!addToPlanBtn) throw new Error("addToPlanBtn not found on page");
 
       addToPlanBtn.addEventListener("click", (e) => {

@@ -4,7 +4,7 @@ const templateHtml = `
 <div class="recipe-card">
   <div class="recipe-card__img-wrap">
     <div class="recipe-card__btn-wrap">
-      <button class="recipe-card__add-btn">Add to plan</button>
+      <button class="button button--prim button--plan button--icon-before">Add to plan</button>
       <button 
         class="recipe-card__fav-btn" 
         aria-label="Add to favorites">
@@ -38,7 +38,7 @@ export class RecipeCard {
             throw new Error("recipeCard not found in template");
         }
         this._cardElement = recipeCard;
-        const addToPlanBtn = this._cardElement.querySelector("button.recipe-card__add-btn");
+        const addToPlanBtn = this._cardElement.querySelector("button.button--plan");
         if (!addToPlanBtn) {
             throw new Error("addToPlanBtn not found in template");
         }
