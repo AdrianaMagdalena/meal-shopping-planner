@@ -1,4 +1,4 @@
-import { Navigation } from "../components/common/navigation.js";
+import { Navigation } from "../components/navigation.js";
 import {
   WeeklyMenuManager,
   DAY_LABELS,

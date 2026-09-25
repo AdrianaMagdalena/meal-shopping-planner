@@ -1,4 +1,4 @@
-import { isSelectorString } from "../../utils/typeGuards.js";
+import { isSelectorString } from "../utils/typeGuards.js";
 
 const template = document.createElement("template");
 const templateHTML = `

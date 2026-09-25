@@ -1,4 +1,4 @@
-import { Navigation } from "../components/common/navigation.js";
+import { Navigation } from "../components/navigation.js";
 import { WeeklyMenuManager, DAY_LABELS, } from "../services/weeklyMenuManager.js";
 import { MenuCard } from "../components/menuCard.js";
 const navigation = new Navigation("../index.html", "./search.html", "javascript:void(0)", "javascript:void(0)");

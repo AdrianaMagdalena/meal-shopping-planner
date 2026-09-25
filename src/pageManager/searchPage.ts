@@ -1,4 +1,4 @@
-import { Navigation } from "../components/common/navigation.js";
+import { Navigation } from "../components/navigation.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
 import { RecipeCard } from "../components/recipeCard.js";
 import { Recipe } from "../models/recipe.js";
