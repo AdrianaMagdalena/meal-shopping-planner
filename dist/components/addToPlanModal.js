@@ -34,8 +34,7 @@ const tagTemplateHTML = `
 `;
 tagTemplate.innerHTML = tagTemplateHTML.trim();
 export class AddToPlanModal {
-    //private readonly _onConfirm: (dayIndex: number, servingsNum: number) => void;
-    constructor(modalTitle, modalDesc) {
+    constructor(modalTitle, modalDesc, onConfirm) {
         const fragment = template.content.cloneNode(true);
         const modalContainer = fragment.querySelector(".modal");
         if (!modalContainer)
@@ -91,10 +90,20 @@ export class AddToPlanModal {
         const amountInput = new AmountInput("modal__servings-input", "numeric", "[0-9]*", "0", "", "Servings amount", "", "Remove amout of servings", "Add amount of servings");
         this._servingsInput = amountInput;
         this._servingsInput.render(this._modalContent, "append");
+        this._onConfirm = onConfirm;
+        this._modalPrimBtn.addEventListener("click", () => {
+            const selectedDaysIndex = this.getSelectedDaysIndex();
+            if (selectedDaysIndex.length === 0)
+                throw new Error("No day selected");
+            const servings = Number(this._servingsInput.inputInput.value);
+            selectedDaysIndex.forEach((i) => {
+                this._onConfirm(i, servings);
+            });
+            this.closeModal();
+        });
         this._modalSecBtn.addEventListener("click", () => {
             this.closeModal();
         });
-        //this._onConfirm = onConfirm;
     }
     render(parentSelector, position) {
         const parentElement = isSelectorString(parentSelector)
@@ -114,5 +123,15 @@ export class AddToPlanModal {
     }
     closeModal() {
         this._modalElem.classList.remove("visible");
+    }
+    getSelectedDaysIndex() {
+        const dayTags = Array.from(this._modalDayPicker.querySelectorAll(".tag__input"));
+        const checkedIndexes = [];
+        for (let i = 0; i < dayTags.length; i++) {
+            if (dayTags[i].checked) {
+                checkedIndexes.push(i);
+            }
+        }
+        return checkedIndexes;
     }
 }

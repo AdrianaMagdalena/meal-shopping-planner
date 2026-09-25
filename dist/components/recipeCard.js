@@ -91,13 +91,13 @@ export class RecipeCard {
         }
         obj.dietTags.forEach((tag) => {
             const cardTag = document.createElement("p");
-            cardTag.classList.add("recipe-card__tag");
+            cardTag.classList.add("tag");
             cardTag.textContent = tag;
             this._dietTagWrap.appendChild(cardTag);
         });
         obj.mealTypeTags.forEach((tag) => {
             const cardTag = document.createElement("p");
-            cardTag.classList.add("recipe-card__tag");
+            cardTag.classList.add("tag");
             cardTag.textContent = tag;
             this._mealTagWrap.appendChild(cardTag);
         });

@@ -48,12 +48,12 @@ export class AddToPlanModal {
   private readonly _servingsInput: AmountInput;
   private readonly _modalPrimBtn: HTMLButtonElement;
   private readonly _modalSecBtn?: HTMLButtonElement;
-  //private readonly _onConfirm: (dayIndex: number, servingsNum: number) => void;
+  private readonly _onConfirm: (dayIndex: number, servingsNum: number) => void;
 
   constructor(
     modalTitle: string,
     modalDesc: string,
-    //onConfirm: (dayIndex: number, servingsNum: number) => void,
+    onConfirm: (dayIndex: number, servingsNum: number) => void,
   ) {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
 
@@ -139,10 +139,22 @@ export class AddToPlanModal {
     this._servingsInput = amountInput;
     this._servingsInput.render(this._modalContent, "append");
 
+    this._onConfirm = onConfirm;
+
+    this._modalPrimBtn.addEventListener("click", () => {
+      const selectedDaysIndex: number[] = this.getSelectedDaysIndex();
+      if (selectedDaysIndex.length === 0) throw new Error("No day selected");
+
+      const servings = Number(this._servingsInput.inputInput.value);
+      selectedDaysIndex.forEach((i) => {
+        this._onConfirm(i, servings);
+      });
+      this.closeModal();
+    });
+
     this._modalSecBtn.addEventListener("click", () => {
       this.closeModal();
     });
-    //this._onConfirm = onConfirm;
   }
 
   render(parentSelector: string | HTMLElement, position: string): void {
@@ -167,5 +179,20 @@ export class AddToPlanModal {
 
   closeModal(): void {
     this._modalElem.classList.remove("visible");
+  }
+
+  private getSelectedDaysIndex(): number[] {
+    const dayTags = Array.from(
+      this._modalDayPicker.querySelectorAll<HTMLInputElement>(".tag__input"),
+    );
+
+    const checkedIndexes: number[] = [];
+    for (let i = 0; i < dayTags.length; i++) {
+      if (dayTags[i].checked) {
+        checkedIndexes.push(i);
+      }
+    }
+
+    return checkedIndexes;
   }
 }
