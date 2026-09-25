@@ -100,10 +100,10 @@ export class SearchManager {
     let checkedMealCategory: string[] = [];
 
     const allDietCategories = document.querySelectorAll<HTMLInputElement>(
-      ".recipe-search__category--diet .recipe-search__tag input",
+      ".recipe-search__category--diet .tag__input",
     );
     const allMealCategories = document.querySelectorAll<HTMLInputElement>(
-      ".recipe-search__category--meal .recipe-search__tag input",
+      ".recipe-search__category--meal .tag__input",
     );
 
     allDietCategories.forEach((c) => {

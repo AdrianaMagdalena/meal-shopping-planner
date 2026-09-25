@@ -49,14 +49,14 @@ const renderTags = (preview: HTMLElement, recipe: Recipe) => {
 
   recipe.dietTags.forEach((t) => {
     const tag = document.createElement("p");
-    tag.classList.add("info__tag");
+    tag.classList.add("tag");
     tag.textContent = t;
     dietTagsWrap.appendChild(tag);
   });
 
   recipe.mealTypeTags.forEach((t) => {
     const tag = document.createElement("p");
-    tag.classList.add("info__tag");
+    tag.classList.add("tag");
     tag.textContent = t;
     mealTagsWrap.appendChild(tag);
   });
@@ -90,9 +90,7 @@ const renderServingsAdjuster = (preview: HTMLElement, recipe: Recipe) => {
   );
   amountInput.render(servingsInputWrap, "prepend");
 
-  const servingsInput = preview.querySelector<HTMLInputElement>(
-    ".info__servings-input",
-  );
+  const servingsInput = amountInput.inputInput;
   if (!servingsInput) throw new Error("servingsInput not found on page");
 };
 

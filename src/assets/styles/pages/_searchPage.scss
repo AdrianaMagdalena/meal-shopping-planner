@@ -76,43 +76,6 @@
     flex-wrap: wrap;
     gap: 8px;
   }
-
-  &__tag {
-    --tag-marker-check-icon: none;
-    --tag-background-color: var(--clr-sage-light);
-
-    padding: 8px 12px 8px 8px;
-    border-radius: 20px;
-    border: 1px solid var(--clr-sage-dark);
-    background-color: var(--tag-background-color);
-    display: flex;
-    gap: 4px;
-    align-items: center;
-    transition: all linear 0.2s;
-    cursor: pointer;
-
-    &:has(:checked) {
-      --tag-marker-check-icon: url("../icons/check.svg");
-      --tag-background-color: var(--clr-sage-med);
-    }
-  }
-
-  &__tag-input {
-    appearance: none;
-    position: absolute;
-  }
-
-  &__tag-marker {
-    background-color: var(--clr-white);
-    height: 20px;
-    width: 20px;
-    border: 1px solid var(--clr-sage-dark);
-    border-radius: 50%;
-    background-image: var(--tag-marker-check-icon);
-    background-position: center;
-    background-size: cover;
-    cursor: pointer;
-  }
 }
 
 .recipe-list {
