@@ -1,7 +1,6 @@
 import { Recipe } from "../models/recipe.js";
 import { AmountInput } from "./amountInput.js";
 import { FoodStorage } from "../storages/foodStorage.js";
-import { AddToPlanModal } from "./addToPlanModal.js";
 
 const renderBasicInfo = (preview: HTMLElement, recipe: Recipe): void => {
   const recipeImage = preview.querySelector<HTMLImageElement>(
@@ -97,15 +96,6 @@ const renderServingsAdjuster = (preview: HTMLElement, recipe: Recipe) => {
   const addToPlanBtn =
     document.querySelector<HTMLButtonElement>(".button--plan");
   if (!addToPlanBtn) throw new Error("addToPlanBtn not found on page");
-
-  addToPlanBtn.addEventListener("click", () => {
-    const servingsAmount = Number(servingsInput.value);
-    const modal = new AddToPlanModal(
-      "Confirm choice",
-      "Please, choose the days to which you'd like to add the recipe and confirm the amount of servings. You can later modify them in the planner.",
-    );
-    modal.openModal(recipe, servingsAmount);
-  });
 };
 
 const renderIngredientList = async (

@@ -3,6 +3,7 @@ export class WeeklyMenuEntry {
     constructor(recipe, servingsAmount) {
         this._id = generateId("menuentry", 8);
         this._recipeId = recipe.id;
+        this._recipeTitle = recipe.title;
         this.servingsAmount = servingsAmount;
         this._servingsAmount = this.servingsAmount;
     }
@@ -11,6 +12,9 @@ export class WeeklyMenuEntry {
     }
     get recipeId() {
         return this._recipeId;
+    }
+    get recipeTitle() {
+        return this._recipeTitle;
     }
     get servingsAmount() {
         return this._servingsAmount;

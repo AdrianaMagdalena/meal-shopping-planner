@@ -1,5 +1,4 @@
 import { AmountInput } from "./amountInput.js";
-import { AddToPlanModal } from "./addToPlanModal.js";
 const renderBasicInfo = (preview, recipe) => {
     const recipeImage = preview.querySelector(".recipe-preview__image");
     if (!recipeImage)
@@ -69,11 +68,6 @@ const renderServingsAdjuster = (preview, recipe) => {
     const addToPlanBtn = document.querySelector(".button--plan");
     if (!addToPlanBtn)
         throw new Error("addToPlanBtn not found on page");
-    addToPlanBtn.addEventListener("click", () => {
-        const servingsAmount = Number(servingsInput.value);
-        const modal = new AddToPlanModal("Confirm choice", "Please, choose the days to which you'd like to add the recipe and confirm the amount of servings. You can later modify them in the planner.");
-        modal.openModal(recipe, servingsAmount);
-    });
 };
 const renderIngredientList = async (preview, recipe, foodStorage) => {
     const ingredientsWrap = preview.querySelector(".ingredients__wrap");
