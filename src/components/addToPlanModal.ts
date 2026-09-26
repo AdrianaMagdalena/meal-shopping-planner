@@ -48,12 +48,16 @@ export class AddToPlanModal {
   private readonly _servingsInput: AmountInput;
   private readonly _modalPrimBtn: HTMLButtonElement;
   private readonly _modalSecBtn?: HTMLButtonElement;
-  private readonly _onConfirm: (dayIndex: number, servingsNum: number) => void;
+  private readonly _onConfirm: (
+    dayIndex: number,
+    recipe: Recipe,
+    servingsNum: number,
+  ) => void;
 
   constructor(
     modalTitle: string,
     modalDesc: string,
-    onConfirm: (dayIndex: number, servingsNum: number) => void,
+    onConfirm: (dayIndex: number, recipe: Recipe, servingsNum: number) => void,
   ) {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
 
@@ -141,29 +145,6 @@ export class AddToPlanModal {
 
     this._onConfirm = onConfirm;
 
-    this._modalPrimBtn.addEventListener("click", () => {
-      const selectedDaysIndex: number[] = this.getSelectedDaysIndex();
-      if (selectedDaysIndex.length === 0) {
-        if (
-          !this._modalDayPicker.querySelector<HTMLParagraphElement>(
-            ".error-msg",
-          )
-        ) {
-          const error = document.createElement("p");
-          error.classList.add("error-msg");
-          error.textContent = "Select at least one day before proceeding!";
-          this._modalDayPicker.appendChild(error);
-        }
-        return;
-      }
-
-      const servings = Number(this._servingsInput.inputInput.value);
-      selectedDaysIndex.forEach((i) => {
-        this._onConfirm(i, servings);
-      });
-      this.closeModal();
-    });
-
     this._modalSecBtn.addEventListener("click", () => {
       this.closeModal();
     });
@@ -187,6 +168,29 @@ export class AddToPlanModal {
 
     this._modalRecipeTitle.textContent = recipe.title;
     this._servingsInput.inputInput.value = String(servings);
+
+    this._modalPrimBtn.addEventListener("click", () => {
+      const selectedDaysIndex: number[] = this.getSelectedDaysIndex();
+      if (selectedDaysIndex.length === 0) {
+        if (
+          !this._modalDayPicker.querySelector<HTMLParagraphElement>(
+            ".error-msg",
+          )
+        ) {
+          const error = document.createElement("p");
+          error.classList.add("error-msg");
+          error.textContent = "Select at least one day before proceeding!";
+          this._modalDayPicker.appendChild(error);
+        }
+        return;
+      }
+
+      const servings = Number(this._servingsInput.inputInput.value);
+      selectedDaysIndex.forEach((i) => {
+        this._onConfirm(i, recipe, servings);
+      });
+      this.closeModal();
+    });
   }
 
   closeModal(): void {

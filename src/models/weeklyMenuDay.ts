@@ -5,8 +5,9 @@ export class WeeklyMenuDay {
   private readonly _id: string;
   private _dayEntries: WeeklyMenuEntry[] = [];
 
-  constructor() {
-    this._id = generateId("menuday", 4);
+  constructor(existingId?: string, existingEntries?: WeeklyMenuEntry[]) {
+    this._id = existingId ?? generateId("menuday", 4);
+    this._dayEntries = existingEntries ?? [];
   }
 
   get id() {

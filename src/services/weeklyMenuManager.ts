@@ -1,3 +1,4 @@
+import { ISavedWeeklyMenuDay } from "../interfaces/iSavedWeeklyMenu.js";
 import { Recipe } from "../models/recipe.js";
 import { WeeklyMenuDay } from "../models/weeklyMenuDay.js";
 import { WeeklyMenuEntry } from "../models/weeklyMenuEntry.js";
@@ -12,19 +13,57 @@ export const DAY_LABELS = [
   "Sunday",
 ];
 
+const STORAGE_KEY = "weeklyMenu";
+
 export class WeeklyMenuManager {
-  private _weekDays: WeeklyMenuDay[] = [
-    new WeeklyMenuDay(),
-    new WeeklyMenuDay(),
-    new WeeklyMenuDay(),
-    new WeeklyMenuDay(),
-    new WeeklyMenuDay(),
-    new WeeklyMenuDay(),
-    new WeeklyMenuDay(),
-  ];
+  private readonly _weekDays: WeeklyMenuDay[];
+
+  constructor(weekdays?: WeeklyMenuDay[]) {
+    this._weekDays =
+      weekdays ??
+      Array.from({ length: DAY_LABELS.length }, () => new WeeklyMenuDay());
+  }
 
   get weekDays() {
     return this._weekDays;
+  }
+
+  static load(): WeeklyMenuManager {
+    const rawData = localStorage.getItem(STORAGE_KEY);
+    if (!rawData) return new WeeklyMenuManager();
+
+    try {
+      const parsedData: unknown = JSON.parse(rawData);
+      if (
+        !Array.isArray(parsedData) ||
+        parsedData.length !== DAY_LABELS.length
+      ) {
+        throw new Error("Invalid format of saved weekly menu!");
+      }
+
+      const weekDays = parsedData.map((dayData: ISavedWeeklyMenuDay) => {
+        const entries = dayData.entries.map((entryData) =>
+          WeeklyMenuEntry.fromSavedData(entryData),
+        );
+        return new WeeklyMenuDay(dayData.id, entries);
+      });
+
+      return new WeeklyMenuManager(weekDays);
+    } catch (err) {
+      console.error(
+        "Failed to load saved weekly menu data. Trying again: ",
+        err,
+      );
+      return new WeeklyMenuManager();
+    }
+  }
+
+  save(): void {
+    const data: ISavedWeeklyMenuDay[] = this._weekDays.map((day) => ({
+      id: day.id,
+      entries: day.dayEntries.map((entry) => entry.toSavedData()),
+    }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   }
 
   addEntryToDay(dayIndex: number, recipe: Recipe, servings: number): void {
@@ -32,9 +71,10 @@ export class WeeklyMenuManager {
       throw new Error("dayIndex out of 0 - 6 range");
 
     const day = this._weekDays[dayIndex];
-    const entry = new WeeklyMenuEntry(recipe, servings);
+    const entry = new WeeklyMenuEntry(recipe.id, recipe.title, servings);
 
     day.addEntry(entry);
+    this.save();
   }
 
   removeEntryFromDay(dayIndex: number, entryId: string): void {
@@ -46,6 +86,7 @@ export class WeeklyMenuManager {
 
     if (!removed)
       throw new Error("EntryId not existent on day. Unable to remove.");
+    this.save();
   }
 
   updateEntryServings(dayIndex: number, entryId: string, newServings: number) {
@@ -57,5 +98,6 @@ export class WeeklyMenuManager {
     if (!entry) throw new Error("EntryId not existent on day.");
 
     entry.servingsAmount = newServings;
+    this.save();
   }
 }

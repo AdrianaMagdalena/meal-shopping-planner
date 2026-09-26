@@ -5,6 +5,7 @@ import { Recipe } from "../models/recipe.js";
 import { SearchManager } from "../services/searchManager.js";
 import { ErrorScreen } from "../components/errorScreen.js";
 import { AddToPlanModal } from "../components/addToPlanModal.js";
+import { WeeklyMenuManager } from "../services/weeklyMenuManager.js";
 
 const navigation = new Navigation(
   "../index.html",
@@ -59,8 +60,9 @@ navigation.render(document.body);
   const modal = new AddToPlanModal(
     "Confirm choice",
     "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
-    (dayIndex: number, servings: number) => {
-      // handling recipe local storage
+    (dayIndex: number, recipe: Recipe, servings: number) => {
+      const menuManager = WeeklyMenuManager.load();
+      menuManager.addEntryToDay(dayIndex, recipe, servings);
     },
   );
   modal.render(document.body, "append");

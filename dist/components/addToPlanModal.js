@@ -91,23 +91,6 @@ export class AddToPlanModal {
         this._servingsInput = amountInput;
         this._servingsInput.render(this._modalContent, "append");
         this._onConfirm = onConfirm;
-        this._modalPrimBtn.addEventListener("click", () => {
-            const selectedDaysIndex = this.getSelectedDaysIndex();
-            if (selectedDaysIndex.length === 0) {
-                if (!this._modalDayPicker.querySelector(".error-msg")) {
-                    const error = document.createElement("p");
-                    error.classList.add("error-msg");
-                    error.textContent = "Select at least one day before proceeding!";
-                    this._modalDayPicker.appendChild(error);
-                }
-                return;
-            }
-            const servings = Number(this._servingsInput.inputInput.value);
-            selectedDaysIndex.forEach((i) => {
-                this._onConfirm(i, servings);
-            });
-            this.closeModal();
-        });
         this._modalSecBtn.addEventListener("click", () => {
             this.closeModal();
         });
@@ -127,6 +110,23 @@ export class AddToPlanModal {
         }, 10);
         this._modalRecipeTitle.textContent = recipe.title;
         this._servingsInput.inputInput.value = String(servings);
+        this._modalPrimBtn.addEventListener("click", () => {
+            const selectedDaysIndex = this.getSelectedDaysIndex();
+            if (selectedDaysIndex.length === 0) {
+                if (!this._modalDayPicker.querySelector(".error-msg")) {
+                    const error = document.createElement("p");
+                    error.classList.add("error-msg");
+                    error.textContent = "Select at least one day before proceeding!";
+                    this._modalDayPicker.appendChild(error);
+                }
+                return;
+            }
+            const servings = Number(this._servingsInput.inputInput.value);
+            selectedDaysIndex.forEach((i) => {
+                this._onConfirm(i, recipe, servings);
+            });
+            this.closeModal();
+        });
     }
     closeModal() {
         this._modalElem.classList.remove("visible");
