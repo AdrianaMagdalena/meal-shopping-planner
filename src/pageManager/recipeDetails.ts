@@ -4,7 +4,7 @@ import { Navigation } from "../components/navigation.js";
 import { ErrorScreen } from "../components/errorScreen.js";
 import { renderRecipePreview } from "../components/recipePreview.js";
 import { AddToPlanModal } from "../components/addToPlanModal.js";
-import { WeeklyMenuManager } from "../services/weeklyMenuManager.js";
+import { PlannerManager } from "../services/plannerManager.js";
 import { Recipe } from "../models/recipe.js";
 import { ServingsManager } from "../services/servingsManager.js";
 
@@ -51,7 +51,7 @@ navigation.render(document.body);
       "Confirm choice",
       "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
       (dayIndex: number, recipe: Recipe, servings: number) => {
-        const menuManager = WeeklyMenuManager.load();
+        const menuManager = PlannerManager.load();
         menuManager.addEntryToDay(dayIndex, recipe, servings);
       },
     );

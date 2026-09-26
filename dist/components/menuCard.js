@@ -1,6 +1,6 @@
 import { isSelectorString } from "../utils/typeGuards.js";
 import { MenuEntry } from "./menuEntry.js";
-import { DAY_LABELS } from "../services/weeklyMenuManager.js";
+import { DAY_LABELS } from "../services/plannerManager.js";
 import { insertElem } from "../utils/insertElem.js";
 const template = document.createElement("template");
 const templateHTML = `

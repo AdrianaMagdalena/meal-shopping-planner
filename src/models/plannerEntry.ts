@@ -1,8 +1,7 @@
-import { ISavedWeeklyMenuEntry } from "../interfaces/iSavedWeeklyMenu.js";
+import { ISavedPlannerEntry } from "../interfaces/iSavedPlanner.js";
 import { generateId } from "../utils/generateId.js";
-import { Recipe } from "./recipe.js";
 
-export class WeeklyMenuEntry {
+export class PlannerEntry {
   private readonly _id: string;
   private readonly _recipeId: string;
   private readonly _recipeTitle: string;
@@ -31,8 +30,8 @@ export class WeeklyMenuEntry {
     this._servingsAmount = v;
   }
 
-  static fromSavedData(data: ISavedWeeklyMenuEntry): WeeklyMenuEntry {
-    return new WeeklyMenuEntry(
+  static fromSavedData(data: ISavedPlannerEntry): PlannerEntry {
+    return new PlannerEntry(
       data.recipeId,
       data.recipeTitle,
       data.servingsAmount,
@@ -40,7 +39,7 @@ export class WeeklyMenuEntry {
     );
   }
 
-  toSavedData(): ISavedWeeklyMenuEntry {
+  toSavedData(): ISavedPlannerEntry {
     return {
       id: this._id,
       recipeId: this._recipeId,

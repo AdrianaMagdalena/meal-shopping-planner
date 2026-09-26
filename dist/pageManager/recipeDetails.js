@@ -4,7 +4,7 @@ import { Navigation } from "../components/navigation.js";
 import { ErrorScreen } from "../components/errorScreen.js";
 import { renderRecipePreview } from "../components/recipePreview.js";
 import { AddToPlanModal } from "../components/addToPlanModal.js";
-import { WeeklyMenuManager } from "../services/weeklyMenuManager.js";
+import { PlannerManager } from "../services/plannerManager.js";
 import { ServingsManager } from "../services/servingsManager.js";
 const navigation = new Navigation("../index.html", "./search.html", "./planner.html", "./week-list.html", "./favorites.html");
 navigation.render(document.body);
@@ -27,7 +27,7 @@ navigation.render(document.body);
         const { amountInput, previewElement } = await renderRecipePreview(recipe, foodStorage);
         const servingsManager = new ServingsManager(recipe, amountInput, previewElement);
         const modal = new AddToPlanModal("Confirm choice", "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.", (dayIndex, recipe, servings) => {
-            const menuManager = WeeklyMenuManager.load();
+            const menuManager = PlannerManager.load();
             menuManager.addEntryToDay(dayIndex, recipe, servings);
         });
         modal.render(document.body, "append");

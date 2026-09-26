@@ -1,7 +1,7 @@
-import { WeeklyMenuEntry } from "../models/weeklyMenuEntry.js";
+import { PlannerEntry } from "../models/plannerEntry.js";
 import { isSelectorString } from "../utils/typeGuards.js";
 import { MenuEntry } from "./menuEntry.js";
-import { DAY_LABELS } from "../services/weeklyMenuManager.js";
+import { DAY_LABELS } from "../services/plannerManager.js";
 import { insertElem } from "../utils/insertElem.js";
 
 const template = document.createElement("template");
@@ -63,7 +63,7 @@ export class MenuCard {
   }
 
   renderEntry(
-    menuEntry: WeeklyMenuEntry,
+    menuEntry: PlannerEntry,
     onRemove: (entryId: string) => void,
   ): void {
     const entry = new MenuEntry(menuEntry, onRemove);

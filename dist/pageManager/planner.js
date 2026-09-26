@@ -1,12 +1,12 @@
 import { Navigation } from "../components/navigation.js";
-import { WeeklyMenuManager, DAY_LABELS, } from "../services/weeklyMenuManager.js";
+import { PlannerManager, DAY_LABELS } from "../services/plannerManager.js";
 import { MenuCard } from "../components/menuCard.js";
 const navigation = new Navigation("../index.html", "./search.html", "javascript:void(0)", "./week-list.html", "./favorites.html");
 navigation.render(document.body);
 const menuConatiner = document.querySelector(".planner");
 if (!menuConatiner)
     throw new Error("menuContainer not found on page");
-const menuManager = WeeklyMenuManager.load();
+const menuManager = PlannerManager.load();
 const renderDay = (dayIndex) => {
     const day = menuManager.weekDays[dayIndex];
     const menuCard = new MenuCard(dayIndex);

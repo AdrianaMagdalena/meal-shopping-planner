@@ -1,7 +1,7 @@
 import { isSelectorString } from "../utils/typeGuards.js";
 import { insertElem } from "../utils/insertElem.js";
 import { AmountInput } from "./amountInput.js";
-import { DAY_LABELS } from "../services/weeklyMenuManager.js";
+import { DAY_LABELS } from "../services/plannerManager.js";
 import { generateId } from "../utils/generateId.js";
 const template = document.createElement("template");
 const templateHTML = `

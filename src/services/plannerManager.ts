@@ -1,7 +1,7 @@
-import { ISavedWeeklyMenuDay } from "../interfaces/iSavedWeeklyMenu.js";
+import { ISavedPlannerDay } from "../interfaces/iSavedPlanner.js";
 import { Recipe } from "../models/recipe.js";
-import { WeeklyMenuDay } from "../models/weeklyMenuDay.js";
-import { WeeklyMenuEntry } from "../models/weeklyMenuEntry.js";
+import { PlannerDay } from "../models/plannerDay.js";
+import { PlannerEntry } from "../models/plannerEntry.js";
 
 export const DAY_LABELS = [
   "Monday",
@@ -13,24 +13,24 @@ export const DAY_LABELS = [
   "Sunday",
 ];
 
-const STORAGE_KEY = "weeklyMenu";
+const STORAGE_KEY = "weeklyPlan";
 
-export class WeeklyMenuManager {
-  private readonly _weekDays: WeeklyMenuDay[];
+export class PlannerManager {
+  private readonly _weekDays: PlannerDay[];
 
-  constructor(weekdays?: WeeklyMenuDay[]) {
+  constructor(weekdays?: PlannerDay[]) {
     this._weekDays =
       weekdays ??
-      Array.from({ length: DAY_LABELS.length }, () => new WeeklyMenuDay());
+      Array.from({ length: DAY_LABELS.length }, () => new PlannerDay());
   }
 
   get weekDays() {
     return this._weekDays;
   }
 
-  static load(): WeeklyMenuManager {
+  static load(): PlannerManager {
     const rawData = localStorage.getItem(STORAGE_KEY);
-    if (!rawData) return new WeeklyMenuManager();
+    if (!rawData) return new PlannerManager();
 
     try {
       const parsedData: unknown = JSON.parse(rawData);
@@ -41,25 +41,25 @@ export class WeeklyMenuManager {
         throw new Error("Invalid format of saved weekly menu!");
       }
 
-      const weekDays = parsedData.map((dayData: ISavedWeeklyMenuDay) => {
+      const weekDays = parsedData.map((dayData: ISavedPlannerDay) => {
         const entries = dayData.entries.map((entryData) =>
-          WeeklyMenuEntry.fromSavedData(entryData),
+          PlannerEntry.fromSavedData(entryData),
         );
-        return new WeeklyMenuDay(dayData.id, entries);
+        return new PlannerDay(dayData.id, entries);
       });
 
-      return new WeeklyMenuManager(weekDays);
+      return new PlannerManager(weekDays);
     } catch (err) {
       console.error(
         "Failed to load saved weekly menu data. Trying again: ",
         err,
       );
-      return new WeeklyMenuManager();
+      return new PlannerManager();
     }
   }
 
   save(): void {
-    const data: ISavedWeeklyMenuDay[] = this._weekDays.map((day) => ({
+    const data: ISavedPlannerDay[] = this._weekDays.map((day) => ({
       id: day.id,
       entries: day.dayEntries.map((entry) => entry.toSavedData()),
     }));
@@ -71,7 +71,7 @@ export class WeeklyMenuManager {
       throw new Error("dayIndex out of 0 - 6 range");
 
     const day = this._weekDays[dayIndex];
-    const entry = new WeeklyMenuEntry(recipe.id, recipe.title, servings);
+    const entry = new PlannerEntry(recipe.id, recipe.title, servings);
 
     day.addEntry(entry);
     this.save();

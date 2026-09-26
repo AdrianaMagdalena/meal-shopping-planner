@@ -1,8 +1,8 @@
 import { generateId } from "../utils/generateId.js";
-export class WeeklyMenuDay {
+export class PlannerDay {
     constructor(existingId, existingEntries) {
         this._dayEntries = [];
-        this._id = existingId ?? generateId("menuday", 4);
+        this._id = existingId ?? generateId("planday", 4);
         this._dayEntries = existingEntries ?? [];
     }
     get id() {

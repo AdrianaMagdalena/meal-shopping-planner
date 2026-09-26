@@ -1,5 +1,5 @@
 import { generateId } from "../utils/generateId.js";
-export class WeeklyMenuEntry {
+export class PlannerEntry {
     constructor(recipeId, recipeTitle, servingsAmount, existingId) {
         this._id = existingId ?? generateId("menuentry", 8);
         this._recipeId = recipeId;
@@ -17,7 +17,7 @@ export class WeeklyMenuEntry {
         this._servingsAmount = v;
     }
     static fromSavedData(data) {
-        return new WeeklyMenuEntry(data.recipeId, data.recipeTitle, data.servingsAmount, data.id);
+        return new PlannerEntry(data.recipeId, data.recipeTitle, data.servingsAmount, data.id);
     }
     toSavedData() {
         return {

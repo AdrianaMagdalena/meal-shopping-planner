@@ -1,8 +1,5 @@
 import { Navigation } from "../components/navigation.js";
-import {
-  WeeklyMenuManager,
-  DAY_LABELS,
-} from "../services/weeklyMenuManager.js";
+import { PlannerManager, DAY_LABELS } from "../services/plannerManager.js";
 import { MenuCard } from "../components/menuCard.js";
 
 const navigation = new Navigation(
@@ -17,7 +14,7 @@ navigation.render(document.body);
 const menuConatiner = document.querySelector<HTMLDivElement>(".planner");
 if (!menuConatiner) throw new Error("menuContainer not found on page");
 
-const menuManager = WeeklyMenuManager.load();
+const menuManager = PlannerManager.load();
 
 const renderDay = (dayIndex: number): void => {
   const day = menuManager.weekDays[dayIndex];

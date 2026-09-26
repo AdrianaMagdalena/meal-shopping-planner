@@ -1,12 +1,12 @@
 import { generateId } from "../utils/generateId.js";
-import { WeeklyMenuEntry } from "./weeklyMenuEntry.js";
+import { PlannerEntry } from "./plannerEntry.js";
 
-export class WeeklyMenuDay {
+export class PlannerDay {
   private readonly _id: string;
-  private _dayEntries: WeeklyMenuEntry[] = [];
+  private _dayEntries: PlannerEntry[] = [];
 
-  constructor(existingId?: string, existingEntries?: WeeklyMenuEntry[]) {
-    this._id = existingId ?? generateId("menuday", 4);
+  constructor(existingId?: string, existingEntries?: PlannerEntry[]) {
+    this._id = existingId ?? generateId("planday", 4);
     this._dayEntries = existingEntries ?? [];
   }
 
@@ -18,7 +18,7 @@ export class WeeklyMenuDay {
     return this._dayEntries;
   }
 
-  addEntry(entry: WeeklyMenuEntry): void {
+  addEntry(entry: PlannerEntry): void {
     this._dayEntries.push(entry);
   }
 
@@ -32,7 +32,7 @@ export class WeeklyMenuDay {
     return this._dayEntries.map((e) => e.recipeId);
   }
 
-  getEntryById(id: string): WeeklyMenuEntry | undefined {
+  getEntryById(id: string): PlannerEntry | undefined {
     return this._dayEntries.find((e) => e.id === id);
   }
 

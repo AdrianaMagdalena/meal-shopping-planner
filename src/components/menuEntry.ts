@@ -1,4 +1,4 @@
-import { WeeklyMenuEntry } from "../models/weeklyMenuEntry.js";
+import { PlannerEntry } from "../models/plannerEntry.js";
 import { insertElem } from "../utils/insertElem.js";
 import { isSelectorString } from "../utils/typeGuards.js";
 import { AmountInput } from "./amountInput.js";
@@ -20,7 +20,7 @@ export class MenuEntry {
   private readonly _recipeTitle: HTMLParagraphElement;
   private readonly _servingsInput: AmountInput;
 
-  constructor(entry: WeeklyMenuEntry, onRemove: (entryId: string) => void) {
+  constructor(entry: PlannerEntry, onRemove: (entryId: string) => void) {
     const entryServings = String(entry.servingsAmount);
 
     const fragment = template.content.cloneNode(true) as DocumentFragment;
