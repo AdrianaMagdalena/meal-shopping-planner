@@ -16,13 +16,14 @@ navigation.render(document.body);
 const menuConatiner = document.querySelector<HTMLDivElement>(".weekly-menu");
 if (!menuConatiner) throw new Error("menuContainer not found on page");
 
-const menuManager = new WeeklyMenuManager();
+const menuManager = WeeklyMenuManager.load();
 
 const renderDay = (dayIndex: number): void => {
   const day = menuManager.weekDays[dayIndex];
 
   const menuCard = new MenuCard(dayIndex);
   menuCard.render(menuConatiner, "append");
+  menuCard.cardElem.style.order = String(dayIndex);
 
   if (day.dayEntries.length > 0) {
     menuCard.renderHeader();

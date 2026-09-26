@@ -1103,19 +1103,18 @@ p.error-msg:before {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-.weekly-menu h1 {
+.weekly-menu__title {
   margin: -4px 0 4px 0;
   font-family: "Coiny", system-ui;
   font-weight: 400;
   opacity: 0.85;
 }
 @media (width >= 560px) {
-  .weekly-menu h1 {
+  .weekly-menu__title {
     margin: 0;
   }
 }
-.weekly-menu h1 {
-  grid-column: 1/-1;
+.weekly-menu__title {
   font-size: 36px;
   text-align: center;
 }
