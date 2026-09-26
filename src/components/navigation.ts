@@ -9,7 +9,8 @@ const templateHTML = `
     <button class="nav-btn" aria-label="Navigation"></button>
     <ul class="nav-menu">
     <li class="nav-item nav-item__recipes"><a>Recipes</a></li>
-    <li class="nav-item nav-item__menu"><a>Weekly menu</a></li>
+    <li class="nav-item nav-item__planner"><a>Planner</a></li>
+    <li class="nav-item nav-item__week"><a>Week's list</a></li>
     <li class="nav-item nav-item__favs"><a>Favorites</a></li>
     </ul>
 </nav>
@@ -20,13 +21,15 @@ export class Navigation {
   private _navElement: HTMLElement;
   private _homeAnchor: HTMLAnchorElement;
   private _recipesAnchor: HTMLAnchorElement;
-  private _weeklyMenuAnchor: HTMLAnchorElement;
+  private _plannerAnchor: HTMLAnchorElement;
+  private _weekListAnchor: HTMLAnchorElement;
   private _favoritesAnchor: HTMLAnchorElement;
 
   constructor(
     homeLink: string,
     recipesLink: string,
-    weeklyMenuLink: string,
+    plannerLink: string,
+    weekListLink: string,
     favoritesLink: string,
   ) {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
@@ -64,12 +67,20 @@ export class Navigation {
     }
     this._recipesAnchor = recipesAnchor;
 
-    const weeklyMenuAnchor =
-      this._navElement.querySelector<HTMLAnchorElement>(".nav-item__menu a");
-    if (!weeklyMenuAnchor) {
-      throw new Error("weeklyMenuAnchor not found in template");
+    const plannerAnchor = this._navElement.querySelector<HTMLAnchorElement>(
+      ".nav-item__planner a",
+    );
+    if (!plannerAnchor) {
+      throw new Error("plannerAnchor not found in template");
     }
-    this._weeklyMenuAnchor = weeklyMenuAnchor;
+    this._plannerAnchor = plannerAnchor;
+
+    const weekListAnchor =
+      this._navElement.querySelector<HTMLAnchorElement>(".nav-item__week a");
+    if (!weekListAnchor) {
+      throw new Error("weekListAnchor not found in template");
+    }
+    this._weekListAnchor = weekListAnchor;
 
     const favoritesAnchor =
       this._navElement.querySelector<HTMLAnchorElement>(".nav-item__favs a");
@@ -80,11 +91,14 @@ export class Navigation {
 
     this._homeAnchor.href = homeLink;
     this._recipesAnchor.href = recipesLink;
-    this._weeklyMenuAnchor.href = weeklyMenuLink;
+    this._plannerAnchor.href = plannerLink;
+    this._weekListAnchor.href = weekListLink;
     this._favoritesAnchor.href = favoritesLink;
 
     navButton.addEventListener("click", () => {
       navMenu.classList.toggle("opened");
+      const navHeight = this._navElement.offsetHeight;
+      document.body.style.setProperty("--nav-height-counted", `${navHeight}px`);
     });
   }
 

@@ -5,7 +5,7 @@ import { SearchManager } from "../services/searchManager.js";
 import { ErrorScreen } from "../components/errorScreen.js";
 import { AddToPlanModal } from "../components/addToPlanModal.js";
 import { WeeklyMenuManager } from "../services/weeklyMenuManager.js";
-const navigation = new Navigation("../index.html", "javascript:void(0)", "./weekly-menu.html", "javascript:void(0)");
+const navigation = new Navigation("../index.html", "javascript:void(0)", "./planner.html", "./week-list.html", "./favorites.html");
 navigation.render(document.body);
 (async function () {
     const container = document.querySelector(".recipe-list");

@@ -19,17 +19,28 @@
   </head>
   <body>
     <main>
-      <h1 class="weekly-menu__title">Weekly menu</h1>
-      <button
-        class="weekly-menu__button button button--prim button--icon-before button--plan"
-      >
-        Generate shopping list
-      </button>
-      <div class="weekly-menu"></div>
+      <h1 class="weekly-list__title">Weekly planner</h1>
+      <div class="weekly-list__recipe-list">
+        <div class="weekly-list__header-wrap">
+          <h2>This week's recipes</h2>
+          <button
+            class="weekly-list__button button button--prim button--icon-only button--show-recipes button--mini"
+          ></button>
+        </div>
+        <div class="weekly-list__wrap">
+          <ul>
+            <li><a>Lentil Bolognese</a></li>
+            <li>Black bean baked tacos</li>
+            <li>Polish krupnik soup</li>
+            <li>Cottage cheese pancakes</li>
+            <li>Scoopable salad</li>
+          </ul>
+        </div>
+      </div>
     </main>
     <footer>
       <p>Copyright © Adriana Szetlak 2026</p>
     </footer>
-    <script src="../dist/pageManager/weeklyMenu.js" type="module"></script>
+    <script src="../dist/pageManager/weekList.js" type="module"></script>
   </body>
 </html>

@@ -11,8 +11,9 @@ import { ServingsManager } from "../services/servingsManager.js";
 const navigation = new Navigation(
   "../index.html",
   "./search.html",
-  "./weekly-menu.html",
-  "javascript:void(0)",
+  "./planner.html",
+  "./week-list.html",
+  "./favorites.html",
 );
 navigation.render(document.body);
 

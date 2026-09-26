@@ -10,8 +10,9 @@ import { WeeklyMenuManager } from "../services/weeklyMenuManager.js";
 const navigation = new Navigation(
   "../index.html",
   "javascript:void(0)",
-  "./weekly-menu.html",
-  "javascript:void(0)",
+  "./planner.html",
+  "./week-list.html",
+  "./favorites.html",
 );
 
 navigation.render(document.body);

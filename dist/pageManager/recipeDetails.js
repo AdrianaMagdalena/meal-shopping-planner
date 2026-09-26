@@ -6,7 +6,7 @@ import { renderRecipePreview } from "../components/recipePreview.js";
 import { AddToPlanModal } from "../components/addToPlanModal.js";
 import { WeeklyMenuManager } from "../services/weeklyMenuManager.js";
 import { ServingsManager } from "../services/servingsManager.js";
-const navigation = new Navigation("../index.html", "./search.html", "./weekly-menu.html", "javascript:void(0)");
+const navigation = new Navigation("../index.html", "./search.html", "./planner.html", "./week-list.html", "./favorites.html");
 navigation.render(document.body);
 (async () => {
     const params = new URLSearchParams(window.location.search);

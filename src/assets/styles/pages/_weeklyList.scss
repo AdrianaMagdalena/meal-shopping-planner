@@ -1,0 +1,68 @@
+@use "../utils/mixins" as *;
+@use "../utils/fonts" as *;
+
+.weekly-list {
+  &__recipe-list {
+    padding: 16px;
+    display: grid;
+    align-content: start;
+    border-radius: 8px;
+    background-color: var(--clr-beige-01);
+    border: 1px solid var(--clr-beige-02);
+    box-shadow: 1px 1px 3px 2px var(--shadow-grey);
+
+    h2 {
+      @include accent-title;
+      font-size: 28px;
+    }
+
+    ul {
+      list-style: none;
+      min-height: 0;
+    }
+
+    li {
+      font-size: 18px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--clr-beige-02);
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        border: none;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &__header-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+
+    button {
+      --button-icon-size: 24px;
+    }
+  }
+
+  &__wrap {
+    display: grid;
+    overflow: hidden;
+    padding-top: 0px;
+    grid-template-rows: 0fr;
+    transition:
+      grid-template-rows 0.2s linear,
+      padding-top 0.05s linear 0.2s;
+
+    &.open {
+      grid-template-rows: 1fr;
+      padding-top: 16px;
+      transition:
+        grid-template-rows 0.2s linear 0.05s,
+        padding-top 0.05s linear;
+    }
+  }
+}

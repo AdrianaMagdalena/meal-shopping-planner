@@ -1,7 +1,7 @@
 @use "../utils/mixins" as *;
 @use "../utils/fonts" as *;
 
-.weekly-menu {
+.planner {
   --input-min-height: 36px;
   --input-action-btn-size: 28px;
   --input-action-icon-size: 80%;
@@ -33,6 +33,9 @@
   }
 
   .day-menu {
+    --input-lead-img-url: url("../icons/minus.svg");
+    --input-trail-img-url: url("../icons/plus.svg");
+
     display: grid;
     gap: 4px;
     align-content: start;
@@ -41,8 +44,6 @@
     background-color: var(--clr-beige-01);
     border: 1px solid var(--clr-beige-02);
     box-shadow: 1px 1px 3px 2px var(--shadow-grey);
-    --input-lead-img-url: url("../icons/minus.svg");
-    --input-trail-img-url: url("../icons/plus.svg");
 
     &:has(.day-menu__title:only-child) {
       place-content: center;

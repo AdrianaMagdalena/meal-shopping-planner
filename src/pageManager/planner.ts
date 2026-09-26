@@ -9,21 +9,22 @@ const navigation = new Navigation(
   "../index.html",
   "./search.html",
   "javascript:void(0)",
-  "javascript:void(0)",
+  "./week-list.html",
+  "./favorites.html",
 );
 navigation.render(document.body);
 
-const menuConatiner = document.querySelector<HTMLDivElement>(".weekly-menu");
+const menuConatiner = document.querySelector<HTMLDivElement>(".planner");
 if (!menuConatiner) throw new Error("menuContainer not found on page");
 
 const menuManager = WeeklyMenuManager.load();
 
 const renderDay = (dayIndex: number): void => {
   const day = menuManager.weekDays[dayIndex];
-
   const menuCard = new MenuCard(dayIndex);
-  menuCard.render(menuConatiner, "append");
-  menuCard.cardElem.style.order = String(dayIndex);
+
+  const referenceElem = menuConatiner.children[dayIndex] ?? null;
+  menuConatiner.insertBefore(menuCard.cardElem, referenceElem);
 
   if (day.dayEntries.length > 0) {
     menuCard.renderHeader();

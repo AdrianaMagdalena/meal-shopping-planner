@@ -88,11 +88,13 @@
     --button-icon-url: url("../icons/clear.svg");
   }
 
-  &--show-filters {
+  &--show-filters,
+  &--show-recipes {
     --button-icon-url: url("../icons/chevron-down.svg");
 
     &.open {
-      &:after {
+      &:after,
+      &::before {
         transform: scaleY(-1);
       }
     }
