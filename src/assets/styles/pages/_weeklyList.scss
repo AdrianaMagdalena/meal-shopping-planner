@@ -11,9 +11,13 @@
     border: 1px solid var(--clr-beige-02);
     box-shadow: 1px 1px 3px 2px var(--shadow-grey);
 
-    h2 {
+    h1 {
       @include accent-title;
-      font-size: 28px;
+      font-size: 24px;
+
+      @include breakpoint-up(md) {
+        font-size: 28px;
+      }
     }
 
     ul {

@@ -1205,19 +1205,24 @@ p.error-msg:before {
   border: 1px solid var(--clr-beige-02);
   box-shadow: 1px 1px 3px 2px var(--shadow-grey);
 }
-.weekly-list__recipe-list h2 {
+.weekly-list__recipe-list h1 {
   margin: -4px 0 4px 0;
   font-family: "Coiny", system-ui;
   font-weight: 400;
   opacity: 0.85;
 }
 @media (width >= 560px) {
-  .weekly-list__recipe-list h2 {
+  .weekly-list__recipe-list h1 {
     margin: 0;
   }
 }
-.weekly-list__recipe-list h2 {
-  font-size: 28px;
+.weekly-list__recipe-list h1 {
+  font-size: 24px;
+}
+@media (width >= 560px) {
+  .weekly-list__recipe-list h1 {
+    font-size: 28px;
+  }
 }
 .weekly-list__recipe-list ul {
   list-style: none;
