@@ -4,7 +4,9 @@
 .modal {
   opacity: 0;
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
+  width: 100dvw;
   position: fixed;
   z-index: -100;
   justify-content: center;
@@ -45,6 +47,7 @@
   &-body {
     max-height: 80vh;
     width: 100vw;
+    width: 100dvw;
     background-color: var(--clr-white);
     border-radius: 16px 16px 0 0;
     padding: 32px 16px;

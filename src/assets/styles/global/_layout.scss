@@ -1,11 +1,14 @@
 @use "../utils/mixins" as *;
 
 body {
+  --body-gap: 2rem;
+
   min-height: 100vh;
   min-height: 100dvh;
+  padding: calc(var(--nav-height-counted) + var(--body-gap)) 0 0 0;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--body-gap);
   justify-content: flex-start;
   background-color: var(--clr-beige-bg);
   color: var(--clr-brown);

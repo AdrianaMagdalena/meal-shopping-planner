@@ -198,10 +198,14 @@ export class AddToPlanModal {
     setTimeout(() => {
       this._modalElem.classList.remove("in-front");
     }, 200);
+
     const dayTags = Array.from(
       this._modalDayPicker.querySelectorAll<HTMLInputElement>(".tag__input"),
     );
     dayTags.forEach((t) => (t.checked = false));
+    const error =
+      this._modalDayPicker.querySelector<HTMLParagraphElement>(".error-msg");
+    if (error) error.remove();
   }
 
   private getSelectedDaysIndex(): number[] {

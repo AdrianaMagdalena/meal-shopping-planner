@@ -99,9 +99,6 @@ export class Navigation {
     parentElement.prepend(this._navElement);
 
     const navHeight = this._navElement.offsetHeight;
-    this._navElement.style.setProperty(
-      "--nav-height-counted",
-      `${navHeight}px`,
-    );
+    document.body.style.setProperty("--nav-height-counted", `${navHeight}px`);
   }
 }

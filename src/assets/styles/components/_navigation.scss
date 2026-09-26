@@ -2,7 +2,11 @@
 @use "../utils/mixins" as *;
 
 nav {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
   background-color: var(--clr-sage);
   border-bottom: 1px solid var(--clr-sage-dark);
   box-shadow: 1px 1px 3px 2px var(--shadow-grey);
