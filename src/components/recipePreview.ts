@@ -62,7 +62,10 @@ const renderTags = (preview: HTMLElement, recipe: Recipe) => {
   });
 };
 
-const renderServingsAdjuster = (preview: HTMLElement, recipe: Recipe) => {
+const renderServingsAdjuster = (
+  preview: HTMLElement,
+  recipe: Recipe,
+): AmountInput => {
   const servingsInputWrap = preview.querySelector<HTMLDivElement>(
     ".info__servings-amount",
   );
@@ -96,6 +99,8 @@ const renderServingsAdjuster = (preview: HTMLElement, recipe: Recipe) => {
   const addToPlanBtn =
     document.querySelector<HTMLButtonElement>(".button--plan");
   if (!addToPlanBtn) throw new Error("addToPlanBtn not found on page");
+
+  return amountInput;
 };
 
 const renderIngredientList = async (
@@ -125,11 +130,15 @@ const renderIngredientList = async (
       const foodUnit = food ? food.unit : "";
 
       const ingredient = document.createElement("li");
-      const ingrAmount = document.createElement("span");
-      const ingrName = document.createElement("span");
+      ingredient.dataset.originalAmount = String(i.quantity);
 
+      const ingrAmount = document.createElement("span");
+      const ingrUnit = document.createElement("span");
+      const ingrName = document.createElement("span");
       ingrAmount.classList.add("ingredients__ingr-amount");
-      ingrAmount.textContent = `${i.quantity} ${foodUnit}`;
+      ingrAmount.textContent = `${i.quantity}`;
+      ingrUnit.classList.add("ingredients__ingr-unit");
+      ingrUnit.textContent = ` ${foodUnit}`;
       ingrName.textContent = ` ${foodName.toLowerCase()}`;
 
       if (i.optional) {
@@ -137,6 +146,7 @@ const renderIngredientList = async (
       }
 
       ingredient.appendChild(ingrAmount);
+      ingredient.appendChild(ingrUnit);
       ingredient.appendChild(ingrName);
       ingrPartList.appendChild(ingredient);
     }
@@ -176,14 +186,16 @@ const renderSteps = async (preview: HTMLElement, recipe: Recipe) => {
 export const renderRecipePreview = async (
   recipe: Recipe,
   foodStorage: FoodStorage,
-): Promise<void> => {
+): Promise<{ amountInput: AmountInput; previewElement: HTMLDivElement }> => {
   const preview = document.querySelector<HTMLDivElement>(".recipe-preview");
   if (!preview) throw new Error("preview not found on page");
 
   renderBasicInfo(preview, recipe);
   renderTimeInfo(preview, recipe);
   renderTags(preview, recipe);
-  renderServingsAdjuster(preview, recipe);
-  renderIngredientList(preview, recipe, foodStorage);
+  const amountInput = renderServingsAdjuster(preview, recipe);
+  await renderIngredientList(preview, recipe, foodStorage);
   renderSteps(preview, recipe);
+
+  return { amountInput, previewElement: preview };
 };

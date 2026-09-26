@@ -68,6 +68,7 @@ const renderServingsAdjuster = (preview, recipe) => {
     const addToPlanBtn = document.querySelector(".button--plan");
     if (!addToPlanBtn)
         throw new Error("addToPlanBtn not found on page");
+    return amountInput;
 };
 const renderIngredientList = async (preview, recipe, foodStorage) => {
     const ingredientsWrap = preview.querySelector(".ingredients__wrap");
@@ -87,15 +88,20 @@ const renderIngredientList = async (preview, recipe, foodStorage) => {
             const foodName = food ? food.name : "Unknown ingredient";
             const foodUnit = food ? food.unit : "";
             const ingredient = document.createElement("li");
+            ingredient.dataset.originalAmount = String(i.quantity);
             const ingrAmount = document.createElement("span");
+            const ingrUnit = document.createElement("span");
             const ingrName = document.createElement("span");
             ingrAmount.classList.add("ingredients__ingr-amount");
-            ingrAmount.textContent = `${i.quantity} ${foodUnit}`;
+            ingrAmount.textContent = `${i.quantity}`;
+            ingrUnit.classList.add("ingredients__ingr-unit");
+            ingrUnit.textContent = ` ${foodUnit}`;
             ingrName.textContent = ` ${foodName.toLowerCase()}`;
             if (i.optional) {
                 ingrName.textContent += ` (optional)`;
             }
             ingredient.appendChild(ingrAmount);
+            ingredient.appendChild(ingrUnit);
             ingredient.appendChild(ingrName);
             ingrPartList.appendChild(ingredient);
         }
@@ -131,7 +137,8 @@ export const renderRecipePreview = async (recipe, foodStorage) => {
     renderBasicInfo(preview, recipe);
     renderTimeInfo(preview, recipe);
     renderTags(preview, recipe);
-    renderServingsAdjuster(preview, recipe);
-    renderIngredientList(preview, recipe, foodStorage);
+    const amountInput = renderServingsAdjuster(preview, recipe);
+    await renderIngredientList(preview, recipe, foodStorage);
     renderSteps(preview, recipe);
+    return { amountInput, previewElement: preview };
 };

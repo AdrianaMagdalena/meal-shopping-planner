@@ -216,7 +216,8 @@
         flex: 1;
       }
 
-      &__ingr-amount {
+      &__ingr-amount,
+      &__ingr-unit {
         font-weight: 600;
       }
     }
