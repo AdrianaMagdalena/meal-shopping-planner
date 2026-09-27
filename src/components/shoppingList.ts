@@ -127,7 +127,7 @@ export class ShoppingList {
           "No shopping list to display!",
           "Finalize the weekly meal plan to generate a shopping list",
         );
-        errorScreen.render("main");
+        errorScreen.render(".shopping-list__container");
       }
       return;
     }

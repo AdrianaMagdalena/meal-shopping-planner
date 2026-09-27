@@ -90,7 +90,7 @@ export class ShoppingList {
         if (items.length === 0) {
             if (!document.querySelector(".error-screen")) {
                 const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "No shopping list to display!", "Finalize the weekly meal plan to generate a shopping list");
-                errorScreen.render("main");
+                errorScreen.render(".shopping-list__container");
             }
             return;
         }

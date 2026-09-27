@@ -1321,21 +1321,31 @@ p.error-msg:before {
 }
 .weekly-list__shopping-list h2 {
   font-size: 24px;
+  align-self: flex-start;
 }
 @media (width >= 560px) {
   .weekly-list__shopping-list h2 {
+    align-self: unset;
     font-size: 28px;
   }
 }
 .weekly-list__shopping-list .shopping-list__header {
   display: flex;
-  gap: 32px;
+  gap: 16px;
   padding: 12px;
   border-radius: 6px;
+  flex-direction: column;
   border: 1px solid var(--clr-lavender-dark);
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   background-color: rgba(255, 255, 255, 0.75);
+}
+@media (width >= 756px) {
+  .weekly-list__shopping-list .shopping-list__header {
+    gap: 32px;
+    flex-direction: row;
+    align-items: center;
+  }
 }
 .weekly-list__shopping-list .shopping-list__container {
   display: grid;
