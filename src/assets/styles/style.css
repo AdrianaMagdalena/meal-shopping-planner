@@ -275,6 +275,7 @@ nav .nav-menu.opened {
 }
 nav .nav-item {
   text-align: end;
+  white-space: nowrap;
   padding: 12px;
   height: 100%;
   font-size: 18px;
@@ -595,9 +596,15 @@ p.error-msg:before {
   text-align: center;
   margin: 0 auto;
 }
+@media (width >= 756px) {
+  .error-screen {
+    margin-block: 32px;
+  }
+}
 .error-screen__img {
   max-width: min(80%, 300px);
   margin: 0 auto;
+  height: 150px;
 }
 .error-screen__title {
   font-size: 24px;
@@ -1014,7 +1021,7 @@ p.error-msg:before {
   .recipe-search__inputs {
     grid-template-columns: auto auto;
   }
-  .recipe-search__inputs .search {
+  .recipe-search__inputs .recipe-search__search-input {
     grid-column: 1/-1;
   }
 }
@@ -1022,7 +1029,7 @@ p.error-msg:before {
   .recipe-search__inputs {
     grid-template-columns: 1fr auto auto;
   }
-  .recipe-search__inputs .search {
+  .recipe-search__inputs .recipe-search__search-input {
     grid-column: unset;
   }
 }
@@ -1090,11 +1097,6 @@ p.error-msg:before {
 }
 .recipe-list .error-screen {
   grid-column: 1/-1;
-}
-@media (width >= 756px) {
-  .recipe-list .error-screen {
-    margin-block: 32px;
-  }
 }
 
 .planner {

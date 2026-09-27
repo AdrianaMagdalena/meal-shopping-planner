@@ -31,7 +31,7 @@ navigation.render(document.body);
 
     if (recipesToRender.length === 0) {
       const errorScreen = new ErrorScreen(
-        "../src/assets/illustrations/no-results.png",
+        "../src/assets/illustrations/search.svg",
         "No recipes found",
         "Try a different keyword or adjust your filters.",
       );

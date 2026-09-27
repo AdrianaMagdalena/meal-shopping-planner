@@ -19,7 +19,7 @@
     @include breakpoint-up(md) {
       grid-template-columns: auto auto;
 
-      .search {
+      .recipe-search__search-input {
         grid-column: 1 / -1;
       }
     }
@@ -27,7 +27,7 @@
     @include breakpoint-up(lg) {
       grid-template-columns: 1fr auto auto;
 
-      .search {
+      .recipe-search__search-input {
         grid-column: unset;
       }
     }
@@ -98,9 +98,5 @@
 
   .error-screen {
     grid-column: 1 / -1;
-
-    @include breakpoint-up(lg) {
-      margin-block: 32px;
-    }
   }
 }

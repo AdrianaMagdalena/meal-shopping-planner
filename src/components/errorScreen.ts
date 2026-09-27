@@ -5,7 +5,6 @@ const templateHTML = `
 <div class="error-screen">
     <img class="error-screen__img" alt=""/>
     <h4 class="error-screen__title"></h4>
-    <p class="error-screen__desc"></p>
 </div>
 `;
 template.innerHTML = templateHTML.trim();
@@ -38,20 +37,16 @@ export class ErrorScreen {
     if (!errorTitle) {
       throw new Error("errorTitle not found in template");
     }
-    this._errorTitle = errorTitle;
-
-    const errorDesc = this._errorElement.querySelector<HTMLParagraphElement>(
-      ".error-screen__desc",
-    );
-    if (!errorDesc) {
-      throw new Error("errorDesc not found in template");
-    }
-    this._errorDesc = errorDesc;
 
     this._errorImg.setAttribute("src", imgPath);
+    this._errorTitle = errorTitle;
     this._errorTitle.textContent = title;
-    if (desc) {
+    if (desc && desc.length > 0) {
+      const errorDesc = document.createElement("p");
+      this._errorDesc = errorDesc;
+      this._errorDesc.classList.add("error-screen__desc");
       this._errorDesc.textContent = desc;
+      this._errorElement.appendChild(errorDesc);
     }
   }
 

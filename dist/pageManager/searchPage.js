@@ -17,7 +17,7 @@ navigation.render(document.body);
     const renderResults = (recipesToRender) => {
         container.innerHTML = "";
         if (recipesToRender.length === 0) {
-            const errorScreen = new ErrorScreen("../src/assets/illustrations/no-results.png", "No recipes found", "Try a different keyword or adjust your filters.");
+            const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "No recipes found", "Try a different keyword or adjust your filters.");
             errorScreen.render(".recipe-list");
             return;
         }

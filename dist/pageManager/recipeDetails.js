@@ -20,7 +20,7 @@ navigation.render(document.body);
     if (!recipe) {
         const preview = document.querySelector(".recipe-preview");
         preview.remove();
-        const errorScreen = new ErrorScreen("../src/assets/illustrations/no-results.png", "The recipe was not found");
+        const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "The recipe was not found");
         errorScreen.render("main");
     }
     else {

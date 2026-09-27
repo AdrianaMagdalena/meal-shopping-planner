@@ -58,7 +58,7 @@ export class WeekRecipeList {
     const rawData = localStorage.getItem(WEEK_RECIPES_STORAGE_KEY);
     if (!rawData) {
       const errorScreen = new ErrorScreen(
-        "../src/assets/illustrations/no-results.png",
+        "../src/assets/illustrations/search.svg",
         "No data to display!",
         "Finalize the weeklu meal plan to generate recipe and shopping list",
       );

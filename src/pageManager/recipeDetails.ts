@@ -33,7 +33,7 @@ navigation.render(document.body);
     const preview = document.querySelector<HTMLDivElement>(".recipe-preview");
     preview!.remove();
     const errorScreen = new ErrorScreen(
-      "../src/assets/illustrations/no-results.png",
+      "../src/assets/illustrations/search.svg",
       "The recipe was not found",
     );
     errorScreen.render("main");
