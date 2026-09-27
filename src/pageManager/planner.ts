@@ -1,6 +1,7 @@
 import { Navigation } from "../components/navigation.js";
 import { PlannerManager, DAY_LABELS } from "../services/plannerManager.js";
 import { MenuCard } from "../components/menuCard.js";
+import { Modal } from "../components/modal.js";
 
 const navigation = new Navigation(
   "../index.html",
@@ -15,12 +16,20 @@ const menuConatiner = document.querySelector<HTMLDivElement>(".planner");
 if (!menuConatiner) throw new Error("menuContainer not found on page");
 
 const menuManager = PlannerManager.load();
+const confirmModal = new Modal(
+  "Success!",
+  `You succesfully generated yout weekly shopping list! It'll be available in the "Week's list" submenu.`,
+  "Okay",
+  "../src/assets/illustrations/checklist.svg",
+);
+confirmModal.render("main", "append");
 
 const generateListBtn =
   document.querySelector<HTMLButtonElement>(".planner__button");
 if (!generateListBtn) throw new Error("generateListBtn not found on page");
 generateListBtn.addEventListener("click", () => {
   menuManager.saveUniqueRecipeData();
+  confirmModal.openModal();
 });
 
 const renderDay = (dayIndex: number): void => {

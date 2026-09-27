@@ -10,14 +10,18 @@
   grid-template-columns: 1fr;
   gap: 24px;
   justify-content: center;
-  width: min(100%, 500px);
-  margin: 0 auto;
 
   @include breakpoint-up(xl) {
     width: 100%;
     margin: 0;
     gap: 32px;
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__main {
+    @include breakpoint-down(xl) {
+      width: min(100%, 650px);
+    }
   }
 
   &__title {

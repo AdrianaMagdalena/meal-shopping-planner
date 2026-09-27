@@ -17,6 +17,8 @@ const templateHtml = `
 `;
 template.innerHTML = templateHtml.trim();
 
+const DROPDOWN_STORAGE_KEY = "dropdown-state";
+
 export class WeekRecipeList {
   private _recipeListCard: HTMLDivElement;
   private _dropdownButton: HTMLButtonElement;
@@ -50,9 +52,38 @@ export class WeekRecipeList {
     if (!recipeList) throw new Error("recipeList not found on template");
     this._recipeList = recipeList;
 
+    let isDropdownOpen: string;
+    const stateData = localStorage.getItem(DROPDOWN_STORAGE_KEY);
+    if (!stateData) {
+      isDropdownOpen = this._recipeListWrap.classList.contains("open")
+        ? "open"
+        : "closed";
+      localStorage.setItem(DROPDOWN_STORAGE_KEY, isDropdownOpen);
+    } else {
+      isDropdownOpen = stateData;
+      if (isDropdownOpen === "open") {
+        this._recipeListWrap.classList.add("open");
+        this._dropdownButton.classList.add("open");
+        isDropdownOpen = "closed";
+      } else {
+        this._recipeListWrap.classList.remove("open");
+        this._dropdownButton.classList.remove("open");
+        isDropdownOpen = "open";
+      }
+    }
+
     this._dropdownButton.addEventListener("click", () => {
-      this._recipeListWrap.classList.toggle("open");
-      this._dropdownButton.classList.toggle("open");
+      isDropdownOpen = localStorage.getItem(DROPDOWN_STORAGE_KEY)!;
+      if (isDropdownOpen === "open") {
+        this._recipeListWrap.classList.remove("open");
+        this._dropdownButton.classList.remove("open");
+        isDropdownOpen = "closed";
+      } else {
+        this._recipeListWrap.classList.add("open");
+        this._dropdownButton.classList.add("open");
+        isDropdownOpen = "open";
+      }
+      localStorage.setItem(DROPDOWN_STORAGE_KEY, isDropdownOpen);
     });
 
     const rawData = localStorage.getItem(WEEK_RECIPES_STORAGE_KEY);
@@ -70,10 +101,8 @@ export class WeekRecipeList {
       }
 
       parsedData.filter(isSavedPlannerEntry).forEach((r) => {
-        console.log(r);
         const listItem = document.createElement("li");
         const anchorLink = document.createElement("a");
-        console.log(anchorLink);
 
         anchorLink.textContent = r.recipeTitle;
         anchorLink.href = `./recipe-details.html?id=${r.recipeId}`;
