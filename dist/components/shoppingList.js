@@ -17,7 +17,10 @@ const CATEGORY_ORDER = [
 const template = document.createElement("template");
 const templateHtml = `
 <div class="weekly-list__shopping-list">
-    <button class="shopping-list__button button button--prim button--icon-before button--check">Remove checked items</button>
+    <div class="shopping-list__header">
+        <h2>Shopping list</h2>
+        <button class="shopping-list__button button button--prim button--icon-before button--check">Remove checked items</button>
+    </div>
     <div class="shopping-list__container"></div>
 </div>
 `;
@@ -28,9 +31,8 @@ const listItemTemplateHtml = `
 <label class="checkbox__label">
     <div class="checkbox__marker"></div>
     <input class="checkbox__input" type="checkbox" />
-    <span>
+    <span class="checkbox__text">
         <span class="checkbox__quantity"></span>
-        <span class="checkbox__unit"></span>
         <span class="checkbox__name"></span>
     </span>
 </label>
@@ -113,9 +115,6 @@ export class ShoppingList {
                 const quantitySpan = shoppingItem.querySelector(".checkbox__quantity");
                 if (!quantitySpan)
                     throw new Error("quantitySpan not found on template");
-                const unitSpan = shoppingItem.querySelector(".checkbox__unit");
-                if (!unitSpan)
-                    throw new Error("unitSpan not found on template");
                 const nameSpan = shoppingItem.querySelector(".checkbox__name");
                 if (!nameSpan)
                     throw new Error("nameSpan not found on template");
