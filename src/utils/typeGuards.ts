@@ -43,6 +43,8 @@ export function isSavedPlannerEntry(obj: any): obj is ISavedPlannerEntry {
 export function isSavedShoppingItem(obj: any): obj is ISavedShoppingItem {
   return (
     obj &&
+    typeof obj.id === "string" &&
+    typeof obj.category === "string" &&
     typeof obj.name === "string" &&
     typeof obj.unit === "string" &&
     typeof obj.quantity === "number"

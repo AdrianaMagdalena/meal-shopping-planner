@@ -25,6 +25,8 @@ export function isSavedPlannerEntry(obj) {
 }
 export function isSavedShoppingItem(obj) {
     return (obj &&
+        typeof obj.id === "string" &&
+        typeof obj.category === "string" &&
         typeof obj.name === "string" &&
         typeof obj.unit === "string" &&
         typeof obj.quantity === "number");

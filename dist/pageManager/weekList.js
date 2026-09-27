@@ -5,6 +5,7 @@ import { WeekRecipeList } from "../components/weekRecipeList.js";
 import { SHOPPING_LIST_STORAGE_KEY } from "../services/plannerManager.js";
 import { FoodStorage } from "../storages/foodStorage.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
+import { roundIngredients } from "../utils/roundIngredients.js";
 import { isSavedPlannerEntry } from "../utils/typeGuards.js";
 const navigation = new Navigation("../index.html", "./search.html", "./planner.html", "javascript:void(0)", "./favorites.html");
 navigation.render(document.body);
@@ -24,15 +25,34 @@ const getDataFromRecipe = async (recipe, foodStorage, items, ratio) => {
     for (const part of recipe.parts) {
         for (const ingredient of part.ingredients) {
             const food = await foodStorage.getById(ingredient.id);
-            const name = food ? food.name : "Unknown ingredient";
+            const id = food ? food.id : "Unknown";
+            const category = food ? food.category : "Unknown category";
+            const name = food ? food.name.toLowerCase() : "Unknown ingredient";
             const unit = food ? food.unit : "";
             const quantity = ingredient.quantity * ratio;
-            items.push({ name, unit, quantity });
+            items.push({ id, category, name, unit, quantity });
         }
     }
 };
+const addItemsQuantities = (items) => {
+    const totals = new Map();
+    items.forEach((item) => {
+        const key = item.id;
+        if (totals.has(key)) {
+            totals.get(key).quantity += item.quantity;
+        }
+        else {
+            totals.set(key, { ...item });
+        }
+    });
+    const summarisedData = Array.from(totals.values());
+    summarisedData.forEach((item) => {
+        item.quantity = roundIngredients(item.quantity);
+    });
+    return summarisedData;
+};
 const buildShoppingItems = async (savedEntries, recipeStorage, foodStorage) => {
-    const items = [];
+    let items = [];
     for (const entry of savedEntries) {
         const recipe = await recipeStorage.getById(entry.recipeId);
         if (!recipe)
@@ -40,6 +60,7 @@ const buildShoppingItems = async (savedEntries, recipeStorage, foodStorage) => {
         const ratio = entry.servingsAmount / recipe.servings;
         await getDataFromRecipe(recipe, foodStorage, items, ratio);
     }
+    items = addItemsQuantities(items);
     return items;
 };
 (async () => {

@@ -4,11 +4,24 @@ import { insertElem } from "../utils/insertElem.js";
 import { isSelectorString } from "../utils/typeGuards.js";
 import { ErrorScreen } from "./errorScreen.js";
 
+const CATEGORY_ORDER = [
+  "vegetables",
+  "fruit",
+  "dairy",
+  "meat",
+  "fish",
+  "seeds & nuts",
+  "canned & dry goods",
+  "seasoning",
+  "alcohol",
+  "other",
+];
+
 const template = document.createElement("template");
 const templateHtml = `
 <div class="weekly-list__shopping-list">
     <button class="shopping-list__button button button--prim button--icon-before button--check">Remove checked items</button>
-    <ul></ul>
+    <div class="shopping-list__container"></div>
 </div>
 `;
 template.innerHTML = templateHtml.trim();
@@ -33,7 +46,7 @@ listItemTemplate.innerHTML = listItemTemplateHtml.trim();
 export class ShoppingList {
   private readonly _shoppingListWrap: HTMLDivElement;
   private readonly _removeItemsBtn: HTMLButtonElement;
-  private readonly _shoppingList: HTMLUListElement;
+  private readonly _shoppingListContainer: HTMLDivElement;
 
   constructor() {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
@@ -52,9 +65,12 @@ export class ShoppingList {
       throw new Error("removeItemsBtn not found on template");
     this._removeItemsBtn = removeItemsBtn;
 
-    const shoppingList = fragment.querySelector<HTMLUListElement>("ul");
-    if (!shoppingList) throw new Error("shoppingList not found on template");
-    this._shoppingList = shoppingList;
+    const shoppingListContainer = fragment.querySelector<HTMLDivElement>(
+      ".shopping-list__container",
+    );
+    if (!shoppingListContainer)
+      throw new Error("shoppingListContainer not found on template");
+    this._shoppingListContainer = shoppingListContainer;
 
     this.render("main", "append");
   }
@@ -68,6 +84,36 @@ export class ShoppingList {
     }
 
     insertElem(position, this._shoppingListWrap, parentElement);
+  }
+
+  groupByCategory(
+    items: ISavedShoppingItem[],
+  ): Map<string, ISavedShoppingItem[]> {
+    const grouped = new Map<string, ISavedShoppingItem[]>();
+
+    items.forEach((item) => {
+      if (!grouped.has(item.category)) {
+        grouped.set(item.category, []);
+      }
+      grouped.get(item.category)!.push(item);
+    });
+
+    return grouped;
+  }
+
+  sortByFixedOrder(
+    grouped: Map<string, ISavedShoppingItem[]>,
+  ): Map<string, ISavedShoppingItem[]> {
+    const sortedItems = Array.from(grouped.entries()).sort(
+      ([categoryA], [categoryB]) => {
+        const indexA = CATEGORY_ORDER.indexOf(categoryA);
+        const indexB = CATEGORY_ORDER.indexOf(categoryB);
+        const safeIndexA = indexA === -1 ? CATEGORY_ORDER.length : indexA;
+        const safeIndexB = indexB === -1 ? CATEGORY_ORDER.length : indexB;
+        return safeIndexA - safeIndexB;
+      },
+    );
+    return new Map(sortedItems);
   }
 
   async renderList(items: ISavedShoppingItem[]): Promise<void> {
@@ -84,38 +130,53 @@ export class ShoppingList {
       return;
     }
 
-    items.forEach((item) => {
-      const itemFragment = listItemTemplate.content.cloneNode(
-        true,
-      ) as DocumentFragment;
+    const grouped = this.groupByCategory(items);
+    const sortedGroup = this.sortByFixedOrder(grouped);
 
-      const shoppingItem = itemFragment.querySelector<HTMLLIElement>("li");
-      if (!shoppingItem) throw new Error("shoppingItem not found on template");
-      const checkboxItem =
-        shoppingItem.querySelector<HTMLLabelElement>(".checkbox__label");
-      if (!checkboxItem) throw new Error("checkboxItem not found on template");
-      const checkboxInput =
-        shoppingItem.querySelector<HTMLInputElement>(".checkbox__input");
-      if (!checkboxInput)
-        throw new Error("checkboxInput not found on template");
-      const quantitySpan = shoppingItem.querySelector<HTMLSpanElement>(
-        ".checkbox__quantity",
-      );
-      if (!quantitySpan) throw new Error("quantitySpan not found on template");
-      const unitSpan =
-        shoppingItem.querySelector<HTMLSpanElement>(".checkbox__unit");
-      if (!unitSpan) throw new Error("unitSpan not found on template");
-      const nameSpan =
-        shoppingItem.querySelector<HTMLSpanElement>(".checkbox__name");
-      if (!nameSpan) throw new Error("nameSpan not found on template");
+    sortedGroup.forEach((categoryItems, category) => {
+      const categoryTitle = document.createElement("h3");
+      categoryTitle.textContent = category;
+      this._shoppingListContainer.appendChild(categoryTitle);
 
-      const uniqueID = generateId("shoppingitem", 8);
-      checkboxItem.setAttribute("for", uniqueID);
-      checkboxInput.id = uniqueID;
-      quantitySpan.textContent = `${item.quantity} ${item.unit}`;
-      nameSpan.textContent = item.name;
+      const list = document.createElement("ul");
 
-      this._shoppingList.appendChild(shoppingItem);
+      categoryItems.forEach((item) => {
+        const itemFragment = listItemTemplate.content.cloneNode(
+          true,
+        ) as DocumentFragment;
+
+        const shoppingItem = itemFragment.querySelector<HTMLLIElement>("li");
+        if (!shoppingItem)
+          throw new Error("shoppingItem not found on template");
+        const checkboxItem =
+          shoppingItem.querySelector<HTMLLabelElement>(".checkbox__label");
+        if (!checkboxItem)
+          throw new Error("checkboxItem not found on template");
+        const checkboxInput =
+          shoppingItem.querySelector<HTMLInputElement>(".checkbox__input");
+        if (!checkboxInput)
+          throw new Error("checkboxInput not found on template");
+        const quantitySpan = shoppingItem.querySelector<HTMLSpanElement>(
+          ".checkbox__quantity",
+        );
+        if (!quantitySpan)
+          throw new Error("quantitySpan not found on template");
+        const unitSpan =
+          shoppingItem.querySelector<HTMLSpanElement>(".checkbox__unit");
+        if (!unitSpan) throw new Error("unitSpan not found on template");
+        const nameSpan =
+          shoppingItem.querySelector<HTMLSpanElement>(".checkbox__name");
+        if (!nameSpan) throw new Error("nameSpan not found on template");
+
+        const uniqueID = generateId("shoppingitem", 8);
+        checkboxItem.setAttribute("for", uniqueID);
+        checkboxInput.id = uniqueID;
+        quantitySpan.textContent = `${item.quantity} ${item.unit}`;
+        nameSpan.textContent = item.name;
+
+        list.appendChild(shoppingItem);
+      });
+      this._shoppingListContainer.appendChild(list);
     });
   }
 }

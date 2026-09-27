@@ -8,7 +8,7 @@
   {
     "id": "olive_oil_01",
     "name": "Olive oil",
-    "category": "oil",
+    "category": "other",
     "unit": "ml"
   },
   {
@@ -92,19 +92,19 @@
   {
     "id": "lentils_01",
     "name": "Green lentils",
-    "category": "legumes",
+    "category": "canned & dry goods",
     "unit": "g"
   },
   {
     "id": "lentils_02",
     "name": "Red lentils",
-    "category": "legumes",
+    "category": "canned & dry goods",
     "unit": "g"
   },
   {
     "id": "lentils_03",
     "name": "Black caviar lentils",
-    "category": "legumes",
+    "category": "canned & dry goods",
     "unit": "g"
   },
   {
@@ -122,26 +122,26 @@
   {
     "id": "walnuts_01",
     "name": "Walnuts",
-    "category": "legumes",
+    "category": "seeds & nuts",
     "unit": "g"
   },
   {
     "id": "pasta_01",
     "name": "Any dry pasta",
-    "category": "pasta",
+    "category": "canned & dry goods",
     "unit": "g"
   },
   {
     "id": "black_beans_01",
     "name": "Canned black beans",
-    "category": "legumes",
+    "category": "canned & dry goods",
     "unit": "can",
     "unitInfo": "regular can - 425 g"
   },
   {
     "id": "cannelini_beans_01",
     "name": "Canned cannellini beans",
-    "category": "legumes",
+    "category": "canned & dry goods",
     "unit": "can",
     "unitInfo": "big can - 800 g"
   },
@@ -154,7 +154,7 @@
   {
     "id": "tortilla_01",
     "name": "Corn tortilla",
-    "category": "bread",
+    "category": "baked goods",
     "unit": "pcs"
   },
   {
@@ -190,7 +190,7 @@
   {
     "id": "cilantro_01",
     "name": "Cilantro",
-    "category": "herbs",
+    "category": "vegetables",
     "unit": "g"
   },
   {
@@ -208,13 +208,13 @@
   {
     "id": "groats_01",
     "name": "Barley groats",
-    "category": "groats",
+    "category": "canned & dry goods",
     "unit": "g"
   },
   {
     "id": "parsley_01",
     "name": "Parsley leaves",
-    "category": "herbs",
+    "category": "vegetables",
     "unit": "g"
   },
   {
@@ -280,7 +280,7 @@
   {
     "id": "egg_01",
     "name": "Egg",
-    "category": "animal produce",
+    "category": "dairy",
     "unit": "pcs"
   },
   {
@@ -322,13 +322,13 @@
   {
     "id": "dry_mushroom_01",
     "name": "Dried mushroom",
-    "category": "mushroom",
+    "category": "vegetables",
     "unit": "pcs"
   },
   {
     "id": "mushroom_01",
     "name": "Mushroom",
-    "category": "mushroom",
+    "category": "vegetables",
     "unit": "g"
   },
   {
@@ -376,7 +376,7 @@
   {
     "id": "mayo_01",
     "name": "Mayonnaise",
-    "category": "sauce",
+    "category": "sauces",
     "unit": "tbsp"
   },
   {
@@ -412,7 +412,7 @@
   {
     "id": "beetroot_01",
     "name": "Beetroot",
-    "category": "vegetable",
+    "category": "vegetables",
     "unit": "g"
   },
   {
@@ -478,7 +478,7 @@
   {
     "id": "pickles_01",
     "name": "Pickles",
-    "category": "other",
+    "category": "canned & dry goods",
     "unit": "g"
   },
   {
