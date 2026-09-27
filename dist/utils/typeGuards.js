@@ -23,3 +23,9 @@ export function isSavedPlannerEntry(obj) {
         typeof obj.recipeTitle === "string" &&
         typeof obj.servingsAmount === "number");
 }
+export function isSavedShoppingItem(obj) {
+    return (obj &&
+        typeof obj.name === "string" &&
+        typeof obj.unit === "string" &&
+        typeof obj.quantity === "number");
+}

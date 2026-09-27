@@ -10,10 +10,10 @@ const templateHTML = `
 template.innerHTML = templateHTML.trim();
 
 export class ErrorScreen {
-  private _errorElement: HTMLDivElement;
-  private _errorImg: HTMLImageElement;
-  private _errorTitle: HTMLHeadingElement;
-  private _errorDesc?: HTMLParagraphElement;
+  private readonly _errorElement: HTMLDivElement;
+  private readonly _errorImg: HTMLImageElement;
+  private readonly _errorTitle: HTMLHeadingElement;
+  private readonly _errorDesc?: HTMLParagraphElement;
 
   constructor(imgPath: string, title: string, desc?: string) {
     const fragment = template.content.cloneNode(true) as DocumentFragment;

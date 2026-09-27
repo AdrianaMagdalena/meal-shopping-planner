@@ -7,7 +7,7 @@ const template = document.createElement("template");
 const templateHtml = `
 <div class="weekly-list__recipe-list">
     <div class="weekly-list__header-wrap">
-        <h1>This week's recipes</h1>
+        <h2>This week's recipes</h2>
         <button class="weekly-list__button button button--prim      button--icon-only button--show-recipes button--mini"></button>
     </div>
     <div class="weekly-list__wrap">
@@ -20,10 +20,10 @@ template.innerHTML = templateHtml.trim();
 const DROPDOWN_STORAGE_KEY = "dropdown-state";
 
 export class WeekRecipeList {
-  private _recipeListCard: HTMLDivElement;
-  private _dropdownButton: HTMLButtonElement;
-  private _recipeListWrap: HTMLDivElement;
-  private _recipeList: HTMLUListElement;
+  private readonly _recipeListCard: HTMLDivElement;
+  private readonly _dropdownButton: HTMLButtonElement;
+  private readonly _recipeListWrap: HTMLDivElement;
+  private readonly _recipeList: HTMLUListElement;
 
   constructor() {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
@@ -88,12 +88,14 @@ export class WeekRecipeList {
 
     const rawData = localStorage.getItem(WEEK_RECIPES_STORAGE_KEY);
     if (!rawData) {
-      const errorScreen = new ErrorScreen(
-        "../src/assets/illustrations/search.svg",
-        "No data to display!",
-        "Finalize the weeklu meal plan to generate recipe and shopping list",
-      );
-      errorScreen.render("main");
+      if (!document.querySelector(".error-screen")) {
+        const errorScreen = new ErrorScreen(
+          "../src/assets/illustrations/search.svg",
+          "No data to display!",
+          "Finalize the weeklu meal plan to generate recipe and shopping list",
+        );
+        errorScreen.render("main");
+      }
     } else {
       const parsedData: unknown = JSON.parse(rawData);
       if (!Array.isArray(parsedData)) {
@@ -109,6 +111,8 @@ export class WeekRecipeList {
         listItem.appendChild(anchorLink);
         this._recipeList.appendChild(listItem);
       });
+
+      this.render("main", "append");
     }
   }
 

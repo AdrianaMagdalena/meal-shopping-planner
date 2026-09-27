@@ -29,6 +29,7 @@ const generateListBtn =
 if (!generateListBtn) throw new Error("generateListBtn not found on page");
 generateListBtn.addEventListener("click", () => {
   menuManager.saveUniqueRecipeData();
+  menuManager.saveAllEntryData();
   confirmModal.openModal();
 });
 

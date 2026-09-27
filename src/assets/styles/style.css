@@ -154,6 +154,9 @@ main {
 .button--clear {
   --button-icon-url: url("../icons/clear.svg");
 }
+.button--check {
+  --button-icon-url: url("../icons/check-circle.svg");
+}
 .button--show-filters, .button--show-recipes {
   --button-icon-url: url("../icons/chevron-down.svg");
 }
@@ -1202,6 +1205,21 @@ p.error-msg:before {
   font-weight: 600;
 }
 
+.weekly-list__title {
+  margin: -4px 0 4px 0;
+  font-family: "Coiny", system-ui;
+  font-weight: 400;
+  opacity: 0.85;
+}
+@media (width >= 560px) {
+  .weekly-list__title {
+    margin: 0;
+  }
+}
+.weekly-list__title {
+  font-size: 40px;
+  text-align: center;
+}
 .weekly-list__recipe-list {
   padding: 16px;
   display: grid;
@@ -1211,22 +1229,22 @@ p.error-msg:before {
   border: 1px solid var(--clr-beige-02);
   box-shadow: 1px 1px 3px 2px var(--shadow-grey);
 }
-.weekly-list__recipe-list h1 {
+.weekly-list__recipe-list h2 {
   margin: -4px 0 4px 0;
   font-family: "Coiny", system-ui;
   font-weight: 400;
   opacity: 0.85;
 }
 @media (width >= 560px) {
-  .weekly-list__recipe-list h1 {
+  .weekly-list__recipe-list h2 {
     margin: 0;
   }
 }
-.weekly-list__recipe-list h1 {
+.weekly-list__recipe-list h2 {
   font-size: 24px;
 }
 @media (width >= 560px) {
-  .weekly-list__recipe-list h1 {
+  .weekly-list__recipe-list h2 {
     font-size: 28px;
   }
 }

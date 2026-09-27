@@ -1,6 +1,7 @@
 import { IFood } from "../interfaces/iFood.js";
 import { IRecipe } from "../interfaces/iRecipe.js";
 import { ISavedPlannerEntry } from "../interfaces/iSavedPlanner.js";
+import { ISavedShoppingItem } from "../interfaces/iSavedShopping.js";
 
 export function isFood(obj: any): obj is IFood {
   return (
@@ -36,5 +37,14 @@ export function isSavedPlannerEntry(obj: any): obj is ISavedPlannerEntry {
     typeof obj.recipeId === "string" &&
     typeof obj.recipeTitle === "string" &&
     typeof obj.servingsAmount === "number"
+  );
+}
+
+export function isSavedShoppingItem(obj: any): obj is ISavedShoppingItem {
+  return (
+    obj &&
+    typeof obj.name === "string" &&
+    typeof obj.unit === "string" &&
+    typeof obj.quantity === "number"
   );
 }

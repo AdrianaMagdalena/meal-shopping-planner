@@ -88,6 +88,10 @@
     --button-icon-url: url("../icons/clear.svg");
   }
 
+  &--check {
+    --button-icon-url: url("../icons/check-circle.svg");
+  }
+
   &--show-filters,
   &--show-recipes {
     --button-icon-url: url("../icons/chevron-down.svg");

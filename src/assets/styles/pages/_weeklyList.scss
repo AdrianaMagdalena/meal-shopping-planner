@@ -2,6 +2,12 @@
 @use "../utils/fonts" as *;
 
 .weekly-list {
+  &__title {
+    @include accent-title;
+    font-size: 40px;
+    text-align: center;
+  }
+
   &__recipe-list {
     padding: 16px;
     display: grid;
@@ -11,7 +17,7 @@
     border: 1px solid var(--clr-beige-02);
     box-shadow: 1px 1px 3px 2px var(--shadow-grey);
 
-    h1 {
+    h2 {
       @include accent-title;
       font-size: 24px;
 

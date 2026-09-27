@@ -15,6 +15,7 @@ export const DAY_LABELS = [
 
 const PLAN_STORAGE_KEY = "weeklyPlan";
 export const WEEK_RECIPES_STORAGE_KEY = "weeklyRecipeList";
+export const SHOPPING_LIST_STORAGE_KEY = "shoppingList";
 
 export class PlannerManager {
   private readonly _weekDays: PlannerDay[];
@@ -115,11 +116,23 @@ export class PlannerManager {
       })
       .map((entry) => entry.toSavedData());
 
-    console.log(JSON.stringify(filteredData));
-
     localStorage.setItem(
       WEEK_RECIPES_STORAGE_KEY,
       JSON.stringify(filteredData),
     );
+  }
+
+  saveAllEntryData(): void {
+    const allEntriesData = this._weekDays.flatMap((day) => day.dayEntries);
+    const entriesDataToSave = allEntriesData.map((entry) =>
+      entry.toSavedData(),
+    );
+
+    localStorage.setItem(
+      SHOPPING_LIST_STORAGE_KEY,
+      JSON.stringify(entriesDataToSave),
+    );
+
+    console.log(JSON.stringify(entriesDataToSave));
   }
 }
