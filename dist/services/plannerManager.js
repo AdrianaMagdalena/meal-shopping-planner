@@ -9,7 +9,8 @@ export const DAY_LABELS = [
     "Saturday",
     "Sunday",
 ];
-const STORAGE_KEY = "weeklyPlan";
+const PLAN_STORAGE_KEY = "weeklyPlan";
+export const WEEK_RECIPES_STORAGE_KEY = "weeklyRecipeList";
 export class PlannerManager {
     constructor(weekdays) {
         this._weekDays =
@@ -20,7 +21,7 @@ export class PlannerManager {
         return this._weekDays;
     }
     static load() {
-        const rawData = localStorage.getItem(STORAGE_KEY);
+        const rawData = localStorage.getItem(PLAN_STORAGE_KEY);
         if (!rawData)
             return new PlannerManager();
         try {
@@ -45,7 +46,8 @@ export class PlannerManager {
             id: day.id,
             entries: day.dayEntries.map((entry) => entry.toSavedData()),
         }));
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        console.log(JSON.stringify(data));
+        localStorage.setItem(PLAN_STORAGE_KEY, JSON.stringify(data));
     }
     addEntryToDay(dayIndex, recipe, servings) {
         if (dayIndex < 0 || dayIndex > 6)
@@ -73,5 +75,19 @@ export class PlannerManager {
             throw new Error("EntryId not existent on day.");
         entry.servingsAmount = newServings;
         this.save();
+    }
+    saveUniqueRecipeData() {
+        const allEntriesData = this._weekDays.flatMap((day) => day.dayEntries);
+        const filteredRecipeIds = new Set();
+        const filteredData = allEntriesData
+            .filter((entry) => {
+            if (filteredRecipeIds.has(entry.recipeId))
+                return false;
+            filteredRecipeIds.add(entry.recipeId);
+            return true;
+        })
+            .map((entry) => entry.toSavedData());
+        console.log(JSON.stringify(filteredData));
+        localStorage.setItem(WEEK_RECIPES_STORAGE_KEY, JSON.stringify(filteredData));
     }
 }

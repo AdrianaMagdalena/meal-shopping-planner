@@ -16,6 +16,13 @@ if (!menuConatiner) throw new Error("menuContainer not found on page");
 
 const menuManager = PlannerManager.load();
 
+const generateListBtn =
+  document.querySelector<HTMLButtonElement>(".planner__button");
+if (!generateListBtn) throw new Error("generateListBtn not found on page");
+generateListBtn.addEventListener("click", () => {
+  menuManager.saveUniqueRecipeData();
+});
+
 const renderDay = (dayIndex: number): void => {
   const day = menuManager.weekDays[dayIndex];
   const menuCard = new MenuCard(dayIndex);

@@ -1230,8 +1230,16 @@ p.error-msg:before {
 }
 .weekly-list__recipe-list li {
   font-size: 18px;
-  padding: 12px 0;
+  font-weight: 400;
+  padding: 12px 8px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
   border-bottom: 1px solid var(--clr-beige-02);
+  cursor: pointer;
+}
+.weekly-list__recipe-list li:hover {
+  text-decoration: underline;
 }
 .weekly-list__recipe-list li:first-child {
   padding-top: 0;
@@ -1239,6 +1247,13 @@ p.error-msg:before {
 .weekly-list__recipe-list li:last-child {
   border: none;
   padding-bottom: 0;
+}
+.weekly-list__recipe-list li:before {
+  content: "";
+  background-image: url("../icons/link.svg");
+  height: 20px;
+  width: 20px;
+  background-size: cover;
 }
 .weekly-list__header-wrap {
   display: flex;

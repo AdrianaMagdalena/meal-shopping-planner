@@ -17,3 +17,9 @@ export function isRecipe(obj) {
 export function isSelectorString(selector) {
     return typeof selector === "string";
 }
+export function isSavedPlannerEntry(obj) {
+    return (obj &&
+        typeof obj.recipeId === "string" &&
+        typeof obj.recipeTitle === "string" &&
+        typeof obj.servingsAmount === "number");
+}

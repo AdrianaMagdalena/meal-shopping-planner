@@ -1,5 +1,6 @@
 import { IFood } from "../interfaces/iFood.js";
 import { IRecipe } from "../interfaces/iRecipe.js";
+import { ISavedPlannerEntry } from "../interfaces/iSavedPlanner.js";
 
 export function isFood(obj: any): obj is IFood {
   return (
@@ -27,4 +28,13 @@ export function isSelectorString(
   selector: string | HTMLElement,
 ): selector is string {
   return typeof selector === "string";
+}
+
+export function isSavedPlannerEntry(obj: any): obj is ISavedPlannerEntry {
+  return (
+    obj &&
+    typeof obj.recipeId === "string" &&
+    typeof obj.recipeTitle === "string" &&
+    typeof obj.servingsAmount === "number"
+  );
 }
