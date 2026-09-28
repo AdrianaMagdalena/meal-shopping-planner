@@ -16,6 +16,7 @@ export const DAY_LABELS = [
 const PLAN_STORAGE_KEY = "weeklyPlan";
 export const WEEK_RECIPES_STORAGE_KEY = "weeklyRecipeList";
 export const SHOPPING_LIST_STORAGE_KEY = "shoppingList";
+export const CHECKED_ITEMS_STORAGE_KEY = "checkedShoppingItems";
 
 export class PlannerManager {
   private readonly _weekDays: PlannerDay[];
@@ -65,7 +66,6 @@ export class PlannerManager {
       id: day.id,
       entries: day.dayEntries.map((entry) => entry.toSavedData()),
     }));
-    console.log(JSON.stringify(data));
 
     localStorage.setItem(PLAN_STORAGE_KEY, JSON.stringify(data));
   }

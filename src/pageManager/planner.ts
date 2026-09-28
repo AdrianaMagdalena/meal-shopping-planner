@@ -1,5 +1,9 @@
 import { Navigation } from "../components/navigation.js";
-import { PlannerManager, DAY_LABELS } from "../services/plannerManager.js";
+import {
+  PlannerManager,
+  DAY_LABELS,
+  CHECKED_ITEMS_STORAGE_KEY,
+} from "../services/plannerManager.js";
 import { MenuCard } from "../components/menuCard.js";
 import { Modal } from "../components/modal.js";
 
@@ -30,6 +34,7 @@ if (!generateListBtn) throw new Error("generateListBtn not found on page");
 generateListBtn.addEventListener("click", () => {
   menuManager.saveUniqueRecipeData();
   menuManager.saveAllEntryData();
+  localStorage.removeItem(CHECKED_ITEMS_STORAGE_KEY);
   confirmModal.openModal();
 });
 

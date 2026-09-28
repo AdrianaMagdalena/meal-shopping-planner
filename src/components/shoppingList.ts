@@ -1,4 +1,5 @@
 import { ISavedShoppingItem } from "../interfaces/iSavedShopping.js";
+import { CHECKED_ITEMS_STORAGE_KEY } from "../services/plannerManager.js";
 import { generateId } from "../utils/generateId.js";
 import { insertElem } from "../utils/insertElem.js";
 import { isSelectorString } from "../utils/typeGuards.js";
@@ -16,6 +17,23 @@ const CATEGORY_ORDER = [
   "alcohol",
   "other",
 ];
+
+const loadCheckedIds = (): string[] => {
+  const rawData = localStorage.getItem(CHECKED_ITEMS_STORAGE_KEY);
+  if (!rawData) return [];
+
+  try {
+    const parsedData: unknown = JSON.parse(rawData);
+    if (!Array.isArray(parsedData)) return [];
+    return parsedData.filter((id): id is string => typeof id === "string");
+  } catch {
+    return [];
+  }
+};
+
+const saveCheckedIds = (ids: string[]): void => {
+  localStorage.setItem(CHECKED_ITEMS_STORAGE_KEY, JSON.stringify(ids));
+};
 
 const template = document.createElement("template");
 const templateHtml = `
@@ -119,7 +137,6 @@ export class ShoppingList {
   }
 
   async renderList(items: ISavedShoppingItem[]): Promise<void> {
-    console.log(items[0]);
     if (items.length === 0) {
       if (!document.querySelector(".error-screen")) {
         const errorScreen = new ErrorScreen(
@@ -134,6 +151,7 @@ export class ShoppingList {
 
     const grouped = this.groupByCategory(items);
     const sortedGroup = this.sortByFixedOrder(grouped);
+    const initialCheckedIds = loadCheckedIds();
 
     sortedGroup.forEach((categoryItems, category) => {
       const categoryTitle = document.createElement("h3");
@@ -170,10 +188,24 @@ export class ShoppingList {
         const uniqueID = generateId("shoppingitem", 8);
         checkboxItem.setAttribute("for", uniqueID);
         checkboxInput.id = uniqueID;
+        checkboxInput.checked = initialCheckedIds.includes(item.id);
         quantitySpan.textContent = `${item.quantity} ${item.unit}`;
         nameSpan.textContent = item.name;
 
         list.appendChild(shoppingItem);
+
+        checkboxInput.addEventListener("change", () => {
+          let checkedIds = loadCheckedIds();
+
+          if (checkboxInput.checked) {
+            if (!checkedIds.includes(item.id)) {
+              checkedIds.push(item.id);
+            }
+            saveCheckedIds(checkedIds);
+          } else {
+            saveCheckedIds(checkedIds.filter((id) => id !== item.id));
+          }
+        });
       });
       this._shoppingListContainer.appendChild(list);
     });

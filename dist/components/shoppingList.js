@@ -1,3 +1,4 @@
+import { CHECKED_ITEMS_STORAGE_KEY } from "../services/plannerManager.js";
 import { generateId } from "../utils/generateId.js";
 import { insertElem } from "../utils/insertElem.js";
 import { isSelectorString } from "../utils/typeGuards.js";
@@ -14,6 +15,23 @@ const CATEGORY_ORDER = [
     "alcohol",
     "other",
 ];
+const loadCheckedIds = () => {
+    const rawData = localStorage.getItem(CHECKED_ITEMS_STORAGE_KEY);
+    if (!rawData)
+        return [];
+    try {
+        const parsedData = JSON.parse(rawData);
+        if (!Array.isArray(parsedData))
+            return [];
+        return parsedData.filter((id) => typeof id === "string");
+    }
+    catch {
+        return [];
+    }
+};
+const saveCheckedIds = (ids) => {
+    localStorage.setItem(CHECKED_ITEMS_STORAGE_KEY, JSON.stringify(ids));
+};
 const template = document.createElement("template");
 const templateHtml = `
 <div class="weekly-list__shopping-list">
@@ -86,7 +104,6 @@ export class ShoppingList {
         return new Map(sortedItems);
     }
     async renderList(items) {
-        console.log(items[0]);
         if (items.length === 0) {
             if (!document.querySelector(".error-screen")) {
                 const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "No shopping list to display!", "Finalize the weekly meal plan to generate a shopping list");
@@ -96,6 +113,7 @@ export class ShoppingList {
         }
         const grouped = this.groupByCategory(items);
         const sortedGroup = this.sortByFixedOrder(grouped);
+        const initialCheckedIds = loadCheckedIds();
         sortedGroup.forEach((categoryItems, category) => {
             const categoryTitle = document.createElement("h3");
             categoryTitle.textContent = category;
@@ -121,9 +139,22 @@ export class ShoppingList {
                 const uniqueID = generateId("shoppingitem", 8);
                 checkboxItem.setAttribute("for", uniqueID);
                 checkboxInput.id = uniqueID;
+                checkboxInput.checked = initialCheckedIds.includes(item.id);
                 quantitySpan.textContent = `${item.quantity} ${item.unit}`;
                 nameSpan.textContent = item.name;
                 list.appendChild(shoppingItem);
+                checkboxInput.addEventListener("change", () => {
+                    let checkedIds = loadCheckedIds();
+                    if (checkboxInput.checked) {
+                        if (!checkedIds.includes(item.id)) {
+                            checkedIds.push(item.id);
+                        }
+                        saveCheckedIds(checkedIds);
+                    }
+                    else {
+                        saveCheckedIds(checkedIds.filter((id) => id !== item.id));
+                    }
+                });
             });
             this._shoppingListContainer.appendChild(list);
         });
