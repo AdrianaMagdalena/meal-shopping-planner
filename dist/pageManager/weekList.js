@@ -9,6 +9,11 @@ import { roundIngredients } from "../utils/roundIngredients.js";
 import { isSavedPlannerEntry } from "../utils/typeGuards.js";
 const navigation = new Navigation("../index.html", "./search.html", "./planner.html", "javascript:void(0)", "./favorites.html");
 navigation.render(document.body);
+const removeAllDataBtn = document.createElement("button");
+removeAllDataBtn.classList.add("planner__button", "button", "button--sec", "button--icon-before", "button--clear");
+removeAllDataBtn.textContent = "Remove week's data";
+document.querySelector("main")?.appendChild(removeAllDataBtn);
+removeAllDataBtn.addEventListener("click", () => { });
 const rawData = localStorage.getItem(SHOPPING_LIST_STORAGE_KEY);
 if (!rawData) {
     if (!document.querySelector(".error-screen")) {
@@ -20,7 +25,6 @@ const parsedData = JSON.parse(rawData ?? "[]");
 if (!Array.isArray(parsedData)) {
     throw new TypeError("Invalid format of saved shopping list entries");
 }
-const savedEntries = parsedData.filter(isSavedPlannerEntry);
 const getDataFromRecipe = async (recipe, foodStorage, items, ratio) => {
     for (const part of recipe.parts) {
         for (const ingredient of part.ingredients) {
@@ -68,7 +72,7 @@ const buildShoppingItems = async (savedEntries, recipeStorage, foodStorage) => {
     const recipeStorage = new RecipeStorage();
     const allRecipes = await recipeStorage.getAll();
     if (allRecipes.length === 0) {
-        const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "No recipes found");
+        const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "Could not get recipes data", "Please refresh the page or try again later.");
         errorScreen.render("main");
     }
     else {

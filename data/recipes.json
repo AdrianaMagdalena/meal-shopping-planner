@@ -200,11 +200,11 @@
     "parts": [
       {
         "ingredients": [
-          { "id": "carrot_01", "quantity": 1000 },
-          { "id": "parsnip_01", "quantity": 500 },
-          { "id": "celery_root_01", "quantity": 300 },
+          { "id": "carrot_01", "quantity": 400 },
+          { "id": "parsnip_01", "quantity": 100 },
+          { "id": "celery_root_01", "quantity": 400 },
           { "id": "leek_01", "quantity": 1 },
-          { "id": "onion_01", "quantity": 500 },
+          { "id": "onion_01", "quantity": 200 },
           { "id": "dry_mushroom_01", "quantity": 4 },
           { "id": "garlic_01", "quantity": 4 },
           { "id": "broth_02", "quantity": 4 },

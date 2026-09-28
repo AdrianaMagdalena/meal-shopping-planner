@@ -21,6 +21,18 @@ const navigation = new Navigation(
 
 navigation.render(document.body);
 
+const removeAllDataBtn = document.createElement("button");
+removeAllDataBtn.classList.add(
+  "planner__button",
+  "button",
+  "button--sec",
+  "button--icon-before",
+  "button--clear",
+);
+removeAllDataBtn.textContent = "Remove week's data";
+document.querySelector<HTMLElement>("main")?.appendChild(removeAllDataBtn);
+removeAllDataBtn.addEventListener("click", () => {});
+
 const rawData = localStorage.getItem(SHOPPING_LIST_STORAGE_KEY);
 if (!rawData) {
   if (!document.querySelector(".error-screen")) {
@@ -37,8 +49,6 @@ const parsedData: unknown = JSON.parse(rawData ?? "[]");
 if (!Array.isArray(parsedData)) {
   throw new TypeError("Invalid format of saved shopping list entries");
 }
-
-const savedEntries = parsedData.filter(isSavedPlannerEntry);
 
 const getDataFromRecipe = async (
   recipe: Recipe,
@@ -112,7 +122,8 @@ const buildShoppingItems = async (
   if (allRecipes.length === 0) {
     const errorScreen = new ErrorScreen(
       "../src/assets/illustrations/search.svg",
-      "No recipes found",
+      "Could not get recipes data",
+      "Please refresh the page or try again later.",
     );
     errorScreen.render("main");
   } else {

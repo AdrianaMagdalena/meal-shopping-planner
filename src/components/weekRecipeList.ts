@@ -91,8 +91,8 @@ export class WeekRecipeList {
       if (!document.querySelector(".error-screen")) {
         const errorScreen = new ErrorScreen(
           "../src/assets/illustrations/search.svg",
-          "No data to display!",
-          "Finalize the weeklu meal plan to generate recipe and shopping list",
+          "No recipe list to display!",
+          "Finalize the weekly meal plan to generate new recipe list",
         );
         errorScreen.render("main");
       }

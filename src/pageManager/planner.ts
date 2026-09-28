@@ -1,11 +1,11 @@
 import { Navigation } from "../components/navigation.js";
-import {
-  PlannerManager,
-  DAY_LABELS,
-  CHECKED_ITEMS_STORAGE_KEY,
-} from "../services/plannerManager.js";
+import { PlannerManager, DAY_LABELS } from "../services/plannerManager.js";
 import { MenuCard } from "../components/menuCard.js";
 import { Modal } from "../components/modal.js";
+import {
+  CHECKED_ITEMS_STORAGE_KEY,
+  REMOVED_ITEMS_STORAGE_KEY,
+} from "../components/shoppingList.js";
 
 const navigation = new Navigation(
   "../index.html",
@@ -35,6 +35,7 @@ generateListBtn.addEventListener("click", () => {
   menuManager.saveUniqueRecipeData();
   menuManager.saveAllEntryData();
   localStorage.removeItem(CHECKED_ITEMS_STORAGE_KEY);
+  localStorage.removeItem(REMOVED_ITEMS_STORAGE_KEY);
   confirmModal.openModal();
 });
 

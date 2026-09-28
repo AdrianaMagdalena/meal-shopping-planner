@@ -1,5 +1,4 @@
 import { ISavedShoppingItem } from "../interfaces/iSavedShopping.js";
-import { CHECKED_ITEMS_STORAGE_KEY } from "../services/plannerManager.js";
 import { generateId } from "../utils/generateId.js";
 import { insertElem } from "../utils/insertElem.js";
 import { isSelectorString } from "../utils/typeGuards.js";
@@ -17,6 +16,26 @@ const CATEGORY_ORDER = [
   "alcohol",
   "other",
 ];
+
+export const CHECKED_ITEMS_STORAGE_KEY = "checkedShoppingItems";
+export const REMOVED_ITEMS_STORAGE_KEY = "removedShoppingItems";
+
+const loadRemovedIds = (): string[] => {
+  const rawData = localStorage.getItem(REMOVED_ITEMS_STORAGE_KEY);
+  if (!rawData) return [];
+
+  try {
+    const parsedData: unknown = JSON.parse(rawData);
+    if (!Array.isArray(parsedData)) return [];
+    return parsedData.filter((id): id is string => typeof id === "string");
+  } catch {
+    return [];
+  }
+};
+
+const saveRemovedIds = (ids: string[]): void => {
+  localStorage.setItem(REMOVED_ITEMS_STORAGE_KEY, JSON.stringify(ids));
+};
 
 const loadCheckedIds = (): string[] => {
   const rawData = localStorage.getItem(CHECKED_ITEMS_STORAGE_KEY);
@@ -92,6 +111,40 @@ export class ShoppingList {
       throw new Error("shoppingListContainer not found on template");
     this._shoppingListContainer = shoppingListContainer;
 
+    this._removeItemsBtn.addEventListener("click", () => {
+      const checkedIds = loadCheckedIds();
+      if (checkedIds.length === 0) return;
+
+      const removedIds = loadRemovedIds();
+      checkedIds.forEach((id) => {
+        if (!removedIds.includes(id)) {
+          removedIds.push(id);
+        }
+      });
+      saveRemovedIds(removedIds);
+
+      saveCheckedIds([]);
+
+      const items = this._shoppingListContainer.querySelectorAll<HTMLLIElement>(
+        ".shopping-list__item",
+      );
+
+      items.forEach((item) => {
+        const checkbox =
+          item.querySelector<HTMLInputElement>(".checkbox__input");
+        const itemsParentUl = item?.parentElement;
+        const categoryTitle = itemsParentUl?.previousSibling;
+
+        if (checkbox?.checked) {
+          item.remove();
+          if (itemsParentUl?.children.length === 0) {
+            itemsParentUl?.remove();
+            categoryTitle?.remove();
+          }
+        }
+      });
+    });
+
     this.render("main", "append");
   }
 
@@ -137,7 +190,11 @@ export class ShoppingList {
   }
 
   async renderList(items: ISavedShoppingItem[]): Promise<void> {
-    if (items.length === 0) {
+    const removedIds = loadRemovedIds();
+    const displayedItems = items.filter(
+      (item) => !removedIds.includes(item.id),
+    );
+    if (displayedItems.length === 0) {
       if (!document.querySelector(".error-screen")) {
         const errorScreen = new ErrorScreen(
           "../src/assets/illustrations/search.svg",
@@ -149,7 +206,7 @@ export class ShoppingList {
       return;
     }
 
-    const grouped = this.groupByCategory(items);
+    const grouped = this.groupByCategory(displayedItems);
     const sortedGroup = this.sortByFixedOrder(grouped);
     const initialCheckedIds = loadCheckedIds();
 

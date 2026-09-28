@@ -1,4 +1,3 @@
-import { CHECKED_ITEMS_STORAGE_KEY } from "../services/plannerManager.js";
 import { generateId } from "../utils/generateId.js";
 import { insertElem } from "../utils/insertElem.js";
 import { isSelectorString } from "../utils/typeGuards.js";
@@ -15,6 +14,25 @@ const CATEGORY_ORDER = [
     "alcohol",
     "other",
 ];
+export const CHECKED_ITEMS_STORAGE_KEY = "checkedShoppingItems";
+export const REMOVED_ITEMS_STORAGE_KEY = "removedShoppingItems";
+const loadRemovedIds = () => {
+    const rawData = localStorage.getItem(REMOVED_ITEMS_STORAGE_KEY);
+    if (!rawData)
+        return [];
+    try {
+        const parsedData = JSON.parse(rawData);
+        if (!Array.isArray(parsedData))
+            return [];
+        return parsedData.filter((id) => typeof id === "string");
+    }
+    catch {
+        return [];
+    }
+};
+const saveRemovedIds = (ids) => {
+    localStorage.setItem(REMOVED_ITEMS_STORAGE_KEY, JSON.stringify(ids));
+};
 const loadCheckedIds = () => {
     const rawData = localStorage.getItem(CHECKED_ITEMS_STORAGE_KEY);
     if (!rawData)
@@ -72,6 +90,32 @@ export class ShoppingList {
         if (!shoppingListContainer)
             throw new Error("shoppingListContainer not found on template");
         this._shoppingListContainer = shoppingListContainer;
+        this._removeItemsBtn.addEventListener("click", () => {
+            const checkedIds = loadCheckedIds();
+            if (checkedIds.length === 0)
+                return;
+            const removedIds = loadRemovedIds();
+            checkedIds.forEach((id) => {
+                if (!removedIds.includes(id)) {
+                    removedIds.push(id);
+                }
+            });
+            saveRemovedIds(removedIds);
+            saveCheckedIds([]);
+            const items = this._shoppingListContainer.querySelectorAll(".shopping-list__item");
+            items.forEach((item) => {
+                const checkbox = item.querySelector(".checkbox__input");
+                const itemsParentUl = item?.parentElement;
+                const categoryTitle = itemsParentUl?.previousSibling;
+                if (checkbox?.checked) {
+                    item.remove();
+                    if (itemsParentUl?.children.length === 0) {
+                        itemsParentUl?.remove();
+                        categoryTitle?.remove();
+                    }
+                }
+            });
+        });
         this.render("main", "append");
     }
     render(parentSelector, position) {
@@ -104,14 +148,16 @@ export class ShoppingList {
         return new Map(sortedItems);
     }
     async renderList(items) {
-        if (items.length === 0) {
+        const removedIds = loadRemovedIds();
+        const displayedItems = items.filter((item) => !removedIds.includes(item.id));
+        if (displayedItems.length === 0) {
             if (!document.querySelector(".error-screen")) {
                 const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "No shopping list to display!", "Finalize the weekly meal plan to generate a shopping list");
                 errorScreen.render(".shopping-list__container");
             }
             return;
         }
-        const grouped = this.groupByCategory(items);
+        const grouped = this.groupByCategory(displayedItems);
         const sortedGroup = this.sortByFixedOrder(grouped);
         const initialCheckedIds = loadCheckedIds();
         sortedGroup.forEach((categoryItems, category) => {
