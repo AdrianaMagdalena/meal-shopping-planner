@@ -17,7 +17,7 @@
           { "id": "salt_01", "quantity": 1.5 },
           { "id": "pepper_01", "quantity": 0.5 },
           { "id": "oregano_01", "quantity": 2 },
-          { "id": "tomato_paste_01", "quantity": 80 },
+          { "id": "tomato_paste_01", "quantity": 5 },
           {
             "id": "red_wine_01",
             "quantity": 70,
@@ -106,7 +106,7 @@
           { "id": "parsnip_01", "quantity": 100 },
           { "id": "celery_root_01", "quantity": 150 },
           { "id": "onion_01", "quantity": 80 },
-          { "id": "parsley_03", "quantity": 4, "optional": true },
+          { "id": "parsley_02", "quantity": 4, "optional": true },
           { "id": "dill_01", "quantity": 4, "optional": true },
           { "id": "salt_01", "quantity": 1 },
           { "id": "pepper_01", "quantity": 0.3 },
@@ -169,7 +169,7 @@
     "cookTime": 15,
     "dietTags": ["vegetarian"],
     "mealTypeTags": ["breakfast", "snack"],
-    "servings": 12,
+    "servings": 8,
     "parts": [
       {
         "ingredients": [
@@ -207,14 +207,14 @@
           { "id": "onion_01", "quantity": 200 },
           { "id": "dry_mushroom_01", "quantity": 4 },
           { "id": "garlic_01", "quantity": 4 },
-          { "id": "broth_02", "quantity": 4 },
-          { "id": "parsley_03", "quantity": 4, "optional": true },
+          { "id": "broth_02", "quantity": 6 },
+          { "id": "parsley_02", "quantity": 4, "optional": true },
           { "id": "salt_01", "quantity": 1 },
           { "id": "pepper_02", "quantity": 8 },
           { "id": "bay_leaf_01", "quantity": 4 },
           { "id": "allspice_01", "quantity": 4 },
           { "id": "turmeric_01", "quantity": 0.2, "optional": true },
-          { "id": "soy_01", "quantity": 2, "optional": true },
+          { "id": "soy_sauce_01", "quantity": 2, "optional": true },
           { "id": "pasta_01", "quantity": 500, "optional": true }
         ],
         "steps": [
@@ -222,7 +222,7 @@
           "Roast both sides of the onion slices on a dry pan. They're good if they're a little charred on each side.",
           "Cut the leak's leafs off, wash thoroughly and cut in half.",
           "Peel the carrots, parsnip and celery root. Cut the carrot and parsley in half. Cut the celery into bigger pieces.",
-          "Put water, stock cubes, carrots, celery root, leak, garlic, burnt onions, 4 bay leaves and 4 allspice berries in a big pot. Let it boil, then put it on low heat, cover and leave to simmer for 1 hour.",
+          "Put 3 liters of water, stock cubes, carrots, celery root, leak, garlic, burnt onions, 4 bay leaves and 4 allspice berries in a big pot. Let it boil, then put it on low heat, cover and leave to simmer for 1 hour.",
           "Add parsnip, mushrooms, 8 pepper berries whole and cook on low heat for another 1-2 hours.",
           "Eat with cut up cooked vegetables, pasta and parsley as for your liking or use it for a base of other soups."
         ]
@@ -409,7 +409,7 @@
       {
         "title": "Croutons",
         "ingredients": [
-          { "id": "baguette_01", "quantity": 80 },
+          { "id": "baguette_01", "quantity": 1 },
           { "id": "cheese_01", "quantity": 50 }
         ],
         "steps": [
@@ -616,97 +616,193 @@
     ]
   },
   {
-    "id": "recipe_XXX",
-    "title": "title",
-    "preparationTime": 10,
-    "cookTime": 10,
-    "dietTags": ["vegan", "lactose-free"],
+    "id": "recipe_017",
+    "title": "Broccoli cream soup",
+    "preparationTime": 30,
+    "cookTime": 20,
+    "dietTags": ["vegan", "lactose-free", "gluten-free"],
     "mealTypeTags": ["lunch"],
-    "servings": 1,
-    "servingInfo": "10 g in 1 serving",
+    "servings": 4,
+    "servingInfo": "350 g in 1 serving",
     "parts": [
       {
+        "title": "Soup",
         "ingredients": [
-          { "id": "oil_01", "quantity": 3 },
-          { "id": "oil_01", "quantity": 3 }
+          { "id": "broth_01", "quantity": 750 },
+          { "id": "broccoli_01", "quantity": 1000 },
+          { "id": "onion_01", "quantity": 200 },
+          { "id": "garlic_01", "quantity": 3 },
+          { "id": "butter_01", "quantity": 45 },
+          { "id": "cream_01", "quantity": 250 },
+          { "id": "salt_01", "quantity": 0.5 },
+          { "id": "pepper_01", "quantity": 0.5 }
         ],
-        "steps": ["Prepare", "Heat"]
+        "steps": [
+          "Sauté the onions and garlic in butter.",
+          "Add the broccoli and pour in the broth.",
+          "Let the soup boil, then cook on low heat while it simmers for 20 minutes.",
+          "Turn off the heat, add the cream, and blend the soup."
+        ]
+      },
+      {
+        "title": "Croutons",
+        "ingredients": [
+          { "id": "baguette_01", "quantity": 1 },
+          { "id": "cheese_01", "quantity": 50 }
+        ],
+        "steps": [
+          "The croutons taste the best fresh, so I advise to prepare a portion right before eating.",
+          "Cut the baguette in round slices, sprinkle them with greated cheese and toast them in airfryer or oven."
+        ]
       }
     ]
   },
   {
-    "id": "recipe_XXX",
-    "title": "title",
-    "preparationTime": 10,
-    "cookTime": 10,
+    "id": "recipe_018",
+    "title": "Potato dumplings with lentil filling",
+    "preparationTime": 120,
+    "cookTime": 40,
     "dietTags": ["vegan", "lactose-free"],
     "mealTypeTags": ["lunch"],
     "servings": 1,
     "servingInfo": "10 g in 1 serving",
     "parts": [
       {
+        "title": "Potato dough",
         "ingredients": [
-          { "id": "oil_01", "quantity": 3 },
-          { "id": "oil_01", "quantity": 3 }
+          { "id": "potatoes_01", "quantity": 1500 },
+          { "id": "potato_starch_01", "quantity": 300 },
+          { "id": "egg_01", "quantity": 1 },
+          { "id": "onion_01", "quantity": 1 },
+          { "id": "butter_01", "quantity": 45 }
         ],
-        "steps": ["Prepare", "Heat"]
+        "steps": [
+          "Boil the potatoes, drain them, and mash them until smooth.",
+          "Set the potatoes aside to chill. Continue with preparing the filling.",
+          "Place the cooled mashed potatoes in a large, wide bowl and divide them into four portions.",
+          "Take one portion out and replace it with potato starch; add an egg (add the 4th portion back) and knead the dough.",
+          "Form 1cm thick pancakes, little bigger than the size of your palm.",
+          "Add about a spoonfull of the filling on top.",
+          "Connect the edges of the dough and smooth the out with a little water.",
+          "Cook them in salted boiling water 1 minute after they float up to the water surface.",
+          "Dice the onion and sauté it in oil until golden.",
+          "Serve the dumplings with onion and butter."
+        ]
+      },
+      {
+        "title": "Lentil filling",
+        "ingredients": [
+          { "id": "lentils_01", "quantity": 400 },
+          { "id": "onion_01", "quantity": 250 },
+          { "id": "oil_01", "quantity": 120 },
+          { "id": "salt_01", "quantity": 1 },
+          { "id": "pepper_01", "quantity": 0.5 },
+          { "id": "soy_sauce_01", "quantity": 1, "optional": true }
+        ],
+        "steps": [
+          "Sauté the onion in half the oil.",
+          "Rinse the lentils until the water runs clear. Place them in a pot with the sautéed onion.",
+          "Add half a teaspoon of pepper and a teaspoon of salt. Pour in a glass of water and stir.",
+          "Cook, covered, over the lowest heat setting for about 30 minutes (or until the lentils are tender). After 15 minutes, check to see if more water is needed.",
+          "Cook until the lentils are tender and water has evaporated.",
+          "Blend the filling with a foodprocessor. Add the rest of the the oil. Season with soy sauce if the flavor isn't intense enough."
+        ]
       }
     ]
   },
   {
-    "id": "recipe_XXX",
-    "title": "title",
+    "id": "recipe_019",
+    "title": "Miso beans",
     "preparationTime": 10,
-    "cookTime": 10,
+    "cookTime": 30,
     "dietTags": ["vegan", "lactose-free"],
     "mealTypeTags": ["lunch"],
-    "servings": 1,
-    "servingInfo": "10 g in 1 serving",
+    "servings": 4,
     "parts": [
       {
         "ingredients": [
-          { "id": "oil_01", "quantity": 3 },
-          { "id": "oil_01", "quantity": 3 }
+          { "id": "onion_01", "quantity": 400 },
+          { "id": "butter_beans_01", "quantity": 1 },
+          { "id": "garlic_01", "quantity": 4 },
+          { "id": "bay_leaf_01", "quantity": 1 },
+          { "id": "miso_paste_01", "quantity": 1 },
+          { "id": "broth_01", "quantity": 500 },
+          { "id": "parsley_01", "quantity": 5 },
+          { "id": "olive_oil_01", "quantity": 20 },
+          { "id": "salt_01", "quantity": 0.5 },
+          { "id": "pepper_01", "quantity": 0.5 }
         ],
-        "steps": ["Prepare", "Heat"]
+        "steps": [
+          "Slice the onions and saute them on lower with salt until caramelised and golden, about 20-25 minutes.",
+          "Add the garlic and cook for 5 more minutes.",
+          "Add drained butterbeans and broth.",
+          "In a separate bowl or bigger mug mix the miso paste with some of the broth until smooth.",
+          "Add to the beans and let it all simmer on low heat for another 5-10 minutes.",
+          "Serve with parsley and fresh bread"
+        ]
       }
     ]
   },
   {
-    "id": "recipe_XXX",
-    "title": "title",
+    "id": "recipe_020",
+    "title": "Broccoli and chickpea gnocchi",
     "preparationTime": 10,
-    "cookTime": 10,
+    "cookTime": 30,
     "dietTags": ["vegan", "lactose-free"],
     "mealTypeTags": ["lunch"],
-    "servings": 1,
-    "servingInfo": "10 g in 1 serving",
+    "servings": 3,
     "parts": [
       {
         "ingredients": [
-          { "id": "oil_01", "quantity": 3 },
-          { "id": "oil_01", "quantity": 3 }
+          { "id": "broccoli_01", "quantity": 500 },
+          { "id": "chickpeas_01", "quantity": 1 },
+          { "id": "gnocchi_01", "quantity": 250 },
+          { "id": "olive_oil_01", "quantity": 15 },
+          { "id": "onion_01", "quantity": 100 },
+          { "id": "garlic_01", "quantity": 4 },
+          { "id": "chili_flakes_01", "quantity": 0.25 },
+          { "id": "broth_02", "quantity": 1 },
+          { "id": "nutritional_yeast_01", "quantity": 2 }
         ],
-        "steps": ["Prepare", "Heat"]
+        "steps": [
+          "Boil a big pot of water with the stock cube.",
+          "Dice the onion and garlic.",
+          "Saute the onion for 5-10minutes in olive oil.",
+          "Cut the broccoli and boil in the broth for 2-3 minutes.",
+          "Add garlic and chili flakes to the onionand cook for a minute.",
+          "Scoop out the broccoli, add to the onion and break it up with a wooden spoon/spatula.",
+          "Cook the gnocchi in the rest of the broth.",
+          "Add the cooked gnocchi to the pan. Add the nutritional yeast and mix it all together. Add some broth if needed."
+        ]
       }
     ]
   },
   {
-    "id": "recipe_XXX",
-    "title": "title",
+    "id": "recipe_021",
+    "title": "Dried tomato and chickpea sauce pasta",
     "preparationTime": 10,
-    "cookTime": 10,
+    "cookTime": 5,
     "dietTags": ["vegan", "lactose-free"],
     "mealTypeTags": ["lunch"],
-    "servings": 1,
-    "servingInfo": "10 g in 1 serving",
+    "servings": 4,
     "parts": [
       {
         "ingredients": [
-          { "id": "oil_01", "quantity": 3 },
-          { "id": "oil_01", "quantity": 3 }
+          { "id": "pasta_01", "quantity": 500 },
+          { "id": "chickpeas_01", "quantity": 6 },
+          { "id": "dried_tomatoes_01", "quantity": 6 },
+          { "id": "cashews_01", "quantity": 30 },
+          { "id": "nutritional_yeast_01", "quantity": 1 },
+          { "id": "tomato_paste_01", "quantity": 1 },
+          { "id": "broth_01", "quantity": 300 },
+          { "id": "basil_02", "quantity": 1 }
         ],
-        "steps": ["Prepare", "Heat"]
+        "steps": [
+          "Cook any pasta as per instructions.",
+          "Blend the dires tomatoes with a tablespoon of oil from the jar, cashews, nutritional yeast, tomato paste and broth until smooth.",
+          "Pour the sauce into a pot, add drained chickpeas and cook until boiling.",
+          "Add the basil to the sauce. Servie the sauce with pasta."
+        ]
       }
     ]
   },

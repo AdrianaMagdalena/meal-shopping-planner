@@ -75,7 +75,7 @@
     "id": "tomato_paste_01",
     "name": "Tomato paste",
     "category": "seasoning",
-    "unit": "g"
+    "unit": "tbsp"
   },
   {
     "id": "red_wine_01",
@@ -144,6 +144,12 @@
     "category": "canned & dry goods",
     "unit": "can",
     "unitInfo": "big can - 800 g"
+  },
+  {
+    "id": "butter_beans_01",
+    "name": "Canned butter beans",
+    "category": "canned & dry goods",
+    "unit": "can"
   },
   {
     "id": "taco_seasoning_01",
@@ -218,16 +224,16 @@
     "unit": "g"
   },
   {
+    "id": "parsley_02",
+    "name": "Dried parsley leaves",
+    "category": "seasoning",
+    "unit": "tsp"
+  },
+  {
     "id": "parsnip_01",
     "name": "Parsnip",
     "category": "vegetables",
     "unit": "g"
-  },
-  {
-    "id": "parsley_03",
-    "name": "Dried parsley leaves",
-    "category": "seasoning",
-    "unit": "tsp"
   },
   {
     "id": "dill_01",
@@ -338,7 +344,7 @@
     "unit": "pcs"
   },
   {
-    "id": "soy_01",
+    "id": "soy_sauce_01",
     "name": "Soy sauce",
     "category": "seasoning",
     "unit": "tbsp"
@@ -354,12 +360,6 @@
     "name": "Red pepper",
     "category": "vegetables",
     "unit": "g"
-  },
-  {
-    "id": "soy_01",
-    "name": "Soy sauce",
-    "category": "seasoning",
-    "unit": "tbsp"
   },
   {
     "id": "corn_01",
@@ -496,7 +496,7 @@
   {
     "id": "green_onion_01",
     "name": "Green onion",
-    "category": "vegetable",
+    "category": "vegetables",
     "unit": "pcs"
   },
   {
@@ -534,5 +534,65 @@
     "name": "Lemon",
     "category": "fruit",
     "unit": "pcs"
+  },
+  {
+    "id": "broccoli_01",
+    "name": "Brocooli",
+    "category": "vegetables",
+    "unit": "g"
+  },
+  {
+    "id": "miso_paste_01",
+    "name": "Light miso paste",
+    "category": "other",
+    "unit": "tbsp"
+  },
+  {
+    "id": "gnocchi_01",
+    "name": "Gnocchi",
+    "category": "canned & dry goods",
+    "unit": "g"
+  },
+  {
+    "id": "chickpeas_01",
+    "name": "Chickpeas",
+    "category": "canned & dry goods",
+    "unit": "can"
+  },
+  {
+    "id": "nutritional_yeast_01",
+    "name": "Nutritional yeast",
+    "category": "other",
+    "unit": "tbsp"
+  },
+  {
+    "id": "chili_flakes_01",
+    "name": "Chili flakes",
+    "category": "seasoning",
+    "unit": "tsp"
+  },
+  {
+    "id": "dried_tomatoes_01",
+    "name": "Dried tomatoes",
+    "category": "canned & dry goods",
+    "unit": "pcs"
+  },
+  {
+    "id": "cashews_01",
+    "name": "Cashews",
+    "category": "seeds & nuts",
+    "unit": "g"
+  },
+  {
+    "id": "basil_01",
+    "name": "Fresh basil",
+    "category": "vegetables",
+    "unit": "g"
+  },
+  {
+    "id": "basil_02",
+    "name": "Dried basil",
+    "category": "seasoning",
+    "unit": "tsp"
   }
 ]
