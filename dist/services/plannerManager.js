@@ -66,6 +66,14 @@ export class PlannerManager {
             throw new Error("EntryId not existent on day. Unable to remove.");
         this.save();
     }
+    removeAllEntries() {
+        this._weekDays.forEach((day) => {
+            day.dayEntries.forEach((entry) => {
+                day.removeEntry(entry.id);
+            });
+        });
+        this.save();
+    }
     updateEntryServings(dayIndex, entryId, newServings) {
         if (dayIndex < 0 || dayIndex > 6)
             throw new Error("dayIndex out of 0 - 6 range");

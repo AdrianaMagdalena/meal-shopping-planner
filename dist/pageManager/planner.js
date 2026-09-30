@@ -21,6 +21,15 @@ generateListBtn.addEventListener("click", () => {
     localStorage.removeItem(REMOVED_ITEMS_STORAGE_KEY);
     confirmModal.openModal();
 });
+const removeAllEntriesBtn = document.querySelector(".remove-entries__button");
+if (!removeAllEntriesBtn)
+    throw new Error("removeAllEntriesBtn not found on page");
+removeAllEntriesBtn.addEventListener("click", () => {
+    menuManager.removeAllEntries();
+    for (let i = 0; i < DAY_LABELS.length; i++) {
+        rerenderDay(i);
+    }
+});
 const renderDay = (dayIndex) => {
     const day = menuManager.weekDays[dayIndex];
     const menuCard = new MenuCard(dayIndex);

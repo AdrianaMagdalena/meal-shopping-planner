@@ -92,6 +92,15 @@ export class PlannerManager {
     this.save();
   }
 
+  removeAllEntries(): void {
+    this._weekDays.forEach((day) => {
+      day.dayEntries.forEach((entry) => {
+        day.removeEntry(entry.id);
+      });
+    });
+    this.save();
+  }
+
   updateEntryServings(dayIndex: number, entryId: string, newServings: number) {
     if (dayIndex < 0 || dayIndex > 6)
       throw new Error("dayIndex out of 0 - 6 range");

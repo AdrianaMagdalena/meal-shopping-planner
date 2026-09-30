@@ -8,6 +8,10 @@
     text-align: center;
   }
 
+  &__container {
+    display: contents;
+  }
+
   &__recipe-list {
     padding: 16px;
     display: grid;
@@ -94,6 +98,7 @@
   }
 
   &__shopping-list {
+    order: 2;
     display: grid;
     gap: 4px;
     padding: 4px;
@@ -106,7 +111,7 @@
       font-size: 24px;
       align-self: flex-start;
 
-      @include breakpoint-up(md) {
+      @include breakpoint-up(lg) {
         align-self: unset;
         font-size: 28px;
       }
@@ -229,4 +234,8 @@
       }
     }
   }
+}
+
+.delete-week-data__button {
+  justify-self: end;
 }

@@ -1,4 +1,5 @@
 import { ISavedShoppingItem } from "../interfaces/iSavedShopping.js";
+import { SHOPPING_LIST_STORAGE_KEY } from "../services/plannerManager.js";
 import { generateId } from "../utils/generateId.js";
 import { insertElem } from "../utils/insertElem.js";
 import { isSelectorString } from "../utils/typeGuards.js";
@@ -133,7 +134,7 @@ export class ShoppingList {
         const checkbox =
           item.querySelector<HTMLInputElement>(".checkbox__input");
         const itemsParentUl = item?.parentElement;
-        const categoryTitle = itemsParentUl?.previousSibling;
+        const categoryTitle = itemsParentUl?.previousElementSibling;
 
         if (checkbox?.checked) {
           item.remove();
@@ -143,9 +144,19 @@ export class ShoppingList {
           }
         }
       });
-    });
 
-    this.render("main", "append");
+      const remainigItems = this._shoppingListContainer.querySelectorAll(
+        ".shopping-list__item",
+      );
+      if (remainigItems.length === 0) {
+        localStorage.removeItem(SHOPPING_LIST_STORAGE_KEY);
+        this.renderList([]);
+      }
+    });
+  }
+
+  get shoppingListContainer() {
+    return this._shoppingListContainer;
   }
 
   render(parentSelector: string | HTMLElement, position: string): void {
@@ -195,14 +206,12 @@ export class ShoppingList {
       (item) => !removedIds.includes(item.id),
     );
     if (displayedItems.length === 0) {
-      if (!document.querySelector(".error-screen")) {
-        const errorScreen = new ErrorScreen(
-          "../src/assets/illustrations/search.svg",
-          "No shopping list to display!",
-          "Finalize the weekly meal plan to generate a shopping list",
-        );
-        errorScreen.render(".shopping-list__container");
-      }
+      const errorScreen = new ErrorScreen(
+        "../src/assets/illustrations/shopping-basket.svg",
+        "Empty shopping list!",
+        "You're done with all your shopping!",
+      );
+      errorScreen.render(".shopping-list__container");
       return;
     }
 

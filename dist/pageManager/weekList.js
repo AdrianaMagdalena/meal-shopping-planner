@@ -9,18 +9,7 @@ import { roundIngredients } from "../utils/roundIngredients.js";
 import { isSavedPlannerEntry } from "../utils/typeGuards.js";
 const navigation = new Navigation("../index.html", "./search.html", "./planner.html", "javascript:void(0)", "./favorites.html");
 navigation.render(document.body);
-const removeAllDataBtn = document.createElement("button");
-removeAllDataBtn.classList.add("planner__button", "button", "button--sec", "button--icon-before", "button--clear");
-removeAllDataBtn.textContent = "Remove week's data";
-document.querySelector("main")?.appendChild(removeAllDataBtn);
-removeAllDataBtn.addEventListener("click", () => { });
 const rawData = localStorage.getItem(SHOPPING_LIST_STORAGE_KEY);
-if (!rawData) {
-    if (!document.querySelector(".error-screen")) {
-        const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "No plan saved!", "Finalize the weekly meal plan to generate a shopping list");
-        errorScreen.render("main");
-    }
-}
 const parsedData = JSON.parse(rawData ?? "[]");
 if (!Array.isArray(parsedData)) {
     throw new TypeError("Invalid format of saved shopping list entries");
@@ -84,7 +73,8 @@ const buildShoppingItems = async (savedEntries, recipeStorage, foodStorage) => {
         const savedEntries = parsedData.filter(isSavedPlannerEntry);
         const shoppingItems = await buildShoppingItems(savedEntries, recipeStorage, foodStorage);
         const shoppingList = new ShoppingList();
+        const weekRecipeList = new WeekRecipeList(shoppingList);
+        shoppingList.render("main", "append");
         shoppingList.renderList(shoppingItems);
     }
 })();
-const weekRecipeList = new WeekRecipeList();
