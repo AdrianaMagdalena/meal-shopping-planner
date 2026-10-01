@@ -1,0 +1,51 @@
+@use "../utils/mixins" as *;
+@use "../utils/fonts" as *;
+
+.favorites-list {
+  width: min(100%, 650px);
+
+  ul {
+    list-style-type: none;
+  }
+
+  &__title {
+    @include accent-title;
+    font-size: 40px;
+    text-align: center;
+  }
+
+  &__letter {
+    @include accent-title;
+    font-size: 28px;
+    padding: 8px;
+    color: var(--clr-terracota-dark);
+    border-bottom: 1px solid var(--clr-beige-02);
+    margin: 32px 0 0 0;
+
+    &:first-child {
+      margin: 0;
+    }
+  }
+
+  &__recipe {
+    padding: 8px;
+    font-size: 18px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--clr-beige-02);
+
+    a {
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+      }
+    }
+
+    button {
+      --button-min-height: 24px;
+    }
+  }
+}

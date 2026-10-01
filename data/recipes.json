@@ -789,7 +789,7 @@
       {
         "ingredients": [
           { "id": "pasta_01", "quantity": 500 },
-          { "id": "chickpeas_01", "quantity": 6 },
+          { "id": "chickpeas_01", "quantity": 1 },
           { "id": "dried_tomatoes_01", "quantity": 6 },
           { "id": "cashews_01", "quantity": 30 },
           { "id": "nutritional_yeast_01", "quantity": 1 },
