@@ -31,3 +31,8 @@ export function isSavedShoppingItem(obj) {
         typeof obj.unit === "string" &&
         typeof obj.quantity === "number");
 }
+export function isFavoriteItem(obj) {
+    return (obj &&
+        typeof obj.recipeId === "string" &&
+        typeof obj.recipeTitle === "string");
+}

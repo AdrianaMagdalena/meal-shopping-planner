@@ -1,3 +1,4 @@
+import { IFavoriteItem } from "../interfaces/iFavorites.js";
 import { IFood } from "../interfaces/iFood.js";
 import { IRecipe } from "../interfaces/iRecipe.js";
 import { ISavedPlannerEntry } from "../interfaces/iSavedPlanner.js";
@@ -48,5 +49,13 @@ export function isSavedShoppingItem(obj: any): obj is ISavedShoppingItem {
     typeof obj.name === "string" &&
     typeof obj.unit === "string" &&
     typeof obj.quantity === "number"
+  );
+}
+
+export function isFavoriteItem(obj: any): obj is IFavoriteItem {
+  return (
+    obj &&
+    typeof obj.recipeId === "string" &&
+    typeof obj.recipeTitle === "string"
   );
 }

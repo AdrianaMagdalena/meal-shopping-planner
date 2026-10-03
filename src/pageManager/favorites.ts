@@ -1,4 +1,6 @@
+import { FavoritesListComponent } from "../components/favorites/favoritesListComponent.js";
 import { Navigation } from "../components/navigation.js";
+import { FavoritesStorage } from "../storages/favoritesStorage.js";
 
 const navigation = new Navigation(
   "../index.html",
@@ -9,3 +11,8 @@ const navigation = new Navigation(
 );
 
 navigation.render(document.body);
+
+const favoritesStorage = new FavoritesStorage();
+const allFavs = favoritesStorage.getAllFavorites();
+
+const favList = new FavoritesListComponent(allFavs);

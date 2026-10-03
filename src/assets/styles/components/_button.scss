@@ -79,9 +79,16 @@
   }
 
   &--mini {
-    padding: 2px;
     --button-min-height: 32px;
     --button-icon-size: 20px;
+
+    padding: 4px 8px;
+    gap: 4px;
+    font-size: 14px;
+
+    &.button--icon-only {
+      padding: 4px;
+    }
   }
 
   &--clear {

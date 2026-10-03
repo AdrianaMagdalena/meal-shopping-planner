@@ -31,8 +31,9 @@
     padding: 8px;
     font-size: 18px;
     display: flex;
-    gap: 32px;
     align-items: center;
+    flex-direction: row;
+    gap: 8px 32px;
     justify-content: space-between;
     border-bottom: 1px solid var(--clr-beige-02);
 
@@ -41,11 +42,15 @@
       cursor: pointer;
 
       &:hover {
+        text-decoration: underline;
       }
     }
+  }
 
-    button {
-      --button-min-height: 24px;
-    }
+  &__button-wrap {
+    margin: 0 0 0 auto;
+    display: flex;
+    gap: 8px;
+    align-items: center;
   }
 }

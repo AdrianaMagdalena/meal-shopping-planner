@@ -147,9 +147,14 @@ main {
   --button-icon-content: "";
 }
 .button--mini {
-  padding: 2px;
   --button-min-height: 32px;
   --button-icon-size: 20px;
+  padding: 4px 8px;
+  gap: 4px;
+  font-size: 14px;
+}
+.button--mini.button--icon-only {
+  padding: 4px;
 }
 .button--clear {
   --button-icon-url: url("../icons/clear.svg");
@@ -1495,8 +1500,9 @@ p.error-msg:before {
   padding: 8px;
   font-size: 18px;
   display: flex;
-  gap: 32px;
   align-items: center;
+  flex-direction: row;
+  gap: 8px 32px;
   justify-content: space-between;
   border-bottom: 1px solid var(--clr-beige-02);
 }
@@ -1504,6 +1510,12 @@ p.error-msg:before {
   text-decoration: none;
   cursor: pointer;
 }
-.favorites-list__recipe button {
-  --button-min-height: 24px;
+.favorites-list__recipe a:hover {
+  text-decoration: underline;
+}
+.favorites-list__button-wrap {
+  margin: 0 0 0 auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */
