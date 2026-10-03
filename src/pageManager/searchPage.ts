@@ -6,6 +6,8 @@ import { SearchManager } from "../services/searchManager.js";
 import { ErrorScreen } from "../components/errorScreen.js";
 import { AddToPlanModal } from "../components/addToPlanModal.js";
 import { PlannerManager } from "../services/plannerManager.js";
+import { FavoritesStorage } from "../storages/favoritesStorage.js";
+import { FavoritesManager } from "../services/favoritesManager.js";
 
 const navigation = new Navigation(
   "../index.html",
@@ -25,6 +27,8 @@ navigation.render(document.body);
 
   const recipeStorage = new RecipeStorage();
   const recipes = await recipeStorage.getAll();
+  const favoritesStorage = new FavoritesStorage();
+  const favoritesManager = new FavoritesManager(favoritesStorage);
 
   const renderResults = (recipesToRender: Recipe[]): void => {
     container!.innerHTML = "";
@@ -39,8 +43,19 @@ navigation.render(document.body);
       return;
     }
 
+    const onFavoriteToggle = (r: Recipe): void => {
+      if (favoritesStorage.getFavoriteByRecipeId(r.id)) {
+        favoritesManager.removeFavorite(r.id);
+      } else {
+        favoritesManager.addFavorite(r);
+      }
+    };
+
     recipesToRender.forEach((recipe) => {
-      const card = new RecipeCard(recipe);
+      const isFavorited =
+        favoritesStorage.getFavoriteByRecipeId(recipe.id) !== undefined;
+
+      const card = new RecipeCard(recipe, isFavorited, onFavoriteToggle);
       card.render(".recipe-list");
 
       const addToPlanBtn =

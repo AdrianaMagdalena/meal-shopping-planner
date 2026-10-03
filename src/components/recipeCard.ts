@@ -44,7 +44,11 @@ export class RecipeCard {
   private readonly _dietTagWrap: HTMLDivElement;
   private readonly _mealTagWrap: HTMLDivElement;
 
-  constructor(obj: Recipe) {
+  constructor(
+    recipe: Recipe,
+    isFavorited: boolean,
+    onFavoriteToggle: (recipe: Recipe) => void,
+  ) {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
 
     const recipeCard =
@@ -109,31 +113,31 @@ export class RecipeCard {
     }
     this._mealTagWrap = mealTagWrap;
 
-    this._imgElement.src = `../src/assets/illustrations/recipes/${obj.id}.png`;
-    this._titleElement.textContent = obj.title;
+    this._imgElement.src = `../src/assets/illustrations/recipes/${recipe.id}.png`;
+    this._titleElement.textContent = recipe.title;
 
-    if (obj.preparationTime) {
+    if (recipe.preparationTime) {
       const prepTime: HTMLParagraphElement = document.createElement("p");
-      prepTime.textContent = `Prep: ${obj.preparationTime} min`;
+      prepTime.textContent = `Prep: ${recipe.preparationTime} min`;
       prepTime.classList.add("recipe-card__prep-time");
       this._cookTimeWrap.appendChild(prepTime);
     }
 
-    if (obj.cookTime) {
+    if (recipe.cookTime) {
       const cookTime: HTMLParagraphElement = document.createElement("p");
-      cookTime.textContent = `Cooking: ${obj.cookTime} min`;
+      cookTime.textContent = `Cooking: ${recipe.cookTime} min`;
       cookTime.classList.add("recipe-card__cook-time");
       this._cookTimeWrap.appendChild(cookTime);
     }
 
-    obj.dietTags.forEach((tag) => {
+    recipe.dietTags.forEach((tag) => {
       const cardTag: HTMLParagraphElement = document.createElement("p");
       cardTag.classList.add("tag");
       cardTag.textContent = tag;
       this._dietTagWrap.appendChild(cardTag);
     });
 
-    obj.mealTypeTags.forEach((tag) => {
+    recipe.mealTypeTags.forEach((tag) => {
       const cardTag: HTMLParagraphElement = document.createElement("p");
       cardTag.classList.add("tag");
       cardTag.textContent = tag;
@@ -141,7 +145,17 @@ export class RecipeCard {
     });
 
     this._cardElement.addEventListener("click", () => {
-      window.location.href = `./recipe-details.html?id=${obj.id}`;
+      window.location.href = `./recipe-details.html?id=${recipe.id}`;
+    });
+
+    let favorited = isFavorited;
+
+    this._addToFavoritesBtn.classList.toggle("favorited", favorited);
+    this._addToFavoritesBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      favorited = !favorited;
+      this._addToFavoritesBtn.classList.toggle("favorited", favorited);
+      onFavoriteToggle(recipe);
     });
   }
 

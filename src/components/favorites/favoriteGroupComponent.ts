@@ -10,6 +10,7 @@ template.innerHTML = templateHTML.trim();
 
 export class FavoriteGroupComponent {
   private _headerElem: HTMLLIElement;
+  private _groupItems: IFavoriteItem[];
 
   constructor(letter: string, groupItems: IFavoriteItem[]) {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
@@ -22,13 +23,7 @@ export class FavoriteGroupComponent {
     this._headerElem = favoriteGroupHeader;
 
     this._headerElem.textContent = letter.toUpperCase();
-    let lastInserted = this._headerElem;
-
-    groupItems.forEach((i) => {
-      const item = new FavoriteItemComponent(i);
-      item.render(this._headerElem);
-      lastInserted = item.favoriteItem;
-    });
+    this._groupItems = groupItems;
   }
 
   get headerElem() {
@@ -44,5 +39,12 @@ export class FavoriteGroupComponent {
     }
 
     insertElem("append", this._headerElem, parentElement);
+
+    let lastInserted: HTMLElement = this._headerElem;
+    this._groupItems.forEach((i) => {
+      const item = new FavoriteItemComponent(i);
+      item.render(lastInserted);
+      lastInserted = item.favoriteItem;
+    });
   }
 }

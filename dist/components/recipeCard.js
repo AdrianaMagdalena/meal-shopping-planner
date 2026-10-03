@@ -31,7 +31,7 @@ const templateHtml = `
 `;
 template.innerHTML = templateHtml.trim();
 export class RecipeCard {
-    constructor(obj) {
+    constructor(recipe, isFavorited, onFavoriteToggle) {
         const fragment = template.content.cloneNode(true);
         const recipeCard = fragment.querySelector(".recipe-card");
         if (!recipeCard) {
@@ -73,34 +73,42 @@ export class RecipeCard {
             throw new Error("mealTagWrap not found in template");
         }
         this._mealTagWrap = mealTagWrap;
-        this._imgElement.src = `../src/assets/illustrations/recipes/${obj.id}.png`;
-        this._titleElement.textContent = obj.title;
-        if (obj.preparationTime) {
+        this._imgElement.src = `../src/assets/illustrations/recipes/${recipe.id}.png`;
+        this._titleElement.textContent = recipe.title;
+        if (recipe.preparationTime) {
             const prepTime = document.createElement("p");
-            prepTime.textContent = `Prep: ${obj.preparationTime} min`;
+            prepTime.textContent = `Prep: ${recipe.preparationTime} min`;
             prepTime.classList.add("recipe-card__prep-time");
             this._cookTimeWrap.appendChild(prepTime);
         }
-        if (obj.cookTime) {
+        if (recipe.cookTime) {
             const cookTime = document.createElement("p");
-            cookTime.textContent = `Cooking: ${obj.cookTime} min`;
+            cookTime.textContent = `Cooking: ${recipe.cookTime} min`;
             cookTime.classList.add("recipe-card__cook-time");
             this._cookTimeWrap.appendChild(cookTime);
         }
-        obj.dietTags.forEach((tag) => {
+        recipe.dietTags.forEach((tag) => {
             const cardTag = document.createElement("p");
             cardTag.classList.add("tag");
             cardTag.textContent = tag;
             this._dietTagWrap.appendChild(cardTag);
         });
-        obj.mealTypeTags.forEach((tag) => {
+        recipe.mealTypeTags.forEach((tag) => {
             const cardTag = document.createElement("p");
             cardTag.classList.add("tag");
             cardTag.textContent = tag;
             this._mealTagWrap.appendChild(cardTag);
         });
         this._cardElement.addEventListener("click", () => {
-            window.location.href = `./recipe-details.html?id=${obj.id}`;
+            window.location.href = `./recipe-details.html?id=${recipe.id}`;
+        });
+        let favorited = isFavorited;
+        this._addToFavoritesBtn.classList.toggle("favorited", favorited);
+        this._addToFavoritesBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            favorited = !favorited;
+            this._addToFavoritesBtn.classList.toggle("favorited", favorited);
+            onFavoriteToggle(recipe);
         });
     }
     get cardElement() {

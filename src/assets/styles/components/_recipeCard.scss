@@ -23,10 +23,6 @@
     }
   }
 
-  &.favorite {
-    --full-star-color: var(--clr-cream);
-  }
-
   &__img-wrap {
     border: 1px solid var(--clr-lavender-dark);
     flex-shrink: 0;
@@ -89,6 +85,10 @@
     transition: all linear 0.1s;
     position: relative;
     cursor: pointer;
+
+    &.favorited {
+      --full-star-color: var(--clr-cream);
+    }
 
     @media (hover: hover) {
       &:hover {

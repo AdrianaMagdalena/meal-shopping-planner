@@ -12,12 +12,7 @@ export class FavoriteGroupComponent {
             throw new Error("favoriteGroupHeader does not exist on template");
         this._headerElem = favoriteGroupHeader;
         this._headerElem.textContent = letter.toUpperCase();
-        let lastInserted = this._headerElem;
-        groupItems.forEach((i) => {
-            const item = new FavoriteItemComponent(i);
-            item.render(this._headerElem);
-            lastInserted = item.favoriteItem;
-        });
+        this._groupItems = groupItems;
     }
     get headerElem() {
         return this._headerElem;
@@ -30,5 +25,11 @@ export class FavoriteGroupComponent {
             throw new Error("parentElement not found in template");
         }
         insertElem("append", this._headerElem, parentElement);
+        let lastInserted = this._headerElem;
+        this._groupItems.forEach((i) => {
+            const item = new FavoriteItemComponent(i);
+            item.render(lastInserted);
+            lastInserted = item.favoriteItem;
+        });
     }
 }

@@ -644,9 +644,6 @@ p.error-msg:before {
     transform: scale(1.015);
   }
 }
-.recipe-card.favorite {
-  --full-star-color: var(--clr-cream);
-}
 .recipe-card__img-wrap {
   border: 1px solid var(--clr-lavender-dark);
   flex-shrink: 0;
@@ -702,6 +699,9 @@ p.error-msg:before {
   transition: all linear 0.1s;
   position: relative;
   cursor: pointer;
+}
+.recipe-card__fav-btn.favorited {
+  --full-star-color: var(--clr-cream);
 }
 @media (hover: hover) {
   .recipe-card__fav-btn:hover {
