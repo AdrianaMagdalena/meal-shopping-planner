@@ -1,0 +1,53 @@
+:root {
+  --full-star-color: var(--clr-white);
+  --star-size: 40px;
+  --star-bg-size: 46px;
+}
+
+.fav-button {
+  flex-shrink: 0;
+  height: var(--star-size);
+  width: var(--star-size);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  transition: all linear 0.1s;
+  position: relative;
+  cursor: pointer;
+
+  &.favorited {
+    --full-star-color: var(--clr-cream);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.08);
+    }
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    mask-size: var(--star-size);
+    mask-position: center;
+    height: var(--star-size);
+    width: var(--star-size);
+  }
+
+  &::before {
+    mask-image: url("../icons/star-full.svg");
+    transition: opacity linear 0.2s;
+    background-color: var(--full-star-color);
+    mask-size: var(--star-bg-size);
+  }
+
+  &::after {
+    background-color: var(--clr-brown);
+    mask-image: url("../icons/star-empty.svg");
+  }
+}

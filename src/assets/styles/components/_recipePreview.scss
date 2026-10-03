@@ -12,6 +12,11 @@
   display: grid;
   gap: 6px;
 
+  @include breakpoint-up(lg) {
+    --star-size: 44px;
+    --star-bg-size: 50px;
+  }
+
   .image-wrap {
     position: relative;
     border: 1px solid var(--clr-lavender-dark);
@@ -51,19 +56,33 @@
 
     h1 {
       @include accent-title;
-      font-size: 36px;
+      hyphens: auto;
+      text-wrap: balance;
+      font-size: 28px;
+
+      @include breakpoint-up(md) {
+        font-size: 36px;
+      }
     }
 
     h2 {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 600;
       margin: 0 0 16px 0;
+
+      @include breakpoint-up(md) {
+        font-size: 24px;
+      }
     }
 
     h3 {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       margin: 0 0 8px 0;
+
+      @include breakpoint-up(md) {
+        font-size: 20px;
+      }
     }
 
     ul {
@@ -110,6 +129,12 @@
     }
 
     .info {
+      &__title-wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 32px;
+      }
+
       &__times {
         flex: 2;
         flex-shrink: 0;

@@ -23,4 +23,15 @@ export class FavoritesManager {
         const updatedFavorites = favorites.filter((f) => f.recipeId !== recipeId);
         this._storage.save(updatedFavorites);
     }
+    isFavorited(recipeId) {
+        return this._storage.getFavoriteByRecipeId(recipeId) !== undefined;
+    }
+    toggleFavorite(recipe) {
+        if (this.isFavorited(recipe.id)) {
+            this.removeFavorite(recipe.id);
+        }
+        else {
+            this.addFavorite(recipe);
+        }
+    }
 }

@@ -175,6 +175,59 @@ main {
   --button-icon-url: url("../icons/trash.svg");
 }
 
+:root {
+  --full-star-color: var(--clr-white);
+  --star-size: 40px;
+  --star-bg-size: 46px;
+}
+
+.fav-button {
+  flex-shrink: 0;
+  height: var(--star-size);
+  width: var(--star-size);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  transition: all linear 0.1s;
+  position: relative;
+  cursor: pointer;
+}
+.fav-button.favorited {
+  --full-star-color: var(--clr-cream);
+}
+@media (hover: hover) {
+  .fav-button:hover {
+    transform: scale(1.08);
+  }
+}
+.fav-button::before, .fav-button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  -webkit-mask-size: var(--star-size);
+          mask-size: var(--star-size);
+  -webkit-mask-position: center;
+          mask-position: center;
+  height: var(--star-size);
+  width: var(--star-size);
+}
+.fav-button::before {
+  -webkit-mask-image: url("../icons/star-full.svg");
+          mask-image: url("../icons/star-full.svg");
+  transition: opacity linear 0.2s;
+  background-color: var(--full-star-color);
+  -webkit-mask-size: var(--star-bg-size);
+          mask-size: var(--star-bg-size);
+}
+.fav-button::after {
+  background-color: var(--clr-brown);
+  -webkit-mask-image: url("../icons/star-empty.svg");
+          mask-image: url("../icons/star-empty.svg");
+}
+
 nav {
   position: fixed;
   top: 0;
@@ -625,7 +678,6 @@ p.error-msg:before {
 }
 
 .recipe-card {
-  --full-star-color: var(--clr-white);
   padding: 6px;
   background-color: var(--clr-lavender);
   border-radius: 8px;
@@ -655,11 +707,11 @@ p.error-msg:before {
   display: flex;
   gap: 16px;
   justify-content: space-between;
-  align-items: start;
+  align-items: center;
   position: absolute;
-  top: 8px;
+  top: 4px;
   left: 8px;
-  right: 8px;
+  right: 4px;
 }
 .recipe-card__btn-wrap .button--plan {
   --button-min-height: 0;
@@ -688,52 +740,6 @@ p.error-msg:before {
   .recipe-card__add-btn:hover {
     box-shadow: 0 0 4px 1px var(--clr-white);
   }
-}
-.recipe-card__fav-btn {
-  flex-shrink: 0;
-  height: 40px;
-  width: 40px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  transition: all linear 0.1s;
-  position: relative;
-  cursor: pointer;
-}
-.recipe-card__fav-btn.favorited {
-  --full-star-color: var(--clr-cream);
-}
-@media (hover: hover) {
-  .recipe-card__fav-btn:hover {
-    transform: scale(1.08);
-  }
-}
-.recipe-card__fav-btn::before, .recipe-card__fav-btn::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: block;
-  -webkit-mask-size: 40px;
-          mask-size: 40px;
-  -webkit-mask-position: center;
-          mask-position: center;
-  height: 40px;
-  width: 40px;
-}
-.recipe-card__fav-btn::before {
-  -webkit-mask-image: url("../icons/star-full.svg");
-          mask-image: url("../icons/star-full.svg");
-  transition: opacity linear 0.2s;
-  background-color: var(--full-star-color);
-  -webkit-mask-size: 46px;
-          mask-size: 46px;
-}
-.recipe-card__fav-btn::after {
-  background-color: var(--clr-brown);
-  -webkit-mask-image: url("../icons/star-empty.svg");
-          mask-image: url("../icons/star-empty.svg");
 }
 .recipe-card__content {
   border: 1px solid var(--clr-lavender-dark);
@@ -819,6 +825,12 @@ p.error-msg:before {
   display: grid;
   gap: 6px;
 }
+@media (width >= 756px) {
+  .recipe-preview {
+    --star-size: 44px;
+    --star-bg-size: 50px;
+  }
+}
 .recipe-preview .image-wrap {
   position: relative;
   border: 1px solid var(--clr-lavender-dark);
@@ -865,17 +877,34 @@ p.error-msg:before {
   }
 }
 .recipe-preview .info-block h1 {
-  font-size: 36px;
+  hyphens: auto;
+  text-wrap: balance;
+  font-size: 28px;
+}
+@media (width >= 560px) {
+  .recipe-preview .info-block h1 {
+    font-size: 36px;
+  }
 }
 .recipe-preview .info-block h2 {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   margin: 0 0 16px 0;
 }
+@media (width >= 560px) {
+  .recipe-preview .info-block h2 {
+    font-size: 24px;
+  }
+}
 .recipe-preview .info-block h3 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   margin: 0 0 8px 0;
+}
+@media (width >= 560px) {
+  .recipe-preview .info-block h3 {
+    font-size: 20px;
+  }
 }
 .recipe-preview .info-block ul {
   list-style: none;
@@ -912,6 +941,11 @@ p.error-msg:before {
 .recipe-preview .content__main-info {
   display: grid;
   gap: 12px;
+}
+.recipe-preview .content .info__title-wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
 }
 .recipe-preview .content .info__times {
   flex: 2;

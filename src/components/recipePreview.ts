@@ -2,7 +2,12 @@ import { Recipe } from "../models/recipe.js";
 import { AmountInput } from "./amountInput.js";
 import { FoodStorage } from "../storages/foodStorage.js";
 
-const renderBasicInfo = (preview: HTMLElement, recipe: Recipe): void => {
+const renderBasicInfo = (
+  preview: HTMLElement,
+  recipe: Recipe,
+  isFavorited: boolean,
+  onFavoriteToggle: (recipe: Recipe) => void,
+): void => {
   const recipeImage = preview.querySelector<HTMLImageElement>(
     ".recipe-preview__image",
   );
@@ -14,9 +19,18 @@ const renderBasicInfo = (preview: HTMLElement, recipe: Recipe): void => {
   recipeImage.src = `../src/assets/illustrations/recipes/${recipe.id}.png`;
   recipeTitle.textContent = recipe.title;
 
-  const addToFavBtn =
-    preview.querySelector<HTMLButtonElement>(".button--favorites");
+  const addToFavBtn = preview.querySelector<HTMLButtonElement>(".fav-button");
   if (!addToFavBtn) throw new Error("addToFavBtn not found on page");
+
+  let favorited = isFavorited;
+
+  addToFavBtn.classList.toggle("favorited", favorited);
+  addToFavBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    favorited = !favorited;
+    addToFavBtn.classList.toggle("favorited", favorited);
+    onFavoriteToggle(recipe);
+  });
 };
 
 const renderTimeInfo = (preview: HTMLElement, recipe: Recipe): void => {
@@ -186,11 +200,13 @@ const renderSteps = async (preview: HTMLElement, recipe: Recipe) => {
 export const renderRecipePreview = async (
   recipe: Recipe,
   foodStorage: FoodStorage,
+  isFavorited: boolean,
+  onFavoriteToggle: (recipe: Recipe) => void,
 ): Promise<{ amountInput: AmountInput; previewElement: HTMLDivElement }> => {
   const preview = document.querySelector<HTMLDivElement>(".recipe-preview");
   if (!preview) throw new Error("preview not found on page");
 
-  renderBasicInfo(preview, recipe);
+  renderBasicInfo(preview, recipe, isFavorited, onFavoriteToggle);
   renderTimeInfo(preview, recipe);
   renderTags(preview, recipe);
   const amountInput = renderServingsAdjuster(preview, recipe);

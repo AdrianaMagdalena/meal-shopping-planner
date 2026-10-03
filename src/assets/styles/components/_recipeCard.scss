@@ -2,8 +2,6 @@
 @use "../utils/mixins" as *;
 
 .recipe-card {
-  --full-star-color: var(--clr-white);
-
   padding: 6px;
   background-color: var(--clr-lavender);
   border-radius: 8px;
@@ -35,11 +33,11 @@
     display: flex;
     gap: 16px;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
     position: absolute;
-    top: 8px;
+    top: 4px;
     left: 8px;
-    right: 8px;
+    right: 4px;
 
     .button--plan {
       --button-min-height: 0;
@@ -72,54 +70,6 @@
       &:hover {
         box-shadow: 0 0 4px 1px var(--clr-white);
       }
-    }
-  }
-
-  &__fav-btn {
-    flex-shrink: 0;
-    height: 40px;
-    width: 40px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    transition: all linear 0.1s;
-    position: relative;
-    cursor: pointer;
-
-    &.favorited {
-      --full-star-color: var(--clr-cream);
-    }
-
-    @media (hover: hover) {
-      &:hover {
-        transform: scale(1.08);
-      }
-    }
-
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      display: block;
-      mask-size: 40px;
-      mask-position: center;
-      height: 40px;
-      width: 40px;
-    }
-
-    &::before {
-      mask-image: url("../icons/star-full.svg");
-      transition: opacity linear 0.2s;
-      background-color: var(--full-star-color);
-      mask-size: 46px;
-    }
-
-    &::after {
-      background-color: var(--clr-brown);
-      mask-image: url("../icons/star-empty.svg");
     }
   }
 

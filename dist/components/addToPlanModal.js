@@ -94,23 +94,9 @@ export class AddToPlanModal {
         this._modalSecBtn.addEventListener("click", () => {
             this.closeModal();
         });
-    }
-    render(parentSelector, position) {
-        const parentElement = isSelectorString(parentSelector)
-            ? document.querySelector(parentSelector)
-            : parentSelector;
-        if (!parentElement) {
-            throw new Error("parentElement not found in template");
-        }
-        insertElem(position, this._modalElem, parentElement);
-    }
-    openModal(recipe, servings) {
-        setTimeout(() => {
-            this._modalElem.classList.add("visible", "in-front");
-        }, 10);
-        this._modalRecipeTitle.textContent = recipe.title;
-        this._servingsInput.inputInput.value = String(servings);
         this._modalPrimBtn.addEventListener("click", () => {
+            if (!this._currentRecipe)
+                return;
             const selectedDaysIndex = this.getSelectedDaysIndex();
             if (selectedDaysIndex.length === 0) {
                 if (!this._modalDayPicker.querySelector(".error-msg")) {
@@ -123,10 +109,28 @@ export class AddToPlanModal {
             }
             const servings = Number(this._servingsInput.inputInput.value);
             selectedDaysIndex.forEach((i) => {
-                this._onConfirm(i, recipe, servings);
+                this._onConfirm(i, this._currentRecipe, servings);
             });
             this.closeModal();
         });
+        this._modalSecBtn?.addEventListener("click", () => this.closeModal());
+    }
+    render(parentSelector, position) {
+        const parentElement = isSelectorString(parentSelector)
+            ? document.querySelector(parentSelector)
+            : parentSelector;
+        if (!parentElement) {
+            throw new Error("parentElement not found in template");
+        }
+        insertElem(position, this._modalElem, parentElement);
+    }
+    openModal(recipe, servings) {
+        this._currentRecipe = recipe;
+        setTimeout(() => {
+            this._modalElem.classList.add("visible", "in-front");
+        }, 10);
+        this._modalRecipeTitle.textContent = recipe.title;
+        this._servingsInput.inputInput.value = String(servings);
     }
     closeModal() {
         this._modalElem.classList.remove("visible");

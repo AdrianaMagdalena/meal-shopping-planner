@@ -25,16 +25,9 @@ navigation.render(document.body);
             errorScreen.render(".recipe-list");
             return;
         }
-        const onFavoriteToggle = (r) => {
-            if (favoritesStorage.getFavoriteByRecipeId(r.id)) {
-                favoritesManager.removeFavorite(r.id);
-            }
-            else {
-                favoritesManager.addFavorite(r);
-            }
-        };
+        const onFavoriteToggle = (r) => favoritesManager.toggleFavorite(r);
         recipesToRender.forEach((recipe) => {
-            const isFavorited = favoritesStorage.getFavoriteByRecipeId(recipe.id) !== undefined;
+            const isFavorited = favoritesManager.isFavorited(recipe.id);
             const card = new RecipeCard(recipe, isFavorited, onFavoriteToggle);
             card.render(".recipe-list");
             const addToPlanBtn = card.cardElement.querySelector(".button--plan");

@@ -8,7 +8,7 @@ const templateHtml = `
     <div class="recipe-card__btn-wrap">
       <button class="button button--prim button--plan button--icon-before">Add to plan</button>
       <button 
-        class="recipe-card__fav-btn" 
+        class="fav-button" 
         aria-label="Add to favorites">
       </button>
     </div>
@@ -67,9 +67,7 @@ export class RecipeCard {
     this._addToPlanBtn = addToPlanBtn;
 
     const addToFavoritesBtn =
-      this._cardElement.querySelector<HTMLButtonElement>(
-        "button.recipe-card__fav-btn",
-      );
+      this._cardElement.querySelector<HTMLButtonElement>("button.fav-button");
     if (!addToFavoritesBtn) {
       throw new Error("_addToFavoritesBtn not found in template");
     }

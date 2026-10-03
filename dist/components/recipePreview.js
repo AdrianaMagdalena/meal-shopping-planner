@@ -1,5 +1,5 @@
 import { AmountInput } from "./amountInput.js";
-const renderBasicInfo = (preview, recipe) => {
+const renderBasicInfo = (preview, recipe, isFavorited, onFavoriteToggle) => {
     const recipeImage = preview.querySelector(".recipe-preview__image");
     if (!recipeImage)
         throw new Error("recipeImage not found on page");
@@ -8,9 +8,17 @@ const renderBasicInfo = (preview, recipe) => {
         throw new Error("recipeTitle not found on page");
     recipeImage.src = `../src/assets/illustrations/recipes/${recipe.id}.png`;
     recipeTitle.textContent = recipe.title;
-    const addToFavBtn = preview.querySelector(".button--favorites");
+    const addToFavBtn = preview.querySelector(".fav-button");
     if (!addToFavBtn)
         throw new Error("addToFavBtn not found on page");
+    let favorited = isFavorited;
+    addToFavBtn.classList.toggle("favorited", favorited);
+    addToFavBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        favorited = !favorited;
+        addToFavBtn.classList.toggle("favorited", favorited);
+        onFavoriteToggle(recipe);
+    });
 };
 const renderTimeInfo = (preview, recipe) => {
     const timeInfoWrap = preview.querySelector(".info__times");
@@ -130,11 +138,11 @@ const renderSteps = async (preview, recipe) => {
         stepsWrap.appendChild(stepsPart);
     }
 };
-export const renderRecipePreview = async (recipe, foodStorage) => {
+export const renderRecipePreview = async (recipe, foodStorage, isFavorited, onFavoriteToggle) => {
     const preview = document.querySelector(".recipe-preview");
     if (!preview)
         throw new Error("preview not found on page");
-    renderBasicInfo(preview, recipe);
+    renderBasicInfo(preview, recipe, isFavorited, onFavoriteToggle);
     renderTimeInfo(preview, recipe);
     renderTags(preview, recipe);
     const amountInput = renderServingsAdjuster(preview, recipe);

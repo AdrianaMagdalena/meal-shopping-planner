@@ -7,6 +7,8 @@ import { AddToPlanModal } from "../components/addToPlanModal.js";
 import { PlannerManager } from "../services/plannerManager.js";
 import { Recipe } from "../models/recipe.js";
 import { ServingsManager } from "../services/servingsManager.js";
+import { FavoritesStorage } from "../storages/favoritesStorage.js";
+import { FavoritesManager } from "../services/favoritesManager.js";
 
 const navigation = new Navigation(
   "../index.html",
@@ -28,6 +30,11 @@ navigation.render(document.body);
   const foodStorage = new FoodStorage();
   const recipeStorage = new RecipeStorage();
   const recipe = await recipeStorage.getById(recipeId);
+  const favoritesStorage = new FavoritesStorage();
+  const favoritesManager = new FavoritesManager(favoritesStorage);
+
+  const onFavoriteToggle = (r: Recipe): void =>
+    favoritesManager.toggleFavorite(r);
 
   if (!recipe) {
     const preview = document.querySelector<HTMLDivElement>(".recipe-preview");
@@ -38,15 +45,21 @@ navigation.render(document.body);
     );
     errorScreen.render("main");
   } else {
+    const isFavorited = favoritesManager.isFavorited(recipe.id);
+
     const { amountInput, previewElement } = await renderRecipePreview(
       recipe,
       foodStorage,
+      isFavorited,
+      onFavoriteToggle,
     );
+
     const servingsManager = new ServingsManager(
       recipe,
       amountInput,
       previewElement,
     );
+
     const modal = new AddToPlanModal(
       "Confirm choice",
       "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
