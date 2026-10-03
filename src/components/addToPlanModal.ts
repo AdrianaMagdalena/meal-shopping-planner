@@ -48,6 +48,7 @@ export class AddToPlanModal {
   private readonly _servingsInput: AmountInput;
   private readonly _modalPrimBtn: HTMLButtonElement;
   private readonly _modalSecBtn?: HTMLButtonElement;
+  private _currentRecipe?: Recipe;
   private readonly _onConfirm: (
     dayIndex: number,
     recipe: Recipe,
@@ -148,28 +149,10 @@ export class AddToPlanModal {
     this._modalSecBtn.addEventListener("click", () => {
       this.closeModal();
     });
-  }
-
-  render(parentSelector: string | HTMLElement, position: string): void {
-    const parentElement = isSelectorString(parentSelector)
-      ? document.querySelector<HTMLElement>(parentSelector)
-      : parentSelector;
-    if (!parentElement) {
-      throw new Error("parentElement not found in template");
-    }
-
-    insertElem(position, this._modalElem, parentElement);
-  }
-
-  openModal(recipe: Recipe, servings: number) {
-    setTimeout(() => {
-      this._modalElem.classList.add("visible", "in-front");
-    }, 10);
-
-    this._modalRecipeTitle.textContent = recipe.title;
-    this._servingsInput.inputInput.value = String(servings);
 
     this._modalPrimBtn.addEventListener("click", () => {
+      if (!this._currentRecipe) return;
+
       const selectedDaysIndex: number[] = this.getSelectedDaysIndex();
       if (selectedDaysIndex.length === 0) {
         if (
@@ -187,10 +170,34 @@ export class AddToPlanModal {
 
       const servings = Number(this._servingsInput.inputInput.value);
       selectedDaysIndex.forEach((i) => {
-        this._onConfirm(i, recipe, servings);
+        this._onConfirm(i, this._currentRecipe!, servings);
       });
       this.closeModal();
     });
+
+    this._modalSecBtn?.addEventListener("click", () => this.closeModal());
+  }
+
+  render(parentSelector: string | HTMLElement, position: string): void {
+    const parentElement = isSelectorString(parentSelector)
+      ? document.querySelector<HTMLElement>(parentSelector)
+      : parentSelector;
+    if (!parentElement) {
+      throw new Error("parentElement not found in template");
+    }
+
+    insertElem(position, this._modalElem, parentElement);
+  }
+
+  openModal(recipe: Recipe, servings: number): void {
+    this._currentRecipe = recipe;
+
+    setTimeout(() => {
+      this._modalElem.classList.add("visible", "in-front");
+    }, 10);
+
+    this._modalRecipeTitle.textContent = recipe.title;
+    this._servingsInput.inputInput.value = String(servings);
   }
 
   closeModal(): void {
