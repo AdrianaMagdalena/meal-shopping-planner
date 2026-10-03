@@ -24,7 +24,7 @@
   &.visible {
     opacity: 1;
 
-    .modal-body {
+    .modal-wrap {
       transform: translateY(0);
     }
   }
@@ -44,24 +44,32 @@
     z-index: -1;
   }
 
-  &-body {
+  &-wrap {
+    padding: 32px 0;
     max-height: 80vh;
     width: 100vw;
     width: 100dvw;
     background-color: var(--clr-white);
     border-radius: 16px 16px 0 0;
-    padding: 32px 16px;
     display: grid;
     justify-items: center;
-    gap: 32px;
     text-align: center;
     transform: translateY(20px);
     transition: transform 0.2s ease-in-out;
 
     @include breakpoint-up(lg) {
-      padding: 48px 64px;
+      padding: 48px 16px;
       width: min(90vw, 800px);
       border-radius: 16px;
+    }
+  }
+
+  &-body {
+    padding: 0 16px;
+    overflow: auto;
+
+    @include breakpoint-up(lg) {
+      padding: 0 48px;
     }
 
     img {
@@ -83,6 +91,11 @@
       margin: 0;
       color: var(--clr-brown);
     }
+  }
+
+  &-header,
+  &-content {
+    margin: 0 0 32px 0;
   }
 
   &-content {
@@ -117,6 +130,7 @@
   &-actions {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 16px;
 
     .button {
@@ -124,6 +138,7 @@
     }
 
     @include breakpoint-up(md) {
+      justify-content: center;
       flex-direction: row-reverse;
     }
   }

@@ -7,19 +7,21 @@ const template = document.createElement("template");
 const templateHTML = `
 <div class="modal">
     <div class="modal-backdrop"></div>
-    <div class="modal-body">
-      <div class="modal-header">
-        <h2></h2>
-        <p></p>
+    <div class="modal-wrap">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h2></h2>
+          <p></p>
+        </div>
+        <div class="modal-content">
+          <p class="modal-recipe-title"></p>
+          <div class="modal-daypicker"></div>
+        </div>
+        <div class="modal-actions">
+            <button class="button button--prim">Approve</button>
+            <button class="button button--sec">Cancel</button>
+        </div>
       </div>
-      <div class="modal-content">
-        <p class="modal-recipe-title"></p>
-        <div class="modal-daypicker"></div>
-      </div>
-    <div class="modal-actions">
-        <button class="button button--prim">Approve</button>
-        <button class="button button--sec">Cancel</button>
-    </div>
     </div>
 </div>
 `;
