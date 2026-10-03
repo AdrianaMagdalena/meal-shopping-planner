@@ -25,7 +25,11 @@ export class FavoriteItemComponent {
   private _addToPlanButton: HTMLButtonElement;
   private _removeFromFavsButton: HTMLButtonElement;
 
-  constructor(favorite: IFavoriteItem) {
+  constructor(
+    favorite: IFavoriteItem,
+    onRemove: (recipeId: string) => void,
+    onAddToPlan: (recipeId: string) => void,
+  ) {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
 
     const favoriteItem = fragment.querySelector<HTMLLIElement>(
@@ -58,6 +62,14 @@ export class FavoriteItemComponent {
 
     this._linkToRecipe.textContent = favorite.recipeTitle;
     this._linkToRecipe.href = `./recipe-details.html?id=${favorite.recipeId}`;
+
+    this.addToPlanBtn.addEventListener("click", () =>
+      onAddToPlan(favorite.recipeId),
+    );
+
+    this._removeFromFavsButton.addEventListener("click", () =>
+      onRemove(favorite.recipeId),
+    );
   }
 
   get addToPlanBtn() {

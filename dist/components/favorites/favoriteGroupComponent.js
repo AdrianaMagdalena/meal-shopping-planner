@@ -5,7 +5,7 @@ const template = document.createElement("template");
 const templateHTML = `<li class="favorites-list__letter"></li>`;
 template.innerHTML = templateHTML.trim();
 export class FavoriteGroupComponent {
-    constructor(letter, groupItems) {
+    constructor(letter, groupItems, onRemove, onAddToPlan) {
         const fragment = template.content.cloneNode(true);
         const favoriteGroupHeader = fragment.querySelector(".favorites-list__letter");
         if (!favoriteGroupHeader)
@@ -13,6 +13,8 @@ export class FavoriteGroupComponent {
         this._headerElem = favoriteGroupHeader;
         this._headerElem.textContent = letter.toUpperCase();
         this._groupItems = groupItems;
+        this._onRemove = onRemove;
+        this._onAddToPlan = onAddToPlan;
     }
     get headerElem() {
         return this._headerElem;
@@ -27,7 +29,7 @@ export class FavoriteGroupComponent {
         insertElem("append", this._headerElem, parentElement);
         let lastInserted = this._headerElem;
         this._groupItems.forEach((i) => {
-            const item = new FavoriteItemComponent(i);
+            const item = new FavoriteItemComponent(i, this._onRemove, this._onAddToPlan);
             item.render(lastInserted);
             lastInserted = item.favoriteItem;
         });

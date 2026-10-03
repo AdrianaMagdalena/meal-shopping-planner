@@ -11,8 +11,15 @@ template.innerHTML = templateHTML.trim();
 export class FavoriteGroupComponent {
   private _headerElem: HTMLLIElement;
   private _groupItems: IFavoriteItem[];
+  private _onRemove: (recipeId: string) => void;
+  private _onAddToPlan: (recipeId: string) => void;
 
-  constructor(letter: string, groupItems: IFavoriteItem[]) {
+  constructor(
+    letter: string,
+    groupItems: IFavoriteItem[],
+    onRemove: (recipeId: string) => void,
+    onAddToPlan: (recipeId: string) => void,
+  ) {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
 
     const favoriteGroupHeader = fragment.querySelector<HTMLLIElement>(
@@ -24,6 +31,8 @@ export class FavoriteGroupComponent {
 
     this._headerElem.textContent = letter.toUpperCase();
     this._groupItems = groupItems;
+    this._onRemove = onRemove;
+    this._onAddToPlan = onAddToPlan;
   }
 
   get headerElem() {
@@ -42,7 +51,11 @@ export class FavoriteGroupComponent {
 
     let lastInserted: HTMLElement = this._headerElem;
     this._groupItems.forEach((i) => {
-      const item = new FavoriteItemComponent(i);
+      const item = new FavoriteItemComponent(
+        i,
+        this._onRemove,
+        this._onAddToPlan,
+      );
       item.render(lastInserted);
       lastInserted = item.favoriteItem;
     });

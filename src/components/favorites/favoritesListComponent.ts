@@ -9,12 +9,21 @@ import { FavoriteItemComponent } from "./favoriteItemComponent.js";
 
 export class FavoritesListComponent {
   private _listElem: HTMLUListElement;
+  private _onRemove: (recipeId: string) => void;
+  private _onAddToPlan: (recipeId: string) => void;
 
-  constructor(allFavorites: IFavoriteItem[]) {
+  constructor(
+    allFavorites: IFavoriteItem[],
+    onRemove: (recipeId: string) => void,
+    onAddToPlan: (recipeId: string) => void,
+  ) {
     const allFavs = allFavorites;
     const favoritesListElem = document.createElement("ul");
     this._listElem = favoritesListElem;
     this._listElem.classList.add("favorites-list__list");
+
+    this._onRemove = onRemove;
+    this._onAddToPlan = onAddToPlan;
 
     if (allFavs.length === 0) {
       const errorScreen = new ErrorScreen(
@@ -32,7 +41,12 @@ export class FavoritesListComponent {
           .sort((a, b) => a.recipeTitle.localeCompare(b.recipeTitle));
         if (groupList.length === 0) return;
 
-        const groupElem = new FavoriteGroupComponent(letter, groupList);
+        const groupElem = new FavoriteGroupComponent(
+          letter,
+          groupList,
+          this._onRemove,
+          this._onAddToPlan,
+        );
         groupElem.render(this._listElem);
       });
 
