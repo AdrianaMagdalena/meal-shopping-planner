@@ -4,14 +4,16 @@ const template = document.createElement("template");
 const templateHTML = `
 <div class="modal">
     <div class="modal-backdrop"></div>
-    <div class="modal-body">
-      <div class="modal-header">
-        <h2></h2>
-        <p></p>
-      </div>
+    <div class="modal-wrap">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h2></h2>
+          <p></p>
+        </div>
         <div class="modal-actions">
             <button class="button button--prim"></button>
         </div>
+      </div>
     </div>
 </div>
 `;

@@ -50,8 +50,6 @@
     width: 100dvw;
     background-color: var(--clr-white);
     border-radius: 16px 16px 0 0;
-    display: grid;
-    justify-items: center;
     text-align: center;
     transform: translateY(20px);
     transition: transform 0.2s ease-in-out;
@@ -75,6 +73,7 @@
       display: block;
       max-width: 90%;
       height: 150px;
+      margin: 0 auto 32px auto;
     }
 
     h2 {
