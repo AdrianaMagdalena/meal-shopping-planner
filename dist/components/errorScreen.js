@@ -1,3 +1,4 @@
+import { insertElem } from "../utils/insertElem.js";
 import { isSelectorString } from "../utils/typeGuards.js";
 const template = document.createElement("template");
 const templateHTML = `
@@ -39,9 +40,8 @@ export class ErrorScreen {
         const parentElement = isSelectorString(parentSelector)
             ? document.querySelector(parentSelector)
             : parentSelector;
-        if (!parentElement) {
+        if (!parentElement)
             throw new Error("parentElement not found in template");
-        }
-        parentElement.appendChild(this._errorElement);
+        insertElem("append", this._errorElement, parentElement);
     }
 }

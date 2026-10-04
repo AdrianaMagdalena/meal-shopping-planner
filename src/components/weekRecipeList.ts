@@ -5,7 +5,7 @@ import {
 import { insertElem } from "../utils/insertElem.js";
 import { isSavedPlannerEntry, isSelectorString } from "../utils/typeGuards.js";
 import { ErrorScreen } from "./errorScreen.js";
-import { ShoppingList } from "./shoppingList.js";
+import { ShoppingListComponent } from "./shopping/shoppingListComponent.js";
 
 const template = document.createElement("template");
 const templateHtml = `
@@ -33,7 +33,7 @@ export class WeekRecipeList {
   private readonly _recipeListWrap: HTMLDivElement;
   private readonly _recipeList: HTMLUListElement;
 
-  constructor(shoppingList: ShoppingList) {
+  constructor(shoppingList: ShoppingListComponent) {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
 
     const weeklyListCont = fragment.querySelector<HTMLDivElement>(
@@ -72,10 +72,6 @@ export class WeekRecipeList {
       localStorage.removeItem(WEEK_RECIPES_STORAGE_KEY);
       localStorage.removeItem(SHOPPING_LIST_STORAGE_KEY);
       this._weeklyListCont.remove();
-      const allShoppingListItems = Array.from(
-        shoppingList.shoppingListContainer.children,
-      );
-      allShoppingListItems.forEach((item) => item.remove());
       shoppingList.renderList([]);
       this.generateWeekListData();
     });

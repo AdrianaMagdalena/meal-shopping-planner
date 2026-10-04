@@ -1,57 +1,15 @@
 import { ErrorScreen } from "../components/errorScreen.js";
 import { Navigation } from "../components/navigation.js";
-import { ShoppingList } from "../components/shoppingList.js";
+import { ShoppingListComponent } from "../components/shopping/shoppingListComponent.js";
 import { WeekRecipeList } from "../components/weekRecipeList.js";
-import { removeLoader } from "../utils/removeLoader.js";
 import { SHOPPING_LIST_STORAGE_KEY } from "../services/plannerManager.js";
 import { FoodStorage } from "../storages/foodStorage.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
+import { removeLoader } from "../utils/removeLoader.js";
 import { delay } from "../utils/delay.js";
-import { roundIngredients } from "../utils/roundIngredients.js";
 import { isSavedPlannerEntry } from "../utils/typeGuards.js";
+import { buildShoppingItems } from "../services/shoppingListManager.js";
 const navigation = new Navigation("../index.html", "./search.html", "./planner.html", "javascript:void(0)", "./favorites.html");
-const getDataFromRecipe = async (recipe, foodStorage, items, ratio) => {
-    for (const part of recipe.parts) {
-        for (const ingredient of part.ingredients) {
-            const food = await foodStorage.getById(ingredient.id);
-            const id = food ? food.id : "Unknown";
-            const category = food ? food.category : "Unknown category";
-            const name = food ? food.name.toLowerCase() : "Unknown ingredient";
-            const unit = food ? food.unit : "";
-            const quantity = ingredient.quantity * ratio;
-            items.push({ id, category, name, unit, quantity });
-        }
-    }
-};
-const addItemsQuantities = (items) => {
-    const totals = new Map();
-    items.forEach((item) => {
-        const key = item.id;
-        if (totals.has(key)) {
-            totals.get(key).quantity += item.quantity;
-        }
-        else {
-            totals.set(key, { ...item });
-        }
-    });
-    const summarisedData = Array.from(totals.values());
-    summarisedData.forEach((item) => {
-        item.quantity = roundIngredients(item.quantity);
-    });
-    return summarisedData;
-};
-const buildShoppingItems = async (savedEntries, recipeStorage, foodStorage) => {
-    let items = [];
-    for (const entry of savedEntries) {
-        const recipe = await recipeStorage.getById(entry.recipeId);
-        if (!recipe)
-            continue;
-        const ratio = entry.servingsAmount / recipe.servings;
-        await getDataFromRecipe(recipe, foodStorage, items, ratio);
-    }
-    items = addItemsQuantities(items);
-    return items;
-};
 (async () => {
     try {
         navigation.render(document.body);
@@ -64,20 +22,19 @@ const buildShoppingItems = async (savedEntries, recipeStorage, foodStorage) => {
         if (allRecipes.length === 0) {
             const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "Could not get recipes data", "Please refresh the page or try again later.");
             errorScreen.render("main");
+            return;
         }
-        else {
-            const rawData = localStorage.getItem(SHOPPING_LIST_STORAGE_KEY);
-            const parsedData = JSON.parse(rawData ?? "[]");
-            if (!Array.isArray(parsedData)) {
-                throw new TypeError("Invalid format of saved shopping list entries!");
-            }
-            const savedEntries = parsedData.filter(isSavedPlannerEntry);
-            const shoppingItems = await buildShoppingItems(savedEntries, recipeStorage, foodStorage);
-            const shoppingList = new ShoppingList();
-            const weekRecipeList = new WeekRecipeList(shoppingList);
-            shoppingList.render("main", "append");
-            shoppingList.renderList(shoppingItems);
+        const rawData = localStorage.getItem(SHOPPING_LIST_STORAGE_KEY);
+        const parsedData = JSON.parse(rawData ?? "[]");
+        if (!Array.isArray(parsedData)) {
+            throw new TypeError("Invalid format of saved shopping list entries!");
         }
+        const savedEntries = parsedData.filter(isSavedPlannerEntry);
+        const shoppingItems = await buildShoppingItems(savedEntries, recipeStorage, foodStorage);
+        const shoppingList = new ShoppingListComponent();
+        shoppingList.render("main", "append");
+        shoppingList.renderList(shoppingItems);
+        const weekRecipeList = new WeekRecipeList(shoppingList);
     }
     finally {
         removeLoader();

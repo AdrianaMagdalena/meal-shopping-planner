@@ -46,8 +46,6 @@ export class WeekRecipeList {
             localStorage.removeItem(WEEK_RECIPES_STORAGE_KEY);
             localStorage.removeItem(SHOPPING_LIST_STORAGE_KEY);
             this._weeklyListCont.remove();
-            const allShoppingListItems = Array.from(shoppingList.shoppingListContainer.children);
-            allShoppingListItems.forEach((item) => item.remove());
             shoppingList.renderList([]);
             this.generateWeekListData();
         });
