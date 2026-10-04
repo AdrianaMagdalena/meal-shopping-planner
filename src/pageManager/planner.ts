@@ -1,6 +1,6 @@
 import { Navigation } from "../components/navigation.js";
 import { PlannerManager } from "../services/plannerManager.js";
-import { MenuCard } from "../components/menuCard.js";
+import { PlannerCardComponent } from "../components/planner/plannerCardComponent.js";
 import { Modal } from "../components/modals/modal.js";
 import { removeLoader } from "../utils/removeLoader.js";
 import { delay } from "../utils/delay.js";
@@ -58,13 +58,13 @@ const navigation = new Navigation(
 
     const renderDay = (dayIndex: number): void => {
       const day = menuManager.weekDays[dayIndex];
-      const menuCard = new MenuCard(dayIndex);
+      const plannerCard = new PlannerCardComponent(dayIndex);
 
       const referenceElem = menuConatiner.children[dayIndex] ?? null;
-      menuConatiner.insertBefore(menuCard.cardElem, referenceElem);
+      menuConatiner.insertBefore(plannerCard.cardElem, referenceElem);
 
       if (day.dayEntries.length > 0) {
-        menuCard.renderHeader();
+        plannerCard.renderHeader();
       }
 
       day.dayEntries.forEach((e) => {
@@ -73,7 +73,7 @@ const navigation = new Navigation(
           rerenderDay(dayIndex);
         };
 
-        menuCard.renderEntry(e, onRemove);
+        plannerCard.renderEntry(e, onRemove);
       });
     };
 

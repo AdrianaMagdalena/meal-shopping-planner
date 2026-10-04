@@ -1,7 +1,7 @@
-import { PlannerEntry } from "../models/plannerEntry.js";
-import { insertElem } from "../utils/insertElem.js";
-import { isSelectorString } from "../utils/typeGuards.js";
-import { AmountInput } from "./inputs/amountInput.js";
+import { PlannerEntry } from "../../models/plannerEntry.js";
+import { insertElem } from "../../utils/insertElem.js";
+import { isSelectorString } from "../../utils/typeGuards.js";
+import { AmountInput } from "../inputs/amountInput.js";
 
 const template = document.createElement("template");
 const templateHTML = `
@@ -14,7 +14,7 @@ const templateHTML = `
 `;
 template.innerHTML = templateHTML.trim();
 
-export class MenuEntry {
+export class PlannerEntryComponent {
   private readonly _entryElem: HTMLDivElement;
   private readonly _removeButton: HTMLButtonElement;
   private readonly _recipeTitle: HTMLParagraphElement;

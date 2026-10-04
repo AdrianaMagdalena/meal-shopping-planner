@@ -1,6 +1,6 @@
-import { insertElem } from "../utils/insertElem.js";
-import { isSelectorString } from "../utils/typeGuards.js";
-import { AmountInput } from "./inputs/amountInput.js";
+import { insertElem } from "../../utils/insertElem.js";
+import { isSelectorString } from "../../utils/typeGuards.js";
+import { AmountInput } from "../inputs/amountInput.js";
 const template = document.createElement("template");
 const templateHTML = `
 <div class="day-menu__entry">
@@ -11,7 +11,7 @@ const templateHTML = `
 </div>
 `;
 template.innerHTML = templateHTML.trim();
-export class MenuEntry {
+export class PlannerEntryComponent {
     constructor(entry, onRemove) {
         const entryServings = String(entry.servingsAmount);
         const fragment = template.content.cloneNode(true);

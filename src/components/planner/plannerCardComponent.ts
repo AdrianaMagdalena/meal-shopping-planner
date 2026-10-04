@@ -1,8 +1,8 @@
-import { PlannerEntry } from "../models/plannerEntry.js";
-import { isSelectorString } from "../utils/typeGuards.js";
-import { MenuEntry } from "./menuEntry.js";
-import { DAY_LABELS } from "../utils/constants.js";
-import { insertElem } from "../utils/insertElem.js";
+import { PlannerEntry } from "../../models/plannerEntry.js";
+import { isSelectorString } from "../../utils/typeGuards.js";
+import { PlannerEntryComponent } from "./plannerEntryComponent.js";
+import { DAY_LABELS } from "../../utils/constants.js";
+import { insertElem } from "../../utils/insertElem.js";
 
 const template = document.createElement("template");
 const templateHTML = `
@@ -12,7 +12,7 @@ const templateHTML = `
 `;
 template.innerHTML = templateHTML.trim();
 
-export class MenuCard {
+export class PlannerCardComponent {
   private readonly _cardElem: HTMLDivElement;
   private readonly _cardTitle: HTMLParagraphElement;
 
@@ -63,10 +63,10 @@ export class MenuCard {
   }
 
   renderEntry(
-    menuEntry: PlannerEntry,
+    plannerEntry: PlannerEntry,
     onRemove: (entryId: string) => void,
   ): void {
-    const entry = new MenuEntry(menuEntry, onRemove);
+    const entry = new PlannerEntryComponent(plannerEntry, onRemove);
     entry.render(this._cardElem, "append");
   }
 }
