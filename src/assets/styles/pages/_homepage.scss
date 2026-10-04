@@ -64,6 +64,11 @@
     }
   }
 
+  &__image {
+    width: min(300px, 80%);
+    margin: 8px auto 0 auto;
+  }
+
   &__signature {
     margin: 24px 0 0 0;
     font-size: 24px;
