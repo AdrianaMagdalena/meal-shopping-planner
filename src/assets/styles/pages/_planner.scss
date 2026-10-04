@@ -1,5 +1,4 @@
 @use "../utils/mixins" as *;
-@use "../utils/fonts" as *;
 
 .planner {
   --input-min-height: 36px;
@@ -65,14 +64,9 @@
     }
 
     &__title {
-      font-family: $font-accent;
+      @include accent-title;
       font-size: 24px;
-      margin: -4px 0 4px 0;
       opacity: 0.8;
-
-      @include breakpoint-up(md) {
-        margin: 0;
-      }
     }
 
     &__entry,
