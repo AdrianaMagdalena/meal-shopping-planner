@@ -8,6 +8,8 @@ import { AddToPlanModal } from "../components/addToPlanModal.js";
 import { PlannerManager } from "../services/plannerManager.js";
 import { FavoritesStorage } from "../storages/favoritesStorage.js";
 import { FavoritesManager } from "../services/favoritesManager.js";
+import { delay } from "../utils/delay.js";
+import { removeLoader } from "../utils/removeLoader.js";
 
 const navigation = new Navigation(
   "../index.html",
@@ -17,63 +19,67 @@ const navigation = new Navigation(
   "./favorites.html",
 );
 
-navigation.render(document.body);
+(async (): Promise<void> => {
+  try {
+    navigation.render(document.body);
 
-(async function (): Promise<void> {
-  const container = document.querySelector(".recipe-list");
-  if (!container) {
-    throw new Error("recipe-list container not found");
-  }
-
-  const recipeStorage = new RecipeStorage();
-  const recipes = await recipeStorage.getAll();
-  const favoritesStorage = new FavoritesStorage();
-  const favoritesManager = new FavoritesManager(favoritesStorage);
-
-  const renderResults = (recipesToRender: Recipe[]): void => {
-    container!.innerHTML = "";
-
-    if (recipesToRender.length === 0) {
-      const errorScreen = new ErrorScreen(
-        "../src/assets/illustrations/search.svg",
-        "No recipes found",
-        "Try a different keyword or adjust your filters.",
-      );
-      errorScreen.render(".recipe-list");
-      return;
+    const container = document.querySelector(".recipe-list");
+    if (!container) {
+      throw new Error("recipe-list container not found");
     }
 
-    const onFavoriteToggle = (r: Recipe): void =>
-      favoritesManager.toggleFavorite(r);
+    const recipeStorage = new RecipeStorage();
+    const [recipes] = await Promise.all([recipeStorage.getAll(), delay(600)]);
+    const favoritesStorage = new FavoritesStorage();
+    const favoritesManager = new FavoritesManager(favoritesStorage);
 
-    recipesToRender.forEach((recipe) => {
-      const isFavorited = favoritesManager.isFavorited(recipe.id);
+    const renderResults = (recipesToRender: Recipe[]): void => {
+      container!.innerHTML = "";
 
-      const card = new RecipeCard(recipe, isFavorited, onFavoriteToggle);
-      card.render(".recipe-list");
+      if (recipesToRender.length === 0) {
+        const errorScreen = new ErrorScreen(
+          "../src/assets/illustrations/search.svg",
+          "No recipes found",
+          "Try a different keyword or adjust your filters.",
+        );
+        errorScreen.render(".recipe-list");
+        return;
+      }
 
-      const addToPlanBtn =
-        card.cardElement.querySelector<HTMLButtonElement>(".button--plan");
-      if (!addToPlanBtn) throw new Error("addToPlanBtn not found on page");
+      const onFavoriteToggle = (r: Recipe): void =>
+        favoritesManager.toggleFavorite(r);
 
-      addToPlanBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        modal.openModal(recipe, Number(recipe.servings));
+      recipesToRender.forEach((recipe) => {
+        const isFavorited = favoritesManager.isFavorited(recipe.id);
+
+        const card = new RecipeCard(recipe, isFavorited, onFavoriteToggle);
+        card.render(".recipe-list");
+
+        const addToPlanBtn =
+          card.cardElement.querySelector<HTMLButtonElement>(".button--plan");
+        if (!addToPlanBtn) throw new Error("addToPlanBtn not found on page");
+
+        addToPlanBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          modal.openModal(recipe, Number(recipe.servings));
+        });
       });
-    });
-  };
+    };
 
-  renderResults(recipes);
+    renderResults(recipes);
 
-  const searchManager = new SearchManager(recipeStorage, renderResults);
+    const searchManager = new SearchManager(recipeStorage, renderResults);
 
-  const modal = new AddToPlanModal(
-    "Confirm choice",
-    "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
-    (dayIndex: number, recipe: Recipe, servings: number) => {
-      const menuManager = PlannerManager.load();
-      menuManager.addEntryToDay(dayIndex, recipe, servings);
-    },
-  );
-  modal.render(document.body, "append");
+    const modal = new AddToPlanModal(
+      "Confirm choice",
+      "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
+      (dayIndex: number, recipe: Recipe, servings: number) => {
+        const menuManager = PlannerManager.load();
+        menuManager.addEntryToDay(dayIndex, recipe, servings);
+      },
+    );
+    modal.render(document.body, "append");
+  } finally {
+    removeLoader();
+  }
 })();

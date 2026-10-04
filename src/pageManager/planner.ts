@@ -6,6 +6,8 @@ import {
   CHECKED_ITEMS_STORAGE_KEY,
   REMOVED_ITEMS_STORAGE_KEY,
 } from "../components/shoppingList.js";
+import { removeLoader } from "../utils/removeLoader.js";
+import { delay } from "../utils/delay.js";
 
 const navigation = new Navigation(
   "../index.html",
@@ -14,70 +16,77 @@ const navigation = new Navigation(
   "./week-list.html",
   "./favorites.html",
 );
-navigation.render(document.body);
 
-const menuConatiner = document.querySelector<HTMLDivElement>(".planner");
-if (!menuConatiner) throw new Error("menuContainer not found on page");
+(async (): Promise<void> => {
+  try {
+    navigation.render(document.body);
+    const menuConatiner = document.querySelector<HTMLDivElement>(".planner");
+    if (!menuConatiner) throw new Error("menuContainer not found on page");
 
-const menuManager = PlannerManager.load();
-const confirmModal = new Modal(
-  "Success!",
-  `You succesfully generated yout weekly shopping list! It'll be available in the "Week's list" submenu.`,
-  "Okay",
-  "../src/assets/illustrations/checklist.svg",
-);
-confirmModal.render("main", "append");
+    const menuManager = PlannerManager.load();
+    const confirmModal = new Modal(
+      "Success!",
+      `You succesfully generated yout weekly shopping list! It'll be available in the "Week's list" submenu.`,
+      "Okay",
+      "../src/assets/illustrations/checklist.svg",
+    );
+    confirmModal.render("main", "append");
 
-const generateListBtn =
-  document.querySelector<HTMLButtonElement>(".planner__button");
-if (!generateListBtn) throw new Error("generateListBtn not found on page");
-generateListBtn.addEventListener("click", () => {
-  menuManager.saveUniqueRecipeData();
-  menuManager.saveAllEntryData();
-  localStorage.removeItem(CHECKED_ITEMS_STORAGE_KEY);
-  localStorage.removeItem(REMOVED_ITEMS_STORAGE_KEY);
-  confirmModal.openModal();
-});
+    const generateListBtn =
+      document.querySelector<HTMLButtonElement>(".planner__button");
+    if (!generateListBtn) throw new Error("generateListBtn not found on page");
+    generateListBtn.addEventListener("click", () => {
+      menuManager.saveUniqueRecipeData();
+      menuManager.saveAllEntryData();
+      localStorage.removeItem(CHECKED_ITEMS_STORAGE_KEY);
+      localStorage.removeItem(REMOVED_ITEMS_STORAGE_KEY);
+      confirmModal.openModal();
+    });
 
-const removeAllEntriesBtn = document.querySelector<HTMLButtonElement>(
-  ".remove-entries__button",
-);
-if (!removeAllEntriesBtn)
-  throw new Error("removeAllEntriesBtn not found on page");
-removeAllEntriesBtn.addEventListener("click", () => {
-  menuManager.removeAllEntries();
-  for (let i = 0; i < DAY_LABELS.length; i++) {
-    rerenderDay(i);
-  }
-});
+    const removeAllEntriesBtn = document.querySelector<HTMLButtonElement>(
+      ".remove-entries__button",
+    );
+    if (!removeAllEntriesBtn)
+      throw new Error("removeAllEntriesBtn not found on page");
+    removeAllEntriesBtn.addEventListener("click", () => {
+      menuManager.removeAllEntries();
+      for (let i = 0; i < DAY_LABELS.length; i++) {
+        rerenderDay(i);
+      }
+    });
 
-const renderDay = (dayIndex: number): void => {
-  const day = menuManager.weekDays[dayIndex];
-  const menuCard = new MenuCard(dayIndex);
+    const renderDay = (dayIndex: number): void => {
+      const day = menuManager.weekDays[dayIndex];
+      const menuCard = new MenuCard(dayIndex);
 
-  const referenceElem = menuConatiner.children[dayIndex] ?? null;
-  menuConatiner.insertBefore(menuCard.cardElem, referenceElem);
+      const referenceElem = menuConatiner.children[dayIndex] ?? null;
+      menuConatiner.insertBefore(menuCard.cardElem, referenceElem);
 
-  if (day.dayEntries.length > 0) {
-    menuCard.renderHeader();
-  }
+      if (day.dayEntries.length > 0) {
+        menuCard.renderHeader();
+      }
 
-  day.dayEntries.forEach((e) => {
-    const onRemove = (entryId: string): void => {
-      menuManager.removeEntryFromDay(dayIndex, entryId);
-      rerenderDay(dayIndex);
+      day.dayEntries.forEach((e) => {
+        const onRemove = (entryId: string): void => {
+          menuManager.removeEntryFromDay(dayIndex, entryId);
+          rerenderDay(dayIndex);
+        };
+
+        menuCard.renderEntry(e, onRemove);
+      });
     };
 
-    menuCard.renderEntry(e, onRemove);
-  });
-};
+    const rerenderDay = (dayIndex: number): void => {
+      const oldCard = menuConatiner.children[dayIndex];
+      oldCard.remove();
+      renderDay(dayIndex);
+    };
 
-const rerenderDay = (dayIndex: number): void => {
-  const oldCard = menuConatiner.children[dayIndex];
-  oldCard.remove();
-  renderDay(dayIndex);
-};
-
-for (let i = 0; i < DAY_LABELS.length; i++) {
-  renderDay(i);
-}
+    for (let i = 0; i < DAY_LABELS.length; i++) {
+      renderDay(i);
+    }
+    await delay(600);
+  } finally {
+    removeLoader();
+  }
+})();

@@ -9,6 +9,8 @@ import { Recipe } from "../models/recipe.js";
 import { ServingsManager } from "../services/servingsManager.js";
 import { FavoritesStorage } from "../storages/favoritesStorage.js";
 import { FavoritesManager } from "../services/favoritesManager.js";
+import { delay } from "../utils/delay.js";
+import { removeLoader } from "../utils/removeLoader.js";
 
 const navigation = new Navigation(
   "../index.html",
@@ -17,70 +19,78 @@ const navigation = new Navigation(
   "./week-list.html",
   "./favorites.html",
 );
-navigation.render(document.body);
 
-(async () => {
-  const params = new URLSearchParams(window.location.search);
-  const recipeId = params.get("id");
+(async (): Promise<void> => {
+  try {
+    navigation.render(document.body);
 
-  if (!recipeId) {
-    throw new Error("No recipe ID in URL");
-  }
+    const params = new URLSearchParams(window.location.search);
+    const recipeId = params.get("id");
 
-  const foodStorage = new FoodStorage();
-  const recipeStorage = new RecipeStorage();
-  const recipe = await recipeStorage.getById(recipeId);
-  const favoritesStorage = new FavoritesStorage();
-  const favoritesManager = new FavoritesManager(favoritesStorage);
+    if (!recipeId) {
+      throw new Error("No recipe ID in URL");
+    }
 
-  const onFavoriteToggle = (r: Recipe): void =>
-    favoritesManager.toggleFavorite(r);
+    const foodStorage = new FoodStorage();
+    const recipeStorage = new RecipeStorage();
+    const [recipe] = await Promise.all([
+      recipeStorage.getById(recipeId),
+      delay(600),
+    ]);
+    const favoritesStorage = new FavoritesStorage();
+    const favoritesManager = new FavoritesManager(favoritesStorage);
 
-  if (!recipe) {
-    const preview = document.querySelector<HTMLDivElement>(".recipe-preview");
-    preview!.remove();
-    const errorScreen = new ErrorScreen(
-      "../src/assets/illustrations/search.svg",
-      "The recipe was not found",
-    );
-    errorScreen.render("main");
-  } else {
-    const isFavorited = favoritesManager.isFavorited(recipe.id);
+    const onFavoriteToggle = (r: Recipe): void =>
+      favoritesManager.toggleFavorite(r);
 
-    const { amountInput, previewElement } = await renderRecipePreview(
-      recipe,
-      foodStorage,
-      isFavorited,
-      onFavoriteToggle,
-    );
+    if (!recipe) {
+      const preview = document.querySelector<HTMLDivElement>(".recipe-preview");
+      if (preview) preview.remove();
+      const errorScreen = new ErrorScreen(
+        "../src/assets/illustrations/search.svg",
+        "The recipe was not found",
+      );
+      errorScreen.render("main");
+    } else {
+      const isFavorited = favoritesManager.isFavorited(recipe.id);
 
-    const servingsManager = new ServingsManager(
-      recipe,
-      amountInput,
-      previewElement,
-    );
+      const { amountInput, previewElement } = await renderRecipePreview(
+        recipe,
+        foodStorage,
+        isFavorited,
+        onFavoriteToggle,
+      );
 
-    const modal = new AddToPlanModal(
-      "Confirm choice",
-      "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
-      (dayIndex: number, recipe: Recipe, servings: number) => {
-        const menuManager = PlannerManager.load();
-        menuManager.addEntryToDay(dayIndex, recipe, servings);
-      },
-    );
-    modal.render(document.body, "append");
+      const servingsManager = new ServingsManager(
+        recipe,
+        amountInput,
+        previewElement,
+      );
 
-    const addToPlanBtn =
-      document.querySelector<HTMLButtonElement>(".button--plan");
-    if (!addToPlanBtn) throw new Error("addToPlanBtn not found on page");
-    const servingsInput = document.querySelector<HTMLInputElement>(
-      ".info__servings-input .input__input",
-    );
-    if (!servingsInput) throw new Error("servingsInput not found on page");
+      const modal = new AddToPlanModal(
+        "Confirm choice",
+        "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
+        (dayIndex: number, recipe: Recipe, servings: number) => {
+          const menuManager = PlannerManager.load();
+          menuManager.addEntryToDay(dayIndex, recipe, servings);
+        },
+      );
+      modal.render(document.body, "append");
 
-    addToPlanBtn?.addEventListener("click", () => {
-      const currentServings = servingsInput?.value;
-      modal.openModal(recipe, Number(currentServings));
-    });
+      const addToPlanBtn =
+        document.querySelector<HTMLButtonElement>(".button--plan");
+      if (!addToPlanBtn) throw new Error("addToPlanBtn not found on page");
+      const servingsInput = document.querySelector<HTMLInputElement>(
+        ".info__servings-input .input__input",
+      );
+      if (!servingsInput) throw new Error("servingsInput not found on page");
+
+      addToPlanBtn?.addEventListener("click", () => {
+        const currentServings = servingsInput?.value;
+        modal.openModal(recipe, Number(currentServings));
+      });
+    }
+  } finally {
+    removeLoader();
   }
 })();

@@ -15,11 +15,27 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./src/assets/styles/style.css" />
-    <title>Meal & Shopping List Planner</title>
+    <title>Meal & Shopping Planner</title>
   </head>
   <body>
+    <div id="loading-overlay" class="loading__body" aria-label="Loading">
+      <div class="loading__nav" aria-hidden="true">
+        <div class="loading__logo">
+          <div class="loading__light"></div>
+        </div>
+        <div class="loading__menu">
+          <div class="loading__light"></div>
+        </div>
+      </div>
+      <div class="loading__backdrop" aria-hidden="true">
+        <div class="loading__spinner"></div>
+      </div>
+      <div class="loading__footer" aria-hidden="true">
+        <p>Copyright © Adriana Szetlak 2026</p>
+      </div>
+    </div>
     <main>
-      <h1>Meal & Shopping List Planner</h1>
+      <h1>Meal & Shopping Planner</h1>
       <div id="content" class="content">Future content container</div>
       <div class="recipe-cards"></div>
     </main>

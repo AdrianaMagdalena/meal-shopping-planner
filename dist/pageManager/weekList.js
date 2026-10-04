@@ -2,18 +2,14 @@ import { ErrorScreen } from "../components/errorScreen.js";
 import { Navigation } from "../components/navigation.js";
 import { ShoppingList } from "../components/shoppingList.js";
 import { WeekRecipeList } from "../components/weekRecipeList.js";
+import { removeLoader } from "../utils/removeLoader.js";
 import { SHOPPING_LIST_STORAGE_KEY } from "../services/plannerManager.js";
 import { FoodStorage } from "../storages/foodStorage.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
+import { delay } from "../utils/delay.js";
 import { roundIngredients } from "../utils/roundIngredients.js";
 import { isSavedPlannerEntry } from "../utils/typeGuards.js";
 const navigation = new Navigation("../index.html", "./search.html", "./planner.html", "javascript:void(0)", "./favorites.html");
-navigation.render(document.body);
-const rawData = localStorage.getItem(SHOPPING_LIST_STORAGE_KEY);
-const parsedData = JSON.parse(rawData ?? "[]");
-if (!Array.isArray(parsedData)) {
-    throw new TypeError("Invalid format of saved shopping list entries");
-}
 const getDataFromRecipe = async (recipe, foodStorage, items, ratio) => {
     for (const part of recipe.parts) {
         for (const ingredient of part.ingredients) {
@@ -57,24 +53,33 @@ const buildShoppingItems = async (savedEntries, recipeStorage, foodStorage) => {
     return items;
 };
 (async () => {
-    const foodStorage = new FoodStorage();
-    const recipeStorage = new RecipeStorage();
-    const allRecipes = await recipeStorage.getAll();
-    if (allRecipes.length === 0) {
-        const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "Could not get recipes data", "Please refresh the page or try again later.");
-        errorScreen.render("main");
-    }
-    else {
-        const rawData = localStorage.getItem(SHOPPING_LIST_STORAGE_KEY);
-        const parsedData = JSON.parse(rawData ?? "[]");
-        if (!Array.isArray(parsedData)) {
-            throw new TypeError("Invalid format of saved shopping list entries!");
+    try {
+        navigation.render(document.body);
+        const foodStorage = new FoodStorage();
+        const recipeStorage = new RecipeStorage();
+        const [allRecipes] = await Promise.all([
+            recipeStorage.getAll(),
+            delay(600),
+        ]);
+        if (allRecipes.length === 0) {
+            const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "Could not get recipes data", "Please refresh the page or try again later.");
+            errorScreen.render("main");
         }
-        const savedEntries = parsedData.filter(isSavedPlannerEntry);
-        const shoppingItems = await buildShoppingItems(savedEntries, recipeStorage, foodStorage);
-        const shoppingList = new ShoppingList();
-        const weekRecipeList = new WeekRecipeList(shoppingList);
-        shoppingList.render("main", "append");
-        shoppingList.renderList(shoppingItems);
+        else {
+            const rawData = localStorage.getItem(SHOPPING_LIST_STORAGE_KEY);
+            const parsedData = JSON.parse(rawData ?? "[]");
+            if (!Array.isArray(parsedData)) {
+                throw new TypeError("Invalid format of saved shopping list entries!");
+            }
+            const savedEntries = parsedData.filter(isSavedPlannerEntry);
+            const shoppingItems = await buildShoppingItems(savedEntries, recipeStorage, foodStorage);
+            const shoppingList = new ShoppingList();
+            const weekRecipeList = new WeekRecipeList(shoppingList);
+            shoppingList.render("main", "append");
+            shoppingList.renderList(shoppingItems);
+        }
+    }
+    finally {
+        removeLoader();
     }
 })();

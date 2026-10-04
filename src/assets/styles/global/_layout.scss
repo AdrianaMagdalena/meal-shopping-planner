@@ -13,7 +13,8 @@ body {
   background-color: var(--clr-beige-bg);
   color: var(--clr-brown);
 
-  &:has(.modal.visible) {
+  &:has(.modal.visible),
+  &:has(.loading__body) {
     overflow: hidden;
   }
 }
