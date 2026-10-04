@@ -133,6 +133,7 @@ export class AddToPlanModal {
         }, 10);
         this._modalRecipeTitle.textContent = recipe.title;
         this._servingsInput.inputInput.value = String(servings);
+        this._servingsInput.updateButtonStates();
     }
     closeModal() {
         this._modalElem.classList.remove("visible");

@@ -1,3 +1,4 @@
+import { SERVINGS_MAX_VALUE, SERVINGS_MIN_VALUE } from "../utils/constants.js";
 import { Input } from "./input.js";
 
 export class AmountInput extends Input {
@@ -26,9 +27,6 @@ export class AmountInput extends Input {
     const amountMinusButton = this.leadBtn;
     const amountPlusButton = this.trailBtn;
 
-    const MIN_VALUE = 1;
-    const MAX_VALUE = 50;
-
     amountInputField.classList.add("input--amount");
     amountInput.setAttribute("inputmode", inputmodeAttribute);
     amountInput.setAttribute("pattern", patternAttribute);
@@ -40,50 +38,45 @@ export class AmountInput extends Input {
       throw new Error("leadBtn and trailBtn are both required but not found");
     }
 
-    amountInput.addEventListener("input", () => {
-      amountInput.value = amountInput.value.replace(/\D/g, "");
+    const clamp = (value: number): number => {
+      if (value < SERVINGS_MIN_VALUE) return SERVINGS_MIN_VALUE;
+      if (value > SERVINGS_MAX_VALUE) return SERVINGS_MAX_VALUE;
+      return value;
+    };
 
-      if (Number(amountInput.value) >= MAX_VALUE) {
-        amountInput.value = String(MAX_VALUE);
-        amountPlusButton.setAttribute("disabled", "true");
-      } else if (Number(amountInput.value) <= MIN_VALUE) {
-        amountInput.value = String(MIN_VALUE);
-        amountMinusButton.setAttribute("disabled", "true");
-      } else {
-        amountPlusButton.removeAttribute("disabled");
-        amountMinusButton.removeAttribute("disabled");
-      }
+    this.updateButtonStates();
+
+    amountInput.addEventListener("input", () => {
+      const digitsOnly = amountInput.value.replace(/\D/g, "");
+      const clamped = clamp(Number(digitsOnly));
+      amountInput.value = String(clamped);
+      this.updateButtonStates();
     });
 
     amountMinusButton.addEventListener("click", () => {
-      amountPlusButton.removeAttribute("disabled");
-
-      if (Number(amountInput.value) <= MIN_VALUE || amountInput.value === "") {
-        amountMinusButton.setAttribute("disabled", "true");
-      } else if (Number(amountInput.value) === MIN_VALUE + 1) {
-        amountInput.value = String(Number(amountInput.value) - 1);
-        amountMinusButton.setAttribute("disabled", "true");
-      } else {
-        amountInput.value = String(Number(amountInput.value) - 1);
-      }
+      amountInput.value = String(clamp(Number(amountInput.value) - 1));
+      this.updateButtonStates();
     });
 
     amountPlusButton.addEventListener("click", () => {
-      amountMinusButton.removeAttribute("disabled");
-      if (Number(amountInput.value) >= MAX_VALUE) {
-        amountPlusButton.setAttribute("disabled", "true");
-        amountInput.value = String(MAX_VALUE);
-      } else if (Number(amountInput.value) === MAX_VALUE - 1) {
-        amountInput.value = String(Number(amountInput.value) + 1);
-        amountPlusButton.setAttribute("disabled", "true");
-      } else {
-        amountPlusButton.removeAttribute("disabled");
-        amountInput.value = String(Number(amountInput.value) + 1);
-      }
+      amountInput.value = String(clamp(Number(amountInput.value) + 1));
+      this.updateButtonStates();
     });
   }
 
   get amountInput() {
     return this.inputInput;
+  }
+
+  updateButtonStates(): void {
+    const currentValue = Number(this.inputInput.value);
+    this.leadBtn?.toggleAttribute(
+      "disabled",
+      currentValue <= SERVINGS_MIN_VALUE,
+    );
+    this.trailBtn?.toggleAttribute(
+      "disabled",
+      currentValue >= SERVINGS_MAX_VALUE,
+    );
   }
 }

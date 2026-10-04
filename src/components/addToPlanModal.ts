@@ -200,6 +200,7 @@ export class AddToPlanModal {
 
     this._modalRecipeTitle.textContent = recipe.title;
     this._servingsInput.inputInput.value = String(servings);
+    this._servingsInput.updateButtonStates();
   }
 
   closeModal(): void {
