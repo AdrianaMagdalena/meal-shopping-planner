@@ -2,20 +2,12 @@ import { ISavedPlannerDay } from "../interfaces/iSavedPlanner.js";
 import { Recipe } from "../models/recipe.js";
 import { PlannerDay } from "../models/plannerDay.js";
 import { PlannerEntry } from "../models/plannerEntry.js";
-
-export const DAY_LABELS = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
-const PLAN_STORAGE_KEY = "weeklyPlan";
-export const WEEK_RECIPES_STORAGE_KEY = "weeklyRecipeList";
-export const SHOPPING_LIST_STORAGE_KEY = "shoppingList";
+import {
+  DAY_LABELS,
+  PLAN_STORAGE_KEY,
+  SHOPPING_LIST_STORAGE_KEY,
+  WEEK_RECIPES_STORAGE_KEY,
+} from "../utils/constants.js";
 
 export class PlannerManager {
   private readonly _weekDays: PlannerDay[];
@@ -140,7 +132,5 @@ export class PlannerManager {
       SHOPPING_LIST_STORAGE_KEY,
       JSON.stringify(entriesDataToSave),
     );
-
-    console.log(JSON.stringify(entriesDataToSave));
   }
 }

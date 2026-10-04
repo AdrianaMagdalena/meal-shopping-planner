@@ -1,4 +1,4 @@
-import { AddToPlanModal } from "../components/addToPlanModal.js";
+import { AddToPlanModal } from "../components/modals/addToPlanModal.js";
 import { FavoritesListComponent } from "../components/favorites/favoritesListComponent.js";
 import { Navigation } from "../components/navigation.js";
 import { Recipe } from "../models/recipe.js";

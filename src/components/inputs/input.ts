@@ -1,6 +1,6 @@
-import { generateId } from "../utils/generateId.js";
-import { isSelectorString } from "../utils/typeGuards.js";
-import { insertElem } from "../utils/insertElem.js";
+import { generateId } from "../../utils/generateId.js";
+import { isSelectorString } from "../../utils/typeGuards.js";
+import { insertElem } from "../../utils/insertElem.js";
 
 const template = document.createElement("template");
 const templateHTML = `

@@ -2,7 +2,7 @@ import { ErrorScreen } from "../components/errorScreen.js";
 import { Navigation } from "../components/navigation.js";
 import { ShoppingListComponent } from "../components/shopping/shoppingListComponent.js";
 import { WeekRecipeList } from "../components/weekRecipeList.js";
-import { SHOPPING_LIST_STORAGE_KEY } from "../services/plannerManager.js";
+import { SHOPPING_LIST_STORAGE_KEY } from "../utils/constants.js";
 import { FoodStorage } from "../storages/foodStorage.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
 import { removeLoader } from "../utils/removeLoader.js";

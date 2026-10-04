@@ -1,10 +1,10 @@
 import { Navigation } from "../components/navigation.js";
-import { PlannerManager, DAY_LABELS } from "../services/plannerManager.js";
+import { PlannerManager } from "../services/plannerManager.js";
 import { MenuCard } from "../components/menuCard.js";
-import { Modal } from "../components/modal.js";
+import { Modal } from "../components/modals/modal.js";
 import { removeLoader } from "../utils/removeLoader.js";
 import { delay } from "../utils/delay.js";
-import { CHECKED_ITEMS_STORAGE_KEY, REMOVED_ITEMS_STORAGE_KEY, } from "../utils/constants.js";
+import { CHECKED_ITEMS_STORAGE_KEY, DAY_LABELS, REMOVED_ITEMS_STORAGE_KEY, } from "../utils/constants.js";
 const navigation = new Navigation("../index.html", "./search.html", "javascript:void(0)", "./week-list.html", "./favorites.html");
 (async () => {
     try {

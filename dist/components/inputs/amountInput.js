@@ -1,4 +1,4 @@
-import { SERVINGS_MAX_VALUE, SERVINGS_MIN_VALUE } from "../utils/constants.js";
+import { SERVINGS_MAX_VALUE, SERVINGS_MIN_VALUE, } from "../../utils/constants.js";
 import { Input } from "./input.js";
 export class AmountInput extends Input {
     constructor(inputCustomClass, inputmodeAttribute, patternAttribute, startValue, inputLabelText, inputAriaText, placeholderText, leadBtnAriaLabel, trailBtnAriaLabel) {

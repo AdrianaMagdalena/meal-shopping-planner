@@ -1,7 +1,7 @@
 import { PlannerEntry } from "../models/plannerEntry.js";
 import { insertElem } from "../utils/insertElem.js";
 import { isSelectorString } from "../utils/typeGuards.js";
-import { AmountInput } from "./amountInput.js";
+import { AmountInput } from "./inputs/amountInput.js";
 
 const template = document.createElement("template");
 const templateHTML = `

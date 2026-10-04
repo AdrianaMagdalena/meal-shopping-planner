@@ -1,5 +1,5 @@
-import { isSelectorString } from "../utils/typeGuards.js";
-import { insertElem } from "../utils/insertElem.js";
+import { isSelectorString } from "../../utils/typeGuards.js";
+import { insertElem } from "../../utils/insertElem.js";
 
 const template = document.createElement("template");
 const templateHTML = `

@@ -1,7 +1,7 @@
 import { ISavedShoppingItem } from "../../interfaces/iSavedShopping.js";
 import { insertElem } from "../../utils/insertElem.js";
 import { isSelectorString } from "../../utils/typeGuards.js";
-import { SHOPPING_LIST_STORAGE_KEY } from "../../services/plannerManager.js";
+import { SHOPPING_LIST_STORAGE_KEY } from "../../utils/constants.js";
 import { ErrorScreen } from "../errorScreen.js";
 import { ShoppingCategoryComponent } from "./shoppingGroupComponent.js";
 import { loadRemovedIds, markRemoved } from "../../utils/shoppinItemState.js";

@@ -1,7 +1,7 @@
 import { PlannerEntry } from "../models/plannerEntry.js";
 import { isSelectorString } from "../utils/typeGuards.js";
 import { MenuEntry } from "./menuEntry.js";
-import { DAY_LABELS } from "../services/plannerManager.js";
+import { DAY_LABELS } from "../utils/constants.js";
 import { insertElem } from "../utils/insertElem.js";
 
 const template = document.createElement("template");

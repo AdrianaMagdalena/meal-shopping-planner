@@ -1,5 +1,5 @@
 import { Recipe } from "../models/recipe.js";
-import { AmountInput } from "./amountInput.js";
+import { AmountInput } from "./inputs/amountInput.js";
 import { FoodStorage } from "../storages/foodStorage.js";
 
 const renderBasicInfo = (

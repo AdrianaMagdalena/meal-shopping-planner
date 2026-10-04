@@ -1,4 +1,4 @@
-import { AmountInput } from "./amountInput.js";
+import { AmountInput } from "./inputs/amountInput.js";
 const renderBasicInfo = (preview, recipe, isFavorited, onFavoriteToggle) => {
     const recipeImage = preview.querySelector(".recipe-preview__image");
     if (!recipeImage)

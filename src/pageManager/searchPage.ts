@@ -4,7 +4,7 @@ import { RecipeCard } from "../components/recipeCard.js";
 import { Recipe } from "../models/recipe.js";
 import { SearchManager } from "../services/searchManager.js";
 import { ErrorScreen } from "../components/errorScreen.js";
-import { AddToPlanModal } from "../components/addToPlanModal.js";
+import { AddToPlanModal } from "../components/modals/addToPlanModal.js";
 import { PlannerManager } from "../services/plannerManager.js";
 import { FavoritesStorage } from "../storages/favoritesStorage.js";
 import { FavoritesManager } from "../services/favoritesManager.js";

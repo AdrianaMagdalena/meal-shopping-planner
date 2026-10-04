@@ -1,4 +1,4 @@
-import { Input } from "../components/input.js";
+import { Input } from "../components/inputs/input.js";
 import { SearchPanel } from "../components/searchPanel.js";
 import { Recipe } from "../models/recipe.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
@@ -116,9 +116,6 @@ export class SearchManager {
         checkedMealCategory.push(c.nextElementSibling.textContent);
       }
     });
-
-    console.log(checkedDietCategory);
-    console.log(checkedMealCategory);
 
     const results = await this._recipeStorage.search({
       keyword: this._searchInput.inputInput.value,

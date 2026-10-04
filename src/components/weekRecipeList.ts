@@ -1,7 +1,7 @@
 import {
   SHOPPING_LIST_STORAGE_KEY,
   WEEK_RECIPES_STORAGE_KEY,
-} from "../services/plannerManager.js";
+} from "../utils/constants.js";
 import { insertElem } from "../utils/insertElem.js";
 import { isSavedPlannerEntry, isSelectorString } from "../utils/typeGuards.js";
 import { ErrorScreen } from "./errorScreen.js";

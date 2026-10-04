@@ -1,4 +1,4 @@
-import { AmountInput } from "../components/amountInput.js";
+import { AmountInput } from "../components/inputs/amountInput.js";
 import { Recipe } from "../models/recipe.js";
 import { roundIngredients } from "../utils/roundIngredients.js";
 

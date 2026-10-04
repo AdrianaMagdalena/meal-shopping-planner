@@ -3,7 +3,7 @@ import { RecipeStorage } from "../storages/recipeStorage.js";
 import { Navigation } from "../components/navigation.js";
 import { ErrorScreen } from "../components/errorScreen.js";
 import { renderRecipePreview } from "../components/recipePreview.js";
-import { AddToPlanModal } from "../components/addToPlanModal.js";
+import { AddToPlanModal } from "../components/modals/addToPlanModal.js";
 import { PlannerManager } from "../services/plannerManager.js";
 import { Recipe } from "../models/recipe.js";
 import { ServingsManager } from "../services/servingsManager.js";
