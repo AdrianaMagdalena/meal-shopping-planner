@@ -1,0 +1,62 @@
+*Csillaggal jelölt elemek "nice to have" elemek - csak akkor kerülnének fejlesztésre ha a kötelezők elkészülnek időben.
+ 
+1. Alkalmazás szerkezete és működése:
+	a. Navi: logó - főoldal - recept kereső - heti menu összeállító - kedvencek
+	b. Fő oldal:
+		- Információk az alkalmazás használatáról (zárható ebben a sessionban vagy tartósan*)
+		- Heti lista összeállítás kezdése blokk
+	c. Recept kereső
+		- Naviból vagy f
+		
+		őoldalról navigalhatunk oda
+		- Érkezéskor az összes recept ki van listázva
+		- Recept kártya:
+			- recept adatai: neve, főzés ideje, kategoriák: diéta (vegetariánus, vegán, gluténmentes, lektózmentes), ételtípus (reggeli, ebéd, vacsora, nassolnivaló)
+			- "kedvencnek jelőlés" gomb
+			- "hozzáadás a heti listához" gomb
+		- Keresőmező a recept címében lévő kifejezések szerint keres
+		- Plusz szűrők a diéta és ételtípusra*
+		- Receptkártya kattintására az egész recept jelenik meg (bővebben: d. pont)
+		- Kedvencnek jelölés egy külön listába menti a kedvenc ételeket (bővebben: e. pont)
+		- Hozzáadás a heti listához elindítja a heti lista összeállítását (bővebben: f. pont)
+	d. Recept oldala
+		- Fénykép, hozzávalók (1 adaghoz), recept lépéseinek leírása
+		- "kedvencnek jelőlés" gomb - egy külön listába menti a kedvenc ételeket (bővebben: e. pont)
+		- "hozzáadás a heti listához" gomb - elindítja a heti lista összeállítását (bővebben: f. pont)
+		- "Adagszám módosítása" gomb - megengedi több adag jelölését a heti listába hozzáadása előtt
+		- Ha kereső oldalon indítjuk a recept hozzáadást:
+			- Megjelenik egy popup, ahol meg lehet adni hány adagot és hányadik naphoz adjuk hozzá az összetevőket
+			- Ha a recept oldalán meg lett adva az adag száma, a popupban automatikusan jelenik meg ugyanaz a szám, amit itt is lehet módosítani
+	e. Kedvencek lista
+		- Naviból érhető el
+		- Kedvencnek jelölt receptek tarolására abc sorrendben
+		- Recept kártyák minimálisak - recept neve + "hozzáadás a heti listához" gomb
+		- Ha kedvencek oldalon indítjuk a recept hozzáadást:
+			- Megjelenik egy popup, ahol meg lehet adni hány adagot és hányadik naphoz adjuk hozzá az összetevőket
+		- Recept kártya kattintására megjelenik a recept (d. pont)
+	f. Heti menu összeállító
+		- 3 módon érhető el: naviről, keresőről vagy kedvencekről
+		- Legfeljebb 7 napra készíthető a lista
+		- Minden naphoz hozzá lehet adni több receptet és több adagot.
+		- Ha keresőről vagy kedvencekről indítjuk a recept hozzáadást:
+			- Megjelenik egy popup, ahol meg lehet adni hány adagot és hányadik naphoz adjuk hozzá az összetevőket
+			- Ha a recept oldalán meg lett adva az adag száma, a popupban automatikusan jelenik meg ugyanaz a szám, amit itt is lehet módosítani
+ 		- Ha az összeállító oldalről indítjuk a recept hozzáadását, egy popup segítségével átirányítás törtnik keresőbe
+		- Az adott napot lehet másolni - a következő nap blokkban jelenik meg ugyanaz a recept lista*
+		- Minden nap blokkjában van lehetőség módosítani az adagszámot*
+		- Kész gomb - a heti lista jóváhagyása, most generálódik a bevásárlólista
+		- Hetimenuben lévő receptek egy összecsúkható kártyába kerülnek, hogy a héten elérhető legyenek duplikációk nélkül. 
+		- Hetimenu kártyában törlés gomb is elérhető - ha törölni szeretnénk a hét recept listáját.
+		- Hetimenu alatt megjelenik a bevasárlólista - az összetevők összeadva 
+		- A lista kategoriákba van osztva - gyümölcsök, zöldségek, hús, hal, tejtermékek, konzervek stb*
+		- A bevásárlólistában ki lehet pipálni a megvásárolt termékeket.
+		- Lista alján "bevásárlólista törlése" gomb.
+2. Megvalósítás:
+	- HTML, CSS, TypeScript, Jest
+	- Adatbázisok - ételek, hozzáválók, receptek statikus adatai tárolása JSON fájlokban, amiket fetch() segítségével kerülnek betöltésre
+	- Felhasználói adatok (heti menu, bevárárlólista, kedvencek) tárolása localStorage-ban, illetve sessionStorage-ban
+	- OOP-szerű felépítés:
+		- Alap classok: Recipe, Ingredient, WeeklyMenuDay, ShoppingListItem
+		- Alap elemek csoportosításra, listák kezelésére használt classok: RecipeList, FavoritesList, WeeklyMenu, ShoppingList
+	-Tesztek írása Jest segítségével
+		
