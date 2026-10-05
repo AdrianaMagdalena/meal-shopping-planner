@@ -1,12 +1,10 @@
 import {
   DROPDOWN_STORAGE_KEY,
-  SHOPPING_LIST_STORAGE_KEY,
   WEEK_RECIPES_STORAGE_KEY,
 } from "../utils/constants.js";
 import { insertElem } from "../utils/insertElem.js";
 import { isSavedPlannerEntry, isSelectorString } from "../utils/typeGuards.js";
 import { ErrorScreenComponent } from "./errorScreenComponent.js";
-import { ShoppingListComponent } from "./shopping/shoppingListComponent.js";
 
 const template = document.createElement("template");
 const templateHtml = `

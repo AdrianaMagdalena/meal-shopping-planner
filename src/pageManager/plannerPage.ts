@@ -52,6 +52,7 @@ const navigation = new NavigationComponent(
       throw new Error("removeAllEntriesBtn not found on page");
 
     removeAllEntriesBtn.addEventListener("click", () => {
+      if (!document.querySelector(".day-menu__entry")) return;
       warningModalComponent.openModalComponent();
     });
 
