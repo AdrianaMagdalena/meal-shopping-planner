@@ -108,7 +108,7 @@
     "unit": "g"
   },
   {
-    "id": "tomatoes_01",
+    "id": "tomato_01",
     "name": "Tomatoes",
     "category": "vegetables",
     "unit": "g"
@@ -182,7 +182,7 @@
     "unit": "g"
   },
   {
-    "id": "cream_01",
+    "id": "oat_cream_01",
     "name": "Oat cream",
     "category": "plant-based",
     "unit": "ml"
@@ -572,7 +572,7 @@
     "unit": "tsp"
   },
   {
-    "id": "dried_tomatoes_01",
+    "id": "dried_tomato_01",
     "name": "Dried tomatoes",
     "category": "canned & dry goods",
     "unit": "pcs"
@@ -594,5 +594,35 @@
     "name": "Dried basil",
     "category": "seasoning",
     "unit": "tsp"
+  },
+  {
+    "id": "cinnamon_01",
+    "name": "Cinnamon",
+    "category": "seasoning",
+    "unit": "tsp"
+  },
+  {
+    "id": "cardamon",
+    "name": "Cardamon",
+    "category": "seasoning",
+    "unit": "tsp"
+  },
+  {
+    "id": "white_rice_01",
+    "name": "White rice",
+    "category": "canned & dry goods",
+    "unit": "g"
+  },
+  {
+    "id": "lambs_lettuce_01",
+    "name": "Lambs lettuce",
+    "category": "vegetables",
+    "unit": "g"
+  },
+  {
+    "id": "soy_youghurt_01",
+    "name": "Soy yoghurt",
+    "category": "plant-based",
+    "unit": "g"
   }
 ]
