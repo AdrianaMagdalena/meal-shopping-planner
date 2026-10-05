@@ -3,7 +3,7 @@ import { Recipe } from "../../models/recipe.js";
 import { ALPHABET } from "../../utils/constants.js";
 import { insertElem } from "../../utils/insertElem.js";
 import { isSelectorString } from "../../utils/typeGuards.js";
-import { ErrorScreen } from "../errorScreen.js";
+import { ErrorScreenComponent } from "../errorScreenComponent.js";
 import { FavoriteGroupComponent } from "./favoriteGroupComponent.js";
 import { FavoriteItemComponent } from "./favoriteItemComponent.js";
 
@@ -26,7 +26,7 @@ export class FavoritesListComponent {
     this._onAddToPlan = onAddToPlan;
 
     if (allFavs.length === 0) {
-      const errorScreen = new ErrorScreen(
+      const errorScreen = new ErrorScreenComponent(
         "../src/assets/illustrations/search.svg",
         "No saved favorites!",
         "Add recipes to favorites to see them here",

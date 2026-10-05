@@ -1,4 +1,4 @@
-import { AmountInput } from "./inputs/amountInput.js";
+import { AmountInputComponent } from "./inputs/amountInputComponent.js";
 const renderBasicInfo = (preview, recipe, isFavorited, onFavoriteToggle) => {
     const recipeImage = preview.querySelector(".recipe-preview__image");
     if (!recipeImage)
@@ -68,7 +68,7 @@ const renderServingsAdjuster = (preview, recipe) => {
         servingsInputWrap.before(info);
     }
     const inputStartValue = String(recipe.servings);
-    const amountInput = new AmountInput("info__servings-input", "numeric", "[0-9]*", inputStartValue, "", "Servings amount", "", "Remove amout of servings", "Add amount of servings");
+    const amountInput = new AmountInputComponent("info__servings-input", "numeric", "[0-9]*", inputStartValue, "", "Servings amount", "", "Remove amout of servings", "Add amount of servings");
     amountInput.render(servingsInputWrap, "prepend");
     const servingsInput = amountInput.inputInput;
     if (!servingsInput)

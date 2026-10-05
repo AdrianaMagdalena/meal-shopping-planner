@@ -1,7 +1,6 @@
 import { IFavoriteItem } from "../interfaces/iFavorites.js";
+import { FAVORITES_STORAGE_KEY } from "../utils/constants.js";
 import { isFavoriteItem } from "../utils/typeGuards.js";
-
-export const FAVORITES_STORAGE_KEY = "favorites";
 
 export class FavoritesStorage {
   private _favorites: IFavoriteItem[] | null = null;

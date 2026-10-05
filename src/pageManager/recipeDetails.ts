@@ -1,9 +1,9 @@
 import { FoodStorage } from "../storages/foodStorage.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
-import { Navigation } from "../components/navigation.js";
-import { ErrorScreen } from "../components/errorScreen.js";
-import { renderRecipePreview } from "../components/recipePreview.js";
-import { AddToPlanModal } from "../components/modals/addToPlanModal.js";
+import { NavigationComponent } from "../components/navigationComponent.js";
+import { ErrorScreenComponent } from "../components/errorScreenComponent.js";
+import { renderRecipePreview } from "../components/recipePreviewComponent.js";
+import { AddToPlanModalComponent } from "../components/modals/addToPlanModalComponent.js";
 import { PlannerManager } from "../services/plannerManager.js";
 import { Recipe } from "../models/recipe.js";
 import { ServingsManager } from "../services/servingsManager.js";
@@ -12,7 +12,7 @@ import { FavoritesManager } from "../services/favoritesManager.js";
 import { delay } from "../utils/delay.js";
 import { removeLoader } from "../utils/removeLoader.js";
 
-const navigation = new Navigation(
+const navigation = new NavigationComponent(
   "../index.html",
   "./search.html",
   "./planner.html",
@@ -46,7 +46,7 @@ const navigation = new Navigation(
     if (!recipe) {
       const preview = document.querySelector<HTMLDivElement>(".recipe-preview");
       if (preview) preview.remove();
-      const errorScreen = new ErrorScreen(
+      const errorScreen = new ErrorScreenComponent(
         "../src/assets/illustrations/search.svg",
         "The recipe was not found",
       );
@@ -67,7 +67,7 @@ const navigation = new Navigation(
         previewElement,
       );
 
-      const modal = new AddToPlanModal(
+      const modal = new AddToPlanModalComponent(
         "Confirm choice",
         "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
         (dayIndex: number, recipe: Recipe, servings: number) => {
@@ -87,7 +87,7 @@ const navigation = new Navigation(
 
       addToPlanBtn?.addEventListener("click", () => {
         const currentServings = servingsInput?.value;
-        modal.openModal(recipe, Number(currentServings));
+        modal.openModalComponent(recipe, Number(currentServings));
       });
     }
   } finally {

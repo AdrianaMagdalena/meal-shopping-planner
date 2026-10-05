@@ -1,6 +1,6 @@
 import { SERVINGS_MAX_VALUE, SERVINGS_MIN_VALUE, } from "../../utils/constants.js";
-import { Input } from "./input.js";
-export class AmountInput extends Input {
+import { InputComponent } from "./inputComponent.js";
+export class AmountInputComponent extends InputComponent {
     constructor(inputCustomClass, inputmodeAttribute, patternAttribute, startValue, inputLabelText, inputAriaText, placeholderText, leadBtnAriaLabel, trailBtnAriaLabel) {
         super(inputCustomClass, inputLabelText, inputAriaText, placeholderText, leadBtnAriaLabel, trailBtnAriaLabel);
         const amountInputField = this.inputField;

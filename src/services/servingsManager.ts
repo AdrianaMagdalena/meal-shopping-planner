@@ -1,16 +1,16 @@
-import { AmountInput } from "../components/inputs/amountInput.js";
+import { AmountInputComponent } from "../components/inputs/amountInputComponent.js";
 import { Recipe } from "../models/recipe.js";
 import { roundIngredients } from "../utils/roundIngredients.js";
 
 export class ServingsManager {
   private readonly _recipe: Recipe;
-  private readonly _servingsInput: AmountInput;
+  private readonly _servingsInput: AmountInputComponent;
   private readonly _previewElem: HTMLElement;
   private _debounceTimer?: number;
 
   constructor(
     recipe: Recipe,
-    servingsInput: AmountInput,
+    servingsInput: AmountInputComponent,
     previewElem: HTMLElement,
   ) {
     this._recipe = recipe;

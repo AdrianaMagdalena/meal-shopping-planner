@@ -10,7 +10,7 @@ const templateHTML = `
 `;
 template.innerHTML = templateHTML.trim();
 
-export class ErrorScreen {
+export class ErrorScreenComponent {
   private readonly _errorElement: HTMLDivElement;
   private readonly _errorImg: HTMLImageElement;
   private readonly _errorTitle: HTMLHeadingElement;

@@ -11,7 +11,7 @@ const tagTemplateHTML = `
 `;
 tagTemplate.innerHTML = tagTemplateHTML.trim();
 
-export class SearchPanel {
+export class SearchPanelComponent {
   private _showFiltersButton: HTMLButtonElement;
   private _categoriesWrap: HTMLDivElement;
   private _dietTagsWrap: HTMLDivElement;

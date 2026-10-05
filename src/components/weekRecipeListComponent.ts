@@ -1,10 +1,11 @@
 import {
+  DROPDOWN_STORAGE_KEY,
   SHOPPING_LIST_STORAGE_KEY,
   WEEK_RECIPES_STORAGE_KEY,
 } from "../utils/constants.js";
 import { insertElem } from "../utils/insertElem.js";
 import { isSavedPlannerEntry, isSelectorString } from "../utils/typeGuards.js";
-import { ErrorScreen } from "./errorScreen.js";
+import { ErrorScreenComponent } from "./errorScreenComponent.js";
 import { ShoppingListComponent } from "./shopping/shoppingListComponent.js";
 
 const template = document.createElement("template");
@@ -24,9 +25,7 @@ const templateHtml = `
 `;
 template.innerHTML = templateHtml.trim();
 
-const DROPDOWN_STORAGE_KEY = "dropdown-state";
-
-export class WeekRecipeList {
+export class WeekRecipeListComponent {
   private readonly _weeklyListCont: HTMLDivElement;
   private readonly _removeWeekDataBtn: HTMLButtonElement;
   private readonly _dropdownButton: HTMLButtonElement;
@@ -96,7 +95,7 @@ export class WeekRecipeList {
 
     const rawData = localStorage.getItem(WEEK_RECIPES_STORAGE_KEY);
     if (!rawData) {
-      const errorScreen = new ErrorScreen(
+      const errorScreen = new ErrorScreenComponent(
         "../src/assets/illustrations/search.svg",
         "No recipe list to display!",
         "Finalize your weekly meal plan to generate a new recipe list",

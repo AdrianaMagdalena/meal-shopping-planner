@@ -21,7 +21,7 @@ const templateHTML = `
 
 template.innerHTML = templateHTML.trim();
 
-export class Modal {
+export class ModalComponent {
   private readonly _modalElem: HTMLDivElement;
   private readonly _modalBody: HTMLDivElement;
   private readonly _modalTitle: HTMLHeadingElement;
@@ -72,7 +72,7 @@ export class Modal {
     this._modalDesc.textContent = modalDesc;
 
     this._modalPrimBtn.addEventListener("click", () => {
-      this.closeModal();
+      this.closeModalComponent();
     });
   }
 
@@ -87,13 +87,13 @@ export class Modal {
     insertElem(position, this._modalElem, parentElement);
   }
 
-  openModal() {
+  openModalComponent() {
     setTimeout(() => {
       this._modalElem.classList.add("visible", "in-front");
     }, 10);
   }
 
-  closeModal(): void {
+  closeModalComponent(): void {
     this._modalElem.classList.remove("visible");
     setTimeout(() => {
       this._modalElem.classList.remove("in-front");

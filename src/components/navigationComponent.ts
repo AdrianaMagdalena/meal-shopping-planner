@@ -6,7 +6,7 @@ const templateHTML = `
     <a class="nav-logo">
         <span class="logo-label">Homepage</span>
     </a>
-    <button class="nav-btn" aria-label="Navigation"></button>
+    <button class="nav-btn" aria-label="NavigationComponent"></button>
     <ul class="nav-menu">
     <li class="nav-item nav-item__recipes"><a>Recipes</a></li>
     <li class="nav-item nav-item__planner"><a>Planner</a></li>
@@ -17,7 +17,7 @@ const templateHTML = `
 `;
 template.innerHTML = templateHTML.trim();
 
-export class Navigation {
+export class NavigationComponent {
   private _navElement: HTMLElement;
   private _homeAnchor: HTMLAnchorElement;
   private _recipesAnchor: HTMLAnchorElement;

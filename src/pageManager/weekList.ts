@@ -1,7 +1,7 @@
-import { ErrorScreen } from "../components/errorScreen.js";
-import { Navigation } from "../components/navigation.js";
+import { ErrorScreenComponent } from "../components/errorScreenComponent.js";
+import { NavigationComponent } from "../components/navigationComponent.js";
 import { ShoppingListComponent } from "../components/shopping/shoppingListComponent.js";
-import { WeekRecipeList } from "../components/weekRecipeList.js";
+import { WeekRecipeListComponent } from "../components/weekRecipeListComponent.js";
 import { SHOPPING_LIST_STORAGE_KEY } from "../utils/constants.js";
 import { FoodStorage } from "../storages/foodStorage.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
@@ -10,7 +10,7 @@ import { delay } from "../utils/delay.js";
 import { isSavedPlannerEntry } from "../utils/typeGuards.js";
 import { buildShoppingItems } from "../services/shoppingListManager.js";
 
-const navigation = new Navigation(
+const navigation = new NavigationComponent(
   "../index.html",
   "./search.html",
   "./planner.html",
@@ -29,7 +29,7 @@ const navigation = new Navigation(
     ]);
 
     if (allRecipes.length === 0) {
-      const errorScreen = new ErrorScreen(
+      const errorScreen = new ErrorScreenComponent(
         "../src/assets/illustrations/search.svg",
         "Could not get recipes data",
         "Please refresh the page or try again later.",
@@ -55,7 +55,7 @@ const navigation = new Navigation(
     shoppingList.render("main", "append");
     shoppingList.renderList(shoppingItems);
 
-    const weekRecipeList = new WeekRecipeList(shoppingList);
+    const weekRecipeList = new WeekRecipeListComponent(shoppingList);
   } finally {
     removeLoader();
   }

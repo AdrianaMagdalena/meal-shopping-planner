@@ -1,7 +1,7 @@
 import { ALPHABET } from "../../utils/constants.js";
 import { insertElem } from "../../utils/insertElem.js";
 import { isSelectorString } from "../../utils/typeGuards.js";
-import { ErrorScreen } from "../errorScreen.js";
+import { ErrorScreenComponent } from "../errorScreenComponent.js";
 import { FavoriteGroupComponent } from "./favoriteGroupComponent.js";
 export class FavoritesListComponent {
     constructor(allFavorites, onRemove, onAddToPlan) {
@@ -12,7 +12,7 @@ export class FavoritesListComponent {
         this._onRemove = onRemove;
         this._onAddToPlan = onAddToPlan;
         if (allFavs.length === 0) {
-            const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "No saved favorites!", "Add recipes to favorites to see them here");
+            const errorScreen = new ErrorScreenComponent("../src/assets/illustrations/search.svg", "No saved favorites!", "Add recipes to favorites to see them here");
             errorScreen.render("main");
         }
         else {

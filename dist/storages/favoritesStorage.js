@@ -1,5 +1,5 @@
+import { FAVORITES_STORAGE_KEY } from "../utils/constants.js";
 import { isFavoriteItem } from "../utils/typeGuards.js";
-export const FAVORITES_STORAGE_KEY = "favorites";
 export class FavoritesStorage {
     constructor() {
         this._favorites = null;

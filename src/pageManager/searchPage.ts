@@ -1,17 +1,17 @@
-import { Navigation } from "../components/navigation.js";
+import { NavigationComponent } from "../components/navigationComponent.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
-import { RecipeCard } from "../components/recipeCard.js";
+import { RecipeCardComponent } from "../components/recipeCardComponent.js";
 import { Recipe } from "../models/recipe.js";
 import { SearchManager } from "../services/searchManager.js";
-import { ErrorScreen } from "../components/errorScreen.js";
-import { AddToPlanModal } from "../components/modals/addToPlanModal.js";
+import { ErrorScreenComponent } from "../components/errorScreenComponent.js";
+import { AddToPlanModalComponent } from "../components/modals/addToPlanModalComponent.js";
 import { PlannerManager } from "../services/plannerManager.js";
 import { FavoritesStorage } from "../storages/favoritesStorage.js";
 import { FavoritesManager } from "../services/favoritesManager.js";
 import { delay } from "../utils/delay.js";
 import { removeLoader } from "../utils/removeLoader.js";
 
-const navigation = new Navigation(
+const navigation = new NavigationComponent(
   "../index.html",
   "javascript:void(0)",
   "./planner.html",
@@ -37,7 +37,7 @@ const navigation = new Navigation(
       container!.innerHTML = "";
 
       if (recipesToRender.length === 0) {
-        const errorScreen = new ErrorScreen(
+        const errorScreen = new ErrorScreenComponent(
           "../src/assets/illustrations/search.svg",
           "No recipes found",
           "Try a different keyword or adjust your filters.",
@@ -52,7 +52,11 @@ const navigation = new Navigation(
       recipesToRender.forEach((recipe) => {
         const isFavorited = favoritesManager.isFavorited(recipe.id);
 
-        const card = new RecipeCard(recipe, isFavorited, onFavoriteToggle);
+        const card = new RecipeCardComponent(
+          recipe,
+          isFavorited,
+          onFavoriteToggle,
+        );
         card.render(".recipe-list");
 
         const addToPlanBtn =
@@ -61,7 +65,7 @@ const navigation = new Navigation(
 
         addToPlanBtn.addEventListener("click", (e) => {
           e.stopPropagation();
-          modal.openModal(recipe, Number(recipe.servings));
+          modal.openModalComponent(recipe, Number(recipe.servings));
         });
       });
     };
@@ -70,7 +74,7 @@ const navigation = new Navigation(
 
     const searchManager = new SearchManager(recipeStorage, renderResults);
 
-    const modal = new AddToPlanModal(
+    const modal = new AddToPlanModalComponent(
       "Confirm choice",
       "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
       (dayIndex: number, recipe: Recipe, servings: number) => {

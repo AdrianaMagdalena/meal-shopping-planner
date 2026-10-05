@@ -32,3 +32,5 @@ export const REMOVED_ITEMS_STORAGE_KEY = "removedShoppingItems";
 export const PLAN_STORAGE_KEY = "weeklyPlan";
 export const WEEK_RECIPES_STORAGE_KEY = "weeklyRecipeList";
 export const SHOPPING_LIST_STORAGE_KEY = "shoppingList";
+export const DROPDOWN_STORAGE_KEY = "dropdown-state";
+export const FAVORITES_STORAGE_KEY = "favorites";

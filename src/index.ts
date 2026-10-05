@@ -1,8 +1,8 @@
-import { Navigation } from "./components/navigation.js";
+import { NavigationComponent } from "./components/navigationComponent.js";
 import { delay } from "./utils/delay.js";
 import { removeLoader } from "./utils/removeLoader.js";
 
-const navigation = new Navigation(
+const navigation = new NavigationComponent(
   "javascript:void(0)",
   "./pages/search.html",
   "./pages/planner.html",

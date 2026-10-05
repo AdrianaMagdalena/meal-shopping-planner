@@ -1,6 +1,6 @@
-import { AddToPlanModal } from "../components/modals/addToPlanModal.js";
+import { AddToPlanModalComponent } from "../components/modals/addToPlanModalComponent.js";
 import { FavoritesListComponent } from "../components/favorites/favoritesListComponent.js";
-import { Navigation } from "../components/navigation.js";
+import { NavigationComponent } from "../components/navigationComponent.js";
 import { Recipe } from "../models/recipe.js";
 import { FavoritesManager } from "../services/favoritesManager.js";
 import { removeLoader } from "../utils/removeLoader.js";
@@ -9,7 +9,7 @@ import { FavoritesStorage } from "../storages/favoritesStorage.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
 import { delay } from "../utils/delay.js";
 
-const navigation = new Navigation(
+const navigation = new NavigationComponent(
   "../index.html",
   "./search.html",
   "./planner.html",
@@ -25,7 +25,7 @@ const navigation = new Navigation(
     const favoritesStorage = new FavoritesStorage();
     const favoritesManager = new FavoritesManager(favoritesStorage);
 
-    const modal = new AddToPlanModal(
+    const modal = new AddToPlanModalComponent(
       "Confirm choice",
       "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.",
       (dayIndex: number, recipe: Recipe, servings: number) => {
@@ -58,7 +58,7 @@ const navigation = new Navigation(
       const recipe = await recipeStorage.getById(recipeId);
       if (!recipe) return;
 
-      modal.openModal(recipe, recipe.servings);
+      modal.openModalComponent(recipe, recipe.servings);
     };
 
     renderFavoriteList();

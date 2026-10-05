@@ -1,7 +1,7 @@
 import { PlannerEntry } from "../../models/plannerEntry.js";
 import { insertElem } from "../../utils/insertElem.js";
 import { isSelectorString } from "../../utils/typeGuards.js";
-import { AmountInput } from "../inputs/amountInput.js";
+import { AmountInputComponent } from "../inputs/amountInputComponent.js";
 
 const template = document.createElement("template");
 const templateHTML = `
@@ -18,7 +18,7 @@ export class PlannerEntryComponent {
   private readonly _entryElem: HTMLDivElement;
   private readonly _removeButton: HTMLButtonElement;
   private readonly _recipeTitle: HTMLParagraphElement;
-  private readonly _servingsInput: AmountInput;
+  private readonly _servingsInput: AmountInputComponent;
 
   constructor(
     entry: PlannerEntry,
@@ -45,7 +45,7 @@ export class PlannerEntryComponent {
     this._recipeTitle = title;
 
     this._recipeTitle.textContent = entry.recipeTitle;
-    const entryServingsInput = new AmountInput(
+    const entryServingsInput = new AmountInputComponent(
       "day-menu__servings",
       "numeric",
       "[0-9]*",

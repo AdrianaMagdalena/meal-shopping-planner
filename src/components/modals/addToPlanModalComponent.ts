@@ -1,6 +1,6 @@
 import { isSelectorString } from "../../utils/typeGuards.js";
 import { insertElem } from "../../utils/insertElem.js";
-import { AmountInput } from "../inputs/amountInput.js";
+import { AmountInputComponent } from "../inputs/amountInputComponent.js";
 import { DAY_LABELS } from "../../utils/constants.js";
 import { Recipe } from "../../models/recipe.js";
 import { generateId } from "../../utils/generateId.js";
@@ -40,14 +40,14 @@ const tagTemplateHTML = `
 `;
 tagTemplate.innerHTML = tagTemplateHTML.trim();
 
-export class AddToPlanModal {
+export class AddToPlanModalComponent {
   private readonly _modalElem: HTMLDivElement;
   private readonly _modalTitle: HTMLHeadingElement;
   private readonly _modalDesc: HTMLParagraphElement;
   private readonly _modalContent: HTMLDivElement;
   private readonly _modalRecipeTitle: HTMLParagraphElement;
   private readonly _modalDayPicker: HTMLDivElement;
-  private readonly _servingsInput: AmountInput;
+  private readonly _servingsInput: AmountInputComponent;
   private readonly _modalPrimBtn: HTMLButtonElement;
   private readonly _modalSecBtn?: HTMLButtonElement;
   private _currentRecipe?: Recipe;
@@ -132,7 +132,7 @@ export class AddToPlanModal {
       this._modalDayPicker.appendChild(dayPickerTag);
     });
 
-    const amountInput = new AmountInput(
+    const amountInput = new AmountInputComponent(
       "modal__servings-input",
       "numeric",
       "[0-9]*",
@@ -149,7 +149,7 @@ export class AddToPlanModal {
     this._onConfirm = onConfirm;
 
     this._modalSecBtn.addEventListener("click", () => {
-      this.closeModal();
+      this.closeModalComponent();
     });
 
     this._modalPrimBtn.addEventListener("click", () => {
@@ -174,10 +174,12 @@ export class AddToPlanModal {
       selectedDaysIndex.forEach((i) => {
         this._onConfirm(i, this._currentRecipe!, servings);
       });
-      this.closeModal();
+      this.closeModalComponent();
     });
 
-    this._modalSecBtn?.addEventListener("click", () => this.closeModal());
+    this._modalSecBtn?.addEventListener("click", () =>
+      this.closeModalComponent(),
+    );
   }
 
   render(parentSelector: string | HTMLElement, position: string): void {
@@ -191,7 +193,7 @@ export class AddToPlanModal {
     insertElem(position, this._modalElem, parentElement);
   }
 
-  openModal(recipe: Recipe, servings: number): void {
+  openModalComponent(recipe: Recipe, servings: number): void {
     this._currentRecipe = recipe;
 
     setTimeout(() => {
@@ -203,7 +205,7 @@ export class AddToPlanModal {
     this._servingsInput.updateButtonStates();
   }
 
-  closeModal(): void {
+  closeModalComponent(): void {
     this._modalElem.classList.remove("visible");
     setTimeout(() => {
       this._modalElem.classList.remove("in-front");

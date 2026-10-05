@@ -34,7 +34,7 @@ const templateHtml = `
 
 template.innerHTML = templateHtml.trim();
 
-export class RecipeCard {
+export class RecipeCardComponent {
   private readonly _cardElement: HTMLAnchorElement;
   private readonly _addToPlanBtn: HTMLButtonElement;
   private readonly _addToFavoritesBtn: HTMLButtonElement;

@@ -1,5 +1,5 @@
 import { Recipe } from "../models/recipe.js";
-import { AmountInput } from "./inputs/amountInput.js";
+import { AmountInputComponent } from "./inputs/amountInputComponent.js";
 import { FoodStorage } from "../storages/foodStorage.js";
 
 const renderBasicInfo = (
@@ -79,7 +79,7 @@ const renderTags = (preview: HTMLElement, recipe: Recipe) => {
 const renderServingsAdjuster = (
   preview: HTMLElement,
   recipe: Recipe,
-): AmountInput => {
+): AmountInputComponent => {
   const servingsInputWrap = preview.querySelector<HTMLDivElement>(
     ".info__servings-amount",
   );
@@ -94,7 +94,7 @@ const renderServingsAdjuster = (
   }
 
   const inputStartValue = String(recipe.servings);
-  const amountInput = new AmountInput(
+  const amountInput = new AmountInputComponent(
     "info__servings-input",
     "numeric",
     "[0-9]*",
@@ -202,7 +202,10 @@ export const renderRecipePreview = async (
   foodStorage: FoodStorage,
   isFavorited: boolean,
   onFavoriteToggle: (recipe: Recipe) => void,
-): Promise<{ amountInput: AmountInput; previewElement: HTMLDivElement }> => {
+): Promise<{
+  amountInput: AmountInputComponent;
+  previewElement: HTMLDivElement;
+}> => {
   const preview = document.querySelector<HTMLDivElement>(".recipe-preview");
   if (!preview) throw new Error("preview not found on page");
 

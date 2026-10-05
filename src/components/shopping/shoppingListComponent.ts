@@ -2,7 +2,7 @@ import { ISavedShoppingItem } from "../../interfaces/iSavedShopping.js";
 import { insertElem } from "../../utils/insertElem.js";
 import { isSelectorString } from "../../utils/typeGuards.js";
 import { SHOPPING_LIST_STORAGE_KEY } from "../../utils/constants.js";
-import { ErrorScreen } from "../errorScreen.js";
+import { ErrorScreenComponent } from "../errorScreenComponent.js";
 import { ShoppingCategoryComponent } from "./shoppingGroupComponent.js";
 import { loadRemovedIds, markRemoved } from "../../utils/shoppinItemState.js";
 import {
@@ -96,7 +96,7 @@ export class ShoppingListComponent {
     );
 
     if (displayedItems.length === 0) {
-      const errorScreen = new ErrorScreen(
+      const errorScreen = new ErrorScreenComponent(
         "../src/assets/illustrations/shopping-basket.svg",
         "Empty shopping list!",
         "You're done with all your shopping!",

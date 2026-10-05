@@ -30,7 +30,7 @@ const templateHtml = `
 </div>
 `;
 template.innerHTML = templateHtml.trim();
-export class RecipeCard {
+export class RecipeCardComponent {
     constructor(recipe, isFavorited, onFavoriteToggle) {
         const fragment = template.content.cloneNode(true);
         const recipeCard = fragment.querySelector(".recipe-card");

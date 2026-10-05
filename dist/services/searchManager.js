@@ -1,5 +1,5 @@
-import { Input } from "../components/inputs/input.js";
-import { SearchPanel } from "../components/searchPanel.js";
+import { InputComponent } from "../components/inputs/inputComponent.js";
+import { SearchPanelComponent } from "../components/searchPanelComponent.js";
 export class SearchManager {
     constructor(recipeStorage, onResults) {
         const inputsWrap = document.querySelector(".recipe-search__inputs");
@@ -19,8 +19,8 @@ export class SearchManager {
         this._applyFiltersButton = applyFiltersButton;
         this._recipeStorage = recipeStorage;
         this._onResults = onResults;
-        this._searchPanel = new SearchPanel(recipeStorage);
-        this._searchInput = new Input("recipe-search__search-input", "Recipe search", "", "Search by keyword", "", "Search");
+        this._searchPanel = new SearchPanelComponent(recipeStorage);
+        this._searchInput = new InputComponent("recipe-search__search-input", "Recipe search", "", "Search by keyword", "", "Search");
         this._searchInput.render(this._inputsWrap, "prepend");
         if (!this._searchInput.trailBtn) {
             throw new Error("trailBtn not found on searchInput");

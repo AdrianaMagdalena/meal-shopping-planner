@@ -1,7 +1,7 @@
-import { ErrorScreen } from "../components/errorScreen.js";
-import { Navigation } from "../components/navigation.js";
+import { ErrorScreenComponent } from "../components/errorScreenComponent.js";
+import { NavigationComponent } from "../components/navigationComponent.js";
 import { ShoppingListComponent } from "../components/shopping/shoppingListComponent.js";
-import { WeekRecipeList } from "../components/weekRecipeList.js";
+import { WeekRecipeListComponent } from "../components/weekRecipeListComponent.js";
 import { SHOPPING_LIST_STORAGE_KEY } from "../utils/constants.js";
 import { FoodStorage } from "../storages/foodStorage.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
@@ -9,7 +9,7 @@ import { removeLoader } from "../utils/removeLoader.js";
 import { delay } from "../utils/delay.js";
 import { isSavedPlannerEntry } from "../utils/typeGuards.js";
 import { buildShoppingItems } from "../services/shoppingListManager.js";
-const navigation = new Navigation("../index.html", "./search.html", "./planner.html", "javascript:void(0)", "./favorites.html");
+const navigation = new NavigationComponent("../index.html", "./search.html", "./planner.html", "javascript:void(0)", "./favorites.html");
 (async () => {
     try {
         navigation.render(document.body);
@@ -20,7 +20,7 @@ const navigation = new Navigation("../index.html", "./search.html", "./planner.h
             delay(600),
         ]);
         if (allRecipes.length === 0) {
-            const errorScreen = new ErrorScreen("../src/assets/illustrations/search.svg", "Could not get recipes data", "Please refresh the page or try again later.");
+            const errorScreen = new ErrorScreenComponent("../src/assets/illustrations/search.svg", "Could not get recipes data", "Please refresh the page or try again later.");
             errorScreen.render("main");
             return;
         }
@@ -34,7 +34,7 @@ const navigation = new Navigation("../index.html", "./search.html", "./planner.h
         const shoppingList = new ShoppingListComponent();
         shoppingList.render("main", "append");
         shoppingList.renderList(shoppingItems);
-        const weekRecipeList = new WeekRecipeList(shoppingList);
+        const weekRecipeList = new WeekRecipeListComponent(shoppingList);
     }
     finally {
         removeLoader();

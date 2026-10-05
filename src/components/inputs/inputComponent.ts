@@ -13,7 +13,7 @@ const templateHTML = `
 
 template.innerHTML = templateHTML.trim();
 
-export class Input {
+export class InputComponent {
   private readonly _inputField: HTMLDivElement;
   private readonly _inputLabel?: HTMLLabelElement;
   private readonly _inputWrap: HTMLDivElement;

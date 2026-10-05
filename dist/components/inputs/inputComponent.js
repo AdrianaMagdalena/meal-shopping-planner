@@ -10,7 +10,7 @@ const templateHTML = `
 </div>
 `;
 template.innerHTML = templateHTML.trim();
-export class Input {
+export class InputComponent {
     constructor(inputCustomClass, inputLabelText, inputAriaText, placeholderText, leadBtnAriaLabel, trailBtnAriaLabel) {
         const fragment = template.content.cloneNode(true);
         const inputField = fragment.querySelector(".input");

@@ -1,7 +1,7 @@
-import { Navigation } from "../components/navigation.js";
+import { NavigationComponent } from "../components/navigationComponent.js";
 import { PlannerManager } from "../services/plannerManager.js";
 import { PlannerCardComponent } from "../components/planner/plannerCardComponent.js";
-import { Modal } from "../components/modals/modal.js";
+import { ModalComponent } from "../components/modals/modalComponent.js";
 import { removeLoader } from "../utils/removeLoader.js";
 import { delay } from "../utils/delay.js";
 import {
@@ -10,7 +10,7 @@ import {
   REMOVED_ITEMS_STORAGE_KEY,
 } from "../utils/constants.js";
 
-const navigation = new Navigation(
+const navigation = new NavigationComponent(
   "../index.html",
   "./search.html",
   "javascript:void(0)",
@@ -25,13 +25,13 @@ const navigation = new Navigation(
     if (!menuConatiner) throw new Error("menuContainer not found on page");
 
     const menuManager = PlannerManager.load();
-    const confirmModal = new Modal(
+    const confirmModalComponent = new ModalComponent(
       "Success!",
       `You succesfully generated yout weekly shopping list! It'll be available in the "Week's list" submenu.`,
       "Okay",
       "../src/assets/illustrations/checklist.svg",
     );
-    confirmModal.render("main", "append");
+    confirmModalComponent.render("main", "append");
 
     const generateListBtn =
       document.querySelector<HTMLButtonElement>(".planner__button");
@@ -41,7 +41,7 @@ const navigation = new Navigation(
       menuManager.saveAllEntryData();
       localStorage.removeItem(CHECKED_ITEMS_STORAGE_KEY);
       localStorage.removeItem(REMOVED_ITEMS_STORAGE_KEY);
-      confirmModal.openModal();
+      confirmModalComponent.openModalComponent();
     });
 
     const removeAllEntriesBtn = document.querySelector<HTMLButtonElement>(

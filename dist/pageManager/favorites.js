@@ -1,20 +1,20 @@
-import { AddToPlanModal } from "../components/modals/addToPlanModal.js";
+import { AddToPlanModalComponent } from "../components/modals/addToPlanModalComponent.js";
 import { FavoritesListComponent } from "../components/favorites/favoritesListComponent.js";
-import { Navigation } from "../components/navigation.js";
+import { NavigationComponent } from "../components/navigationComponent.js";
 import { FavoritesManager } from "../services/favoritesManager.js";
 import { removeLoader } from "../utils/removeLoader.js";
 import { PlannerManager } from "../services/plannerManager.js";
 import { FavoritesStorage } from "../storages/favoritesStorage.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
 import { delay } from "../utils/delay.js";
-const navigation = new Navigation("../index.html", "./search.html", "./planner.html", "./week-list.html", "javascript:void(0)");
+const navigation = new NavigationComponent("../index.html", "./search.html", "./planner.html", "./week-list.html", "javascript:void(0)");
 (async () => {
     try {
         navigation.render(document.body);
         const recipeStorage = new RecipeStorage();
         const favoritesStorage = new FavoritesStorage();
         const favoritesManager = new FavoritesManager(favoritesStorage);
-        const modal = new AddToPlanModal("Confirm choice", "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.", (dayIndex, recipe, servings) => {
+        const modal = new AddToPlanModalComponent("Confirm choice", "Choose the days to which you'd like to add the recipe to and confirm the amount of servings. You can later modify them in the planner.", (dayIndex, recipe, servings) => {
             const plannerManager = PlannerManager.load();
             plannerManager.addEntryToDay(dayIndex, recipe, servings);
         });
@@ -34,7 +34,7 @@ const navigation = new Navigation("../index.html", "./search.html", "./planner.h
             const recipe = await recipeStorage.getById(recipeId);
             if (!recipe)
                 return;
-            modal.openModal(recipe, recipe.servings);
+            modal.openModalComponent(recipe, recipe.servings);
         };
         renderFavoriteList();
         await delay(600);

@@ -1,7 +1,7 @@
 import { insertElem } from "../../utils/insertElem.js";
 import { isSelectorString } from "../../utils/typeGuards.js";
 import { SHOPPING_LIST_STORAGE_KEY } from "../../utils/constants.js";
-import { ErrorScreen } from "../errorScreen.js";
+import { ErrorScreenComponent } from "../errorScreenComponent.js";
 import { ShoppingCategoryComponent } from "./shoppingGroupComponent.js";
 import { loadRemovedIds, markRemoved } from "../../utils/shoppinItemState.js";
 import { groupByCategory, sortByFixedOrder, } from "../../services/shoppingListManager.js";
@@ -65,7 +65,7 @@ export class ShoppingListComponent {
         const removedIds = loadRemovedIds();
         const displayedItems = items.filter((item) => !removedIds.includes(item.id));
         if (displayedItems.length === 0) {
-            const errorScreen = new ErrorScreen("../src/assets/illustrations/shopping-basket.svg", "Empty shopping list!", "You're done with all your shopping!");
+            const errorScreen = new ErrorScreenComponent("../src/assets/illustrations/shopping-basket.svg", "Empty shopping list!", "You're done with all your shopping!");
             errorScreen.render(this._containerElem);
             return;
         }

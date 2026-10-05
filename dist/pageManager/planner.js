@@ -1,11 +1,11 @@
-import { Navigation } from "../components/navigation.js";
+import { NavigationComponent } from "../components/navigationComponent.js";
 import { PlannerManager } from "../services/plannerManager.js";
 import { PlannerCardComponent } from "../components/planner/plannerCardComponent.js";
-import { Modal } from "../components/modals/modal.js";
+import { ModalComponent } from "../components/modals/modalComponent.js";
 import { removeLoader } from "../utils/removeLoader.js";
 import { delay } from "../utils/delay.js";
 import { CHECKED_ITEMS_STORAGE_KEY, DAY_LABELS, REMOVED_ITEMS_STORAGE_KEY, } from "../utils/constants.js";
-const navigation = new Navigation("../index.html", "./search.html", "javascript:void(0)", "./week-list.html", "./favorites.html");
+const navigation = new NavigationComponent("../index.html", "./search.html", "javascript:void(0)", "./week-list.html", "./favorites.html");
 (async () => {
     try {
         navigation.render(document.body);
@@ -13,8 +13,8 @@ const navigation = new Navigation("../index.html", "./search.html", "javascript:
         if (!menuConatiner)
             throw new Error("menuContainer not found on page");
         const menuManager = PlannerManager.load();
-        const confirmModal = new Modal("Success!", `You succesfully generated yout weekly shopping list! It'll be available in the "Week's list" submenu.`, "Okay", "../src/assets/illustrations/checklist.svg");
-        confirmModal.render("main", "append");
+        const confirmModalComponent = new ModalComponent("Success!", `You succesfully generated yout weekly shopping list! It'll be available in the "Week's list" submenu.`, "Okay", "../src/assets/illustrations/checklist.svg");
+        confirmModalComponent.render("main", "append");
         const generateListBtn = document.querySelector(".planner__button");
         if (!generateListBtn)
             throw new Error("generateListBtn not found on page");
@@ -23,7 +23,7 @@ const navigation = new Navigation("../index.html", "./search.html", "javascript:
             menuManager.saveAllEntryData();
             localStorage.removeItem(CHECKED_ITEMS_STORAGE_KEY);
             localStorage.removeItem(REMOVED_ITEMS_STORAGE_KEY);
-            confirmModal.openModal();
+            confirmModalComponent.openModalComponent();
         });
         const removeAllEntriesBtn = document.querySelector(".remove-entries__button");
         if (!removeAllEntriesBtn)

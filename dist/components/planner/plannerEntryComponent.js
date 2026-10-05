@@ -1,6 +1,6 @@
 import { insertElem } from "../../utils/insertElem.js";
 import { isSelectorString } from "../../utils/typeGuards.js";
-import { AmountInput } from "../inputs/amountInput.js";
+import { AmountInputComponent } from "../inputs/amountInputComponent.js";
 const template = document.createElement("template");
 const templateHTML = `
 <div class="day-menu__entry">
@@ -28,7 +28,7 @@ export class PlannerEntryComponent {
             throw new Error("title not found in template");
         this._recipeTitle = title;
         this._recipeTitle.textContent = entry.recipeTitle;
-        const entryServingsInput = new AmountInput("day-menu__servings", "numeric", "[0-9]*", entryServings, "", "Recipe servings", "", "Remove amout of servings", "Add amount of servings");
+        const entryServingsInput = new AmountInputComponent("day-menu__servings", "numeric", "[0-9]*", entryServings, "", "Recipe servings", "", "Remove amout of servings", "Add amount of servings");
         this._servingsInput = entryServingsInput;
         this._servingsInput.render(this._entryElem, "append");
         this._removeButton.addEventListener("click", () => {

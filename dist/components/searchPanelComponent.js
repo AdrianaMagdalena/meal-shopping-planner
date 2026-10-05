@@ -8,7 +8,7 @@ const tagTemplateHTML = `
 </label>
 `;
 tagTemplate.innerHTML = tagTemplateHTML.trim();
-export class SearchPanel {
+export class SearchPanelComponent {
     constructor(recipeStorage) {
         this._dietTags = [];
         this._mealTags = [];

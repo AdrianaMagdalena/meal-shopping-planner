@@ -1,5 +1,5 @@
-import { Input } from "../components/inputs/input.js";
-import { SearchPanel } from "../components/searchPanel.js";
+import { InputComponent } from "../components/inputs/inputComponent.js";
+import { SearchPanelComponent } from "../components/searchPanelComponent.js";
 import { Recipe } from "../models/recipe.js";
 import { RecipeStorage } from "../storages/recipeStorage.js";
 
@@ -7,8 +7,8 @@ export class SearchManager {
   private _inputsWrap: HTMLDivElement;
   private _clearButton: HTMLButtonElement;
   private _applyFiltersButton: HTMLButtonElement;
-  private _searchInput: Input;
-  private _searchPanel: SearchPanel;
+  private _searchInput: InputComponent;
+  private _searchPanel: SearchPanelComponent;
   private _recipeStorage: RecipeStorage;
   private _onResults: (recipes: Recipe[]) => void;
 
@@ -41,8 +41,8 @@ export class SearchManager {
     this._recipeStorage = recipeStorage;
     this._onResults = onResults;
 
-    this._searchPanel = new SearchPanel(recipeStorage);
-    this._searchInput = new Input(
+    this._searchPanel = new SearchPanelComponent(recipeStorage);
+    this._searchInput = new InputComponent(
       "recipe-search__search-input",
       "Recipe search",
       "",

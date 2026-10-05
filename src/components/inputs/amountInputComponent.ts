@@ -2,9 +2,9 @@ import {
   SERVINGS_MAX_VALUE,
   SERVINGS_MIN_VALUE,
 } from "../../utils/constants.js";
-import { Input } from "./input.js";
+import { InputComponent } from "./inputComponent.js";
 
-export class AmountInput extends Input {
+export class AmountInputComponent extends InputComponent {
   constructor(
     inputCustomClass: string,
     inputmodeAttribute: string,

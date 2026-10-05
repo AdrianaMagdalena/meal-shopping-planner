@@ -8,7 +8,7 @@ const templateHTML = `
 </div>
 `;
 template.innerHTML = templateHTML.trim();
-export class ErrorScreen {
+export class ErrorScreenComponent {
     constructor(imgPath, title, desc) {
         const fragment = template.content.cloneNode(true);
         const errorScreen = fragment.querySelector(".error-screen");

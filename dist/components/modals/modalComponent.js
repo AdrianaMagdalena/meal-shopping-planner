@@ -18,7 +18,7 @@ const templateHTML = `
 </div>
 `;
 template.innerHTML = templateHTML.trim();
-export class Modal {
+export class ModalComponent {
     constructor(modalTitle, modalDesc, modalPrimBtnText, modalImageSrc) {
         const fragment = template.content.cloneNode(true);
         const modalContainer = fragment.querySelector(".modal");
@@ -51,7 +51,7 @@ export class Modal {
         this._modalTitle.textContent = modalTitle;
         this._modalDesc.textContent = modalDesc;
         this._modalPrimBtn.addEventListener("click", () => {
-            this.closeModal();
+            this.closeModalComponent();
         });
     }
     render(parentSelector, position) {
@@ -63,12 +63,12 @@ export class Modal {
         }
         insertElem(position, this._modalElem, parentElement);
     }
-    openModal() {
+    openModalComponent() {
         setTimeout(() => {
             this._modalElem.classList.add("visible", "in-front");
         }, 10);
     }
-    closeModal() {
+    closeModalComponent() {
         this._modalElem.classList.remove("visible");
         setTimeout(() => {
             this._modalElem.classList.remove("in-front");
