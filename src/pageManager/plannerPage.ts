@@ -9,6 +9,7 @@ import {
   DAY_LABELS,
   REMOVED_ITEMS_STORAGE_KEY,
 } from "../utils/constants.js";
+import { WarningModalComponent } from "../components/modals/warningModalComponent.js";
 
 const navigation = new NavigationComponent(
   "../index.html",
@@ -31,7 +32,7 @@ const navigation = new NavigationComponent(
       "Okay",
       "../src/assets/illustrations/checklist.svg",
     );
-    confirmModalComponent.render("main", "append");
+    confirmModalComponent.render(document.body, "append");
 
     const generateListBtn =
       document.querySelector<HTMLButtonElement>(".planner__button");
@@ -49,12 +50,28 @@ const navigation = new NavigationComponent(
     );
     if (!removeAllEntriesBtn)
       throw new Error("removeAllEntriesBtn not found on page");
+
     removeAllEntriesBtn.addEventListener("click", () => {
+      warningModalComponent.openModalComponent();
+    });
+
+    const onConfirm = () => {
       menuManager.removeAllEntries();
       for (let i = 0; i < DAY_LABELS.length; i++) {
         rerenderDay(i);
       }
-    });
+      warningModalComponent.closeModalComponent();
+    };
+
+    const warningModalComponent = new WarningModalComponent(
+      "Warning!",
+      "This will remove all of the entires in the planner. Are you sure you want to do that?",
+      "No, keep them",
+      "Yes, continue",
+      onConfirm,
+      "../src/assets/illustrations/warning.svg",
+    );
+    warningModalComponent.render(document.body, "append");
 
     const renderDay = (dayIndex: number): void => {
       const day = menuManager.weekDays[dayIndex];

@@ -32,7 +32,7 @@ export class WeekRecipeListComponent {
   private readonly _recipeListWrap: HTMLDivElement;
   private readonly _recipeList: HTMLUListElement;
 
-  constructor(shoppingList: ShoppingListComponent) {
+  constructor(onRemove: () => void) {
     const fragment = template.content.cloneNode(true) as DocumentFragment;
 
     const weeklyListCont = fragment.querySelector<HTMLDivElement>(
@@ -68,15 +68,15 @@ export class WeekRecipeListComponent {
     this._recipeList = recipeList;
 
     this._removeWeekDataBtn.addEventListener("click", () => {
-      localStorage.removeItem(WEEK_RECIPES_STORAGE_KEY);
-      localStorage.removeItem(SHOPPING_LIST_STORAGE_KEY);
-      this._weeklyListCont.remove();
-      shoppingList.renderList([]);
-      this.generateWeekListData();
+      onRemove();
     });
 
     this.handleDropdownState();
     this.generateWeekListData();
+  }
+
+  get weeklyListCont() {
+    return this._weeklyListCont;
   }
 
   render(parentSelector: string | HTMLElement, position: string): void {

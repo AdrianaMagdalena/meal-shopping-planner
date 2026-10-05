@@ -1,4 +1,4 @@
-import { DROPDOWN_STORAGE_KEY, SHOPPING_LIST_STORAGE_KEY, WEEK_RECIPES_STORAGE_KEY, } from "../utils/constants.js";
+import { DROPDOWN_STORAGE_KEY, WEEK_RECIPES_STORAGE_KEY, } from "../utils/constants.js";
 import { insertElem } from "../utils/insertElem.js";
 import { isSavedPlannerEntry, isSelectorString } from "../utils/typeGuards.js";
 import { ErrorScreenComponent } from "./errorScreenComponent.js";
@@ -19,7 +19,7 @@ const templateHtml = `
 `;
 template.innerHTML = templateHtml.trim();
 export class WeekRecipeListComponent {
-    constructor(shoppingList) {
+    constructor(onRemove) {
         const fragment = template.content.cloneNode(true);
         const weeklyListCont = fragment.querySelector(".weekly-list__container");
         if (!weeklyListCont)
@@ -42,14 +42,13 @@ export class WeekRecipeListComponent {
             throw new Error("recipeList not found on template");
         this._recipeList = recipeList;
         this._removeWeekDataBtn.addEventListener("click", () => {
-            localStorage.removeItem(WEEK_RECIPES_STORAGE_KEY);
-            localStorage.removeItem(SHOPPING_LIST_STORAGE_KEY);
-            this._weeklyListCont.remove();
-            shoppingList.renderList([]);
-            this.generateWeekListData();
+            onRemove();
         });
         this.handleDropdownState();
         this.generateWeekListData();
+    }
+    get weeklyListCont() {
+        return this._weeklyListCont;
     }
     render(parentSelector, position) {
         const parentElement = isSelectorString(parentSelector)

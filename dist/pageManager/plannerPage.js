@@ -5,6 +5,7 @@ import { ModalComponent } from "../components/modals/modalComponent.js";
 import { removeLoader } from "../utils/removeLoader.js";
 import { delay } from "../utils/delay.js";
 import { CHECKED_ITEMS_STORAGE_KEY, DAY_LABELS, REMOVED_ITEMS_STORAGE_KEY, } from "../utils/constants.js";
+import { WarningModalComponent } from "../components/modals/warningModalComponent.js";
 const navigation = new NavigationComponent("../index.html", "./search.html", "javascript:void(0)", "./week-list.html", "./favorites.html");
 (async () => {
     try {
@@ -14,7 +15,7 @@ const navigation = new NavigationComponent("../index.html", "./search.html", "ja
             throw new Error("menuContainer not found on page");
         const menuManager = PlannerManager.load();
         const confirmModalComponent = new ModalComponent("Success!", `You succesfully generated yout weekly shopping list! It'll be available in the "Week's list" submenu.`, "Okay", "../src/assets/illustrations/checklist.svg");
-        confirmModalComponent.render("main", "append");
+        confirmModalComponent.render(document.body, "append");
         const generateListBtn = document.querySelector(".planner__button");
         if (!generateListBtn)
             throw new Error("generateListBtn not found on page");
@@ -29,11 +30,17 @@ const navigation = new NavigationComponent("../index.html", "./search.html", "ja
         if (!removeAllEntriesBtn)
             throw new Error("removeAllEntriesBtn not found on page");
         removeAllEntriesBtn.addEventListener("click", () => {
+            warningModalComponent.openModalComponent();
+        });
+        const onConfirm = () => {
             menuManager.removeAllEntries();
             for (let i = 0; i < DAY_LABELS.length; i++) {
                 rerenderDay(i);
             }
-        });
+            warningModalComponent.closeModalComponent();
+        };
+        const warningModalComponent = new WarningModalComponent("Warning!", "This will remove all of the entires in the planner. Are you sure you want to do that?", "No, keep them", "Yes, continue", onConfirm, "../src/assets/illustrations/warning.svg");
+        warningModalComponent.render(document.body, "append");
         const renderDay = (dayIndex) => {
             const day = menuManager.weekDays[dayIndex];
             const plannerCard = new PlannerCardComponent(dayIndex);
