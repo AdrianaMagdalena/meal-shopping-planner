@@ -47,7 +47,10 @@ const navigation = new Navigation("../index.html", "./search.html", "javascript:
                     menuManager.removeEntryFromDay(dayIndex, entryId);
                     rerenderDay(dayIndex);
                 };
-                plannerCard.renderEntry(e, onRemove);
+                const onServingsChange = (entryId, newServings) => {
+                    menuManager.updateEntryServings(dayIndex, entryId, newServings);
+                };
+                plannerCard.renderEntry(e, onRemove, onServingsChange);
             });
         };
         const rerenderDay = (dayIndex) => {

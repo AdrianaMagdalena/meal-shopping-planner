@@ -48,8 +48,8 @@ export class PlannerCardComponent {
         header.appendChild(servingsHeader);
         this._cardElem.appendChild(header);
     }
-    renderEntry(plannerEntry, onRemove) {
-        const entry = new PlannerEntryComponent(plannerEntry, onRemove);
+    renderEntry(plannerEntry, onRemove, onServingsChange) {
+        const entry = new PlannerEntryComponent(plannerEntry, onRemove, onServingsChange);
         entry.render(this._cardElem, "append");
     }
 }

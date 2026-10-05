@@ -65,8 +65,13 @@ export class PlannerCardComponent {
   renderEntry(
     plannerEntry: PlannerEntry,
     onRemove: (entryId: string) => void,
+    onServingsChange: (entryId: string, newServings: number) => void,
   ): void {
-    const entry = new PlannerEntryComponent(plannerEntry, onRemove);
+    const entry = new PlannerEntryComponent(
+      plannerEntry,
+      onRemove,
+      onServingsChange,
+    );
     entry.render(this._cardElem, "append");
   }
 }

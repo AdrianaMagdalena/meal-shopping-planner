@@ -20,7 +20,11 @@ export class PlannerEntryComponent {
   private readonly _recipeTitle: HTMLParagraphElement;
   private readonly _servingsInput: AmountInput;
 
-  constructor(entry: PlannerEntry, onRemove: (entryId: string) => void) {
+  constructor(
+    entry: PlannerEntry,
+    onRemove: (entryId: string) => void,
+    onServingsChange: (entryId: string, newServings: number) => void,
+  ) {
     const entryServings = String(entry.servingsAmount);
 
     const fragment = template.content.cloneNode(true) as DocumentFragment;
@@ -57,6 +61,25 @@ export class PlannerEntryComponent {
 
     this._removeButton.addEventListener("click", () => {
       onRemove(entry.id);
+    });
+
+    this._servingsInput.inputInput.addEventListener("input", () => {
+      const newServings = Number(this._servingsInput.inputInput.value);
+      if (!Number.isNaN(newServings)) {
+        onServingsChange(entry.id, newServings);
+      }
+    });
+    this._servingsInput.trailBtn?.addEventListener("click", () => {
+      const newServings = Number(this._servingsInput.inputInput.value);
+      if (!Number.isNaN(newServings)) {
+        onServingsChange(entry.id, newServings);
+      }
+    });
+    this._servingsInput.leadBtn?.addEventListener("click", () => {
+      const newServings = Number(this._servingsInput.inputInput.value);
+      if (!Number.isNaN(newServings)) {
+        onServingsChange(entry.id, newServings);
+      }
     });
   }
 

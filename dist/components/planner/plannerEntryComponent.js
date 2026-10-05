@@ -12,7 +12,7 @@ const templateHTML = `
 `;
 template.innerHTML = templateHTML.trim();
 export class PlannerEntryComponent {
-    constructor(entry, onRemove) {
+    constructor(entry, onRemove, onServingsChange) {
         const entryServings = String(entry.servingsAmount);
         const fragment = template.content.cloneNode(true);
         const entryElem = fragment.querySelector(".day-menu__entry");
@@ -33,6 +33,24 @@ export class PlannerEntryComponent {
         this._servingsInput.render(this._entryElem, "append");
         this._removeButton.addEventListener("click", () => {
             onRemove(entry.id);
+        });
+        this._servingsInput.inputInput.addEventListener("input", () => {
+            const newServings = Number(this._servingsInput.inputInput.value);
+            if (!Number.isNaN(newServings)) {
+                onServingsChange(entry.id, newServings);
+            }
+        });
+        this._servingsInput.trailBtn?.addEventListener("click", () => {
+            const newServings = Number(this._servingsInput.inputInput.value);
+            if (!Number.isNaN(newServings)) {
+                onServingsChange(entry.id, newServings);
+            }
+        });
+        this._servingsInput.leadBtn?.addEventListener("click", () => {
+            const newServings = Number(this._servingsInput.inputInput.value);
+            if (!Number.isNaN(newServings)) {
+                onServingsChange(entry.id, newServings);
+            }
         });
     }
     render(parentSelector, position) {

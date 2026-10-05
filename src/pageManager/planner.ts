@@ -73,7 +73,14 @@ const navigation = new Navigation(
           rerenderDay(dayIndex);
         };
 
-        plannerCard.renderEntry(e, onRemove);
+        const onServingsChange = (
+          entryId: string,
+          newServings: number,
+        ): void => {
+          menuManager.updateEntryServings(dayIndex, entryId, newServings);
+        };
+
+        plannerCard.renderEntry(e, onRemove, onServingsChange);
       });
     };
 
