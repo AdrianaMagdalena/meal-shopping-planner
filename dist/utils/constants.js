@@ -5,6 +5,7 @@ export const SHOPPING_CATEGORY_ORDER = [
     "vegetables",
     "fruit",
     "dairy",
+    "plant-based",
     "meat",
     "fish",
     "seeds & nuts",

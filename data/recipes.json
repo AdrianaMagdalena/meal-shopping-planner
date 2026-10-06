@@ -24,7 +24,7 @@
             "optional": true
           },
           { "id": "lentils_03", "quantity": 320 },
-          { "id": "tomatoes_01", "quantity": 220 },
+          { "id": "tomato_01", "quantity": 220 },
           { "id": "broth_01", "quantity": 830 },
           { "id": "walnuts_01", "quantity": 80 },
           { "id": "pasta_01", "quantity": 300 }
@@ -52,7 +52,7 @@
       {
         "title": "Pico de Gallo",
         "ingredients": [
-          { "id": "tomatoes_01", "quantity": 450 },
+          { "id": "tomato_01", "quantity": 450 },
           { "id": "red_onion_01", "quantity": 80 },
           { "id": "lime_01", "quantity": 1 },
           { "id": "cilantro_01", "quantity": 25, "optional": true },
@@ -466,7 +466,7 @@
           { "id": "onion_01", "quantity": 120 },
           { "id": "pickles_01", "quantity": 450 },
           { "id": "potatoes_01", "quantity": 300 },
-          { "id": "cream_01", "quantity": 250 },
+          { "id": "oat_cream_01", "quantity": 250 },
           { "id": "broth_01", "quantity": 1500 },
           { "id": "bay_leaf_01", "quantity": 1 },
           { "id": "allspice_01", "quantity": 3 },
@@ -556,7 +556,7 @@
           { "id": "carrot_01", "quantity": 150 },
           { "id": "green_onion_01", "quantity": 1 },
           { "id": "butter_01", "quantity": 30 },
-          { "id": "cream_01", "quantity": 250 },
+          { "id": "oat_cream_01", "quantity": 250 },
           { "id": "salt_01", "quantity": 1 },
           { "id": "turmeric_01", "quantity": 0.25 },
           { "id": "oregano_01", "quantity": 0.25 },
@@ -633,7 +633,7 @@
           { "id": "onion_01", "quantity": 200 },
           { "id": "garlic_01", "quantity": 3 },
           { "id": "butter_01", "quantity": 45 },
-          { "id": "cream_01", "quantity": 250 },
+          { "id": "oat_cream_01", "quantity": 250 },
           { "id": "salt_01", "quantity": 0.5 },
           { "id": "pepper_01", "quantity": 0.5 }
         ],
@@ -790,7 +790,7 @@
         "ingredients": [
           { "id": "pasta_01", "quantity": 500 },
           { "id": "chickpeas_01", "quantity": 1 },
-          { "id": "dried_tomatoes_01", "quantity": 6 },
+          { "id": "dried_tomato_01", "quantity": 6 },
           { "id": "cashews_01", "quantity": 30 },
           { "id": "nutritional_yeast_01", "quantity": 1 },
           { "id": "tomato_paste_01", "quantity": 1 },
@@ -807,135 +807,80 @@
     ]
   },
   {
-    "id": "recipe_XXX",
-    "title": "title",
+    "id": "recipe_022",
+    "title": "Mujadara (arabic rice)",
     "preparationTime": 10,
-    "cookTime": 10,
+    "cookTime": 15,
     "dietTags": ["vegan", "lactose-free"],
     "mealTypeTags": ["lunch"],
-    "servings": 1,
-    "servingInfo": "10 g in 1 serving",
+    "servings": 2,
     "parts": [
       {
         "ingredients": [
-          { "id": "oil_01", "quantity": 3 },
-          { "id": "oil_01", "quantity": 3 }
+          { "id": "onion_01", "quantity": 120 },
+          { "id": "olive_oil_01", "quantity": 20 },
+          { "id": "paprika_01", "quantity": 1.5 },
+          { "id": "cumin", "quantity": 1 },
+          { "id": "cinnamon_01", "quantity": 1 },
+          { "id": "pepper_01", "quantity": 0.5 },
+          { "id": "cardamon_01", "quantity": 20 },
+          { "id": "white_rice_01", "quantity": 100 },
+          { "id": "lentils_01", "quantity": 300 },
+          { "id": "tomato_01", "quantity": 280 },
+          { "id": "lambs_lettuce_01", "quantity": 40 },
+          { "id": "soy_youghurt_01", "quantity": 50 }
         ],
-        "steps": ["Prepare", "Heat"]
+        "steps": [
+          "Slice the onion into thin strips.",
+          "Heat the olive oil in a skillet.",
+          "Add the onion to the skillet and add the spices. Sauté for about 5 minutes, stirring frequently. If the onion starts to stick, you can add 2 tablespoons of water.",
+          "Add the uncooked rice to the pan and pour in a glass of water. Cook for about 10 minutes, until the rice softens and absorbs the water.",
+          "Drain the lentils and rinse them. Add them to the pan, stir, and heat for one minute.",
+          "Dice the tomatoes.",
+          "Place a handful of lettuce on a plate, then top it with half the contents of the pan. Add the tomato and garnish with a spoonful of yogurt.",
+          "Info: This dish is very high in iron, so make sure you don't pair it with coffee, tea or dairy!"
+        ]
       }
     ]
   },
   {
-    "id": "recipe_XXX",
-    "title": "title",
-    "preparationTime": 10,
-    "cookTime": 10,
-    "dietTags": ["vegan", "lactose-free"],
-    "mealTypeTags": ["lunch"],
-    "servings": 1,
-    "servingInfo": "10 g in 1 serving",
+    "id": "recipe_023",
+    "title": "Lentil soup",
+    "preparationTime": 30,
+    "cookTime": 20,
+    "dietTags": ["vagan", "lactose-free", "gluten-free"],
+    "mealTypeTags": ["lunch", "soup"],
+    "servings": 7,
+    "servingInfo": "350g in 1 serving",
     "parts": [
       {
         "ingredients": [
-          { "id": "oil_01", "quantity": 3 },
-          { "id": "oil_01", "quantity": 3 }
+          { "id": "broth_02", "quantity": 2 },
+          { "id": "lentils_01", "quantity": 400 },
+          { "id": "tomato_01", "quantity": 400 },
+          { "id": "onion_01", "quantity": 150 },
+          { "id": "garlic_01", "quantity": 4 },
+          { "id": "olive_oil_01", "quantity": 40 },
+          { "id": "pasta_01", "quantity": 150 },
+          { "id": "tomato_paste_01", "quantity": 3 },
+          { "id": "oat_cream_01", "quantity": 250 },
+          { "id": "salt_01", "quantity": 1 },
+          { "id": "pepper_01", "quantity": 1 },
+          { "id": "paprika_01", "quantity": 1 },
+          { "id": "oregano_01", "quantity": 1 },
+          { "id": "thyme_01", "quantity": 1 },
+          { "id": "parsley_01", "quantity": 10, "optional": true }
         ],
-        "steps": ["Prepare", "Heat"]
-      }
-    ]
-  },
-  {
-    "id": "recipe_XXX",
-    "title": "title",
-    "preparationTime": 10,
-    "cookTime": 10,
-    "dietTags": ["vegan", "lactose-free"],
-    "mealTypeTags": ["lunch"],
-    "servings": 1,
-    "servingInfo": "10 g in 1 serving",
-    "parts": [
-      {
-        "ingredients": [
-          { "id": "oil_01", "quantity": 3 },
-          { "id": "oil_01", "quantity": 3 }
-        ],
-        "steps": ["Prepare", "Heat"]
-      }
-    ]
-  },
-  {
-    "id": "recipe_XXX",
-    "title": "title",
-    "preparationTime": 10,
-    "cookTime": 10,
-    "dietTags": ["vegan", "lactose-free"],
-    "mealTypeTags": ["lunch"],
-    "servings": 1,
-    "servingInfo": "10 g in 1 serving",
-    "parts": [
-      {
-        "ingredients": [
-          { "id": "oil_01", "quantity": 3 },
-          { "id": "oil_01", "quantity": 3 }
-        ],
-        "steps": ["Prepare", "Heat"]
-      }
-    ]
-  },
-  {
-    "id": "recipe_XXX",
-    "title": "title",
-    "preparationTime": 10,
-    "cookTime": 10,
-    "dietTags": ["vegan", "lactose-free"],
-    "mealTypeTags": ["lunch"],
-    "servings": 1,
-    "servingInfo": "10 g in 1 serving",
-    "parts": [
-      {
-        "ingredients": [
-          { "id": "oil_01", "quantity": 3 },
-          { "id": "oil_01", "quantity": 3 }
-        ],
-        "steps": ["Prepare", "Heat"]
-      }
-    ]
-  },
-  {
-    "id": "recipe_XXX",
-    "title": "title",
-    "preparationTime": 10,
-    "cookTime": 10,
-    "dietTags": ["vegan", "lactose-free"],
-    "mealTypeTags": ["lunch"],
-    "servings": 1,
-    "servingInfo": "10 g in 1 serving",
-    "parts": [
-      {
-        "ingredients": [
-          { "id": "oil_01", "quantity": 3 },
-          { "id": "oil_01", "quantity": 3 }
-        ],
-        "steps": ["Prepare", "Heat"]
-      }
-    ]
-  },
-  {
-    "id": "recipe_XXX",
-    "title": "title",
-    "preparationTime": 10,
-    "cookTime": 10,
-    "dietTags": ["vegan", "lactose-free"],
-    "mealTypeTags": ["lunch"],
-    "servings": 1,
-    "servingInfo": "10 g in 1 serving",
-    "parts": [
-      {
-        "ingredients": [
-          { "id": "oil_01", "quantity": 3 },
-          { "id": "oil_01", "quantity": 3 }
-        ],
-        "steps": ["Prepare", "Heat"]
+        "steps": [
+          "Steam the tomatoeas, remove their skin and slice into smaller pieces.",
+          "Slice the garlic cloves, and chop the onion. Pour 2 tablespoons of olive oil into a pot. Sauté them in the pot for about five minutes on medium heat.",
+          "Add 1 liter of water and stock cubes to the sauted onion.",
+          "Next, add 400 grams of cooked lentils and the tomatoes.",
+          "Lower the heat. Add salt, pepper, paprika, oregano, thyme and parsley (optional).",
+          "In the meantime cook pasta in a separate pot. I recommend Maccheroni pasta.",
+          "Add tomato paste and oat cream to the soup. Stir until the paste is mixed into the soup.",
+          "Serve with the cooked pasta."
+        ]
       }
     ]
   }
