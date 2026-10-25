@@ -848,7 +848,7 @@
     "title": "Lentil soup",
     "preparationTime": 30,
     "cookTime": 20,
-    "dietTags": ["vagan", "lactose-free", "gluten-free"],
+    "dietTags": ["vegan", "lactose-free", "gluten-free"],
     "mealTypeTags": ["lunch", "soup"],
     "servings": 7,
     "servingInfo": "350g in 1 serving",
@@ -880,6 +880,128 @@
           "In the meantime cook pasta in a separate pot. I recommend Maccheroni pasta.",
           "Add tomato paste and oat cream to the soup. Stir until the paste is mixed into the soup.",
           "Serve with the cooked pasta."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_024",
+    "title": "Polish dumplings (pierogi) with lentil filling",
+    "preparationTime": 10,
+    "cookTime": 150,
+    "dietTags": ["vegetarian", "lactose-free"],
+    "mealTypeTags": ["lunch"],
+    "servings": 6,
+    "servingInfo": "15 pierogis in 1 serving, 80-100 pierogis in total.",
+    "parts": [
+      {
+        "title": "Dough",
+        "ingredients": [
+          { "id": "flour_01", "quantity": 1100 },
+          { "id": "egg_01", "quantity": 6 },
+          { "id": "butter_01", "quantity": 100 },
+          { "id": "salt_01", "quantity": 1 }
+        ],
+        "steps": [
+          "Apart from the ingredients you'll need a glass with sharp edges around 6-7 cm in diameter, dough roller, wooden cutting boards and cotton kitchen towel. It is important that the boards and roller are wooden, as the dough sticks significatnly less to wood than to other materials.",
+          "Sift 1000 gram of the flour into a large bowl. Add salt and softened butter, 2 whole  eggs and 4 egg yolks. Pour a glass / 250 ml of a very warm (but not hot) water.",
+          "Work the dough with your hands until it's smooth and plastic.",
+          "Wrap the dough in wrapping foil and put away for half an hour. It'll make the dough not shring during rolling."
+        ]
+      },
+      {
+        "title": "Filling",
+        "ingredients": [
+          { "id": "lentils_01", "quantity": 400 },
+          { "id": "onion_01", "quantity": 250 },
+          { "id": "oil_01", "quantity": 120 },
+          { "id": "salt_01", "quantity": 1 },
+          { "id": "pepper_01", "quantity": 0.5 },
+          { "id": "soy_sauce_01", "quantity": 2, "optional": true }
+        ],
+        "steps": [
+          "Chop the onion. Pour 4 tablespoons of oil (half of the prepared amount) into a pot. This can be the same pot that you'll cook the lentils in.",
+          "Sauté the onions in the pot for about 10 minutes on medium heat.",
+          "Prepare the lentils. If you use dry lentils use 400g of dry lentils or 1000g of cokked / canned lentils. For dry lentils, wash them in water until water runs clean.",
+          "Add the lentils to cooked onion and add salt and pepper. Pour a glass (250ml) of water and cook covered on low heat for 30 minutes or until soft. After abut 15 minutes check if more water is needed.",
+          "After the lentils are cooked, blend them with a meat grinder or a blender. Add the rest of the oil to the blended filling.",
+          "Check the taste of the lentils. If it's not deep enough for your taste, add 1-2 spoons of soy sauce.",
+          "The filling should be firm but stick toghether."
+        ]
+      },
+      {
+        "title": "Combining",
+        "steps": [
+          "When the filling is cooled, and the dough was set aside for 30 minutes you can start putting the dumplings together.",
+          "Take around 300 gram part of the dough. Leave the rest in the wrap so it doesn't dry out.",
+          "Spread out a very thin layer of flour onto your table or wooden board where you'll roll the dough. Put a thin layer of flour to the roller too. This will prevent the dough sticking to them.",
+          "Prepare a separate wooden board with a layer of flour for the ready pierogi to rest before cooking.",
+          "Roll the dough to a very thin layer, it's advised to switch the dough sides (back and front) while rolling.",
+          "Cut pieces of the douch with the glass. Put a teaspoon of the filling onto each piece of dough, fold it in half with filling inside and carefully stick the ends toghether. Do it strong enugh so it does not fall apart during cooking.",
+          "Put the ready pierogis on the prepared wooden board and under a cotton towel. Work through the whole dough na filling.",
+          "Boil water with a teaspoon of salt in a large pot. Put part of the dumplings into boiling water. Make sure there's not too much in the pot at the same time, they sould not touch, as they can stick together. I usually put 15-20 at the same time.",
+          "Cook the pierogis until they float to the surface and then for another 3-4 minutes.",
+          "Serve with melted butter or add sauteed onion on top."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "recipe_025",
+    "title": "Traditional polish pierogi ruskie (dumplings)",
+    "preparationTime": 10,
+    "cookTime": 150,
+    "dietTags": ["vegetarian"],
+    "mealTypeTags": ["lunch"],
+    "servings": 6,
+    "servingInfo": "15 pierogis in 1 serving, 80-100 pierogis in total.",
+    "parts": [
+      {
+        "title": "Filling",
+        "ingredients": [
+          { "id": "cottage_cheese_02", "quantity": 500 },
+          { "id": "onion_01", "quantity": 400 },
+          { "id": "potatoes_01", "quantity": 1000 },
+          { "id": "butter_01", "quantity": 30 },
+          { "id": "salt_01", "quantity": 0.5 },
+          { "id": "pepper_01", "quantity": 0.5 },
+          { "id": "soy_sauce_01", "quantity": 2, "optional": true }
+        ],
+        "steps": [
+          "Peel and boil potatoes on salted water. When soft, draint he water, dry the potatoes and puree them. Add salt and pepper. Leave to cool.",
+          "Grind the cottage cheese if you bough the cube type.",
+          "Mix the filling ingredients together. If the taste is not deep enough put 1-2 spoons of soy sauce in it.",
+          "The filling should be firm but stick toghether."
+        ]
+      },
+      {
+        "title": "Dough",
+        "ingredients": [
+          { "id": "flour_01", "quantity": 1100 },
+          { "id": "egg_01", "quantity": 6 },
+          { "id": "butter_01", "quantity": 100 },
+          { "id": "salt_01", "quantity": 1 }
+        ],
+        "steps": [
+          "Apart from the ingredients you'll need a glass with sharp edges around 6-7 cm in diameter, dough roller, wooden cutting boards and cotton kitchen towel. It is important that the boards and roller are wooden, as the dough sticks significatnly less to wood than to other materials.",
+          "Sift 1000 gram of the flour into a large bowl. Add salt and softened butter, 2 whole  eggs and 4 egg yolks. Pour a glass / 250 ml of a very warm (but not hot) water.",
+          "Work the dough with your hands until it's smooth and plastic.",
+          "Wrap the dough in wrapping foil and put away for half an hour. It'll make the dough not shring during rolling."
+        ]
+      },
+      {
+        "title": "Combining",
+        "steps": [
+          "When the filling is cooled, and the dough was set aside for 30 minutes you can start putting the dumplings together.",
+          "Take around 300 gram part of the dough. Leave the rest in the wrap so it doesn't dry out.",
+          "Spread out a very thin layer of flour onto your table or wooden board where you'll roll the dough. Put a thin layer of flour to the roller too. This will prevent the dough sticking to them.",
+          "Prepare a separate wooden board with a layer of flour for the ready pierogi to rest before cooking.",
+          "Roll the dough to a very thin layer, it's advised to switch the dough sides (back and front) while rolling.",
+          "Cut pieces of the douch with the glass. Put a teaspoon of the filling onto each piece of dough, fold it in half with filling inside and carefully stick the ends toghether. Do it strong enugh so it does not fall apart during cooking.",
+          "Put the ready pierogis on the prepared wooden board and under a cotton towel. Work through the whole dough na filling.",
+          "Boil water with a teaspoon of salt in a large pot. Put part of the dumplings into boiling water. Make sure there's not too much in the pot at the same time, they sould not touch, as they can stick together. I usually put 15-20 at the same time.",
+          "Cook the pierogis until they float to the surface and then for another 3-4 minutes.",
+          "Serve with melted butter or add sauteed onion on top."
         ]
       }
     ]
