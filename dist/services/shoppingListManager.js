@@ -2,15 +2,17 @@ import { roundIngredients } from "../utils/roundIngredients.js";
 import { SHOPPING_CATEGORY_ORDER } from "../utils/constants.js";
 const getDataFromRecipe = async (recipe, foodStorage, items, ratio) => {
     for (const part of recipe.parts) {
-        for (const ingredient of part.ingredients) {
-            const food = await foodStorage.getById(ingredient.id);
-            items.push({
-                id: food ? food.id : "Unknown",
-                category: food ? food.category : "Unknown category",
-                name: food ? food.name.toLowerCase() : "Unknown ingredient",
-                unit: food ? food.unit : "",
-                quantity: ingredient.quantity * ratio,
-            });
+        if (part.ingredients && part.ingredients.length > 0) {
+            for (const ingredient of part.ingredients) {
+                const food = await foodStorage.getById(ingredient.id);
+                items.push({
+                    id: food ? food.id : "Unknown",
+                    category: food ? food.category : "Unknown category",
+                    name: food ? food.name.toLowerCase() : "Unknown ingredient",
+                    unit: food ? food.unit : "",
+                    quantity: ingredient.quantity * ratio,
+                });
+            }
         }
     }
 };

@@ -1713,6 +1713,7 @@ p.error-msg:before {
   position: absolute;
 }
 .weekly-list__shopping-list .checkbox__marker {
+  flex-shrink: 0;
   height: 24px;
   width: 24px;
   border: 2px solid var(--clr-lavender-dark);
