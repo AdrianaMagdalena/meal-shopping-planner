@@ -624,5 +624,11 @@
     "name": "Soy yoghurt",
     "category": "plant-based",
     "unit": "g"
+  },
+  {
+    "id": "cottage_cheese_02",
+    "name": "Cottage cheese (thick kind, in cube or ground)",
+    "category": "diary",
+    "unit": "g"
   }
 ]

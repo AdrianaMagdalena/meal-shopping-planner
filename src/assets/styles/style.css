@@ -1044,6 +1044,7 @@ p.error-msg:before {
 @media (width >= 560px) {
   .recipe-preview .info-block h2 {
     font-size: 24px;
+    margin: 0 0 24px 0;
   }
 }
 .recipe-preview .info-block h3 {
@@ -1054,6 +1055,7 @@ p.error-msg:before {
 @media (width >= 560px) {
   .recipe-preview .info-block h3 {
     font-size: 20px;
+    margin: 0 0 12px 0;
   }
 }
 .recipe-preview .info-block ul {
@@ -1178,7 +1180,7 @@ p.error-msg:before {
 .recipe-preview .content .ingredients__wrap {
   display: flex;
   flex-direction: column;
-  gap: 12px 32px;
+  gap: 20px 32px;
 }
 @media (width >= 560px) {
   .recipe-preview .content .ingredients__wrap {
@@ -1193,7 +1195,12 @@ p.error-msg:before {
 }
 .recipe-preview .content .steps__wrap {
   display: grid;
-  gap: 16px;
+  gap: 20px;
+}
+@media (width >= 560px) {
+  .recipe-preview .content .steps__wrap {
+    gap: 24px;
+  }
 }
 
 .homepage__title {

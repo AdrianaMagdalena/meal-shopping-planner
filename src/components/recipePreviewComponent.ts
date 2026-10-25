@@ -127,46 +127,48 @@ const renderIngredientList = async (
   if (!ingredientsWrap) throw new Error("ingredientsWrap not found on page");
 
   for (const p of recipe.parts) {
-    const ingrPart = document.createElement("div");
-    ingrPart.classList.add("ingredients__part");
+    if (p.ingredients && p.ingredients.length > 0) {
+      const ingrPart = document.createElement("div");
+      ingrPart.classList.add("ingredients__part");
 
-    if (p.title) {
-      const ingrTitle = document.createElement("h3");
-      ingrTitle.textContent = p.title;
-      ingrPart.appendChild(ingrTitle);
-    }
-
-    const ingrPartList = document.createElement("ul");
-
-    for (const i of p.ingredients) {
-      const food = await foodStorage.getById(i.id);
-      const foodName = food ? food.name : "Unknown ingredient";
-      const foodUnit = food ? food.unit : "";
-
-      const ingredient = document.createElement("li");
-      ingredient.dataset.originalAmount = String(i.quantity);
-
-      const ingrAmount = document.createElement("span");
-      const ingrUnit = document.createElement("span");
-      const ingrName = document.createElement("span");
-      ingrAmount.classList.add("ingredients__ingr-amount");
-      ingrAmount.textContent = `${i.quantity}`;
-      ingrUnit.classList.add("ingredients__ingr-unit");
-      ingrUnit.textContent = ` ${foodUnit}`;
-      ingrName.textContent = ` ${foodName.toLowerCase()}`;
-
-      if (i.optional) {
-        ingrName.textContent += ` (optional)`;
+      if (p.title) {
+        const ingrTitle = document.createElement("h3");
+        ingrTitle.textContent = p.title;
+        ingrPart.appendChild(ingrTitle);
       }
 
-      ingredient.appendChild(ingrAmount);
-      ingredient.appendChild(ingrUnit);
-      ingredient.appendChild(ingrName);
-      ingrPartList.appendChild(ingredient);
-    }
+      const ingrPartList = document.createElement("ul");
 
-    ingrPart.appendChild(ingrPartList);
-    ingredientsWrap.appendChild(ingrPart);
+      for (const i of p.ingredients) {
+        const food = await foodStorage.getById(i.id);
+        const foodName = food ? food.name : "Unknown ingredient";
+        const foodUnit = food ? food.unit : "";
+
+        const ingredient = document.createElement("li");
+        ingredient.dataset.originalAmount = String(i.quantity);
+
+        const ingrAmount = document.createElement("span");
+        const ingrUnit = document.createElement("span");
+        const ingrName = document.createElement("span");
+        ingrAmount.classList.add("ingredients__ingr-amount");
+        ingrAmount.textContent = `${i.quantity}`;
+        ingrUnit.classList.add("ingredients__ingr-unit");
+        ingrUnit.textContent = ` ${foodUnit}`;
+        ingrName.textContent = ` ${foodName.toLowerCase()}`;
+
+        if (i.optional) {
+          ingrName.textContent += ` (optional)`;
+        }
+
+        ingredient.appendChild(ingrAmount);
+        ingredient.appendChild(ingrUnit);
+        ingredient.appendChild(ingrName);
+        ingrPartList.appendChild(ingredient);
+      }
+
+      ingrPart.appendChild(ingrPartList);
+      ingredientsWrap.appendChild(ingrPart);
+    }
   }
 };
 

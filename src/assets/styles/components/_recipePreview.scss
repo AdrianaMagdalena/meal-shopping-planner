@@ -63,6 +63,7 @@
 
       @include breakpoint-up(md) {
         font-size: 24px;
+        margin: 0 0 24px 0;
       }
     }
 
@@ -73,6 +74,7 @@
 
       @include breakpoint-up(md) {
         font-size: 20px;
+        margin: 0 0 12px 0;
       }
     }
 
@@ -221,7 +223,7 @@
       &__wrap {
         display: flex;
         flex-direction: column;
-        gap: 12px 32px;
+        gap: 20px 32px;
 
         @include breakpoint-up(md) {
           flex-direction: row;
@@ -241,7 +243,11 @@
     .steps {
       &__wrap {
         display: grid;
-        gap: 16px;
+        gap: 20px;
+
+        @include breakpoint-up(md) {
+          gap: 24px;
+        }
       }
     }
   }
